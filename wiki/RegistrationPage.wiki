@@ -14,10 +14,16 @@ The login system provides the HTML markup and server side code to facilitate the
 
 In the process of registration, the user's chosen password must be confirmed by a second entry to ensure the user has entered the correct password and not made a typographical error. This is necessary because the password entry field is obscured and the user can not see what has been entered.
 
-After completion of the registration form, the new account will be flagged as locked and an email with a random one time use token will be sent to the entered email address.  The email contains instructions on how to activate (unlock) the new account by either:
+After completion of the registration form, the new account will be flagged as locked. This accomplished by Computing a crytographically randon one use token, then updating the user account record in the database:
 
-  # Clicking the link provided which contains the token as a URL variable, or
-  # Copying and Pasting the token into the Registration Verification page.
+  * Setting the locked field to 1,
+  * Setting the token field to contain the generated token, and
+  * Setting the dateIssued field to the current date and time.
+
+An email with the random one time use token will be sent to the entered email address.  The email contains instructions on how to activate (unlock) the new account by either:
+
+  * Clicking the link provided which contains the token as a URL variable, or
+  * Copying and Pasting the token into the Registration Verification page.
 
 The userid and password will not be included in the email.
 
