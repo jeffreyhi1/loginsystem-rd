@@ -3,21 +3,29 @@ Examination Of The Login Process
 
 = Introduction =
 
-At a casual glance, the login process seems very simple.  It is very common for a new web developer to ask for a login page for his or her web site.  But a deeper understanding shows just a login page is insufficient.
+At a casual glance, the login process seems very simple.  It is very common for a new web developer to ask for a login page for his or her web site.  But a deeper understanding shows *just* a login page is insufficient.
 
-Additionally, examining the code of login pages made by many developers reveals a lack of input filtering, potential or known SQL injections and CSRF vulnerabilities.
+Unless every user is using the same credentials, (obviously a bad practice,) you need a place to store user information, e.g. nominally a database.
 
+Examining the code of login pages made by many developers reveals a lack of input filtering, potential or known SQL injections and CSRF vulnerabilities.
+
+A web developer should not have to write a login system from scratch and face the possibility of repeating common mistakes, but should have access to code reviewed by many, tested and proven in practice to be secure and sufficient.
+
+That does not imply that one system fits all situations, but those functions which are common among most situations should be vetted and made available to developers who can decide what functions they require for the web site they are developing.
 
 = Details =
 
-At a minimum, best practices *demand* any input from form pages must be filtered.  SQL commands must be secure to avoid SQL injection attacks, which generally requires the use of Parametrized SQL or prepared statements, (although these can be vulnerable if improperly implemented.) And one time use tokens should be included to help prevent CSRF attacks.
+At a minimum, best practices *demand* any input from any web form must be filtered to prevent malicious input. It is also generally considered best practice that filtering should be against a white list of known good input with all other input discarded.
 
-When the form in question is a login form, extra care must be taken to ensure only authorized users may authenticate and that their login credentials are kept safe. One way to ensure these requirements are met is to not echo the user id to web pages after login and to only store a hash of the users password in the back-end database.
+SQL commands necessary to interact with the user database must be secure to avoid SQL injection attacks, which generally requires the use of Parametrized SQL or prepared statements, (although these can be vulnerable if improperly implemented.)
+
+Finally, one time use tokens should be included in web forms to help prevent CSRF attacks.
+
+When the form in question is a login form, extra care must be taken to ensure only authorized users may authenticate and that their login credentials are kept safe. One way to ensure these requirements are met is to never echo the user id to web pages after login, (information leakage,) and to only store a hash of the users password in the back-end database.
  
 == A Realistic View Of The Login Process ==
 
 For a person to login, that person must first obtain login credentials, usually a User ID and password.  It is seldom practical to hand deliver these credentials to web site users so immediately we recognize that in addition to a login page, we will need to provide a registration page for a user to obtain their login credentials.
-
 
 As we previously stated we should not echo the User ID on any web page we will also need to ask for the user's name or desired "screen name" during registration.
 
@@ -40,7 +48,7 @@ Those pages can very well require:
 
 We are at five pages already, but savvy web users will expect more. They will want the ability to change at a minimum their password and email, (if not other registration details.) They may also want to be able to cancel their account with the web site.
 
-Not mentioned earlier, there are people who have been known to register accounts at web sites using another person's identity and email. The motivation for this can be varied, but one example might be a person registering another person at a web site that the other person might consider embarrassing, contrary to their political or religious views, or for the purpose of making the other person a victim of fraud.  When a new user registration email is sent by the registration page, an option to cancel the registration should be included in that email.
+Not mentioned earlier, there are people who have been known to register accounts at web sites using another person's identity and email. The motivation for this can be varied, but some examples might be a person registering another person at a web site that the other person might consider embarrassing, contrary to their political or religious views, or for the purpose of making the other person a victim of fraud.  When a new user registration email is sent by the registration page, an option to cancel the registration should be included in that email.
 
 Thus the need for a cancel registration page. So we will add to our system:
 
@@ -49,4 +57,15 @@ Thus the need for a cancel registration page. So we will add to our system:
 * A cancel account page, and
 * A cancel registration page.
 
+Email is not always reliable. It is not uncommon for email from a new website to end up in a user's SPAM folder, or system failures may result in a message not being delivered.  Thus a new user may not receive their verification token, or may not notice it until the lifetime of the token has expired. 
 
+It may then be desirable to offer users the ability to request a new email verification token be sent. So we add:
+
+* A request new token page.
+
+If we allow the user to log in, we should offer a page to log out.  This means killing any session variables in use and/or deleting any cookies. This generally requires that the user be redirected past that page as in most cases the session variables and cookies will not actually be deleted until the user leaves the page that destroys them.  Thus we need:
+
+* A log out page, and
+* A logged out page (alternatively we could redirect to the home page of the web site.)
+
+While not implemented in the early phases of this project, it can be anticipated that some web site developers may want to take advantage of federated identity solutions, so at a minimum, support for OpenID should be added in post release versions of this system.
