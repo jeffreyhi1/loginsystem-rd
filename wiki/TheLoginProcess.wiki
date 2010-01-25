@@ -1,0 +1,52 @@
+#labels Phase-Requirements
+Examination Of The Login Process
+
+= Introduction =
+
+At a casual glance, the login process seems very simple.  It is very common for a new web developer to ask for a login page for his or her web site.  But a deeper understanding shows just a login page is insufficient.
+
+Additionally, examining the code of login pages made by many developers reveals a lack of input filtering, potential or known SQL injections and CSRF vulnerabilities.
+
+
+= Details =
+
+At a minimum, best practices *demand* any input from form pages must be filtered.  SQL commands must be secure to avoid SQL injection attacks, which generally requires the use of Parametrized SQL or prepared statements, (although these can be vulnerable if improperly implemented.) And one time use tokens should be included to help prevent CSRF attacks.
+
+When the form in question is a login form, extra care must be taken to ensure only authorized users may authenticate and that their login credentials are kept safe. One way to ensure these requirements are met is to not echo the user id to web pages after login and to only store a hash of the users password in the back-end database.
+ 
+== A Realistic View Of The Login Process ==
+
+For a person to login, that person must first obtain login credentials, usually a User ID and password.  It is seldom practical to hand deliver these credentials to web site users so immediately we recognize that in addition to a login page, we will need to provide a registration page for a user to obtain their login credentials.
+
+
+As we previously stated we should not echo the User ID on any web page we will also need to ask for the user's name or desired "screen name" during registration.
+
+Best practices for transactional web sites require the registered user be e-mailed when any significant transaction occurs. Therefore, the registration page must not only ask for a new registrant's email address, but that address must be validated so it is known the user can be notified of any significant transactions involving his or her account.
+
+Therefor we will need a method of e-mail verification.  Unless the web site has unusually high security requirements, (a banking site for example,) we can send a cryptographic random token to the e-mail address provided at registration and keep the new account in a locked state until that token has been verified by the user.
+
+Therefore we need a email verification page to validate registration tokens.
+
+That is the very minimum needed for a login system:
+
+* A registration page,
+* A email verification page, and
+* A login page
+
+Those pages can very well require:
+
+* A success page for verifying a email token, and 
+* A success page for a successful login.
+
+We are at five pages already, but savvy web users will expect more. They will want the ability to change at a minimum their password and email, (if not other registration details.) They may also want to be able to cancel their account with the web site.
+
+Not mentioned earlier, there are people who have been known to register accounts at web sites using another person's identity and email. The motivation for this can be varied, but one example might be a person registering another person at a web site that the other person might consider embarrassing, contrary to their political or religious views, or for the purpose of making the other person a victim of fraud.  When a new user registration email is sent by the registration page, an option to cancel the registration should be included in that email.
+
+Thus the need for a cancel registration page. So we will add to our system:
+
+* A Change password page,
+* A change e-mail page,
+* A cancel account page, and
+* A cancel registration page.
+
+
