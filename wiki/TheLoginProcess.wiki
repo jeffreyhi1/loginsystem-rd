@@ -37,14 +37,14 @@ Therefore we need a email verification page to validate registration tokens.
 
 That is the very minimum needed for a login system:
 
-* A registration page,
-* A email verification page, and
-* A login page
+  * A registration page,
+  * A email verification page, and
+  * A login page
 
 Those pages can very well require:
 
-* A success page for verifying a email token, and 
-* A success page for a successful login.
+  * A success page for verifying a email token, and 
+  * A success page for a successful login.
 
 We are at five pages already, but savvy web users will expect more. They will want the ability to change at a minimum their password and email, (if not other registration details.) They may also want to be able to cancel their account with the web site.
 
@@ -52,20 +52,20 @@ Not mentioned earlier, there are people who have been known to register accounts
 
 Thus the need for a cancel registration page. So we will add to our system:
 
-* A Change password page,
-* A change e-mail page,
-* A cancel account page, and
-* A cancel registration page.
+  * A Change password page,
+  * A change e-mail page,
+  * A cancel account page, and
+  * A cancel registration page.
 
 Email is not always reliable. It is not uncommon for email from a new website to end up in a user's SPAM folder, or system failures may result in a message not being delivered.  Thus a new user may not receive their verification token, or may not notice it until the lifetime of the token has expired. 
 
 It may then be desirable to offer users the ability to request a new email verification token be sent. So we add:
 
-* A request new token page.
+  * A request new token page.
 
 If we allow the user to log in, we should offer a page to log out.  This means killing any session variables in use and/or deleting any cookies. This generally requires that the user be redirected past that page as in most cases the session variables and cookies will not actually be deleted until the user leaves the page that destroys them.  Thus we need:
 
-* A log out page, and
-* A logged out page (alternatively we could redirect to the home page of the web site.)
+  * A log out page, and
+  * A logged out page (alternatively we could redirect to the home page of the web site.)
 
 While not implemented in the early phases of this project, it can be anticipated that some web site developers may want to take advantage of federated identity solutions, so at a minimum, support for OpenID should be added in post release versions of this system.
