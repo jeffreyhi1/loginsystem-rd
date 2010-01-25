@@ -69,3 +69,15 @@ If we allow the user to log in, we should offer a page to log out.  This means k
   * A logged out page (alternatively we could redirect to the home page of the web site.)
 
 While not implemented in the early phases of this project, it can be anticipated that some web site developers may want to take advantage of federated identity solutions, so at a minimum, support for OpenID should be added in post release versions of this system.
+
+Finally, we can be assured that some user will forget their login credentials, and provide a method to recover the password and/or the user id and password.  If implemented, we should require the user to set a new password upon login. So finally:
+
+  * A password recovery page, and (if desired)
+  * A User ID and Password recovery page.
+
+This begs the question of how we verify a user is entitled to recover the User ID and password.  In the pre-release version of code we will simply accept the userid, lock the account and send an unlock token to the registered e-mail address.
+
+In future versions we will determine a method to recover a forgotten User ID which will probably require a page to set questions and answers for the user to prove their identity and a page to display some random number of questions which must be answered correctly before a User ID or Password unlock code is sent. Add:
+
+  * A page to set questions and answers for a user, and
+  * A page to display questions that must be answered for User ID/Password recovery.
