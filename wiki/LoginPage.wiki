@@ -56,6 +56,11 @@ Else (form posted)
 End If
 
 
-NOTE: The next version of login needs to establish a predetermined number of attempts allowed, count failure attempts, and lock the user's accound and send the user an e-mail advising that the account has been locked.
+NOTE: The next version of login needs to establish a predetermined number of attempts allowed, count failure attempts, and lock the user's account and send the user an e-mail advising that the account has been locked.
 
-This implys the option    
+This implys the need to unlock an account. In the early phase of this process we will send an unlock token to the registered e-mail address as was done at registration.  Future version may offer other methods but will remain backwards compatible with this function choice.
+
+
+
+
+[http://code.google.com/p/loginsystem-rd/wiki/TheLoginProcess PREV:Login Process]    
