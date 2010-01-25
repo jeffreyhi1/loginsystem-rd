@@ -75,11 +75,17 @@ Finally, we can be assured that some user will forget their login credentials, a
   * A password recovery page, and (if desired)
   * A User ID and Password recovery page.
 
-This begs the question of how we verify a user is entitled to recover the User ID and password.  In the pre-release version of code we will simply accept the userid, lock the account and send an unlock token to the registered e-mail address.
+This begs the question of how we verify a user is entitled to recover the User ID and password.  In the pre-release version of code we will simply accept the userid, lock the account and send an unlock token to the registered e-mail address. Therefore:
+
+  * An e-mail me my password page (actually send an unlock token)
 
 In future versions we will determine a method to recover a forgotten User ID which will probably require a page to set questions and answers for the user to prove their identity and a page to display some random number of questions which must be answered correctly before a User ID or Password unlock code is sent. Add:
 
   * A page to set questions and answers for a user, and
   * A page to display questions that must be answered for User ID/Password recovery.
+
+The web is international, so will be this login system. All terms and phrases will be represented by constants located in a language file. There is also the need to store configuration information, such as the database access string and webmaster preferences, such as logging all user logins.  These will be combined into one file;
+
+  * The login system globals file.
 
 [http://code.google.com/p/loginsystem-rd/wiki/WikiHome Home] [http://code.google.com/p/loginsystem-rd/wiki/LoginPage Next:Login Page]
