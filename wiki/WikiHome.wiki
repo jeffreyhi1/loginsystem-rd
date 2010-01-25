@@ -12,3 +12,9 @@ This system will be offered first in Classic ASP and PHP.  The intent is to prov
 While some basic CSS is used in the pages of this login system, that is meant to be replaced by the web developer with styles to match the parent web site.
 
 The code which processes the forms and performs the functions of the login system can generally be cut and pasted into the head of the web page where it will be used.
+
+
+[http://code.google.com/p/loginsystem-rd/wiki/Prerequisites Prerequisites]
+Requirements [http://code.google.com/p/loginsystem-rd/wiki/TheLoginProcess The Login Process]
+Design [http://code.google.com/p/loginsystem-rd/wiki/LoginPage Login Page]
+Implementation :: Not Finished
