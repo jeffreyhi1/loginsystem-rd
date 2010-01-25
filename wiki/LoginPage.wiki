@@ -34,31 +34,37 @@ If HTTP_METHOD = "GET"
             Else redirect to a predetermined page, such as a forum
     Else
         set Session and/or cookies to the logged out state, and
-        present the login form
+        create a cryptographic one time use token (nonce)
+        present the login form with the nonce
     End If
 Else (form posted)
-    retrieve and filter the userid and password fields
-    If they are not empty
-        create a hash of the password using the userid as a salt
-        retrieve the password hash from the database for the userid
-        compare hashes
-        If they match
-            log the user in setting session state and/or cookies
-            if permanent cookies are allowed and requested by the user - set the cookies
-            if logging, then log the user's access
-            If we have a saved destination page redirect to that page
-            Else show login success page
-            Else redirect to a predetermined page, such as a forum
-        End If
+    check for a valid nonce
+    if valid
+        retrieve and filter the userid and password fields
+        If they are not empty
+            create a hash of the password using the userid as a salt
+            retrieve the password hash from the database for the userid
+            compare hashes
+            If they match
+                log the user in setting session state and/or cookies
+                if permanent cookies are allowed and requested by the user - 
+                    set the cookies
+                if logging, then log the user's access
+                If we have a saved destination page redirect to that page
+                Else show login success page
+                Else redirect to a predetermined page, such as a forum
+            End If
+        Else
+            redisplay the form with an error message
     Else
-        redisplay the form with an error message
+        redirect to Forbidden page.
     End If
 End If
 
 
 NOTE: The next version of login needs to establish a predetermined number of attempts allowed, count failure attempts, and lock the user's account and send the user an e-mail advising that the account has been locked.
 
-This implys the need to unlock an account. In the early phase of this process we will send an unlock token to the registered e-mail address as was done at registration.  Future version may offer other methods but will remain backwards compatible with this function choice.
+This implys the need to unlock an account. In the early phase of this process we will send an unlock token to the registered e-mail address as is done at registration.  Future version may offer other methods but will remain backwards compatible with this function choice.
 
 
 
