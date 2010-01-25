@@ -82,4 +82,4 @@ In future versions we will determine a method to recover a forgotten User ID whi
   * A page to set questions and answers for a user, and
   * A page to display questions that must be answered for User ID/Password recovery.
 
-[http://code.google.com/p/loginsystem-rd/wiki/WikiHome Home]
+[http://code.google.com/p/loginsystem-rd/wiki/WikiHome Home] [http://code.google.com/p/loginsystem-rd/wiki/LoginPage Next:Login Page]
