@@ -7,7 +7,7 @@ The purpose of this project is to release proven secure code for a web site logi
 
 = Details =
 
-This system will be offered first in Classic ASP and PHP.  The intent is to provide valid modular (X)HTML mark-up which can be inserted in the body of a web page from any site.  In other words, all of an existing sites banner, menus, navigation and style would exist and just the form portion of the login system pages would need to be added to the existing markup at whatever location the webmaster desires.
+This system will be offered first in Classic ASP and PHP.  The intent is to provide valid modular (X)HTML mark-up which can be inserted in the body of a web page from any site.  In other words, all of an existing sites banner, menus, navigation and style would exist and just the form portion of the login system pages would need to be added to the existing markup at whatever location the webmaster desires.  (The web developer can create their own (X)HTML mark up, but will need to follow certain coding conventions.)
 
 While some basic CSS is used in the pages of this login system, that is meant to be replaced by the web developer with styles to match the parent web site.
 
