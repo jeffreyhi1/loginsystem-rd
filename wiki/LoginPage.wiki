@@ -68,5 +68,4 @@ This implys the need to unlock an account. In the early phase of this process we
 
 
 
-
-[http://code.google.com/p/loginsystem-rd/wiki/TheLoginProcess PREV:Login Process]    
+[http://code.google.com/p/loginsystem-rd/wiki/WikiHome HOME] | [http://code.google.com/p/loginsystem-rd/wiki/TheLoginProcess PREV:Login Process] | [http://code.google.com/p/loginsystem-rd/wiki/LoginSuccess NEXT]    
