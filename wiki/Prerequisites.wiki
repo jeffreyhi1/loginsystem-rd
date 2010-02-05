@@ -10,14 +10,14 @@ The web site is expected to have certain capabilities.
 
 The web site will need one of the server side languages:
 
-*  ASP, or
-*  PHP
+  * ASP, or
+  * PHP
 
 The web site will need a database:
 
-*  MS Access on a Windows Server,
-*  MS SQL, (including an express version, formerly MSDE), or
-*  MySql
+  * MS Access on a Windows Server,
+  * MS SQL, (including an express version, formerly MSDE), or
+  * MySql
 
 The web server will need a valid SSL certificate. No provisions have been made for a shared SSL certificate.
 
