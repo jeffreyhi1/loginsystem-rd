@@ -11,29 +11,29 @@ Examining the code of login pages made by many developers reveals a lack of inpu
 
 A web developer should not have to write a login system from scratch and face the possibility of repeating common mistakes, but should have access to code reviewed by many, tested and proven in practice to be secure and sufficient.
 
-That does not imply that one system fits all situations, but those functions which are common among most situations should be vetted and made available to developers who can decide what functions they require for the web site they are developing.
+That does not imply that one system fits all situations, but those functions which are common among most situations should be vetted and made available to developers who can choose which functions they want to include in the web site they are developing.
 
 = Details =
 
-At a minimum, best practices *demand* any input from any web form must be filtered to prevent malicious input. It is also generally considered best practice that filtering should be against a white list of known good input with all other input discarded.
+At a minimum, best practices *demand* any input from any web form must be filtered to prevent malicious input. It is also generally considered best practice that filtering should be against a white list of known good input with all other input discarded.  Prior to filtering canonization of the input may be required.
 
 SQL commands necessary to interact with the user database must be secure to avoid SQL injection attacks, which generally requires the use of Parametrized SQL or prepared statements, (although these can be vulnerable if improperly implemented.)
 
-Finally, one time use tokens should be included in web forms to help prevent CSRF attacks.
+Finally, temporal one time use tokens should be included in web forms to help prevent CSRF attacks. This also requires no XSS vulnerabilities exist on those pages.
 
-When the form in question is a login form, extra care must be taken to ensure only authorized users may authenticate and that their login credentials are kept safe. One way to ensure these requirements are met is to never echo the user id to web pages after login, (information leakage,) and to only store a hash of the users password in the back-end database.
+When the form in question is a login form, extra care must be taken to ensure only authorized users may authenticate and that their login credentials are kept safe. One way to ensure these requirements are met is to never echo the userid to web pages after login, (information leakage,) and to only store a hash of the users password in the back-end database.
  
 == A Realistic View Of The Login Process ==
 
 For a person to login, that person must first obtain login credentials, usually a User ID and password.  It is seldom practical to hand deliver these credentials to web site users so immediately we recognize that in addition to a login page, we will need to provide a registration page for a user to obtain their login credentials.
 
-As we previously stated we should not echo the User ID on any web page we will also need to ask for the user's name or desired "screen name" during registration.
+As we previously stated we should not echo the userid on any web page we will also need to ask for the user's name or desired "screen name" during registration.
 
-Best practices for transactional web sites require the registered user be e-mailed when any significant transaction occurs. Therefore, the registration page must not only ask for a new registrant's email address, but that address must be validated so it is known the user can be notified of any significant transactions involving his or her account.
+Best practices for transactional web sites require the registered user be emailed when any significant transaction occurs. Therefore, the registration page must not only ask for a new registrant's email address, but that address must be validated so it is known the user can be notified of any significant transactions involving his or her account.
 
-Therefor we will need a method of e-mail verification.  Unless the web site has unusually high security requirements, (a banking site for example,) we can send a cryptographic random token to the e-mail address provided at registration and keep the new account in a locked state until that token has been verified by the user.
+Therefor we will need a method of email verification.  Unless the web site has unusually high security requirements, (a banking site for example,) we can send a temporal cryptographic random token to the e-mail address provided at registration and keep the new account in a locked state until that token has been verified by the user.
 
-Therefore we need a email verification page to validate registration tokens.
+Therefore we need a email verification page to validate registration tokens. To avoid replay attacks, used tokens must be saved and new tokens checked to ensure they were not previously used. (There may be a time limit specified in the login system's configuration to keep the used token file from growing out of control.)
 
 That is the very minimum needed for a login system:
 
@@ -72,14 +72,13 @@ While not implemented in the early phases of this project, it can be anticipated
 
 Finally, we can be assured that some user will forget their login credentials, and provide a method to recover the password and/or the user id and password.  If implemented, we should require the user to set a new password upon login. So finally:
 
-  * A password recovery page, and (if desired)
+  * A password recovery page, and
+  * A create new password page, and (if desired)
   * A User ID and Password recovery page.
 
-This begs the question of how we verify a user is entitled to recover the User ID and password.  In the pre-release version of code we will simply accept the userid, lock the account and send an unlock token to the registered e-mail address. Therefore:
+This begs the question of how we verify a user is entitled to recover a forgotten password. In the alpha version of code we will simply accept the userid and email of the user, lock the account, and send a temporal unlock token to the registered account owner's email address.
 
-  * An e-mail me my password page (actually send an unlock token)
-
-In future versions we will determine a method to recover a forgotten User ID which will probably require a page to set questions and answers for the user to prove their identity and a page to display some random number of questions which must be answered correctly before a User ID or Password unlock code is sent. Add:
+In future versions we will may decide to determine a method to recover a forgotten userid which will probably require a page to set questions and answers for the user to prove their identity and a page to display some random number of questions which must be answered correctly before a userid or password unlock code is sent. Future Add:
 
   * A page to set questions and answers for a user, and
   * A page to display questions that must be answered for User ID/Password recovery.
