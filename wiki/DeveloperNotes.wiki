@@ -23,7 +23,7 @@ An example header.
 '* Output:   message - string variable with results
 '* On Exit:  User logged in
 '*           User redirected to final redirect path
-'******************************************************************************************
+'*****************************************************************************************
 
 Check points:
 
@@ -42,7 +42,12 @@ Database notes:
 
 MS Access has two oledb providers, Jet 4 for 2003 and earlier
                                    Client Access Services for 2007 and later.
+For the test system:
+
 MS Access has no comments and does not allow stacked queries.
+CONNECTION_STRING = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='D:\Hosting\4707086\html\login-system\asp\database\login_system.mdb'"
+
+
 
 MySql does have comments but no stacked queries.
 MySql_real_escape_string will not stop all SQL Injection
