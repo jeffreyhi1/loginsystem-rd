@@ -1,0 +1,50 @@
+#labels Phase-Design,Phase-QA
+Code Review Guidelines and General Considerations
+
+= Introduction =
+
+There are ancillary issues of concern in the project
+
+
+= Details =
+
+Code Review:
+An example header.
+
+'******************************************************************************************
+'* Login
+'* Original: 26 JAN 2010
+'* Last Mod: 26 JAN 2010
+'* By:       rdivilbiss
+'* Version:  beta 1.1
+'* On Entry: Verify need for SSL
+'*	     Determine final redirect path; destination page or login success page
+'* Input:    userid, password, remember
+'* Output:   message - string variable with results
+'* On Exit:  User logged in
+'*           User redirected to final redirect path
+'******************************************************************************************
+
+Check points:
+
+  * Locale set - loginGlobals?
+  * Character set UTF-8 both in server side code and headers
+  * Input canoncalized
+  * Input filtered
+  * Input escaped if necessary for database (may not be needed given the following
+  * Parameterized SQL used
+  * Stored procedures used
+
+  * userid and password never leaked in a page or in an email
+
+
+Database notes:
+
+MS Access has two oledb providers, Jet 4 for 2003 and earlier
+                                   Client Access Services for 2007 and later.
+MS Access has no comments and does not allow stacked queries.
+
+MySql does have comments but no stacked queries.
+MySql_real_escape_string will not stop all SQL Injection
+
+MS SQL has comments and accepts stacked queries.
