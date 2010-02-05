@@ -9,21 +9,8 @@ There are ancillary issues of concern in the project
 = Details =
 
 Code Review:
-An example header.
 
-'******************************************************************************************
-'* Login
-'* Original: 26 JAN 2010
-'* Last Mod: 26 JAN 2010
-'* By:       rdivilbiss
-'* Version:  beta 1.1
-'* On Entry: Verify need for SSL
-'*	     Determine final redirect path; destination page or login success page
-'* Input:    userid, password, remember
-'* Output:   message - string variable with results
-'* On Exit:  User logged in
-'*           User redirected to final redirect path
-'*****************************************************************************************
+
 
 Check points:
 
