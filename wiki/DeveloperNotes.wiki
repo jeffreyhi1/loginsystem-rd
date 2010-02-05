@@ -48,3 +48,5 @@ MySql does have comments but no stacked queries.
 MySql_real_escape_string will not stop all SQL Injection
 
 MS SQL has comments and accepts stacked queries.
+
+Should we defer to other major frameworks or proceed with the project in a way that is accessible to newer developers without the overhead of implementing another projects framework which may be not easily assimilated by the general developers.
