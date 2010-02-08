@@ -1,0 +1,44 @@
+<!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D" name="CDO for Windows Library" -->
+<%
+Dim CDOMailIncludeResults
+CDOMailIncludeResults = "Not Sent"
+Sub sendmail(pFrom, pTo, pSubject, pBody)
+     Dim objCDO
+     Dim iConf
+     Dim Flds
+
+     Const cdoSendUsingPort = 2
+
+     Set objCDO = Server.CreateObject("CDO.Message")
+     Set iConf = Server.CreateObject("CDO.Configuration")
+
+     Set Flds = iConf.Fields
+     With Flds
+          .Item(cdoSendUsingMethod) = cdoSendUsingPort
+          .Item(cdoSMTPServer) = "localhost"
+          .Item(cdoSMTPServerPort) = 25
+          .Item(cdoSMTPconnectiontimeout) = 10
+          .Update
+     End With
+
+     Set objCDO.Configuration = iConf
+
+     objCDO.From = pFrom
+     objCDO.To = pTo
+     objCDO.Subject = pSubject
+     ' objCDO.TextBody = pBody
+     objCDO.HTMLBody = pBody
+     on error resume next
+     objCDO.Send
+     if err then
+     	CDOMailIncludeResults="ERROR: "&err.number & " " & err.description & " " & err.source
+     else
+     	CDOMailIncludeResults="Sent"
+     end if
+     on error goto 0	
+     
+     Set ObjCDO = Nothing
+     Set iConf = Nothing
+     Set Flds = Nothing
+End Sub
+%>
