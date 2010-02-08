@@ -34,6 +34,7 @@ Const lg_useSSL = False
 Const lg_debug = True
 Const lg_verify_page = "register_verify.asp"
 Const lg_webmaster_email = "Webmaster <webmaster@weblogproject.com>"
+Const lg_webmaster_email_link = "<a href=""mailto:webmaster@webloginproject.com"">Webmaster</a>"
 '*********************************************************************
 '* Login system database globals
 '*********************************************************************
@@ -132,7 +133,7 @@ Const lg_phrase_no_matching_registration = "There was no registration matching t
 Const lg_phrase_oldpassword_does_not_match = "The current password does not match your stored password. Try again."
 Const lg_phrase_oldpassword_empty = "The Old Password field is empty but is required. Please enter your password."
 Const lg_phrase_oldpassword_title = "Please enter your current password. This field is required."
-Const lg_phrase_password_change_authorized = "If you did not authorize this change, please contact the webmaster at"
+Const lg_phrase_password_change_authorized = "If you did not authorize this change, please contact the webmaster "
 Const lg_phrase_password_changed = "Your password was changed"
 Const lg_phrase_password_changed_error = "There was an unexpected error. The password was not changed. Please contact the webmaster"
 Const lg_phrase_password_changed_okay = "Password changed successfully."
