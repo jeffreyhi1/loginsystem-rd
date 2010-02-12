@@ -1,7 +1,8 @@
 <%
 '*******************************************************************************************************************
 '* Login Globals
-'* Last Modification: 07 FEB 2010
+'* Modification: 07 FEB 2010 :: Rod Divilbiss - added MS SQL and MySql Constants.
+'* Last Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
 '* Version:  beta 1.2 - US English
 '******************************************************************************************************************
 Dim lg_filename
@@ -26,9 +27,10 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-project/asp/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "register_newtoken.asp"
-Const lg_recover_passsword_page = "recover-password.asp"
+Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
+Const lg_set_new_password_page = "set_new_password.asp"
 Const lg_success_page = "login_success.asp"
 Const lg_useSSL = False
 Const lg_debug = True
@@ -167,4 +169,12 @@ Const lg_phrase_verify_login = "You may now login to your account."
 Const lg_phrase_verify_newtoken = "Click here to generate a new unlock code."
 Const lg_phrase_verify_verified  = "You have verified your email address."
 Const lg_phrase_website_title = "Please enter your website address."
+Const lg_phrase_recover_password = "Recover Password"
+Const lg_phrase_request_password1 = "A request has been made to recover your password at "
+Const lg_phrase_recover_password2 = "You may set a new password by clicking the link below."
+Const lg_phrase_recover_password3 = "Set New Password"
+Const lg_phrase_recover_password4 = "If you did not request to recover your password, contact the webmaster by "
+Const lg_phrase_recover_password5 = "email at "
+Const lg_phrase_recover_password_error = "There was an unexpected error processing your request. Please contact the webmaster."
+Const lg_phrase_recover_password_success = "The request to recover your password was processed suiccessfully.<br>Please follow the instructions in the email sent to you to set a new password."
 %>
