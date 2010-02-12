@@ -80,7 +80,7 @@ If you start at this link, you should be taken first to login.asp, from where yo
 <p><a href="http://www.webloginproject.com/login-project/asp/issue_verification_token.asp" title="Get a new registration email verification token">Get New EMail Verification Token</a></p>
 <p><a href="http://www.webloginproject.com/login-project/asp/cancel_account.asp" title="cancel account">Cancel Your Account</a></p>
 <p><a href="http://www.webloginproject.com/login-project/asp/register.asp" title="Register">Register</a></p>
-<p><a href="http://www.webloginproject.com/login-project/asp/recover_password.asp" title="pending">Recover Password</a></p>
+<p><a href="http://www.webloginproject.com/login-project/asp/recover_password.asp" title="pending">Recover Password</a> added 11 FEB 2010</p>
 <p><a href="http://www.webloginproject.com/login-project/asp/registration-succes.jpg" title="pending">Registration Success EMail</a></p>
 </body>
 </html>
