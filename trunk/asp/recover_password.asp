@@ -109,7 +109,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			mailBody = mailBody & lg_phrase_registration_mail6 & "<br><br>"
 			mailBody = mailBody & token & "<br><br>"
 			mailBody = mailBody & lg_phrase_recover_password4 & "<br>"
-			mailBody = mailBody & lg_phrase_recover_password5 & lg_webmaster_email_link & "<br>"
+			mailBody = mailBody & lg_phrase_recover_password5 & lg_webmaster_email_link & "<br><br>"
 			mailBody = mailBody & lg_copyright &"<br>"
 			mailBody = mailBody & "</FONT></DIV></BODY></HTML>"
 			sendmail lg_webmaster_email, email, lg_phrase_recover_password, mailBody
