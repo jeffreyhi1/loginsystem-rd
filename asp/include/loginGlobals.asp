@@ -174,7 +174,7 @@ Const lg_phrase_request_password1 = "A request has been made to recover your pas
 Const lg_phrase_recover_password2 = "You may set a new password by clicking the link below."
 Const lg_phrase_recover_password3 = "Set New Password"
 Const lg_phrase_recover_password4 = "If you did not request to recover your password, contact the webmaster by "
-Const lg_phrase_recover_password5 = "email at "
+Const lg_phrase_recover_password5 = "email at the following email link "
 Const lg_phrase_recover_password_error = "There was an unexpected error processing your request. Please contact the webmaster."
 Const lg_phrase_recover_password_success = "The request to recover your password was processed suiccessfully.<br>Please follow the instructions in the email sent to you to set a new password."
 %>
