@@ -27,15 +27,7 @@ Response.Charset="UTF-8"
 '*******************************************************************************************************************
 Dim token, cmdTxt, timePassed, id, userid, email, message, locked, dateLocked, mailBody
 Dim newpassword, confirm, passhash
-Const lg_term_new_password = "New Password"
-Const lg_term_reset_password = "Password Reset"
-Const lg_term_set_new_password = "Enter A New Password"
-Const lg_phrase_set_new_password_good_token = "Your token was valid. Enter a new password."
-Const lg_phrase_set_new_password_tken_expired = "More than 24 hors have passed since you requested a password recovery token."
-Const lg_phrase_contact_webmaster = "Please contact the webmaster for assistance."
-Const lg_phrase_webmaster_may_be_contacted = "The webmaster may be contact by email using this link: "
-Const lg_phrase_set_new_password_error = "There was an unexpected error in completing your request. "
-Const lg_phrase_set_new_password_success" = Your password was successfully changed."
+
 
 token=""
 cmdTxt=""
@@ -98,11 +90,11 @@ If token<>"" AND Session("action")="token" then
 			'* The token has expired: show link to Issue Verification Token page
 			'*******************************************************************************************************************
 			message = "<h2>lg_phrase_set_new_password_tken_expired</h2><br><br>"
-			message = message & lg_phrase_contact_webmaster & " " & lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
+			message = message & lg_phrase_contact_webmaster1 & " " & lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 			Session("action")="Error"
 		End If
 	Else
-		message = lg_phrase_set_new_password_error" & "Error 3A. "& lg_phrase_contact_webmaster & "<br>"
+		message = lg_phrase_set_new_password_error" & "Error 3A. "& lg_phrase_contact_webmaster1 & "<br>"
 		message = lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 		Session("action")="Error"
 	End IF
@@ -120,7 +112,7 @@ Else
 			message = message & lg_phrase_password_nomatch_confirm
 		End If		
 		If token = "" Then
-			 message = lg_phrase_set_new_password_error" & "Error 1. "& lg_phrase_contact_webmaster &"<br>"
+			 message = lg_phrase_set_new_password_error" & "Error 1. "& lg_phrase_contact_webmaster1 &"<br>"
 			 message = message & lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 			 Session("action")="Error"
 		End If
@@ -171,17 +163,17 @@ Else
 					sendmail lg_webmaster_email, name & "<"&email&">", lg_phrase_password_changed, mailBody
 					sendmail lg_webmaster_email, lg_webmaster_email, "ATTN:Webmaster " & lg_phrase_password_changed, mailBody
 				Else
-					message = lg_phrase_set_new_password_error" & "Error 2. "& lg_phrase_contact_webmaster &"<br>"
+					message = lg_phrase_set_new_password_error" & "Error 2. "& lg_phrase_contact_webmaster1 &"<br>"
 			 		message = lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 					Session("action")="Error"
 				End If
 			Else
-				message = "<h2>lg_phrase_verify_expired</h2><br>"& lg_phrase_contact_webmaster &"<br>"
+				message = "<h2>lg_phrase_verify_expired</h2><br>"& lg_phrase_contact_webmaster1 &"<br>"
 				message = message & lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 				Session("action")="Error"
 			End If
 		Else
-			message = lg_phrase_set_new_password_error" & "Error 3. "& lg_phrase_contact_webmaster &"<br>"
+			message = lg_phrase_set_new_password_error" & "Error 3. "& lg_phrase_contact_webmaster1 &"<br>"
 			message = lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 			Session("action")="Error"
 		End If	
