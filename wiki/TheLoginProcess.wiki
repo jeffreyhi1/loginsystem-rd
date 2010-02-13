@@ -74,14 +74,14 @@ Finally, we can be assured that some user will forget their login credentials, a
 
   * A password recovery page, and
   * A create new password page, and (if desired)
-  * A User ID and Password recovery page.
 
 This begs the question of how we verify a user is entitled to recover a forgotten password. In the alpha version of code we will simply accept the userid and email of the user, lock the account, and send a temporal unlock token to the registered account owner's email address.
 
 In future versions we will may decide to determine a method to recover a forgotten userid which will probably require a page to set questions and answers for the user to prove their identity and a page to display some random number of questions which must be answered correctly before a userid or password unlock code is sent. Future Add:
 
   * A page to set questions and answers for a user, and
-  * A page to display questions that must be answered for User ID/Password recovery.
+  * A page to display questions that must be answered for User ID and/or Password recovery, and therefore
+  * A User ID and Password recovery page.
 
 The web is international, so will be this login system. All terms and phrases will be represented by constants located in a language file. There is also the need to store configuration information, such as the database access string and webmaster preferences, such as logging all user logins.  These will be combined into one file;
 
