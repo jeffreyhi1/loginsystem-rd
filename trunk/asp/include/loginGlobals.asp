@@ -2,7 +2,8 @@
 '*******************************************************************************************************************
 '* Login Globals
 '* Modification: 07 FEB 2010 :: Rod Divilbiss - added MS SQL and MySql Constants.
-'* Last Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
+'* Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
+'* Last Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '* Version:  beta 1.2 - US English
 '******************************************************************************************************************
 Dim lg_filename
@@ -177,4 +178,13 @@ Const lg_phrase_recover_password4 = "If you did not request to recover your pass
 Const lg_phrase_recover_password5 = "email at the following email link "
 Const lg_phrase_recover_password_error = "There was an unexpected error processing your request. Please contact the webmaster."
 Const lg_phrase_recover_password_success = "The request to recover your password was processed suiccessfully.<br>Please follow the instructions in the email sent to you to set a new password."
+Const lg_term_new_password = "New Password"
+Const lg_term_reset_password = "Password Reset"
+Const lg_term_set_new_password = "Enter A New Password"
+Const lg_phrase_set_new_password_good_token = "Your token was valid. Enter a new password."
+Const lg_phrase_set_new_password_tken_expired = "More than 24 hors have passed since you requested a password recovery token."
+Const lg_phrase_contact_webmaster1 = "Please contact the webmaster for assistance."
+Const lg_phrase_webmaster_may_be_contacted = "The webmaster may be contact by email using this link: "
+Const lg_phrase_set_new_password_error = "There was an unexpected error in completing your request. "
+Const lg_phrase_set_new_password_success = "Your password was successfully changed."
 %>
