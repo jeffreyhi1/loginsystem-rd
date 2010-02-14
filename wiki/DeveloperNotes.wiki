@@ -37,8 +37,8 @@ CONNECTION_STRING = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='D:\Hosting\47
 
 
 MySql does have comments but no stacked queries.
-MySql_real_escape_string will not stop all SQL Injection
+MySql_real_escape_string will not stop all SQL Injection so parameterized SQL is required.
 
-MS SQL has comments and accepts stacked queries.
+MS SQL has comments and accepts stacked queries. Care must be taken if stored procedures are used and we will still need to use parameterized SQL.
 
-Should we defer to other major frameworks or proceed with the project in a way that is accessible to newer developers without the overhead of implementing another projects framework which may be not easily assimilated by the general developers.
+Even though other major frameworks may offer a secure authetication implementation they may not offer all functions outlined in this projects design requirements. Therefore codebase relases post 1.0 may be developed in .Net and Zend.  The initial release will be primarily procedural so as to be easily assimilated by general developers and not restricted to those developers who do not use code frameworks.
