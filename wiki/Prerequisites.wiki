@@ -19,7 +19,7 @@ The web site will need a database:
   * MS SQL, (including an express version, formerly MSDE), or
   * MySql
 
-The web server will need a valid SSL certificate. No provisions have been made for a shared SSL certificate.
+The web server will need a valid SSL certificate. A change has been made to the global configuration file which may allow the use of shared SSL certificates for some hosts.  This may not apply to all ISP implementations of shared SSL, but may make the Login System more accessible to some developers.
 
 The web site would have a home page of either index.php or default.asp
 
