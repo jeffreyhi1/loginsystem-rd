@@ -5,7 +5,9 @@ Session.CodePage=65001
 Response.Charset="UTF-8"
 '*******************************************************************************************************************
 '* Login
-'* Last Modification: 26 JAN 2010
+'* Modification: 26 JAN 2010 Rod Divilbiss alpha code
+'* Last Modification: 16 FEB 2010 closed connections and re-opened before logging and
+'*                                changed named parameters to question marks for MS SQL
 '* Version:  beta 1.1
 '* On Entry: Verify need for SSL
 '*			 Determine final redirect path; destination page or login success page
@@ -26,15 +28,19 @@ Response.Charset="UTF-8"
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
 Dim redirected, destination, password, passhash, userid, name, remember, cmdTxt, message
+Dim ip, date, useragent
 
 destination=""
 password=""
 userid=""
 message= lg_term_please_login
+ip = Request.ServerVariables("REMOTE_ADDR")
+date = now
+useragent = Server.HTMLEncode(Left(Request.ServerVariables("HTTP_USER_AGENT"),255))
 
 If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 	'*******************************************************************************************************************
-	'* On entry determin if we have a destination page
+	'* On entry determine if we have a destination page
 	'*******************************************************************************************************************
 	destination = getField("p,rXurlpath,get")
 	If destination = "" Then
@@ -54,7 +60,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 	'*******************************************************************************************************************
 	If Request.Cookies("user") & ""<>"" Then
 		Session("login")=True
-		Session("userid")=userid
+		Session("userid")=Request.Cookies("user")
 		
 		'*******************************************************************************************************************
 		'* Lookup user's name
@@ -68,20 +74,22 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 			name = db_rs("name")
 			Session("name")=name
 		End If
+		closeRS
+		closeCommand
 		
 		'*******************************************************************************************************************
 		'* If we are logging user authentications, write to the logins table
 		'*******************************************************************************************************************
 		If lg_log_logins Then
-			cmdTxt = "INSERT INTO logins ([Date], userid, ip, useragent) VALUES (?, ?, ?, ?);"
-			addParam "@sate",adDate,adParamInput,CLng(8),(now),lg_term_log_string&" 1"
-			addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_log_string&" 2"
-			addParam "@ip",adVarChar,adParamInput,CLng(32),Request.ServerVariables("REMOTE_ADDR"),lg_term_log_string&" 3"
-			addParam "@ua",adVarChar,adParamInput,CLng(255),Server.HTMLEncode(Trim(Left(Request.ServerVariables("HTTP_USER_AGENT"),255))),lg_term_log_string&" 4"
+			cmdTxt = "INSERT INTO logins ([date], userid, ip, useragent) VALUES (?, ?, ?, ?);"
+			openCommand lg_term_command_string,lg_term_log_string&" 0"
+			addParam "@sate",adDate,adParamInput,CLng(8),date,lg_term_log_string&" 1"
+			addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),Session("userid"),lg_term_log_string&" 2"
+			addParam "@ip",adVarChar,adParamInput,CLng(32),ip,lg_term_log_string&" 3"
+			addParam "@ua",adVarChar,adParamInput,CLng(255),useragent,lg_term_log_string&" 4"
 			execCmd cmdTxt
+			closeCommand	
 		End If
-		closeRS
-		closeCommand
 
 		'*******************************************************************************************************************
 		'* Logged in, redirect
@@ -123,6 +131,8 @@ Else
 			passhash = db_rs("password")
 			name = db_rs("name")
 		End If
+		closeRS
+		closeCommand
 		
 		If passhash=HashEncode(password & userid) Then
 			'*******************************************************************************************************************
@@ -145,21 +155,22 @@ Else
 			'*******************************************************************************************************************
 			If lg_log_logins Then
 				cmdTxt = "INSERT INTO logins ([Date], userid, ip, useragent) VALUES (?, ?, ?, ?);"
-				addParam "@date",adDate,adParamInput,CLng(8),(now),lg_term_log_string&" 1"
-				addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_log_string&" 2"
-				addParam "@ip",adVarChar,adParamInput,CLng(32),Request.ServerVariables("REMOTE_ADDR"),lg_term_log_string&" 3"
-				addParam "@ua",adVarChar,adParamInput,CLng(255),Server.HTMLEncode(Trim(Left(Request.ServerVariables("HTTP_USER_AGENT"),255))),lg_term_log_string&" 4"
+				openCommand lg_term_command_string,lg_term_log_string&" 0"
+				addParam "@date",adDate,adParamInput,CLng(8),date,lg_term_log_string&" 1"
+				addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),Session("userid"),lg_term_log_string&" 2"
+				addParam "@ip",adVarChar,adParamInput,CLng(32),ip,lg_term_log_string&" 3"
+				addParam "@ua",adVarChar,adParamInput,CLng(255),useragent,lg_term_log_string&" 4"
 				execCmd cmdTxt
+				closeCommand
 			End If
-			closeRS
-			closeCommand
+			
 			
 			'*******************************************************************************************************************
 			'* Logged in, redirect
 			'*******************************************************************************************************************
 			Response.Redirect(destination)
-                Else
-                       message = lg_phrase_login_error
+		Else
+			message = lg_phrase_login_error
 		End If
 	End If
 End if
