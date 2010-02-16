@@ -59,7 +59,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		'*******************************************************************************************************************
 		'* Lookup user's name
 		'*******************************************************************************************************************
-		cmdTxt = "SELECT name FROM users WHERE (userid=@u);"
+		cmdTxt = "SELECT name FROM users WHERE (userid=?);"
 		openCommand lg_term_command_string,lg_term_error_string&" 1"
 
 		addParam "@u",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_error_string&" 2"
@@ -73,7 +73,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		'* If we are logging user authentications, write to the logins table
 		'*******************************************************************************************************************
 		If lg_log_logins Then
-			cmdTxt = "INSERT INTO logins ([Date], userid, ip, useragent) VALUES (@date, @user, @ip, @ua);"
+			cmdTxt = "INSERT INTO logins ([Date], userid, ip, useragent) VALUES (?, ?, ?, ?);"
 			addParam "@sate",adDate,adParamInput,CLng(8),(now),lg_term_log_string&" 1"
 			addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_log_string&" 2"
 			addParam "@ip",adVarChar,adParamInput,CLng(32),Request.ServerVariables("REMOTE_ADDR"),lg_term_log_string&" 3"
@@ -114,7 +114,7 @@ Else
 		'*******************************************************************************************************************
 		'* If all required fields exist, attempt to autenticate the credentials
 		'*******************************************************************************************************************
-		cmdTxt = "SELECT name, password FROM users WHERE (userid=@u);"
+		cmdTxt = "SELECT name, password FROM users WHERE (userid=?);"
 		openCommand lg_term_command_string,lg_term_get_name&" 1"
 
 		addParam "@u",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_get_name&" 2"
@@ -144,7 +144,7 @@ Else
 			'* If we are logging user authentications, write to the logins table
 			'*******************************************************************************************************************
 			If lg_log_logins Then
-				cmdTxt = "INSERT INTO logins ([Date], userid, ip, useragent) VALUES (@date, @user, @ip, @ua);"
+				cmdTxt = "INSERT INTO logins ([Date], userid, ip, useragent) VALUES (?, ?, ?, ?);"
 				addParam "@date",adDate,adParamInput,CLng(8),(now),lg_term_log_string&" 1"
 				addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_log_string&" 2"
 				addParam "@ip",adVarChar,adParamInput,CLng(32),Request.ServerVariables("REMOTE_ADDR"),lg_term_log_string&" 3"

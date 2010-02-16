@@ -70,7 +70,7 @@ If token<>"" AND Session("action")="token" then
 	'*******************************************************************************************************************
 	'* Get the dateLocked and verify it is within the lifetime of the token
 	'*******************************************************************************************************************
-	cmdTxt = "SELECT [id], token, dateLocked FROM users WHERE (token=@token);"
+	cmdTxt = "SELECT [id], token, dateLocked FROM users WHERE (token=?);"
 	openCommand lg_term_command_string,lg_term_checkToken & " 1"
 	addParam "@token",adVarChar,adParamInput,CLng(40),token,lg_term_checkToken & " 3"
 	getRS db_rs, cmdTxt, lg_term_checkToken & " 3"
@@ -117,7 +117,7 @@ Else
 			 Session("action")="Error"
 		End If
 		If message="" Then
-		cmdTxt = "SELECT [id], userid, email, locked, dateLocked, token FROM users WHERE (token=@token);"
+		cmdTxt = "SELECT [id], userid, email, locked, dateLocked, token FROM users WHERE (token=?);"
 		openCommand lg_term_command_string,lg_term_checkToken & " 1"
 		addParam "@token",adVarChar,adParamInput,CLng(40),token,lg_term_checkToken & " 3"
 		getRS db_rs, cmdTxt, lg_term_checkToken & " 3"
@@ -139,7 +139,7 @@ Else
 				'*******************************************************************************************************************
 				passhash = HashEncode(newpassword & userid)
 				openCommand lg_term_command_string,"checkToken 4"	
-				cmdTxt = "UPDATE users SET users.password = @pass, users.token = @token, users.locked = @locked, users.dateLocked = @dateLocked WHERE (users.id=@id);"
+				cmdTxt = "UPDATE users SET users.password = ?, users.token = ?, users.locked = ?, users.dateLocked = ? WHERE (users.id=?);"
 				addParam "@pass",adVarChar,adParamInput,CLng(255),passhash,"checkToken 5"
 				addParam "@token",adVarChar,adParamInput,CLng(40),Null,"checkToken 5"
 				addParam "@locked",adVarChar,adParamInput,CLng(1),"0","checkToken 6"

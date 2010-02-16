@@ -58,7 +58,7 @@ End if
 '* If we have the email address, delete the account. First get the record matching the email
 '*******************************************************************************************************************
 If email<>"" then
-	cmdTxt = "SELECT [id], userid, email, locked, dateLocked, token FROM users WHERE (email=@email);"
+	cmdTxt = "SELECT [id], userid, email, locked, dateLocked, token FROM users WHERE (email=?);"
 	openCommand lg_term_command_string,lg_term_checkToken & " 1"
 	addParam "@email",adVarChar,adParamInput,CLng(40),email,lg_term_checkToken & " 3"
 	getRS db_rs, cmdTxt, lg_term_checkToken & " 3"
@@ -91,7 +91,7 @@ If email<>"" then
 			'* If the account was not activated, delete the record from the user's table
 			'*******************************************************************************************************************
 			openCommand lg_term_command_string,"checkToken 4"
-			cmdTxt = "DELETE * FROM users WHERE (users.id=@id);"
+			cmdTxt = "DELETE * FROM users WHERE (users.id=?);"
 			addParam "@id",adInteger,adParamInput,CLng(8),id,"checkToken 5"
 			execCmd cmdTxt
 			message = "<h2>"&lg_phrase_delete_deleted&"</h2>"
