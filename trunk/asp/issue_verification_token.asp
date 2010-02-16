@@ -32,9 +32,10 @@ End If
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
-Dim userid, email, id, locked, token, dateLocked, mailBody, cmdTxt, message
+Dim userid, name, email, id, locked, token, dateLocked, mailBody, cmdTxt, message, name
 
 userid=""
+name=""
 email=""
 id=""
 locked=""
@@ -43,7 +44,7 @@ dateLocked=""
 mailBody=""
 cmdTxt=""
 message = lg_phrase_issue_new_token
-
+name=""
 
 '*******************************************************************************************************************
 '* If the form was posted, process the form
@@ -62,7 +63,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		'*******************************************************************************************************************
 		'* If all required fields exist, verify there is a valid account and it is locked
 		'*******************************************************************************************************************
-		cmdTxt = "SELECT id, userid, email, locked FROM users WHERE (userid=?) AND (email=?);"
+		cmdTxt = "SELECT id, userid, name, email, locked FROM users WHERE (userid=?) AND (email=?);"
 		openCommand lg_term_command_string,lg_term_issue_verification_token&" 1"
 		addParam "@u",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_issue_verification_token&" 2"
 		addParam "@e",adVarChar,adParamInput,CLng(Len(email)),email,lg_term_issue_verification_token&" 3"
@@ -70,6 +71,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		If Not(db_rs.bof AND db_rs.eof) Then
 			id = db_rs("id")
 			locked = db_rs("locked")
+			name = db_rs("name")
 			If locked<>"1" Then
 				message = lg_phrase_issue_new_token_error & " 1"
 			End If
@@ -101,7 +103,8 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
-			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>New Registration Token<br><br>"
+			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_phrase_registration_mail0 &"<br><br>"
+			mailBody = mailBody & lg_term_to & name & "<br><br>"
 			mailBody = mailBody & lg_phrase_registration_mail1 &" "& lg_domain &". " & lg_phrase_registration_mail2 & "<br>"
 			mailBody = mailBody & lg_phrase_registration_mail3 & ".<br><br>"
 			mailBody = mailBody & "<a href=""http://" & lg_domain & lg_loginPath & lg_verify_page & "?token=" & token & "&id=1"">"& lg_phrase_registration_mail4 &"</a><br><br>"
