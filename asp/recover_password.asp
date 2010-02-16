@@ -62,7 +62,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		'*******************************************************************************************************************
 		'* If all required fields exist, verify there is a valid account and it is locked
 		'*******************************************************************************************************************
-		cmdTxt = "SELECT id, userid, email, locked FROM users WHERE (userid=@u) AND (email=@e);"
+		cmdTxt = "SELECT id, userid, email, locked FROM users WHERE (userid=?) AND (email=?);"
 		openCommand lg_term_command_string,lg_phrase_recover_password&" 1"
 		addParam "@u",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_phrase_recover_password&" 2"
 		addParam "@e",adVarChar,adParamInput,CLng(Len(email)),email,lg_phrase_recover_password&" 3"
@@ -86,7 +86,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		locked="1"
 		dateLocked = now
 		token = Left(HashEncode(getGUID),40)
-		cmdTxt = "UPDATE users SET users.token = @token, users.locked = @locked, users.dateLocked = @dateLocked WHERE (users.id=@id);"
+		cmdTxt = "UPDATE users SET users.token = ?, users.locked = ?, users.dateLocked = ? WHERE (users.id=?);"
 		openCommand lg_term_command_string,lg_phrase_recover_password&" 5"
 		addParam "@token",adVarChar,adParamInput,CLng(40),token,lg_phrase_recover_password&" 6"
 		addParam "@locked",adVarChar,adParamInput,CLng(1),locked,lg_phrase_recover_password&" 7"

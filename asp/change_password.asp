@@ -86,8 +86,8 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 	'*******************************************************************************************************************
 	If message="" Then
 		If lg_debug Then debugout = debugout & "All required fields present: Process form<br>" End If
-		cmdTxt = "SELECT name, email, password FROM users WHERE(userid=@u);"
-		If lg_debug Then debugout = debugout & "cmdTxt = SELECT name, email, password FROM users WHERE(userid=@u);<br>" End If
+		cmdTxt = "SELECT name, email, password FROM users WHERE(userid=?);"
+		If lg_debug Then debugout = debugout & "cmdTxt = SELECT name, email, password FROM users WHERE(userid=?);<br>" End If
 		openCommand lg_term_command_string,lg_term_get_oldpassword&" 1"
 		If lg_debug Then debugout = debugout & "opened command object<br>" End If
 		addParam "@u",adVarChar,adParamInput,CLng(Len(Session("userid"))),Session("userid"),lg_term_get_oldpassword&" 2"
@@ -113,8 +113,8 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 				If lg_debug Then debugout = debugout & "oldpassword hash matches stored password hash<br>" End If
 				passhash = HashEncode(newpassword & Session("userid"))
                                 openCommand lg_term_command_string,lg_term_set_newpassword&" 1"
-				cmdTxt = "UPDATE users SET [password]=@p WHERE ([userid]=@u);"
-				If lg_debug Then debugout = debugout & "cmdTxt = UPDATE users SET (password=@p) WHERE (userid=@u);<br>" End If
+				cmdTxt = "UPDATE users SET [password]=? WHERE ([userid]=?);"
+				If lg_debug Then debugout = debugout & "cmdTxt = UPDATE users SET (password=?) WHERE (userid=?);<br>" End If
 				addParam "@p",adVarChar,adParamInput,CLng(Len(passhash)),passhash,lg_term_set_newpassword&" 2"
 				If lg_debug Then debugout = debugout & "parameter added passhash: "&passhash&"<br>" End If
 				addParam "@u",adVarChar,adParamInput,CLng(Len(Session("userid"))),Session("userid"),lg_term_set_newpassword&" 3"

@@ -57,7 +57,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 		'* If all required fields exist, delete account from database
 		'*******************************************************************************************************************
 		passhash = HashEncode(password & userid)
-		cmdTxt = "UPDATE users SET [deleted]=1, [dateDeleted]=now WHERE (userid=@userid) AND (password=@passhash);"
+		cmdTxt = "UPDATE users SET [deleted]=1, [dateDeleted]=now WHERE (userid=?) AND (password=?);"
 		openCommand lg_term_command_string,lg_term_cancel_account&" 1"
 
 		addParam "@userid",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_cancel_account&" 2"

@@ -58,7 +58,7 @@ End If
 function isUser(pUserId)
 	debugout = debugout & "entering isUser with pUserId = " &pUserID& "<br>"
 	Dim cmdTxt
-	cmdTxt = "SELECT userid FROM users WHERE (userid=@u);"
+	cmdTxt = "SELECT userid FROM users WHERE (userid=?);"
 	openCommand lg_term_command_string,"getUserid 1"
 
 	addParam "@u",adVarChar,adParamInput,CLng(50),pUserid,"getUserid 2"
@@ -193,7 +193,7 @@ Else
 		'*******************************************************************************************************************
 		'* Write new account to user's table in database
 		'*******************************************************************************************************************
-		cmdTxt = "INSERT INTO users ([dateRegistered], [userid], [password], [name], [email], [ip], [region], [city], [country], [useragent], [website], [news], [locked], [dateLocked], [token]) VALUES (@dRegistered, @userid, @password, @name, @email, @ip, @region, @city, @country, @useragent, @website, @news, @locked, @dLocked, @token);"
+		cmdTxt = "INSERT INTO users ([dateRegistered], [userid], [password], [name], [email], [ip], [region], [city], [country], [useragent], [website], [news], [locked], [dateLocked], [token]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
 		openCommand lg_term_command_string, lg_term_do_registration &" 1"
 
 		addParam "@dRegistered",adDate,adParamInput,CLng(8),dateRegistered,lg_term_do_registration&" 2"
