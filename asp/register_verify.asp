@@ -45,7 +45,6 @@ country=""
 '* If the token was posted in the form - get the token
 '*******************************************************************************************************************
 If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
-	checkToken
 	token = getField("token")
 End if
 '*******************************************************************************************************************
@@ -62,7 +61,7 @@ If token<>"" then
 	'*******************************************************************************************************************
 	'* Get the dateLocked and verify it is within the lifetime of the token
 	'*******************************************************************************************************************
-	cmdTxt = "SELECT [id], userid, email, locked, dateLocked, token FROM users WHERE (token=@token);"
+	cmdTxt = "SELECT [id], userid, email, locked, dateLocked, token FROM users WHERE (token=?);"
 	openCommand lg_term_command_string,lg_term_checkToken & " 1"
 	addParam "@token",adVarChar,adParamInput,CLng(40),token,lg_term_checkToken & " 3"
 	getRS db_rs, cmdTxt, lg_term_checkToken & " 3"
@@ -98,7 +97,7 @@ If token<>"" then
 			'* Unlock the account - set token->Null, dateLocked->Null, locked->0
 			'*******************************************************************************************************************
 			openCommand lg_term_command_string,"checkToken 4"
-			cmdTxt = "UPDATE users SET users.token = @token, users.locked = @locked, users.dateLocked = @dateLocked WHERE (users.id=@id);"
+			cmdTxt = "UPDATE users SET users.token = ?, users.locked = ?, users.dateLocked = ? WHERE (users.id=?);"
 			addParam "@token",adVarChar,adParamInput,CLng(40),Null,"checkToken 5"
 			addParam "@locked",adVarChar,adParamInput,CLng(1),"0","checkToken 6"
 			addParam "@dateLocked",adDate,adParamInput,CLng(8),Null,"checkToken 7"
@@ -153,7 +152,7 @@ End If
 <fieldset>
   <legend><%=lg_term_registration_verification%></legend>
   <p><lable for="token"><%=lg_phrase_enter_unlock_code%></lable><br><input type="text" id="token" name="token" size="50" maxsize="64"><br>
-  <input type="submit" value="<%=lg_term_submit%>"><%=writeToken%></p>
+  <input type="submit" value="<%=lg_term_submit%>"></p>
 </fieldset>
 </form>
 </div>
