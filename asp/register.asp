@@ -228,6 +228,7 @@ Else
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
 			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_term_register_confirmation &"<br><br>"
+			mailBody = mailBody & lg_term_to & name & "<br><br>"
 			mailBody = mailBody & lg_phrase_registration_mail1 &" "& lg_domain &". " & lg_phrase_registration_mail2 & "<br>"
 			mailBody = mailBody & lg_phrase_registration_mail3 & ".<br><br>"
 			mailBody = mailBody & "<a href=""http://" & lg_domain & lg_loginPath & lg_verify_page & "?token=" & token & "&p="&destination&""">"& lg_phrase_registration_mail4 &"</a><br><br>"
