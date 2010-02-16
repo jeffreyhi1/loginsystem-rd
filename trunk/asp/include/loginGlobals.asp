@@ -189,4 +189,4 @@ Const lg_phrase_contact_webmaster1 = "Please contact the webmaster for assistanc
 Const lg_phrase_webmaster_may_be_contacted = "The webmaster may be contact by email using this link: "
 Const lg_phrase_set_new_password_error = "There was an unexpected error in completing your request. "
 Const lg_phrase_set_new_password_success = "Your password was successfully changed."
-%>
+%> 
