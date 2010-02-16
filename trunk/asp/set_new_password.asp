@@ -26,7 +26,7 @@ Response.Charset="UTF-8"
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
 Dim token, cmdTxt, timePassed, id, userid, email, message, locked, dateLocked, mailBody
-Dim newpassword, confirm, passhash
+Dim newpassword, confirm, passhash, name
 
 
 token=""
@@ -42,6 +42,7 @@ mailBody=""
 newpassword = ""
 confirm = ""
 passhash = ""
+name=""
 Session("action") = "token"
 
 '*******************************************************************************************************************
@@ -117,7 +118,7 @@ Else
 			 Session("action")="Error"
 		End If
 		If message="" Then
-		cmdTxt = "SELECT [id], userid, email, locked, dateLocked, token FROM users WHERE (token=?);"
+		cmdTxt = "SELECT [id], userid, email, name, locked, dateLocked, token FROM users WHERE (token=?);"
 		openCommand lg_term_command_string,lg_term_checkToken & " 1"
 		addParam "@token",adVarChar,adParamInput,CLng(40),token,lg_term_checkToken & " 3"
 		getRS db_rs, cmdTxt, lg_term_checkToken & " 3"
@@ -130,6 +131,7 @@ Else
 				id = db_rs("id")
 				userid = db_rs("userid")
 				email = db_rs("email")
+				name = db_rs("name")
 				locked = db_rs("locked")
 				dateLocked = db_rs("dateLocked")
 				closeRS
