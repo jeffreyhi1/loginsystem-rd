@@ -23,13 +23,15 @@ Response.Charset="UTF-8"
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
-Dim token, cmdTxt, timePassed, id, userid, email, message, locked, dateLocked, ip, region, city, country, useragent, objXMLHTTP, xmlDoc
+Dim token, cmdTxt, timePassed, id, userid, name, email, message, locked, dateLocked
+Dim ip, region, city, country, useragent, objXMLHTTP, xmlDoc
 
 token=""
 cmdTxt=""
 timePassed=""
 id=""
 userid=""
+name=""
 email=""
 message=""
 locked=""
