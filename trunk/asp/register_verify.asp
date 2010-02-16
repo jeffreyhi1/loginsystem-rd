@@ -23,7 +23,7 @@ Response.Charset="UTF-8"
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
-Dim token, cmdTxt, timePassed, id, userid, email, message, locked, dateLocked, ip
+Dim token, cmdTxt, timePassed, id, userid, name, email, message, locked, dateLocked, ip
 Dim region, city, country, useragent, objXMLHTTP, xmlDoc, destination
 
 token=""
@@ -31,6 +31,7 @@ cmdTxt=""
 timePassed=""
 id=""
 userid=""
+name=""
 email=""
 message = lg_phrase_registration_email_verify_msg
 locked=""
