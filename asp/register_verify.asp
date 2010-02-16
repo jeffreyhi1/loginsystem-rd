@@ -46,13 +46,13 @@ country=""
 '* If the token was posted in the form - get the token
 '*******************************************************************************************************************
 If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
-	token = getField("token")
+	token = getField("token,rXSafepq")
 End if
 '*******************************************************************************************************************
 '* If the token was passed on the URL from a email link - get the token
 '*******************************************************************************************************************
 If LCase(Request.ServerVariables("HTTP_METHOD"))="get" Then
-	token = getField("token,rXSafe,get")
+	token = getField("token,rXSafepq,get")
 	destination = getField("p,rXurlpath,get")
 End if
 '*******************************************************************************************************************
