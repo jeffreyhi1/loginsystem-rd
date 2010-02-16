@@ -128,7 +128,8 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 					'*******************************************************************************************************************
 					mailBody = "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 					mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=UTF-8"">"
-					mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_phrase_password_changed_pre & lg_domain & lg_phrase_password_changed_post &" "& Now &"<br><br>"
+					mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2> & lg_term_to & name & <br><br>"
+					mailBody = mailBody & lg_phrase_password_changed_pre & lg_domain & lg_phrase_password_changed_post &" "& Now &"<br><br>"
 					mailBody = mailBody & lg_phrase_password_change_authorized
 					mailBody = mailBody & lg_term_via_email & " " & lg_webmaster_email_link & " " & lg_term_immediately & "<br>"
 					mailBody = mailBody & lg_term_or & " " & lg_term_at & "&nbsp;the <a href=""" & lg_contact_form & """>" & lg_term_contact_form & "</a><br>"
