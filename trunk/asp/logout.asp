@@ -4,8 +4,8 @@ Session.CodePage=65001
 Response.Charset="UTF-8"
 '*******************************************************************************************************************
 '* Logout
-'* Last Modification: 26 JAN 2010
-'* Version:  beta 1.1
+'* Last Modification: 19 FEB 2010
+'* Version:  beta 1.2
 '* On Entry: N/A
 '* Input:    Session
 '* Output:   N/A

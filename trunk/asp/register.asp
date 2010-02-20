@@ -3,24 +3,25 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
+%>
+<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
+<!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
+<!--#include virtual="/login-project/asp/include/form_token.asp"-->
+<!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
+<!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
+<!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
+<%
 '*******************************************************************************************************************
 '* Register
-'* Last Modification: 26 JAN 2010
-'* Version:  beta 1.1
+'* Last Modification: 19 FEB 2010
+'* Version:  beta 1.2
 '* On Entry: Verify need for SSL
 '* Input:    destination, password, confirm, passhash, userid, name, email, website, news
 '* Other:    ip, useragent, region, city, country
 '* Output:   message - string variable with results
 '* On Exit:  Account Created in locked status, email to user with account unlock token.
 '******************************************************************************************************************
-%>
-<!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
-<!--#include virtual="/login-project/asp/include/form_token.asp"-->
-<!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
-<!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
-<!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
-<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
-<%
+
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************

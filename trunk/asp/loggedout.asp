@@ -1,9 +1,14 @@
-<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
+<%
+Option Explicit
+Session.CodePage=65001
+Response.Charset="UTF-8"
+%>
+<!--#include virtual="/login-project/aspmsa/include/loginGlobals.asp"-->
 <%
 '*******************************************************************************************************************
 '* Logged Out
-'* Last Modification: 26 JAN 2010
-'* Version:  beta 1.1
+'* Last Modification: 19 FEB 2010
+'* Version:  beta 1.2
 '* On Entry: N/A
 '* Input:    N/A
 '* Output:   lg_phrase_logged_out displayed

@@ -5,10 +5,10 @@ Session.CodePage=65001
 Response.Charset="UTF-8"
 '*******************************************************************************************************************
 '* Login
-'* Modification: 26 JAN 2010 Rod Divilbiss alpha code
+'* Modification: 19 FEB 2010 Rod Divilbiss alpha code
 '* Last Modification: 16 FEB 2010 closed connections and re-opened before logging and
 '*                                changed named parameters to question marks for MS SQL
-'* Version:  beta 1.1
+'* Version:  beta 1.2
 '* On Entry: Verify need for SSL
 '*			 Determine final redirect path; destination page or login success page
 '* Input:    userid, password, remember
