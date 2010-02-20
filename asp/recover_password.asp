@@ -3,24 +3,25 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
+%>
+<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
+<!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
+<!--#include virtual="/login-project/asp/include/form_token.asp"-->
+<!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
+<!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
+<!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
+<%
 '*******************************************************************************************************************
 '* Recover Password
-'* Last Modification: 11 FEB 2010
-'* Version:  beta 1.1
+'* Last Modification: 19 FEB 2010
+'* Version:  beta 1.2
 '* On Entry: Verify need for SSL
 '* Input:    userid, email
 '* Output:   message - string variable with results
 '* On Exit:  New token, locked, and dateLocked written to user table
 '*           Email sent to account owner with token to enable set new password.
 '******************************************************************************************************************
-%>
-<!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
-<!--#include virtual="/login-project/asp/include/form_token.asp"-->
-<!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
-<!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
-<!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
-<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
-<%
+
 '*******************************************************************************************************************
 '* If SSL required and not using SSL, redirect to https
 '*******************************************************************************************************************
@@ -103,11 +104,11 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
-			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_phrase_request_password &"<br><br>"
+			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_phrase_recover_password &"<br><br>"
 			mailBody = mailBody & lg_term_to & name & "<br><br>"
 			mailBody = mailBody & lg_phrase_request_password1 &" "& lg_domain &". <br>"
 			mailBody = mailBody & lg_phrase_recover_password2 & "<br><br>"
-			mailBody = mailBody & "<a href=""http://" & lg_domain & lg_loginPath & lg_set_new_password_page & "?token=" & token & "&id=1"">"& lg_phrase_recover_password3 &"</a><br><br>"
+			mailBody = mailBody & "<a href=""http://" & lg_domain & lg_loginPath & lg_set_new_password_page & "?resettoken=" & token & "&id=1"">"& lg_phrase_recover_password3 &"</a><br><br>"
 			mailBody = mailBody & lg_phrase_registration_mail5 & lg_domain & lg_loginPath & lg_set_new_password_page & "<br>"
 			mailBody = mailBody & lg_phrase_registration_mail6 & "<br><br>"
 			mailBody = mailBody & token & "<br><br>"

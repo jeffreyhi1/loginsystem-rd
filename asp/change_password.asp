@@ -3,24 +3,25 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
+%>
+<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
+<!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
+<!--#include virtual="/login-project/asp/include/form_token.asp"-->
+<!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
+<!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
+<!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
+<%
 '*******************************************************************************************************************
 '* Change Password
-'* Last Modification: 26 JAN 2010
-'* Version:  beta 1.1
+'* Last Modification: 19 FEB 2010
+'* Version:  beta 1.2
 '* On Entry: Verify need for SSL
 '* Input:    oldpassword, newpassword, confirm
 '* Output:   message - string variable with results
 '* On Exit:  Password Changed
 '*           Email sent to account owner
 '******************************************************************************************************************
-%>
-<!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
-<!--#include virtual="/login-project/asp/include/form_token.asp"-->
-<!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
-<!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
-<!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
-<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
-<%
+
 '*******************************************************************************************************************
 '* Must be logged in to change password. If not logged in redirect to login.asp
 '*******************************************************************************************************************
@@ -103,7 +104,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 			email = db_rs("email")
 			If lg_debug Then debugout = debugout & "email = "&email&"<br>" End If
 		End If
-                closeCommand
+		closeCommand
 		closeRS
 		If newpassword=confirm Then
 			If lg_debug Then debugout = debugout & "newpassword matches confirm password<br>" End If
@@ -112,7 +113,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 			if oldpasshashconfirm=oldpasshash Then
 				If lg_debug Then debugout = debugout & "oldpassword hash matches stored password hash<br>" End If
 				passhash = HashEncode(newpassword & Session("userid"))
-                                openCommand lg_term_command_string,lg_term_set_newpassword&" 1"
+				openCommand lg_term_command_string,lg_term_set_newpassword&" 1"
 				cmdTxt = "UPDATE users SET [password]=? WHERE ([userid]=?);"
 				If lg_debug Then debugout = debugout & "cmdTxt = UPDATE users SET (password=?) WHERE (userid=?);<br>" End If
 				addParam "@p",adVarChar,adParamInput,CLng(Len(passhash)),passhash,lg_term_set_newpassword&" 2"
@@ -128,21 +129,22 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 					'*******************************************************************************************************************
 					mailBody = "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 					mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=UTF-8"">"
-					mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2> & lg_term_to & name & <br><br>"
+					mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>" & lg_term_to & name & "<br><br>"
 					mailBody = mailBody & lg_phrase_password_changed_pre & lg_domain & lg_phrase_password_changed_post &" "& Now &"<br><br>"
 					mailBody = mailBody & lg_phrase_password_change_authorized
 					mailBody = mailBody & lg_term_via_email & " " & lg_webmaster_email_link & " " & lg_term_immediately & "<br>"
-					mailBody = mailBody & lg_term_or & " " & lg_term_at & "&nbsp;the <a href=""" & lg_contact_form & """>" & lg_term_contact_form & "</a><br>"
+					mailBody = mailBody & lg_term_or & " " & lg_term_at & "&nbsp;the <a href=""" & "http://" & lg_domain & lg_loginPath & lg_contact_form & """>" & lg_term_contact_form & "</a><br>"
 					mailBody = mailBody & "</FONT></DIV>"
 					mailBody = mailBody & "</div></BODY></HTML>"
 					If lg_debug Then debugout = debugout & "Send Mail To Owner<br>" & mailBody End If
 					sendmail lg_webmaster_email, name & "<"&email&">", lg_phrase_password_changed, mailBody
+					sendmail lg_webmaster_email, lg_webmaster_email, lg_phrase_password_changed, mailBody
 					message = lg_phrase_password_changed
 				Else
 					message = lg_phrase_password_changed_error
 					If lg_debug Then debugout = debugout & message & "<br>" End If
 				End if
-                                closeCommand
+				closeCommand
 			Else
 				message = lg_phrase_oldpassword_does_not_match
 				If lg_debug Then debugout = debugout & message & "<br>" End If

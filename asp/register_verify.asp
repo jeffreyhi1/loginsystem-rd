@@ -3,23 +3,24 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
-'*******************************************************************************************************************
-'* Register Verify
-'* Last Modification: 26 JAN 2010
-'* Version:  beta 1.1
-'* On Entry: N/A
-'* Input:    token
-'* Output:   message - string variable with results
-'* On Exit:  Account Activated.
-'******************************************************************************************************************
 %>
+<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
 <!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
 <!--#include virtual="/login-project/asp/include/form_token.asp"-->
 <!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
 <!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
 <!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
-<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
 <%
+'*******************************************************************************************************************
+'* Register Verify
+'* Last Modification: 19 FEB 2010
+'* Version:  beta 1.2
+'* On Entry: N/A
+'* Input:    token
+'* Output:   message - string variable with results
+'* On Exit:  Account Activated.
+'******************************************************************************************************************
+
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
