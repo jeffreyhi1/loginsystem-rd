@@ -1,10 +1,14 @@
 <%
 '*******************************************************************************************************************
 '* Login Globals
+'* 
+'* NOTE: You must set lg_loginPath and uncomment the correct connection string (lg_term_command_string)
+'*
 '* Modification: 07 FEB 2010 :: Rod Divilbiss - added MS SQL and MySql Constants.
 '* Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
+'* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Last Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
-'* Version:  beta 1.2 - US English
+'* Version:  beta 1.2 - US English - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -13,19 +17,19 @@ lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.S
 '*********************************************************************
 Const lg_cancel_account_page = "cancel_account.asp"
 Const lg_change_password_page = "change_password.asp"
-Const lg_contact_form = "/login-project/asp/contact.asp"
+Const lg_contact_form = "contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 'Const lg_domain = "divilbiss"
 Const lg_domain = "www.webloginproject.com"
 Const lg_domain_secure = "www.webloginproject.com/"
-Const lg_forbidden = "/login-project/forbidden.asp"
-Const lg_form_error = "/login-project/oops.asp"
-Const lg_home = "/login-project/asp/default.asp"
+Const lg_forbidden = "forbidden.asp"
+Const lg_form_error = "oops.asp"
+Const lg_home = "default.asp"
 Const lg_log_logins = True
 Const lg_logged_out_page = "loggedout.asp"
 Const lg_login_attempts = 5
 Const lg_loginPage = "login.asp"
-Const lg_loginPath = "/login-project/asp/"
+Const lg_loginPath = "/login-project/path/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "register_newtoken.asp"
 Const lg_recover_passsword_page = "recover_password.asp"
@@ -41,11 +45,12 @@ Const lg_webmaster_email_link = "<a href=""mailto:webmaster@webloginproject.com"
 '*********************************************************************
 '* Login system database globals
 '*********************************************************************
-Const lg_database = "access"
+'Const lg_database = "access"
 'Const lg_database = "mysql"
 'Const lg_database = "mssql"
 
-Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='\\boswinfs03\home\users\web\b1463\whl.rdivilbiss\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=SQLOLEDB; Server=VCNSQL81\loginproject,1433; UID=lgproject; PWD=A8349&ijq9!ww; Database=loginproject"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='\\boswinfs03\home\users\web\b1463\whl.rdivilbiss\database\login_system.mdb'"
 'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\asp\database\login_system.mdb'"
 
 Const lg_database_userid = ""
@@ -112,7 +117,7 @@ Const lg_term_website_address = "Website Address"
 
 Const lg_phrase_cancel_account_cacelled = "The account has been cancelled."
 Const lg_phrase_cancel_account_error = "There was an unexpected error cancelling your account. Please contact the webmaster"
-Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to cancel your account.<br>WARNING: THIS ACTION CAN NOT BE UNDONE.<br>If you have forgotten your password use the recover password link below."
+Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to cancel your account.<br />WARNING: THIS ACTION CAN NOT BE UNDONE.<br />If you have forgotten your password use the recover password link below."
 Const lg_phrase_change_password = "Enter your current password, then your desired new password"
 Const lg_phrase_confirm_empty = "The Confirm Password field is empty but is required. Please confirm your password."
 Const lg_phrase_confirm_title = "Please confirm your desired password. This field is required."
@@ -149,9 +154,9 @@ Const lg_phrase_password_nomatch_confirm = "The Password does not match the Conf
 Const lg_phrase_password_title = "Please enter your password. This field is required."
 Const lg_phrase_register_delete_noemail = "There was no account matching the email address you entered."
 Const lg_phrase_registration_email_verify = "Verify Your EMail Address"
-Const lg_phrase_registration_email_verify_msg = "An e-mail was sent to the e-mail address you provided during registration.&nbsp; Click the link in that e-mail or copy and paste the unlock code in the form field below.<p>Your account will not be available until it has been verified."
+Const lg_phrase_registration_email_verify_msg = "An e-mail was sent to the e-mail address you provided during registration.&nbsp; Click the link in that e-mail or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified."
 Const lg_phrase_registration_error = "There was an unexpected error completing your registration. Please contact the webmaster"
-Const lg_phrase_registration_mail0 = New Registration Token
+Const lg_phrase_registration_mail0 = "Issued New Registration Verification Token"
 Const lg_phrase_registration_mail1 = "Thank you for registering at"
 Const lg_phrase_registration_mail2 = "Before you can login you need"
 Const lg_phrase_registration_mail3 = "to verify your e-mail address."
@@ -189,4 +194,4 @@ Const lg_phrase_contact_webmaster1 = "Please contact the webmaster for assistanc
 Const lg_phrase_webmaster_may_be_contacted = "The webmaster may be contact by email using this link: "
 Const lg_phrase_set_new_password_error = "There was an unexpected error in completing your request. "
 Const lg_phrase_set_new_password_success = "Your password was successfully changed."
-%> 
+%>
