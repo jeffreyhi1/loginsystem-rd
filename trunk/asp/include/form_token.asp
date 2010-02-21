@@ -50,7 +50,7 @@ function writeToken
 	tokenStr = "IP:" & Session("ip") & ",SESSIONID:" & Session.SessionID & ",GUID:" &Session("guid")
 	Session("token")=HashEncode(tokenStr&Session("salt"))&Session("salt")
 	Response.Cookies("token") = Session("token")
-	Response.Write("<input id=""token"" name=""token"" type=""hidden"" accesskey=""u"" tabindex=""999"" value=""" & Session("token") & """>")
+	Response.Write("<input id=""token"" name=""token"" type=""hidden"" accesskey=""u"" tabindex=""999"" value=""" & Session("token") & """ />")
 End Function
 %>
 
