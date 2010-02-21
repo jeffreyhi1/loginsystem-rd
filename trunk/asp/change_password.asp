@@ -176,6 +176,7 @@ End If
 <body>
 <div id="login-system">
 <h1><%=lg_term_change_password%></h1>
+<h2><%=Session("name")%></h2>
 <% If message <> lg_phrase_password_changed Then %>
 <div id="message"><%=message%></div>
 <form id="frm" name="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
@@ -188,7 +189,9 @@ End If
 </fieldset>
 </form>
 <% Else %>
-<div id="message"><%=message%></div>
+<div id="message"><%=message%><br>
+<a href="<%=lg_home%>"><%=lg_phrase_logout_continue%></a>
+</div>
 <% End If %>
 </div>
 <%=debugout%>

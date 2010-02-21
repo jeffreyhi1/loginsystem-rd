@@ -118,7 +118,7 @@ End If ' if POST
 <body>
 <div id="login-system">
 <h1><%=lg_term_cancel_account%></h1>
-<% If message = lg_term_enter_information Then %>
+<% If message <> lg_phrase_cancel_account_cacelled Then %>
 <div id="message"><%=message%></div>
 <form id="frm" name="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
 <fieldset>

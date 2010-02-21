@@ -146,21 +146,21 @@ End If
 
 <body>
 <div id="login-system">
-<h1><%=lg_phrase_registration_email_verify%></h1>
-<% If (message = lg_phrase_registration_email_verify_msg) Then %>
-<div id="message"><%=message%></div>	
-<div id="formDiv">
-<form name="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
-<fieldset>
-  <legend><%=lg_term_registration_verification%></legend>
-  <p><lable for="token"><%=lg_phrase_enter_unlock_code%></lable><br><input type="text" id="token" name="token" size="50" maxsize="64"><br>
-  <input type="submit" value="<%=lg_term_submit%>"></p>
-</fieldset>
-</form>
-</div>
-<% Else %>
-<div id="message"><%=message%></div>
-<% End If %>
+	<h1><%=lg_phrase_registration_email_verify%></h1>
+	<% If (message = lg_phrase_registration_email_verify_msg) Then %>
+		<div id="message"><%=message%></div>	
+		<div id="formDiv">
+			<form name="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
+			<fieldset>
+			  <legend><%=lg_term_registration_verification%></legend>
+			  <p><lable for="token"><%=lg_phrase_enter_unlock_code%></lable><br><input type="text" id="token" name="token" size="50" maxsize="64"><br>
+			  <input type="submit" value="<%=lg_term_submit%>"></p>
+			</fieldset>
+			</form>
+		</div>
+	<% Else %>
+		<div id="message"><%=message%></div>
+	<% End If %>
 </div>
 </body>
 </html>
