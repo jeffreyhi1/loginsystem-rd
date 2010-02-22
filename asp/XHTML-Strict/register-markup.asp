@@ -3,7 +3,7 @@
     		<div id="message"><%=message%></div>
     		<form id="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
     		  <fieldset>
-    		    <legend>Registration</legend>
+    		    <legend><%=lg_term_registration%></legend>
     		    <label for="userid"><%=lg_term_userid %></label><br />
     		    <input id="userid" name="userid" title="<%=lg_phrase_userid_new_title%>" type="text" size="20" maxlength="32" />
     		    <span class="field_normal"><%=lg_term_required%></span><br />
@@ -29,7 +29,7 @@
     		  </fieldset>
     		</form>
     		<% Else %>
-    		<div id="registered"><p>Thank you for registering.<br /><br />
+    		<div id="registered"><p><%=lg_term_registration_thankyou%><br /><br />
     		  <strong>User ID</strong>: <%=userid%><br />
     		  <strong>EMail</strong>: <%=email%><br />
     		  <strong>Name</strong>: <%=name%><br />
