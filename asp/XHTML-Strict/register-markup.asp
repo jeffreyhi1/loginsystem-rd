@@ -1,4 +1,4 @@
-<div id="login-system">
+			<div id="login-system">
     		<% If numAffected<>1 Then %>
     		<div id="message"><%=message%></div>
     		<form id="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
