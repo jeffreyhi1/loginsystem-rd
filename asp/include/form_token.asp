@@ -52,5 +52,22 @@ function writeToken
 	Response.Cookies("token") = Session("token")
 	Response.Write("<input id=""token"" name=""token"" type=""hidden"" accesskey=""u"" tabindex=""999"" value=""" & Session("token") & """ />")
 End Function
+
+function writeTokenH
+	'*****************************************************************************************
+	' Create and set a new token for CSRF protection
+	' on initial entry or after form errors and we are going to redisplay the form.
+	'*****************************************************************************************
+	Dim salt, tokenStr
+	salt = getSalt(10)
+	Session("salt")=salt
+	Session("guid")=getGUID
+	Session("ip") = Request.ServerVariables("REMOTE_ADDR")
+	Session("time") = Time
+	tokenStr = "IP:" & Session("ip") & ",SESSIONID:" & Session.SessionID & ",GUID:" &Session("guid")
+	Session("token")=HashEncode(tokenStr&Session("salt"))&Session("salt")
+	Response.Cookies("token") = Session("token")
+	Response.Write("<input id=""token"" name=""token"" type=""hidden"" accesskey=""u"" tabindex=""999"" value=""" & Session("token") & """>")
+End Function
 %>
 
