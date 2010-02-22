@@ -47,11 +47,12 @@ Const lg_webmaster_email_link = "<a href=""mailto:webmaster@webloginproject.com"
 '*********************************************************************
 'Const lg_database = "access"
 'Const lg_database = "mysql"
-'Const lg_database = "mssql"
+Const lg_database = "mssql"
 
 'Const lg_term_command_string = "Provider=SQLOLEDB; Server=VCNSQL81\loginproject,1433; UID=lgproject; PWD=A8349&ijq9!ww; Database=loginproject"
 'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='\\boswinfs03\home\users\web\b1463\whl.rdivilbiss\database\login_system.mdb'"
 'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\asp\database\login_system.mdb'"
+Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=rdivilbiss.webhost4lifemysql.com; PORT=3306;" &_ "DATABASE=loginproject; USER=lgwebuser; PASSWORD=A8349&ijq9!ww; OPTION=3;"
 
 Const lg_database_userid = ""
 Const lg_database_password = ""
