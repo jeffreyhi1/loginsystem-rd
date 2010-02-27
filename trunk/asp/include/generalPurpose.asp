@@ -1,36 +1,55 @@
 <%
-'****************************************************************
-'* generalPurpose.asp           ï¿½2005 - 2009 Roderick Divilbiss *
-'*                                       http://www.rodsdot.com *
-'****************************************************************
-'* TERMS OF USE                                                 *
-'*--------------------------------------------------------------*
-'* Except where otherwise noted, this source code and markup is *
-'* licensed under a Creative Commons License Creative Commons   *
-'* License.  http://creativecommons.org/licenses/by-nc/2.0/     *
-'*                                                              *
-'* Complete Terms of Use my be found at:                        *
-'* http://www.rodsdot.com/termsofuse.asp                        *
-'*                                                              *
-'* No part of this application code may be used for commercial  *
-'* purposes without prior written permission from the author,   *
-'* Roderick W. Divilbiss of Overland Park, Kansas, United States*
-'* of America.                                                  *
-'*                                                              *
-'* Non-commercial use of this application code requires this    *
-'* notice be kept intact.                                       *
-'*                                                              *
-'* ï¿½ 2000-2009, Roderick W. Divilbiss, All Rights Reserved      *
-'* Used by permission.                                          *
-'* Original source code may be found at www.rodsdot.com.        *
-'*                                                              *
-'* The following notice and hyperlink must be included on one   *
-'* page on the web site accessible to the public and linked     *
-'* directly to the website's home page.                         *
-'*                                                              *
-'* This site contains code used by permission of Rod Divilbiss, *
-'* http://www.rodsdot.com.                                      *
-'* **************************************************************
+'*******************************************************************************************************************
+'* General Purpose Library
+'* Purpose: 1. Provide input filtering when retrieving form fields or URL parameters: getField()
+'*          2. Verify a file exists within the website: fileExists()
+'*          3. Get the virtual path of a file within the website: getRedirectPath()
+'*          4. Uses Windows COM objects to obtain a GUID: getGUID
+'*
+'* Last Modification: 26 FEB 2010. rdivilbiss
+'*
+'* Copyright Information
+'* © 2010, EE Collaborative Login Project, Some Rights Reserved 
+'*
+'* This code is protected by a compilation copyright in the United States of America based on 
+'* U.S. Copyright Law (17 U.S.C. sec.101 et seq) and International Copyright Laws.  
+'* This code distributed in accordance with the GNU General Public License v2. 
+'* If you do not agree with the conditions of that license you may not use, copy, distribute or 
+'* make derivative works based on this code.
+'*
+'* The author of this code is Roderick W. Divilbiss of Overland Park, Kansas, USA. The content is 
+'* contributed to the EE Collaborative Login Project and is distributed in accordance with the 
+'* Creative Commons 3.0 BY-SA license.
+'*
+'* NOTE that this in part requires that:
+'*   * You must attribute the use of the code as follows:
+'*     This site includes work © 2010, by the EE Collaborative Login Project, 
+'*     used by permission in accordance with the Creative Commons 3.0 BY-SA license.
+'*
+'*   * If you alter, transform, or build upon this work, you may distribute the resulting work only 
+'*     under the same, similar or a compatible license and must attribute the original authors as stated 
+'*     above.
+'*
+'*   * For any reuse or distribution, you must make clear to others the license terms of this work. 
+'*     The best way to do this is with a link to Creative Commons 3.0 BY-SA.
+'*
+'* Disclaimer of Warranties
+'* NO WARRANTY 
+'* Because the code is licensed free of charge, there is no warranty For the code, to the extent 
+'* permitted by applicable law. Except when Otherwise stated in writing the copyright holders and/or 
+'* other parties Provide the code "as is" without warranty of any kind, either expressed Or implied, 
+'* including, but not limited to, the implied warranties of Merchantability and fitness for a particular 
+'* purpose. The entire risk as To the quality and performance of the code is with you.
+'*
+'* Should the code prove defective, you assume the cost of all necessary servicing, Repair or correction. 
+'* In no event unless required by applicable law or agreed to in writing Will any copyright holder, or 
+'* any other party who may modify and/or Redistribute the program as permitted above, be liable to you 
+'* for damages, Including any general, special, incidental or consequential damages arising out of the 
+'* use or inability to use this code (including but not limited To loss of data or data being rendered 
+'* inaccurate or losses sustained by You or third parties or a failure of the code to operate with any 
+'* other Programs), even if such holder or other party has been advised of the Possibility of such damages.
+'*
+'*******************************************************************************************************************
 Const rXaccounting = "^([1-9]{1}[0-9]{0,2}(\,[0-9]{3})*(\.[0-9]{2})?)$"
 Const rXaddress = "^[a-zA-Z0-9\#\s\.\-;:,]{1,}$"
 Const rXalpha = "^[a-zA-Z]+$"

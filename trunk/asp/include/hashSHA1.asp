@@ -1,4 +1,37 @@
 <%
+'*******************************************************************************************************************
+'* Hash SHA1 Library
+'* Purpose: 1. Hash encrypt input data using the SHA1 algorithm.
+'*
+'* Copyright Information
+'* Written By: Mark G. Jager
+'* Written Date: 8/10/2000
+'*
+'* Free to distribute as long as code is not modified, and header is kept intact 
+'*
+'* This code is distributed as part of a Login System created by the EE Collaborative Login Project.
+'*
+'* NOTE that the authors of the EE Collaborative Login Project did not write this code and offer
+'* no warranty.
+'*
+'* Disclaimer of Warranties
+'* NO WARRANTY 
+'* Because the code is licensed free of charge, and was authored by an independent source, the 
+'* the EE Collaborative Login Project authors provide no warranty for the code, to the extent 
+'* permitted by applicable law. Except when Otherwise stated in writing the copyright holders and/or 
+'* other parties Provide the code "as is" without warranty of any kind, either expressed Or implied, 
+'* including, but not limited to, the implied warranties of Merchantability and fitness for a particular 
+'* purpose. The entire risk as To the quality and performance of the code is with you.
+'*
+'* Should the code prove defective, you assume the cost of all necessary servicing, Repair or correction. 
+'* In no event unless required by applicable law or agreed to in writing Will any copyright holder, or 
+'* any other party who may modify and/or Redistribute the program as permitted above, be liable to you 
+'* for damages, Including any general, special, incidental or consequential damages arising out of the 
+'* use or inability to use this code (including but not limited To loss of data or data being rendered 
+'* inaccurate or losses sustained by You or third parties or a failure of the code to operate with any 
+'* other Programs), even if such holder or other party has been advised of the Possibility of such damages.
+'*
+'*******************************************************************************************************************
 Function getSalt(intLen)
 ' Function takes a given length x and generates a random hex value of x digits.
 ' Salt can be used to help protect passwords.  When a password is first stored in a
