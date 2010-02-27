@@ -25,9 +25,9 @@ Obtaining the code will require several downloads.  You'll need the one of the A
 
 The ASP code supports MS Access, MS SQL Server (tested on SQL Server 2005) and MySql databases.  An empty MS Access database will be provided at the downloads page.  MS SQL SQL and MySql SQL scripts will also be made available.  The PHP beta code when released will initially support MySql.  It is assumed you know how to create databases from SQL scripts, and/or know how to implement an MS Access site on your web site securely.  The user account for web access should be separate from the database admin role.  It needs SELECT, INSERT, DELETE, and UPDATE permissions only.  If you are unsure, or just want assistance or assurance you have implemented your database properly, please post a question at the Miscellaneous Web Development and appropriate database topic areas at [http://www.experts-exchange.com/ Experts Exchange].
 
-[http://www.experts-exchange.com/Database/MS_Access/ MS Access Topic Area]
-[http://www.experts-exchange.com/Database/MS-SQL-Server/ MS SQL Server Topic Area]
-[http://www.experts-exchange.com/Database/MySQL/ MySql Topic Area]
+  * [http://www.experts-exchange.com/Database/MS_Access/ MS Access Topic Area]
+  * [http://www.experts-exchange.com/Database/MS-SQL-Server/ MS SQL Server Topic Area]
+  * [http://www.experts-exchange.com/Database/MySQL/ MySql Topic Area]
 
 == Folder Structure ==
 
