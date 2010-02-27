@@ -9,7 +9,52 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Last Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '* Version:  beta 1.2 - US English - ASP
-'******************************************************************************************************************
+'*******************************************************************************************************************
+'* LOGIN GLOBALS LIBRARY
+'* Purpose: Provide configuration and internatialization features for the EE Collaborative Login System.
+'*
+'* Copyright Information
+'* © 2010, EE Collaborative Login Project, Some Rights Reserved 
+'*
+'* This code is protected by a compilation copyright in the United States of America based on 
+'* U.S. Copyright Law (17 U.S.C. sec.101 et seq) and International Copyright Laws.  
+'* This code distributed in accordance with the GNU General Public License v2. 
+'* If you do not agree with the conditions of that license you may not use, copy, distribute or 
+'* make derivative works based on this code.
+'*
+'* The author of this code is Roderick W. Divilbiss of Overland Park, Kansas, USA. The content is 
+'* contributed to the EE Collaborative Login Project and is distributed in accordance with the 
+'* Creative Commons 3.0 BY-SA license.
+'*
+'* NOTE that this in part requires that:
+'*   * You must attribute the use of the code as follows:
+'*     This site includes work © 2010, by the EE Collaborative Login Project, 
+'*     used by permission in accordance with the Creative Commons 3.0 BY-SA license.
+'*
+'*   * If you alter, transform, or build upon this work, you may distribute the resulting work only 
+'*     under the same, similar or a compatible license and must attribute the original authors as stated 
+'*     above.
+'*
+'*   * For any reuse or distribution, you must make clear to others the license terms of this work. 
+'*     The best way to do this is with a link to Creative Commons 3.0 BY-SA.
+'*
+'* Disclaimer of Warranties
+'* NO WARRANTY 
+'* Because the code is licensed free of charge, there is no warranty For the code, to the extent 
+'* permitted by applicable law. Except when Otherwise stated in writing the copyright holders and/or 
+'* other parties Provide the code "as is" without warranty of any kind, either expressed Or implied, 
+'* including, but not limited to, the implied warranties of Merchantability and fitness for a particular 
+'* purpose. The entire risk as To the quality and performance of the code is with you.
+'*
+'* Should the code prove defective, you assume the cost of all necessary servicing, Repair or correction. 
+'* In no event unless required by applicable law or agreed to in writing Will any copyright holder, or 
+'* any other party who may modify and/or Redistribute the program as permitted above, be liable to you 
+'* for damages, Including any general, special, incidental or consequential damages arising out of the 
+'* use or inability to use this code (including but not limited To loss of data or data being rendered 
+'* inaccurate or losses sustained by You or third parties or a failure of the code to operate with any 
+'* other Programs), even if such holder or other party has been advised of the Possibility of such damages.
+'*
+'*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
 '*********************************************************************
@@ -20,8 +65,8 @@ Const lg_change_password_page = "change_password.asp"
 Const lg_contact_form = "contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 'Const lg_domain = "divilbiss"
-Const lg_domain = "www.webloginproject.com"
-Const lg_domain_secure = "www.webloginproject.com/"
+Const lg_domain = "www.example.com"
+Const lg_domain_secure = "www.example.com/"
 Const lg_forbidden = "forbidden.asp"
 Const lg_form_error = "oops.asp"
 Const lg_home = "default.asp"
@@ -29,7 +74,7 @@ Const lg_log_logins = True
 Const lg_logged_out_page = "loggedout.asp"
 Const lg_login_attempts = 5
 Const lg_loginPage = "login.asp"
-Const lg_loginPath = "/login-project/path/"
+Const lg_loginPath = "/login-project/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "register_newtoken.asp"
 Const lg_recover_passsword_page = "recover_password.asp"
@@ -40,22 +85,33 @@ Const lg_success_page = "login_success.asp"
 Const lg_useSSL = True
 Const lg_debug = True
 Const lg_verify_page = "register_verify.asp"
-Const lg_webmaster_email = "Webmaster <webmaster@weblogproject.com>"
-Const lg_webmaster_email_link = "<a href=""mailto:webmaster@webloginproject.com"">Webmaster</a>"
+Const lg_webmaster_email = "Webmaster <webmaster@example.com>"
+Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
 '*********************************************************************
 '* Login system database globals
 '*********************************************************************
 'Const lg_database = "access"
 'Const lg_database = "mysql"
-Const lg_database = "mssql"
+'Const lg_database = "mssql"
 
-'Const lg_term_command_string = "Provider=SQLOLEDB; Server=VCNSQL81\loginproject,1433; UID=lgproject; PWD=A8349&ijq9!ww; Database=loginproject"
-'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='\\boswinfs03\home\users\web\b1463\whl.rdivilbiss\database\login_system.mdb'"
-'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\asp\database\login_system.mdb'"
-Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=rdivilbiss.webhost4lifemysql.com; PORT=3306;" &_ "DATABASE=loginproject; USER=lgwebuser; PASSWORD=A8349&ijq9!ww; OPTION=3;"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=SQLOLEDB; Server=#server#,1433; UID=#userid#; PWD=#password#; Database=loginproject"
+'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=#server#; PORT=3306; DATABASE=loginproject; USER=#userid#; PASSWORD=#password#; OPTION=3;"
 
 Const lg_database_userid = ""
 Const lg_database_password = ""
+
+Function dbNow
+	'MS Access & MS SQL Server datetime fileds accept ASP now
+	'MySql requires YYYY-MM-DD HH:MM:SS
+	Dim dt
+	dt = now
+	If lg_database = "mysql" Then
+		dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
+	Else
+		dbNow = dt
+	End If	
+End Function
 
 '*********************************************************************
 '* Login system language globals
@@ -69,9 +125,6 @@ Const lg_term_change_password = "Change Password"
 Const lg_term_change_password_button_text = "Change Password"
 Const lg_term_checkToken = "checkToken"
 Const lg_term_city = "City"
-'***********************************************************************
-
-'***********************************************************************
 Const lg_term_confirm = "Confirm Password"
 Const lg_term_contact_form = "Contact Form"
 Const lg_term_country = "Country"
@@ -101,15 +154,16 @@ Const lg_term_recover_password = "Recover Password"
 Const lg_term_region = "Region"
 Const lg_term_register = "Register"
 Const lg_term_register_confirmation = "Registration Confirmation"
-Const lg_term_register_delete_enter_email = "Enter EMail"
+Const lg_term_register_delete_enter_email = "Enter Email"
 Const lg_term_registration = "Registration"
 Const lg_term_registration_thankyou = "Thank you for registering."
+Const lg_term_registration_newtoken = "New Registration Token"
 Const lg_term_registration_verification = "Registration Verification"
 Const lg_term_remember = True
 Const lg_term_rememberme = "Remember Me"
 Const lg_term_remove_registration = "Remove Registration"
 Const lg_term_required = "required"
-Const lg_term_set_newpassword = "changePassword"
+Const lg_term_set_newpassword = "Set New Password"
 Const lg_term_submit = "Submit"
 Const lg_term_to = "To "
 Const lg_term_useragent = "Useragent"
@@ -135,6 +189,8 @@ Const lg_phrase_issue_new_token = "Enter your userid and email to receive a new 
 Const lg_phrase_issue_new_token_error = "There was an unexpected error generating your verification token. Please contact the webmaster."
 Const lg_phrase_issue_new_token_success = "Your new verification token will be mailed to your email address."
 Const lg_phrase_login_error = "There was an error. Please re-enter your User ID and Password."
+Const lg_phrase_login_error_token = "You must validate your email address using the token you were sent before you can log in."
+Const lg_phrase_login_token_problem = "Either the verification token has been used, (and you are verified,) or the token is not valid."
 Const lg_phrase_logged_out = "You are logged out."
 Const lg_phrase_logout_continue = "Click here to continue."
 Const lg_phrase_name_empty = "The Name field is empty but is required. Please enter your name."
@@ -156,7 +212,7 @@ Const lg_phrase_password_new_title = "Please enter your desired password. This f
 Const lg_phrase_password_nomatch_confirm = "The Password does not match the Confirmation Password. Please re-enter."
 Const lg_phrase_password_title = "Please enter your password. This field is required."
 Const lg_phrase_register_delete_noemail = "There was no account matching the email address you entered."
-Const lg_phrase_registration_email_verify = "Verify Your EMail Address"
+Const lg_phrase_registration_email_verify = "Verify Your Email Address"
 Const lg_phrase_registration_email_verify_msg = "An e-mail was sent to the e-mail address you provided during registration.&nbsp; Click the link in that e-mail or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified."
 Const lg_phrase_registration_error = "There was an unexpected error completing your registration. Please contact the webmaster"
 Const lg_phrase_registration_mail0 = "Issued New Registration Verification Token"
