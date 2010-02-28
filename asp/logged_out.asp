@@ -10,11 +10,11 @@ Response.Charset="UTF-8"
 <!--#include virtual="/login-project/include/generalPurpose.asp"-->
 <!--#include virtual="/login-project/include/paramSQL.asp"-->
 <!--#include virtual="/login-project/include/CDOMailInclude.asp"-->
-<!--#include virtual="/login-project/include/cancel-account.asp"-->
+<!--#include virtual="/login-project/include/logged-out.asp"-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title><%=lg_term_cancel_account%></title>
+<title><%=lg_term_logged_out%></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="language" content="en-US" />
 <meta name="author" content="Roderick Divilbiss" />
@@ -27,7 +27,6 @@ Response.Charset="UTF-8"
 </head>
 
 <body>
-<!--#include virtual="/login-project/include/cancel-account-markup.asp"-->
+<!--#include virtual="/login-project/include/logged-out-markup.asp"-->
 </body>
 </html>
-

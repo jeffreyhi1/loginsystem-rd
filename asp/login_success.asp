@@ -4,42 +4,29 @@ Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
 %>
-<!--#include virtual="/login-project/asp/include/loginGlobals.asp"-->
-<!--#include virtual="/login-project/asp/include/hashSHA1.asp"-->
-<!--#include virtual="/login-project/asp/include/form_token.asp"-->
-<!--#include virtual="/login-project/asp/include/generalPurpose.asp"-->
-<!--#include virtual="/login-project/asp/include/paramSQL.asp"-->
-<!--#include virtual="/login-project/asp/include/CDOMailInclude.asp"-->
-<%
-'*******************************************************************************************************************
-'* Login Success
-'* Last Modification: 19 FEB 2010
-'* Version:  beta 1.2
-'* On Entry: Verify need for SSL
-'* Input:    N/A
-'* Output:   Session("name") - the user's name
-'* On Exit:  N/A
-'******************************************************************************************************************
-
-If NOT Session("login") Then
-        Response.Redirect("http://"& lg_domain & lg_loginPath & lg_loginPage & "?p=" & Request.ServerVariables("SCRIPT_NAME"))
-End If
-%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="en">
-
+<!--#include virtual="/login-project/include/loginGlobals.asp"-->
+<!--#include virtual="/login-project/include/hashSHA1.asp"-->
+<!--#include virtual="/login-project/include/form_token.asp"-->
+<!--#include virtual="/login-project/include/generalPurpose.asp"-->
+<!--#include virtual="/login-project/include/paramSQL.asp"-->
+<!--#include virtual="/login-project/include/CDOMailInclude.asp"-->
+<!--#include virtual="/login-project/include/set-new-password.asp"-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Login Success</title>
+<title><%=lg_term_login_success%></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="language" content="en-US" />
+<meta name="author" content="Roderick Divilbiss" />
+<meta name="copyright" content="© 2010 EE Collaborative Login Project http://www.webloginproject.com" />
+<style type="text/css">
+#details { font-family:Courier New; font-size:10pt; border:1px solid #000000; padding:10px; background-color:#FFE2C6; }
+#message { font-size:10pt; padding:10px; background-color:#FFFFCC; border:1px solid #000000; }
+#warning { font-size:10pt; font-weight:bold; padding:10px; background-color:#FFFFCC; color:#FF0000; border:1px solid #FF0000; }
+</style>
 </head>
 
 <body>
-<div id="login-system">
-	<h1><%=lg_term_login_success%></h1>
-	<div id="loginSuccess"><p><%=Server.HTMLEncode(Session("name"))%>&nbsp;is logged in.</p>
-	<p><%="<a href="""& lg_home &""" title="""& lg_phrase_logout_continue &""">"& lg_phrase_logout_continue &"</a>"%></p>
-	</div>
-</div>
+<!--#include virtual="/login-project/include/login-success-markup.asp"-->
 </body>
-
 </html>
