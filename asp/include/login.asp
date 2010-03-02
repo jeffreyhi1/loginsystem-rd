@@ -136,7 +136,7 @@ Else
 				'*******************************************************************************************************************
 				If lg_term_remember AND getField("remember")="Yes" Then
 					Response.Cookies("user") = userid
-					Response.Cookies("login").Expires = "January 1, 2015"
+					Response.Cookies("user").Expires = "January 1, 2015"
 				End If
 			
 				'*******************************************************************************************************************
