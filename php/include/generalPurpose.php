@@ -4,7 +4,7 @@ function getField($pParams) { /* fieldName, pattern, method */
 	$pattern="safe";
 	$method="post";
 	$value="";
-	$fParams = preg_split("/[,]/", $pParams);
+	$fParams = explode(",", $pParams);
 	
 	if (trim($fParams[0])!='') {
 		$fieldName = trim($fParams[0]);
@@ -115,7 +115,7 @@ function getField($pParams) { /* fieldName, pattern, method */
 			$regExPattern = "/^\d{3}\.*\d{3}\.*\d{4}$/";
 			break;
 		case "urlpath":
-			$regExPattern = "/^[a-zA-Z0-9\/\%\_]+\.(php|asp|htm|html)$/";
+			$regExPattern = "/^[a-zA-Z0-9\/\%\_\-]+\.(php|asp|htm|html)$/";
 			break;
 		case "ipaddress":
 			$regExPattern = "/^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/";
@@ -125,7 +125,10 @@ function getField($pParams) { /* fieldName, pattern, method */
 			break;
 		case "zipcode":
 			$regExPattern = "(^(?!0{5})(\d{5})(?!-?0{4})(-?\d{4})?$)";
-			break;	
+			break;
+		default:
+			$regExPattern = "/^[a-zA-Z0-9\-\'\ \,\.]+$/";
+			break;
 	}
 
 	//echo $regExPattern ." XXX ". $value;
