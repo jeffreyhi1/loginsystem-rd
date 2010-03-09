@@ -65,11 +65,6 @@ function checkToken
 	'*****************************************************************************************
 	Dim oldToken, testToken, tokenStr, page
 		page = Request.ServerVariables("HTTP_REFERER")
-        'If lg_useSSL Then
-  	    '	page = Replace(Request.ServerVariables("HTTP_REFERER"),"https://"& lg_domain_secure & lg_loginPath,"")
-        'Else
-	    '	page = Replace(Request.ServerVariables("HTTP_REFERER"),"http://"& lg_domain & lg_loginPath,"")
-        'End If
         if page="" Then ' posted to self
 		page = Request.ServerVariables("SCRIPT_NAME")
 	end if
@@ -83,15 +78,15 @@ function checkToken
 	  			checkToken=true
 	  		Else
 	  			Session.Abandon
-				Response.Redirect "http://"& lg_domain & lg_loginPath & lg_form_error & "?p="&page&"&t=etime"
+				Response.Redirect "http://"& lg_domain & lg_form_error & "?p="&page&"&t=etime"
 			End If
 		Else
 			Session.Abandon
-			Response.Redirect "http://"& lg_domain & lg_loginPath & lg_form_error & "?p="&page&"&t=ecook"
+			Response.Redirect "http://"& lg_domain & lg_form_error & "?p="&page&"&t=ecook"
 		End If		
 	Else
 		Session.Abandon
-		Response.Redirect "http://"& lg_domain & lg_loginPath & lg_form_error & "?p="&page&"&t=etok"  	
+		Response.Redirect "http://"& lg_domain & lg_form_error & "?p="&page&"&t=etok"  	
 	End If
 End Function
 	
