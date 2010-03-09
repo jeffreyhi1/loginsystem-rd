@@ -5,36 +5,39 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * 
 * NOTE: You must set lg_loginPath and uncomment the correct connection string (lg_term_command_string)
 *
-* Last Modification: 20 FEB 2010 :: Rod Divilbiss - brought up to date with the ASP beta 1.2 version.
-* Version:  beta 1.2 - US English - PHP
+* Last Modification: 06 MAR 2010 :: Rod Divilbiss - used for testing HTML 4.01 Strict templates.
+* Version:  beta 1.5 - US English - PHP
 ******************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
-define("lg_change_password_page", "change_password.asp");
-define("lg_contact_form", "/login-system/php/contact.php");
+define("lg_change_password_page", "change_password.php");
+// contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
+define("lg_contact_form", "/login-project/phphtml/contact.php");
 define("lg_copyright", "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com");
 define("lg_domain", "www.webloginproject.com");
-define("lg_domain_secure", "www.webloginproject.com/");
-define("lg_forbidden", "forbidden.asp");
-define("lg_form_error", "oops.asp");
-define("lg_home", "/login-system/asp/index.php");
+define("lg_domain_secure", "www.webloginproject.com");
+// forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
+define("lg_forbidden", "/login-project/phphtml/forbidden.php");
+// form error is not necessarily part of the login-system. Must specify the entire path possibly outside of the login-system.
+define("lg_form_error", "/login-project/phphtml/form_error.php");
+// home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
+define("lg_home", "/login-project/phphtml/index.php");
 define("lg_log_logins", true);
 define("lg_logged_out_page", "loggedout.php");
 define("lg_login_attempts", 5);
 define("lg_loginPage", "login.php");
-define("lg_loginPath", "/login-system/asp/");
+define("lg_loginPath", "/login-project/phphtml/");
 define("lg_logout_page", "logout.php");
-define("lg_new_token_page", "register_newtoken.php");
-define("lg_recover_passsword_page", "recover-password.php");
+define("lg_new_token_page", "issue_verification_token.php");
+define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
-define("lg_set_new_password_page", "set_new_password.asp");
-define("lg_success_page", "login-success.php");
+define("lg_set_new_password_page", "set_new_password.php");
+define("lg_success_page", "login_success.php");
 define("lg_useSSL", true);
 define("lg_debug", true);
 define("lg_verify_page", "register_verify.php");
 define("lg_webmaster_email", "Webmaster <webmaster@webloginproject.com>");
 define("lg_webmaster_email_link", '<a href="mailto:webmaster@webloginproject.com">Webmaster</a>');
-
 
 /*********************************************************************
 * Login system database globals
@@ -49,6 +52,10 @@ define("lg_webmaster_email_link", '<a href="mailto:webmaster@webloginproject.com
 
 //define("lg_database_userid", "");
 //define("lg_database_password", "");
+
+function dbNow() {
+	return date("Y-m-d H:i:s");
+}
 
 
 /*********************************************************************
@@ -115,7 +122,7 @@ define("lg_term_website_address", "Website Address");
 
 define("lg_phrase_cancel_account_cacelled", "The account has been cancelled.");
 define("lg_phrase_cancel_account_error", "There was an unexpected error cancelling your account. Please contact the webmaster");
-define("lg_phrase_cancel_account_warning", "Enter your User ID and Password to cancel your account.<br />WARNING: THIS ACTION CAN NOT BE UNDONE.<br />If you have forgotten your password use the recover password link below.");
+define("lg_phrase_cancel_account_warning", "Enter your User ID and Password to cancel your account.<br>WARNING: THIS ACTION CAN NOT BE UNDONE.<br>If you have forgotten your password use the recover password link below.");
 define("lg_phrase_change_password", "Enter your current password, then your desired new password");
 define("lg_phrase_confirm_empty", "The Confirm Password field is empty but is required. Please confirm your password.");
 define("lg_phrase_confirm_title", "Please confirm your desired password. This field is required.");
@@ -123,13 +130,14 @@ define("lg_phrase_contact_webmaster", "contact the webmaster");
 define("lg_phrase_delete_account", "Delete Account");
 define("lg_phrase_delete_already_verified", "The account has already been verified and could not be deleted");
 define("lg_phrase_delete_deleted", "The account has been deleted");
-define("lg_phrase_email_empty", "The EMail field is empty but is required. Please enter your email address.");
+define("lg_phrase_email_empty", "The Email field is empty but is required. Please enter your email address.");
 define("lg_phrase_email_title", "Please enter your email address. This field is required.");
 define("lg_phrase_enter_unlock_code", "Enter Unlock Code");
 define("lg_phrase_issue_new_token", "Enter your userid and email to receive a new verification token.");
 define("lg_phrase_issue_new_token_error", "There was an unexpected error generating your verification token. Please contact the webmaster.");
 define("lg_phrase_issue_new_token_success", "Your new verification token will be mailed to your email address.");
 define("lg_phrase_login_error", "There was an error. Please re-enter your User ID and Password.");
+define("lg_phrase_login_token_problem", "Either the verification token has been used, (and you are verified,) or the token is not valid.");
 define("lg_phrase_logged_out", "You are logged out.");
 define("lg_phrase_logout_continue", "Click here to continue.");
 define("lg_phrase_name_empty", "The Name field is empty but is required. Please enter your name.");
@@ -173,7 +181,7 @@ define("lg_phrase_userid_title", "Please enter your userid. This field is requir
 define("lg_phrase_verify_expired", "More than 24 hors have passed since your registration.");
 define("lg_phrase_verify_login", "You may now login to your account.");
 define("lg_phrase_verify_newtoken", "Click here to generate a new unlock code.");
-define("lg_phrase_verify_verified ", "You have verified your email address.");
+define("lg_phrase_verify_verified", "You have verified your email address.");
 define("lg_phrase_website_title", "Please enter your website address.");
 define("lg_phrase_recover_password", "Recover Password");
 define("lg_phrase_request_password1", "A request has been made to recover your password at ");
@@ -193,4 +201,3 @@ define("lg_phrase_webmaster_may_be_contacted", "The webmaster may be contact by 
 define("lg_phrase_set_new_password_error", "There was an unexpected error in completing your request. ");
 define("lg_phrase_set_new_password_success", "Your password was successfully changed.");
 ?>
-
