@@ -140,11 +140,22 @@ End If
 The top of any protected PHP page should include the following code.
 
 {{{
+<?PHP
+setlocale(LC_ALL, 'English_United States.65001');
+if (!isset($_SESSION)) {
+	session_start();
+}
 
+include "include/loginGlobals.php";
+
+if ((!isset($_SESSION["login"])) || ($_SESSION["login"]==False)) {
+	header("Location: http://" . lg_domain . lg_loginPath . lg_loginPage ."?p=". $_SERVER["SCRIPT_NAME"]);
+}
+?>
 }}}
 
 
-You may not normally set the Codepage and Charset at the top of your ASP pages, but for security purposes, it is assumed you will do so for pages in the Login System and for those protected by the Login System.  UTF-8 is well supported in ASP and works with the internationalized versions of the Login System. You'll note your protected page needs access to the domain, path, and login page constants maintained in the loginGlobals library file.
+You may not normally set the Codepage and Charset at the top of your ASP pages, or use the setlocale with your PHP pages, but for security purposes it is assumed you will do so for pages in the Login System and for those protected by the Login System.  UTF-8 is being used to facilitate the internationalized versions of the Login System. You'll note your protected page needs access to the domain, path, and login page constants maintained in the loginGlobals library file.
 
 == Bugs or Feature Enhancement Requests ==
 
@@ -156,4 +167,4 @@ Post you assistance requests and questions at Experts Exchange in one or all of 
 
 == Demo Site ==
 
-The most current code base is implemented at [http://www.webloginproject.com/login-project/aspmysql/default.asp Demo Site]
+The demo sites are featured on the project's home page: [http://code.google.com/p/loginsystem-rd/ HOME].
