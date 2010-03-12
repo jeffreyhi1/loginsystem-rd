@@ -8,7 +8,7 @@ How to Install The Login System On You Site
 
 = Implementation =
 
-The ASP version is being released as beta code.  While it has been tested thoroughly, it is not guaranteed bug-free.
+The Login System is being released as beta code.  While it has been tested thoroughly, it is not guaranteed bug-free.
  
 The Login System is meant to be integrated into your site so it has your site's "look and feel." If you will create one template page which contains all the normal content of a page on your site, then implementation is simply a matter of including the server-side code for a given page, along with the necessary library files at the top of the page. The HTML or XHTML markup for a given page is included in the "main content area" of the page.  From one template page, you create as many of the Login System pages as needed for your site.
 
@@ -18,12 +18,19 @@ There are certain pages your site is expected to have prior to implementing the 
 
 == Obtaining the code ==
 
-Obtaining the code will require several downloads.  You'll need the one of the ASP or PHP code, the related set of  Common Library files, and the HTML 4.01 Strict, or XHTML 1.1 Strict page mark-up.  For beta code you may use the downloads section here. (Downloads Tab)
+Obtaining the code will require several downloads.  You'll need the one of the:
+  * ASP or PHP code, 
+  * the ASP or PHP Common Library files, and 
+  * either the HTML 4.01 Strict, or XHTML 1.1 Strict page mark-up.
+
+For beta code you may use the downloads section here. (Downloads Tab)
 
 
 == The database ==
 
-The ASP code supports MS Access, MS SQL Server (tested on SQL Server 2005) and MySql databases.  An empty MS Access database will be provided at the downloads page.  MS SQL SQL and MySql SQL scripts will also be made available.  The PHP beta code when released will initially support MySql.  It is assumed you know how to create databases from SQL scripts, and/or know how to implement an MS Access site on your web site securely.  The user account for web access should be separate from the database admin role.  It needs SELECT, INSERT, DELETE, and UPDATE permissions only.  If you are unsure, or just want assistance or assurance you have implemented your database properly, please post a question at the Miscellaneous Web Development and appropriate database topic areas at [http://www.experts-exchange.com/ Experts Exchange].
+The ASP code supports MS Access, MS SQL Server (tested on SQL Server 2005) and MySql databases.  An empty MS Access database is be provided at the downloads page.  MS SQL SQL and MySql SQL scripts are also be available on the downloads page.  The PHP code initially supports just the MySql database.
+
+It is assumed you know how to create databases from SQL scripts, and/or know how to implement an MS Access site on your web site securely.  The user account for web access should be separate from the database admin role.  It needs SELECT, INSERT, DELETE, and UPDATE permissions only.  If you are unsure, or just want assistance or assurance you have implemented your database properly, please post a question at the Miscellaneous Web Development and appropriate database topic areas at [http://www.experts-exchange.com/ Experts Exchange].
 
   * [http://www.experts-exchange.com/Database/MS_Access/ MS Access Topic Area]
   * [http://www.experts-exchange.com/Database/MS-SQL-Server/ MS SQL Server Topic Area]
@@ -71,9 +78,47 @@ Response.Charset="UTF-8"
 
 You have the library files at the top of the page (above the DOCTYPE) including the server-side code for the login page. The login form and other markup is included in the body of the page, (in your main content area.)
 
+An example PHP page skeleton would look like this (a login page):
+
+{{{
+<?PHP
+setlocale(LC_ALL, 'English_United States.65001');
+if (!isset($_SESSION)) {
+	session_start();
+}
+
+include "include/generalPurpose.php";
+include "include/form_token.php";
+include "include/loginGlobals.php";
+include "include/database.php";
+include "include/login.php";
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title><?PHP echo lg_term_login?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="en-US" />
+<meta name="author" content="Roderick Divilbiss" />
+<meta name="copyright" content="&copy; 2010 EE Collaborative Login Project http://www.webloginproject.com" />
+</head>
+
+<body>
+<?PHP include "include/login-markup.php"; ?>
+<?PHP echo "<p>". $dbMsg . "</p>"; ?>
+</body>
+</html>
+}}}
+
+As with the ASP skeleton page above, you have the library files at the top of the page (above the DOCTYPE) including the server-side code for the login page. The login form and other markup is included in the body of the page, (in your main content area.)
+
+
 == Protected Pages ==
 
-All protected pages must be .asp pages.  The top of any protected page should include the following code.
+All protected pages must be .asp or .php pages.  The top of any protected ASP page should include the following code.
 
 {{{
 <%
@@ -91,6 +136,13 @@ End If
 ' Your page code here
 %>
 }}}
+
+The top of any protected PHP page should include the following code.
+
+{{{
+
+}}}
+
 
 You may not normally set the Codepage and Charset at the top of your ASP pages, but for security purposes, it is assumed you will do so for pages in the Login System and for those protected by the Login System.  UTF-8 is well supported in ASP and works with the internationalized versions of the Login System. You'll note your protected page needs access to the domain, path, and login page constants maintained in the loginGlobals library file.
 
