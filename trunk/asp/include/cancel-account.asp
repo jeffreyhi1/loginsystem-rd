@@ -1,14 +1,22 @@
 <%
 '*******************************************************************************************************************
 '* Cancel Account
-'* Last Modification: 25 FEB 2010 rdivilbiss
-'* Version:  beta 1.5
+'* Last Modification: 19 APR 2010 rdivilbiss
+'* Version:  alpha 0.1
 '* On Entry: Verify need for SSL
 '* Input:    userid, password
 '* Output:   message - string variable with results
 '* On Exit:  Account Deleted.
 '******************************************************************************************************************
+' no browser caching of this page !! to be used on all pages
+Response.Expires=-1
+Response.ExpiresAbsolute = Now() - 1
 
+' do not allow proxy servers to cache this page !! to be used on all pages
+Response.AddHeader "pragma","no-cache"
+Response.CacheControl="private"
+Response.CacheControl="no-cache"
+Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* If SSL required and not using SSL, redirect to https
 '*******************************************************************************************************************
@@ -53,7 +61,11 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 		'*******************************************************************************************************************
 		'* First, is this a valid userid and password?
 		'*******************************************************************************************************************
-		cmdTxt = "SELECT id, password FROM users WHERE (userid=?);"
+		If lg_database="access" Then
+			cmdTxt = "SELECT [id], [password] FROM users WHERE ([userid]=?);"
+		Else
+			cmdTxt = "SELECT id, password FROM users WHERE (userid=?);"
+		End If	
 		openCommand lg_term_command_string,lg_term_cancel_account&" 1"
 
 		addParam "@u",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_cancel_account&" 2"
@@ -66,15 +78,22 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 			If passhash = dbPasshash Then
 				'**********************************************************************************************************
 				'* Valid used id and password, do cancel.
-				'**********************************************************************************************************				
-				cmdTxt = "UPDATE users SET deleted=1, dateDeleted=? WHERE (userid=?) AND (password=?);"
+				'**********************************************************************************************************
+				If lg_database="access" Then			
+					cmdTxt = "UPDATE users SET [deleted]=1, [dateDeleted]=? WHERE ([userid]=?) AND ([password]=?);"
+				Else
+					cmdTxt = "UPDATE users SET deleted=1, dateDeleted=? WHERE (userid=?) AND (password=?);"
+				End If	
 				openCommand lg_term_command_string,lg_term_cancel_account&" 3"
 				addParam "@dDeleted",adDate,adParamInput,CLng(8),dateCancelled,lg_term_cancel_account&" 4"
 				addParam "@userid",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_cancel_account&" 5"
 				addParam "@passhash",adVarChar,adParamInput,CLng(Len(passhash)),passhash,lg_term_cancel_account&" 6"
 				execCmd cmdTxt
 				If numAffected = 1 Then
-					message = lg_phrase_cancel_account_cacelled
+					Response.Cookies("user") = ""
+					Response.Cookies("user").Expires = "January 1, 2009"
+					Session.Abandon
+					Response.Redirect lg_logged_out_page & "?r=cancel"
 				Else
 					message = lg_phrase_cancel_account_error
 				End If

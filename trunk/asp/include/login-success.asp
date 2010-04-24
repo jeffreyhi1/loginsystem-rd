@@ -1,14 +1,22 @@
 <%
 '*******************************************************************************************************************
 '* Page Name
-'* Last Modification: 26 FEB 2010 rdivilbiss
-'* Version:  beta 1.6
-'* On Entry: 
-'* Input   : 
-'* Output  : 
-'* On Exit : 
+'* Last Modification: 19 APR 2010 rdivilbiss
+'* Version:  alpha 0.1
+'* On Entry: None
+'* Input   : None
+'* Output  : None
+'* On Exit : Redirect to destination
 '******************************************************************************************************************
+' no browser caching of this page !! to be used on all pages
+Response.Expires=-1
+Response.ExpiresAbsolute = Now() - 1
 
+' do not allow proxy servers to cache this page !! to be used on all pages
+Response.AddHeader "pragma","no-cache"
+Response.CacheControl="private"
+Response.CacheControl="no-cache"
+Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* On login success, provide link.
 '*******************************************************************************************************************

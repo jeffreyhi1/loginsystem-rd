@@ -1,14 +1,22 @@
 <%
 '*******************************************************************************************************************
 '* Page Name
-'* Last Modification: 26 FEB 2010 rdivilbiss
-'* Version:  beta 1.5
-'* On Entry: 
-'* Input   : 
-'* Output  : 
-'* On Exit : 
+'* Last Modification: 19 APR 2010 rdivilbiss
+'* Version:  alpha 0.1
+'* On Entry: reset token
+'* Input   : current password, new password, confirmation password
+'* Output  : message
+'* On Exit : password changed
 '******************************************************************************************************************
+' no browser caching of this page !! to be used on all pages
+Response.Expires=-1
+Response.ExpiresAbsolute = Now() - 1
 
+' do not allow proxy servers to cache this page !! to be used on all pages
+Response.AddHeader "pragma","no-cache"
+Response.CacheControl="private"
+Response.CacheControl="no-cache"
+Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
@@ -79,7 +87,11 @@ If resettoken<>"" AND Session("action")="resettoken" then
 	'*******************************************************************************************************************
 	'* Get the dateLocked and verify it is within the lifetime of the token
 	'*******************************************************************************************************************
-	cmdTxt = "SELECT id, token, dateLocked FROM users WHERE (token=?);"
+	If lg_database="access" Then
+		cmdTxt = "SELECT [id], [token], [dateLocked] FROM users WHERE ([token]=?);"
+	Else
+		cmdTxt = "SELECT id, token, dateLocked FROM users WHERE (token=?);"
+	End If		
 	If debug Then debugout=debugout&"cmdTxt = SELECT id, token, dateLocked FROM users WHERE (token=?);<br>" & vbLF End If
 	openCommand lg_term_command_string,lg_term_checkToken & " 1"
 	If debug Then debugout=debugout&"openCommand<br>" & vbLF End If
@@ -148,7 +160,11 @@ Else
 			 If debug Then debugout=debugout&"Session(action)=Error<br>" & vbLF End If
 		End If
 		If message="" Then
-			cmdTxt = "SELECT id, userid, email, name, locked, dateLocked, token FROM users WHERE (token=?);"
+			If lg_database="access" Then
+				cmdTxt = "SELECT [id], [userid], [email], [name], [locked], [dateLocked], [token] FROM users WHERE ([token]=?);"
+			Else
+				cmdTxt = "SELECT id, userid, email, name, locked, dateLocked, token FROM users WHERE (token=?);"
+			End If		
 			If debug Then debugout=debugout&"cmdTxt=SELECT [id], userid, email, name, locked, dateLocked, token FROM users WHERE (token=?)<br>" & vbLF End If
 			openCommand lg_term_command_string,lg_term_checkToken & " 1"
 			If debug Then debugout=debugout&"openCommand<br>" & vbLF End If
@@ -184,8 +200,12 @@ Else
 					'*
 					'*******************************************************************************************************************
 					passhash = HashEncode(newpassword & userid)
-					If debug Then debugout=debugout&"passhash="&passhash&"<br>" & vbLF End If	
-					cmdTxt = "UPDATE users SET users.password = ?, users.token = ?, users.locked = ?, users.dateLocked = ? WHERE (users.id=?);"
+					If debug Then debugout=debugout&"passhash="&passhash&"<br>" & vbLF End If
+					If lg_database="access" Then
+						cmdTxt = "UPDATE users SET [password] = ?, [token] = ?, [locked] = ?, [dateLocked] = ? WHERE ([id]=?);"
+					Else
+						cmdTxt = "UPDATE users SET password = ?, token = ?, locked = ?, dateLocked = ? WHERE (id=?);"
+					End If		
 					If debug Then debugout=debugout&"cmdTxt=UPDATE users SET users.password = ?, users.token = ?, users.locked = ?, users.dateLocked = ? WHERE (users.id=?);<br>" & vbLF End If
 					openCommand lg_term_command_string,"checkToken 4"
 					If debug Then debugout=debugout&"openCommand<br>" & vbLF End If

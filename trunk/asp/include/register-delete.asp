@@ -1,14 +1,22 @@
 <%
 '*******************************************************************************************************************
 '* Page Name
-'* Last Modification: 26 FEB 2010 rdivilbiss
-'* Version:  beta 1.5
-'* On Entry: 
-'* Input   : 
-'* Output  : 
-'* On Exit : 
+'* Last Modification: 19 APR 2010 rdivilbiss
+'* Version:  alpha 1.0
+'* On Entry: None
+'* Input   : email
+'* Output  : None - account marked as deleted
+'* On Exit : message
 '******************************************************************************************************************
+' no browser caching of this page !! to be used on all pages
+Response.Expires=-1
+Response.ExpiresAbsolute = Now() - 1
 
+' do not allow proxy servers to cache this page !! to be used on all pages
+Response.AddHeader "pragma","no-cache"
+Response.CacheControl="private"
+Response.CacheControl="no-cache"
+Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
@@ -49,7 +57,11 @@ End if
 '* If we have the email address, delete the account. First get the record matching the email
 '*******************************************************************************************************************
 If email<>"" then
-	cmdTxt = "SELECT id, userid, email, locked, dateLocked, token FROM users WHERE (email=?);"
+	If lg_database="access" Then
+		cmdTxt = "SELECT [id], [userid], [email], [locked], [dateLocked], [token] FROM users WHERE ([email]=?);"
+	Else
+		cmdTxt = "SELECT id, userid, email, locked, dateLocked, token FROM users WHERE (email=?);"
+	End If		
 	openCommand lg_term_command_string,lg_term_checkToken & " 1"
 	addParam "@email",adVarChar,adParamInput,CLng(100),email,lg_term_checkToken & " 3"
 	getRS db_rs, cmdTxt, lg_term_checkToken & " 3"
@@ -67,7 +79,11 @@ If email<>"" then
 			'* will not be deleted. If the token is not empty, delete the record
 			'*******************************************************************************************************************
 			openCommand lg_term_command_string,"checkToken 4"
-			cmdTxt = "DELETE FROM users WHERE (id=?);"
+			If lg_database="access" Then
+				cmdTxt = "DELETE FROM users WHERE ([id]=?);"
+			Else
+				cmdTxt = "DELETE FROM users WHERE (id=?);"
+			End If		
 			addParam "@id",adInteger,adParamInput,CLng(4),id,"checkToken 5"
 			execCmd cmdTxt
 			message = "<h2>"&lg_phrase_delete_deleted&"</h2>"

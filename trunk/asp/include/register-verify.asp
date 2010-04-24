@@ -1,14 +1,22 @@
 <%
 '*******************************************************************************************************************
 '* Register Verify
-'* Last Modification: 26 FEB 2010
-'* Version:  beta 1.5
+'* Last Modification: 19 APR 2010
+'* Version:  alpha 0.1
 '* On Entry: N/A
 '* Input:    token
 '* Output:   message - string variable with results
 '* On Exit:  Account Activated.
 '******************************************************************************************************************
+' no browser caching of this page !! to be used on all pages
+Response.Expires=-1
+Response.ExpiresAbsolute = Now() - 1
 
+' do not allow proxy servers to cache this page !! to be used on all pages
+Response.AddHeader "pragma","no-cache"
+Response.CacheControl="private"
+Response.CacheControl="no-cache"
+Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
@@ -51,7 +59,11 @@ If token<>"" then
 	'*******************************************************************************************************************
 	'* Get the dateLocked and verify it is within the lifetime of the token
 	'*******************************************************************************************************************
-	cmdTxt = "SELECT id, userid, email, locked, dateLocked, token FROM users WHERE (token=?);"
+	If lg_database="access" Then
+		cmdTxt = "SELECT [id], [userid], [email], [locked], [dateLocked], [token] FROM users WHERE ([token]=?);"
+	Else
+		cmdTxt = "SELECT id, userid, email, locked, dateLocked, token FROM users WHERE (token=?);"
+	End If		
 	openCommand lg_term_command_string,lg_term_checkToken & " 1"
 	addParam "@token",adVarChar,adParamInput,CLng(40),token,lg_term_checkToken & " 3"
 	getRS db_rs, cmdTxt, lg_term_checkToken & " 3"
@@ -87,7 +99,11 @@ If token<>"" then
 			'* Unlock the account - set token->Null, dateLocked->Null, locked->0
 			'*******************************************************************************************************************
 			openCommand lg_term_command_string,"checkToken 4"
-			cmdTxt = "UPDATE users SET token = ?, locked = ?, dateLocked = ? WHERE (id=?);"
+			If lg_database="access" Then
+				cmdTxt = "UPDATE users SET [token] = ?, [locked] = ?, [dateLocked] = ? WHERE ([id]=?);"
+			Else
+				cmdTxt = "UPDATE users SET token = ?, locked = ?, dateLocked = ? WHERE (id=?);"
+			End If		
 			addParam "@token",adVarChar,adParamInput,CLng(40),Null,"checkToken 5"
 			addParam "@locked",adVarChar,adParamInput,CLng(1),"0","checkToken 6"
 			addParam "@dateLocked",adDate,adParamInput,CLng(8),Null,"checkToken 7"

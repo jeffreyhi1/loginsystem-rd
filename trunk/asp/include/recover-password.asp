@@ -1,14 +1,22 @@
 <%
 '*******************************************************************************************************************
 '* Page Name
-'* Last Modification: 26 FEB 2010 rdivilbiss
-'* Version:  beta 1.5
-'* On Entry: 
-'* Input   : 
-'* Output  : 
-'* On Exit : 
+'* Last Modification: 19 APR 2010 rdivilbiss
+'* Version:  alpha 0.1
+'* On Entry: Check for SSL
+'* Input   : userid, email
+'* Output  : reset/recover password token emailed to email address of account owner
+'* On Exit : message
 '******************************************************************************************************************
+' no browser caching of this page !! to be used on all pages
+Response.Expires=-1
+Response.ExpiresAbsolute = Now() - 1
 
+' do not allow proxy servers to cache this page !! to be used on all pages
+Response.AddHeader "pragma","no-cache"
+Response.CacheControl="private"
+Response.CacheControl="no-cache"
+Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* If SSL required and not using SSL, redirect to https
 '*******************************************************************************************************************
@@ -51,7 +59,11 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		'*******************************************************************************************************************
 		'* If all required fields exist, verify there is a valid account and it is locked
 		'*******************************************************************************************************************
-		cmdTxt = "SELECT id, userid, name, email, locked FROM users WHERE (userid=?) AND (email=?);"
+		If lg_database="access" Then
+			cmdTxt = "SELECT [id], [userid], [name], [email], [locked] FROM users WHERE ([userid]=?) AND ([email]=?);"
+		Else
+			cmdTxt = "SELECT id, userid, name, email, locked FROM users WHERE (userid=?) AND (email=?);"
+		End If		
 		openCommand lg_term_command_string,lg_phrase_recover_password&" 1"
 		addParam "@u",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_phrase_recover_password&" 2"
 		addParam "@e",adVarChar,adParamInput,CLng(Len(email)),email,lg_phrase_recover_password&" 3"
@@ -76,7 +88,11 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		locked="1"
 		dateLocked = dbNow
 		token = Left(HashEncode(getGUID),40)
-		cmdTxt = "UPDATE users SET token = ?, locked = ?, dateLocked = ? WHERE (id=?);"
+		If lg_database="access" Then
+			cmdTxt = "UPDATE users SET [token] = ?, [locked] = ?, [dateLocked] = ? WHERE ([id]=?);"
+		Else
+			cmdTxt = "UPDATE users SET token = ?, locked = ?, dateLocked = ? WHERE (id=?);"
+		End If		
 		openCommand lg_term_command_string,lg_phrase_recover_password&" 5"
 		addParam "@token",adVarChar,adParamInput,CLng(40),token,lg_phrase_recover_password&" 6"
 		addParam "@locked",adVarChar,adParamInput,CLng(1),locked,lg_phrase_recover_password&" 7"
