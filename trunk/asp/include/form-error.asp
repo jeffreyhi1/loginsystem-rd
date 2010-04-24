@@ -8,7 +8,7 @@
 '* Output:   message - reason for error and link to page
 '* On Exit:  None
 '******************************************************************************************************************
-Option Explicit
+Option Explicit 
 Session.CodePage=65001
 Response.Charset="UTF-8"
 
