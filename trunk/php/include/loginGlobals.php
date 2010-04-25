@@ -7,7 +7,8 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 *       You must set the webmaster e-mail addresses.
 *       You must set the database connection details in database.php.     
 * 
-* 
+* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
+*                                              loginGlobals.php, and corrected paths in loginGlobals.php
 * Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 * Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 * Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
@@ -21,34 +22,34 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 * 
-* Version:  alpha 0.1 - English - PHP
+* Version:  alpha 0.1a - English - PHP
 ******************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
 define("lg_change_password_page", "change_password.php");
 /******************************************************************************************************************
 * contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
-define("lg_contact_form", "/login-project/php/contact.php");
+define("lg_contact_form", "/login-system/contact.php");
 define("lg_copyright", "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com");
 define("lg_domain", "www.example.com");
 define("lg_domain_secure", "www.example.com");
 /******************************************************************************************************************
 * forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
-define("lg_forbidden", "/login-project/php/forbidden.php");
+define("lg_forbidden", "/login-system/forbidden.php");
 /******************************************************************************************************************
 * form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
-define("lg_form_error", "/login-project/php/form_error.php");
+define("lg_form_error", "/login-system/form_error.php");
 /******************************************************************************************************************
 * home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
-define("lg_home", "/login-project/php/index.php");
+define("lg_home", "/login-system/index.php");
 define("lg_log_logins", true);
 define("lg_logged_out_page", "loggedout.php");
 define("lg_login_attempts", 5);
 define("lg_loginPage", "login.php");
-define("lg_loginPath", "/login-project/php/");
+define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
 define("lg_recover_passsword_page", "recover_password.php");
@@ -103,6 +104,7 @@ define("lg_term_immediately", "immediately!");
 define("lg_term_ip", "IP");
 define("lg_term_issue_verification_token", "Issue Verification Token");
 define("lg_term_log_string", "logLogin");
+define("lg_term_log_out", "Log Out");
 define("lg_term_logged_out", "Logged Out");
 define("lg_term_login", "Login");
 define("lg_term_login_success", "Success");

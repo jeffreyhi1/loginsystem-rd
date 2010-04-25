@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 19 APR 2010 alpha 0.1 -->
+			<!-- 19 APR 2010 alpha 0.1a -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_change_password ?></h1>
 			<h2><?PHP echo $_SESSION["name"] ?></h2>

@@ -2,7 +2,7 @@
 /*******************************************************************************************************************
 * Page Name: Recover Password
 * Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1 Debug
+* Version:  alpha 0.1a Debug
 * On Entry: check SSL state
 * Input   : userid, email
 * Output  : message

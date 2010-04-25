@@ -2,7 +2,7 @@
 /*******************************************************************************************************************
 * Cancel Account
 * Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1 Debug
+* Version:  alpha 0.1a Debug
 * On Entry: Verify need for SSL
 * Input:    userid, password
 * Output:   message - string variable with results
