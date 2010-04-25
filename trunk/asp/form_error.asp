@@ -3,8 +3,8 @@ Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
 %>
-<!--#include file="/include/generalPurpose.asp"-->
-<!--#include file="/include/loginGlobals.asp"-->
+<!--file="include/generalPurpose.asp"-->
+<!--file="include/loginGlobals.asp"-->
 <%
 Dim page, reason, message
 page = getField("p,rXsafepq,get")
@@ -18,7 +18,7 @@ Select Case reason
     Case "etok"
         message = "There was a form error. This can be caused by using your browser's back button to return to a previously completed form and re-submitting it."
 End Select
-%> 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -36,6 +36,6 @@ End Select
 
 </head>
 <body>
-<!--#include file="/include/form-error-markup.asp"-->
+<!--file="include/form-error-markup.asp"-->
 </body>
 </html>

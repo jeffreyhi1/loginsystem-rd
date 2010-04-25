@@ -4,16 +4,16 @@ Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
 %>
-<!--#include file="/include/loginGlobals.asp"-->
-<!--#include file="/include/hashSHA1.asp"-->
-<!--#include file="/include/form_token.asp"-->
-<!--#include file="/include/generalPurpose.asp"-->
-<!--#include file="/include/paramSQL.asp"-->
-<!--#include file="/include/CDOMailInclude.asp"-->
-<!--#include file="/include/register-verify.asp"-->
+<!--file="include/loginGlobals.asp"-->
+<!--file="include/hashSHA1.asp"-->
+<!--file="include/form_token.asp"-->
+<!--file="include/generalPurpose.asp"-->
+<!--file="include/paramSQL.asp"-->
+<!--file="include/CDOMailInclude.asp"-->
+<!--file="include/register-verify.asp"-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head> 
+<head>
 <title><%=lg_term_registration_verification%></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="content-language" content="en-US" />
@@ -28,6 +28,6 @@ Response.Charset="UTF-8"
 
 </head>
 <body>
-<!--#include file="/include/register-verify-markup.asp"-->
+<!--file="include/register-verify-markup.asp"-->
 </body>
 </html>

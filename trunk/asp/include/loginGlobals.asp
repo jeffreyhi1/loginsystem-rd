@@ -7,7 +7,7 @@
 '*       You must set the webmaster e-mail addresses.
 '*       You must set the database connection details below.
 '* 
-'* 
+'* Modification: 25 APR 2010 :: Rod Divilbiss - corrected some file paths.
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.

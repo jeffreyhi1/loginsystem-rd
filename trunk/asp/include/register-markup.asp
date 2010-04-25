@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 19 APR 2010 alpha 0.1 -->
+			<!-- 25 APR 2010 alpha 0.1a -->
 			<div id="login-system">
     		<% If numAffected<>1 Then %>
     		<div id="message"><%=message%></div>
