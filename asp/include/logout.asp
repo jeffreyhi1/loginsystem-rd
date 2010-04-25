@@ -1,8 +1,8 @@
 <%
 '*******************************************************************************************************************
 '* Logout
-'* Last Modification: 19 APR 2010
-'* Version:  alpha 0.1
+'* Last Modification: 25 APR 2010
+'* Version:  alpha 0.1a
 '* On Entry: N/A
 '* Input:    Session
 '* Output:   N/A

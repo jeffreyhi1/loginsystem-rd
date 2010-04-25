@@ -10,10 +10,9 @@
 <style type="text/css">
 #details { font-family:Courier New; font-size:10pt; border:1px solid #000000; padding:10px; background-color:#FFE2C6; }
 #message { font-size:10pt; padding:10px; background-color:#FFFFCC; border:1px solid #000000; }
-#warning { font-size:10pt; font-weight:bold; padding:10px; background-color:#FFFFCC; color:#FF0000; border:1px solid #FF0000; } 
+#warning { font-size:10pt; font-weight:bold; padding:10px; background-color:#FFFFCC; color:#FF0000; border:1px solid #FF0000; }
 </style>
 </head>
-
 <body>
 <p>This is your contact page.&nbsp; Usually it would be a form.&nbsp; At a minimum you should provide the Webmaster&#39;s email address</p>
 </body>

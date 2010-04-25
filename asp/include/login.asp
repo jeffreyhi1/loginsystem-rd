@@ -1,10 +1,10 @@
 <%
 '*******************************************************************************************************************
 '* Login.asp
-'* Last Modification: 19 APR 2010 rdivilbiss - added anti Session Fixation cookie and
+'* Last Modification: 25 APR 2010 rdivilbiss - added anti Session Fixation cookie and
 '*                                             corrected a flaw where any properly named cookie would
 '*                                             bypass authentication.
-'* Version:  alpha 0.1
+'* Version:  alpha 0.1a
 '* On Entry: Check for need of SSL, check for Login cookie, check for account lockout
 '* Input   : UserID, Password
 '* Output  : message

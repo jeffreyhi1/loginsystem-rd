@@ -2,13 +2,13 @@
 '*******************************************************************************************************************
 '* Form Error
 '* Last Modification: 13 APR 2010 rdivilbiss
-'* Version:  alpha 0.1
+'* Version:  alpha 0.1a
 '* On Entry: URL parameters
 '* Input:    p (page) and t (reason for error)
 '* Output:   message - reason for error and link to page
 '* On Exit:  None
 '******************************************************************************************************************
-Option Explicit 
+Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
 
@@ -22,8 +22,8 @@ Response.CacheControl="private"
 Response.CacheControl="no-cache"
 Response.CacheControl="no-store"
 %>
-<!--#include file="/login-project/aspdemo/include/generalPurpose.asp"-->
-<!--#include file="/login-project/aspdemo/include/loginGlobals.asp"-->
+<!--#include virtual="/login-project/aspdemo/include/generalPurpose.asp"-->
+<!--#include virtual="/login-project/aspdemo/include/loginGlobals.asp"-->
 <%
 Dim page, reason, message
 page = getField("p,rXsafepq,get")

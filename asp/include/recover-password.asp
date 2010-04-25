@@ -1,8 +1,8 @@
 <%
 '*******************************************************************************************************************
 '* Page Name
-'* Last Modification: 19 APR 2010 rdivilbiss
-'* Version:  alpha 0.1
+'* Last Modification: 25 APR 2010 rdivilbiss
+'* Version:  alpha 0.1a
 '* On Entry: Check for SSL
 '* Input   : userid, email
 '* Output  : reset/recover password token emailed to email address of account owner
