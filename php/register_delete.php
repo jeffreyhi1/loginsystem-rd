@@ -30,6 +30,6 @@ include "include/register-delete.php";
 
 <body>
 <?PHP include "include/register-delete-markup.php"; ?>
-<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>" }; ?>
+<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
 </body>
 </html>

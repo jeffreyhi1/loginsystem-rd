@@ -29,6 +29,6 @@ include "include/issue-verification-token.php";
 
 <body>
 <?PHP include "include/issue-verification-token-markup.php"; ?>
-<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>" }; ?>
+<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
 </body>
 </html>
