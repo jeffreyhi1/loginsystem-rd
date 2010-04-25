@@ -2,7 +2,7 @@
 /*******************************************************************************************************************
 * Page Name: Register
 * Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1 Debug
+* Version:  alpha 0.1a Debug
 * On Entry: check for SSL state
 * Input   : userid, password, confirm password, email, name, website address, remember me 
 * Output  : message

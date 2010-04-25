@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 19 APR 2010 alpha 0.1 -->
+			<!-- 19 APR 2010 alpha 0.1a -->
 			<div id="login-system">
     		<?PHP if ($numAffected!=1) { ?>
     		<div id="message"><?PHP echo $message?></div>
