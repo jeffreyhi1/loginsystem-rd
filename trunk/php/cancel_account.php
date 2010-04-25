@@ -28,6 +28,6 @@ include "include/cancel-account.php";
 
 <body>
 <?PHP include "include/cancel-account-markup.php"; ?>
-<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>" }; ?>
+<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
 </body>
 </html>

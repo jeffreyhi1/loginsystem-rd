@@ -28,6 +28,6 @@ include "include/set-new-password.php";
 
 <body>
 <?PHP include "include/set-new-password-markup.php"; ?>
-<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>" }; ?>
+<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
 </body>
 </html>

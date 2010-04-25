@@ -28,5 +28,6 @@ include "include/register-verify.php";
 
 <body>
 <?PHP include "include/register-verify-markup.php"; ?>
+<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
 </body>
 </html>
