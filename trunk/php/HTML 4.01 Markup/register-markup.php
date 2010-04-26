@@ -26,7 +26,7 @@
     		    <span class="field_normal"><?PHP echo lg_term_optional; ?></span><br>
     		    <label for="news"><?PHP echo lg_phrase_news; ?></label>
     		    <input id="news" name="news" type="checkbox" value="Yes">
-    		    <input type="hidden" id="destination" name="destination" value="<?PHP echo destination; ?>"><br>
+    		    <input type="hidden" id="destination" name="destination" value="<?PHP echo $destination; ?>"><br>
     		    <?PHP writeToken(); ?><input type="submit" value="<?PHP echo lg_register_button_text; ?>">
     		  </fieldset>
     		</form>

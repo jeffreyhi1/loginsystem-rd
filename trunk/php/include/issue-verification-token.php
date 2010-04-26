@@ -32,7 +32,6 @@ $dateLocked="";
 $mailBody="";
 $message = lg_phrase_issue_new_token;
 $name="";
-if (lg_debug) { $dbMsg;
 
 if (lg_debug) {
 	$dbMsg .= "Debugging Enabled<br />\n";
