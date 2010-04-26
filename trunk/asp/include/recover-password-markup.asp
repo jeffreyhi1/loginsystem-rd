@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 25 APR 2010 alpha 0.1a -->
+			<!-- 26 APR 2010 alpha 0.1b -->
 			<div id="login-system">
 			<h1><%=lg_phrase_recover_password%></h1>
 			<% If (message <> lg_phrase_recover_password_success) Then %>

@@ -2,9 +2,10 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
+'* 26 APR 2010 alpha 0.1b
 %>
-<!--file="include/generalPurpose.asp"-->
-<!--file="include/loginGlobals.asp"-->
+<!--#include file="include/generalPurpose.asp"-->
+<!--#include file="include/loginGlobals.asp"-->
 <%
 Dim page, reason, message
 page = getField("p,rXsafepq,get")
@@ -36,6 +37,6 @@ End Select
 
 </head>
 <body>
-<!--file="include/form-error-markup.asp"-->
+<!--#include file="include/form-error-markup.asp"-->
 </body>
 </html>

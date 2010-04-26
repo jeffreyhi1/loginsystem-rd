@@ -1,8 +1,8 @@
 <%
 '*******************************************************************************************************************
 '* Register Verify
-'* Last Modification: 25 APR 2010
-'* Version:  alpha 0.1a
+'* Last Modification: 26 APR 2010
+'* Version:  alpha 0.1b
 '* On Entry: N/A
 '* Input:    token
 '* Output:   message - string variable with results
@@ -111,15 +111,15 @@ If token<>"" then
 			execCmd cmdTxt
 			message = "<h2>"&lg_phrase_verify_verified&"</h2><br><br>"
 			message = message & lg_phrase_verify_login & "<br>"
-			message = message & "<div id=""details"">" & LCase(lg_term_userid) & ": " & userid & "<br>"
-			message = message & LCase(lg_term_email) & ": " & email & "<br>"
-			message = message & LCase(lg_term_ip) & ": " & ip & "<br>"
-			message = message & LCase(lg_term_region) & ": " & region & "<br>"
-			message = message & LCase(lg_term_city) & ": " & city & "<br>"
-			message = message & LCase(lg_term_country) & ": " & country & "<br>"
-			message = message & LCase(lg_term_useragent) & ": " & useragent & "<br></div>"
+			message = message & "<div id=""details"">" & LCase(lg_term_userid) & ": " & Server.HTMLEncode(userid) & "<br>"
+			message = message & LCase(lg_term_email) & ": " & Server.HTMLEncode(email) & "<br>"
+			message = message & LCase(lg_term_ip) & ": " & Server.HTMLEncode(ip) & "<br>"
+			message = message & LCase(lg_term_region) & ": " & Server.HTMLEncode(region) & "<br>"
+			message = message & LCase(lg_term_city) & ": " & Server.HTMLEncode(city) & "<br>"
+			message = message & LCase(lg_term_country) & ": " & Server.HTMLEncode(country) & "<br>"
+			message = message & LCase(lg_term_useragent) & ": " & Server.HTMLEncode(useragent) & "<br></div>"
 			If destination&""<>"" Then
-				message = message & "<p><a href="""& destination &""" title="""& lg_phrase_logout_continue &""">"& lg_phrase_logout_continue &"</a></p>"
+				message = message & "<p><a href="""& lg_loginPage &"?p="& destination &""" title="""& lg_phrase_logout_continue &""">"& lg_phrase_logout_continue &"</a></p>"
 			End If
 		Else
 			'*******************************************************************************************************************

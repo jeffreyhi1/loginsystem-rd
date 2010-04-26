@@ -1,7 +1,7 @@
 <%
 '*******************************************************************************************************************
 '* Page Name
-'* Last Modification: 25 APR 2010 rdivilbiss
+'* Last Modification: 26 APR 2010 rdivilbiss
 '* Version:  alpha 1.0
 '* On Entry: None
 '* Input   : userid, email

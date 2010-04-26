@@ -1,8 +1,8 @@
 <%
 '*******************************************************************************************************************
 '* Form Error
-'* Last Modification: 13 APR 2010 rdivilbiss
-'* Version:  alpha 0.1a
+'* Last Modification: 26 APR 2010 rdivilbiss
+'* Version:  alpha 0.1b
 '* On Entry: URL parameters
 '* Input:    p (page) and t (reason for error)
 '* Output:   message - reason for error and link to page
