@@ -2,7 +2,7 @@
 			<!-- 25 APR 2010 alpha 0.1a -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_cancel_account; ?></h1>
-			<?PHP If ($message != lg_phrase_cancel_account_cacelled) { ?>
+			<?PHP If ($message != lg_phrase_cancel_account_cancelled) { ?>
 			<div id="message"><?PHP echo $message; ?></div>
 			<form id="frm" method="post" action="<?PHP echo $lg_filename; ?>" onsubmit="return validate(this);">
 			<fieldset>
