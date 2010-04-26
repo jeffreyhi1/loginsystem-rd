@@ -3,14 +3,15 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
+'* 26 APR 2010 alpha 0.1b
 %>
-<!--file="include/loginGlobals.asp"-->
-<!--file="include/CDOMailInclude.asp"-->
-<!--file="include/generalPurpose.asp"-->
-<!--file="include/form_token.asp"-->
-<!--file="include/hashSHA1.asp"-->
-<!--file="include/paramSQL.asp"-->
-<!--file="include/login.asp"-->
+<!--#include file="include/loginGlobals.asp"-->
+<!--#include file="include/CDOMailInclude.asp"-->
+<!--#include file="include/generalPurpose.asp"-->
+<!--#include file="include/form_token.asp"-->
+<!--#include file="include/hashSHA1.asp"-->
+<!--#include file="include/paramSQL.asp"-->
+<!--#include file="include/login.asp"-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -28,7 +29,7 @@ Response.Charset="UTF-8"
 
 </head>
 <body>
-<!--file="include/login-markup.asp"-->
-<% If lg_debug Then Response.Write dbMsg End If %>
+<!--#include file="include/login-markup.asp"-->
+<% '* If lg_debug Then Response.Write dbMsg End If %>
 </body>
 </html>

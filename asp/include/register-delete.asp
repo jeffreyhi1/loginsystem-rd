@@ -1,8 +1,8 @@
 <%
 '*******************************************************************************************************************
 '* Page Name
-'* Last Modification: 25 APR 2010 rdivilbiss
-'* Version:  alpha 1.0
+'* Last Modification: 26 APR 2010 rdivilbiss
+'* Version:  alpha 1.0a
 '* On Entry: None
 '* Input   : email
 '* Output  : None - account marked as deleted

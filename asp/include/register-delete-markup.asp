@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 25 APR 2010 alpha 0.1a -->
+			<!-- 26 APR 2010 alpha 0.1b -->
 			<div id="login-system">
 				<h1><%=lg_phrase_delete_account%></h1>
 				<% If message = lg_term_register_delete_enter_email Then %>

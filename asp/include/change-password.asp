@@ -1,8 +1,8 @@
 <%
 '*******************************************************************************************************************
 '* Change Password
-'* Last Modification: 25 APR 2010 rdivilbiss - MySql compatibility
-'* Version:  alpha 0.1a debug version
+'* Last Modification: 26 APR 2010 rdivilbiss - MySql compatibility
+'* Version:  alpha 0.1b debug version
 '* On Entry: Verify need for SSL
 '* Input:    oldpassword, newpassword, confirm
 '* Output:   message - string variable with results

@@ -2,7 +2,7 @@
 <%
 '*******************************************************************************************************************
 '* CDO Mail Include
-'* Last Modification: 2008 rdivilbiss
+'* Last Modification: 01 JAN 2008 rdivilbiss
 '* Version:  1.0
 '* On Entry: none
 '* Input:    email to, email from, subject, message

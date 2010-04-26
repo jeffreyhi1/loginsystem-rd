@@ -2,8 +2,9 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
+'* 26 APR 2010 alpha 0.1b
 %>
-<!--file="include/loginGlobals.asp"-->
+<!--#include file="include/loginGlobals.asp"-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -21,6 +22,6 @@ Response.Charset="UTF-8"
 
 </head>
 <body>
-<!--file="include/default-markup.asp"-->
+<!--#include file="include/default-markup.asp"-->
 </body>
 </html>

@@ -20,7 +20,7 @@
 '* Requires include/hashSHA1.asp
 '* Requires include/generalPurpose.asp
 '*******************************************************************************************************************
-
+ 
 function checkToken
 	'*****************************************************************************************
 	' Check the posted token for correctness

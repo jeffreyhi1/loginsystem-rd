@@ -155,7 +155,7 @@ function fileExists(pPath)
 
 	fileExists = results
 end function
-
+ 
 function getRedirectPath(pParam)
 	Dim regEx, matches, match, tmp, path, paramsArray, server, results
 	results = ""

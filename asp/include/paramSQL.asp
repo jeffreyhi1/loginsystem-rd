@@ -151,7 +151,7 @@ Sub getRSdynamic(db_rs,db_cmdText,pSource)
 		end if
 	end if				
 End Sub
-
+ 
 Sub execCmd(db_cmdText)
 	on error resume next
 	db_cmd.CommandText = db_cmdText

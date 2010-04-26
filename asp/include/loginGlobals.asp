@@ -1,4 +1,4 @@
-﻿<%
+<%
 '* English
 '********************************************************************************************************************
 '* Login Globals - ASP
@@ -7,7 +7,8 @@
 '*       You must set the webmaster e-mail addresses.
 '*       You must set the database connection details below.
 '* 
-'* Modification: 25 APR 2010 :: Rod Divilbiss - corrected some file paths.
+'* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
@@ -21,7 +22,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version:  beta 1.9 - English - ASP
+'* Version: 26 APR 2010 - alpha 0.1b - English - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -31,27 +32,27 @@ Const lg_change_password_page = "change_password.asp"
 '******************************************************************************************************************
 '* contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_contact_form = "/login-system/asp/English/contact.asp"
+Const lg_contact_form = "/login-system/contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 Const lg_domain = "www.example.com"
-Const lg_domain_secure = "www.example.com"
+Const lg_domain_secure = "www.example.com"     '<--- must be set if Const lg_useSSL = true
 '******************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_forbidden = "/login-system/asp/English/forbidden.asp"
+Const lg_forbidden = "/login-system/forbidden.asp"
 '******************************************************************************************************************
 '* form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_form_error = "/login-system/asp/English/form_error.asp"
+Const lg_form_error = "/login-system/form_error.asp"
 '******************************************************************************************************************
 '* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_home = "/login-system/asp/English/default.asp"
+Const lg_home = "/login-system/default.asp"
 Const lg_log_logins = true
 Const lg_logged_out_page = "loggedout.asp"
 Const lg_login_attempts = 5
 Const lg_loginPage = "login.asp"
-Const lg_loginPath = "/login-system/asp/English/"
+Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
 Const lg_recover_passsword_page = "recover_password.asp"
@@ -60,11 +61,10 @@ Const lg_register_page = "register.asp"
 Const lg_set_new_password_page = "set_new_password.asp"
 Const lg_success_page = "login_success.asp"
 Const lg_useSSL = false
-Const lg_debug = true
+Const lg_debug = false
 Const lg_verify_page = "register_verify.asp"
 Const lg_webmaster_email = "webmaster@example.com"
 Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
-
 '**********************************************************************
 '* Login system database globals
 '**********************************************************************
@@ -159,7 +159,7 @@ Const lg_term_welcome = "Welcome"
 Const lg_phrase_attention_webmaster = "Attention Webmaster"
 Const lg_phrase_cancel_account_cacelled = "The account has been canceled."
 Const lg_phrase_cancel_account_error = "There was an unexpected error canceling your account. Please contact the webmaster"
-Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to cancel your account.<br>WARNING: THIS ACTION CAN NOT BE UNDONE.<br>If you have forgotten your password use the recover password link below."
+Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to cancel your account.<p>WARNING: THIS ACTION CAN NOT BE UNDONE.</p>If you have forgotten your password use the recover password link below."
 Const lg_phrase_change_password = "Enter your current password, then your desired new password"
 Const lg_phrase_confirm_empty = "The Confirm Password field is empty but is required. Please confirm your password."
 Const lg_phrase_confirm_title = "Please confirm your desired password. This field is required."
@@ -199,7 +199,7 @@ Const lg_phrase_password_nomatch_confirm = "The Password does not match the Conf
 Const lg_phrase_password_title = "Please enter your password. This field is required."
 Const lg_phrase_register_delete_noemail = "There was no account matching the email address you entered."
 Const lg_phrase_registration_email_verify = "Verify Your Email Address"
-Const lg_phrase_registration_email_verify_msg = "An Email was sent to the Email address you provided during registration.&nbsp; Click the link in that Email or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified."
+Const lg_phrase_registration_email_verify_msg = "An Email was sent to the Email address you provided during registration. Click the link in that Email or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified."
 Const lg_phrase_registration_error = "There was an unexpected error completing your registration. Please contact the webmaster"
 Const lg_phrase_registration_mail0 = "Issued New Registration Verification Token"
 Const lg_phrase_registration_mail1 = "Thank you for registering at"
@@ -230,7 +230,7 @@ Const lg_phrase_recover_password3 = "Set New Password"
 Const lg_phrase_recover_password4 = "If you did not request to recover your password, contact the webmaster by "
 Const lg_phrase_recover_password5 = "Email at the following Email link "
 Const lg_phrase_recover_password_error = "There was an unexpected error processing your request. Please contact the webmaster."
-Const lg_phrase_recover_password_success = "The request to recover your password was processed successfully.<br>Please follow the instructions in the Email sent to you to set a new password."
+Const lg_phrase_recover_password_success = "The request to recover your password was processed successfully.<p>Please follow the instructions in the Email sent to you to set a new password.</p>"
 Const lg_phrase_set_new_password_good_token = "Your token was valid. Enter a new password."
 Const lg_phrase_set_new_password_token_expired = "More than 24 hours have passed since you requested a password recovery token."
 Const lg_phrase_contact_webmaster1 = "Please contact the webmaster for assistance."

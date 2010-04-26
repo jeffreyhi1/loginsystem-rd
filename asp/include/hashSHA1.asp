@@ -17,7 +17,7 @@ Function getSalt(intLen)
 ' the password concatenate the salt from the database.  Encode it using the HashEncode 
 ' function below.  If the result matches the the encrypted password stored in the
 ' database, then it is a match.  If not then the password is invalid.
-'
+' 
 '
 ' Note: Passwords become case sensitive when using this encryption.
 ' For more information on Password HASH Encoding, and SALT visit: http://local.15seconds.com/issue/000217.htm
