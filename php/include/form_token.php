@@ -76,24 +76,4 @@ function writeToken() {
 	echo '<input id="token" name="token" type="hidden" accesskey="u" tabindex="999" value="' .$_SESSION['token']. '" />';
 }
 
-function writeTokenH() {
-	/*****************************************************************************************
-	* Create and set a new token for CSRF protection
-	* on initial entry or after form errors and we are going to redisplay the form.
-	******************************************************************************************/
-	$salt="";
-	$tokenStr="";
-	$salt = sha1("rodsdot.com");
-	setcookie("token", "", time()-42000);
-	$_SESSION["salt"]=$salt;
-	$_SESSION["guid"] = com_create_guid();
-	$_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
-	$_SESSION["time"] = time();
-	$tokenStr = "IP:" . $_SESSION["ip"] . ",SESSIONID:" . session_id() . ",GUID:" . $_SESSION["guid"];
-	$_SESSION["token"]=sha1(($tokenStr&$_SESSION["salt"]).$_SESSION["salt"]);
-	if (setcookie("token", $_SESSION["token"], time()+500)) {
-		$_SESSION["usecookie"]=True;
-	}
-	echo '<input id="token" name="token" type="hidden" accesskey="u" tabindex="999" value="' .$_SESSION['token']. '">';
-}
 ?>
