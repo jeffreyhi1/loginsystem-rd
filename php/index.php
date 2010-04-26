@@ -12,7 +12,7 @@ include "include/database.php";
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title><?PHP echo lg_term_home ?></title>
+<title><?PHP echo lg_term_home; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="content-language" content="en-US" />
 <meta name="language" content="en-US" />
@@ -33,9 +33,9 @@ if (isset($_SESSION["name"])) {
 <a title="ASP, XHTML &amp; MS Access Demo Site" href="http://www.webloginproject.com/login-system/aspmsa/">ASP, XHTML &amp; MS Access</a><br />
 <a title="ASP, HTML 4.01 Strict &amp; MySql" href="https://www.webloginproject.com/login-system/aspmysql/">ASP, HTML 4.01 Strict &amp; MySql</a><br />
 &nbsp;</p>
-<p><a title="<?PHP echo lg_term_cancel_account ?>" href="cancel_account.php"><?PHP echo lg_term_cancel_account ?></a></p>
-<p><a title="<?PHP echo lg_term_change_password ?>" href="change_password.php"><?PHP echo lg_term_change_password ?></a></p>
-<p><a title="<?PHP echo lg_term_issue_verification_token ?>" href="issue_verification_token.php"><?PHP echo lg_term_issue_verification_token ?></a></p>
+<p><a title="<?PHP echo lg_term_cancel_account; ?>" href="cancel_account.php"><?PHP echo lg_term_cancel_account; ?></a></p>
+<p><a title="<?PHP echo lg_term_change_password; ?>" href="change_password.php"><?PHP echo lg_term_change_password; ?></a></p>
+<p><a title="<?PHP echo lg_term_issue_verification_token; ?>" href="issue_verification_token.php"><?PHP echo lg_term_issue_verification_token; ?></a></p>
 </body>
 
 </html>
