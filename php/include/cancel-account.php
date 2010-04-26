@@ -29,7 +29,6 @@ $passhash = "";
 $dbPasshash = "";
 $dbId = "";
 $dateDeleted = dbNow();
-if (lg_debug) { $dbMsg = "";
 
 if (lg_debug) {
 	$dbMsg = "DEBUG BEGIN<br />Check for Session(login)<br />";

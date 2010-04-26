@@ -28,4 +28,5 @@ if (isset($_SESSION["name"])) {
 }
 session_destroy();
 header("Location: " . lg_logged_out_page);
+exit();
 ?>
