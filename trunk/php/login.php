@@ -14,7 +14,7 @@ include "include/login.php";
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-<title><?PHP echo lg_term_login?></title>
+<title><?PHP echo lg_term_login; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="content-language" content="en-US" />
 <meta name="language" content="en-US" />
