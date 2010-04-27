@@ -20,7 +20,7 @@
 * Complete Terms of Use my be found at: http://www.rodsdot.com/termsofuse.asp                                     *
 *                                                                                                                 *
 * No part of this application code may be used for commercial purposes without prior written permission from the  *
-* author, Roderick W. Divilbiss of Overland Park, Kansas, United States of America.                               *                                                  *
+* author, Roderick W. Divilbiss of Overland Park, Kansas, United States of America.                               *
 *                                                                                                                 *
 * Non-commercial use of this application code requires this notice be kept intact.                                *
 *                                                                                                                 *

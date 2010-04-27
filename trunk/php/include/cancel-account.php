@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 				ca_cancelAccount($deleted,$dateDeleted,$userid,$passhash);
 				if (lg_debug) { $dbMsg = "numAffected = ".$numAffected."<br />\n"; }
 				if ($numAffected==1) {
-					$message .= lg_phrase_cancel_account_cancelled;
+					$message .= lg_phrase_cancel_account_canceled;
 					if (lg_debug) { $dbMsg = "message = ".$message."<br />\n"; }
 				}else{
 					$message .= lg_phrase_cancel_account_error;

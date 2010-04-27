@@ -136,7 +136,7 @@ define("lg_term_website_address", "Website Address");
 define("lg_term_welcome","Welcome");
 
 define("lg_phrase_attention_webmaster", "Attention Webmaster");
-define("lg_phrase_cancel_account_cancelled", "The account has been cancelled.");
+define("lg_phrase_cancel_account_canceled", "The account has been canceled.");
 define("lg_phrase_cancel_account_error", "There was an unexpected error cancelling your account. Please contact the webmaster");
 define("lg_phrase_cancel_account_warning", "Enter your User ID and Password to cancel your account.<br>WARNING: THIS ACTION CAN NOT BE UNDONE.<br>If you have forgotten your password use the recover password link below.");
 define("lg_phrase_change_password", "Enter your current password, then your desired new password");
