@@ -1,5 +1,5 @@
 			<!-- HTML 4.01 Strict -->
-			<!-- 25 APR 2010 alpha 0.1a -->
+			<!-- 26 APR 2010 alpha 0.1b -->
 			<div id="login-system">
             <h1><?PHP echo lg_term_login; ?></h1>
             <?PHP 
@@ -19,7 +19,7 @@
                 <input id="remember" name="remember" type="checkbox" value="Yes">
                 <input type="hidden" id="destination" name="destination" value="<?PHP echo $destination; ?>"><br>
                 <div id="remember_me_warning"><?PHP echo lg_phrase_remember_me_warning; ?></div>
-                <?PHP writeToken(); ?>
+                <?PHP writeTokenH(); ?>
                 <input type="submit" value="<?PHP echo lg_login_button_text; ?>">
                 </fieldset>
               </form>

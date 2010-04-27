@@ -1,5 +1,5 @@
 			<!-- HTML 4.01 Strict -->
-			<!-- 25 APR 2010 alpha 0.1a -->
+			<!-- 26 APR 2010 alpha 0.1b -->
 			<div id="login-system">
 				<h1><?PHP echo lg_phrase_delete_account; ?></h1>
 				<?PHP if ($message==lg_term_register_delete_enter_email) { ?>
@@ -9,7 +9,7 @@
 						<fieldset>
 						  <legend><?PHP echo lg_phrase_delete_account; ?></legend>
 						  <p><lable for="email"><?PHP echo lg_term_email; ?></lable><br><input type="text" id="email" name="email" size="50" maxsize="100"><br>
-						  <input type="submit" value="<?PHP echo lg_term_submit; ?>"><?PHP writeToken();?></p>
+						  <input type="submit" value="<?PHP echo lg_term_submit; ?>"><?PHP writeTokenH();?></p>
 						</fieldset>  
 						</form>
 				<?PHP }else{ ?>
