@@ -1,8 +1,8 @@
 <?PHP
 /*******************************************************************************************************************
 * Page Name: Register
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010 rdivilbiss
+* Version:  alpha 0.1c Debug
 * On Entry: check for SSL state
 * Input   : userid, password, confirm password, email, name, website address, remember me 
 * Output  : message
@@ -24,7 +24,7 @@ $email="";
 $website="";
 $news="";
 $mailBody="";
-if (lg_debug) { $dbMsg="";
+if (lg_debug) { $dbMsg="DEBUG BEGIN<br />\n"; }
 $ip="";
 $useragent="";
 $region="";
@@ -39,12 +39,6 @@ $message= "<strong>".lg_term_please_register."</strong>";
 if (lg_debug) {
 	$dbMsg .= "Debugging Enabled<br />\n";
 }
-
-/******************************************************************************************************************
-* Function to check is $userid is available
-******************************************************************************************************************/
-// function isUser(p$userid) see: database.php
-
 
 if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	/******************************************************************************************************************
@@ -65,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	* The form was posted, process the form
 	******************************************************************************************************************/
 	if (lg_debug) { $dbMsg .=  "Form POST checktoken<br />\n"; }
-	//check$token
+	checkToken();
 	if (lg_debug) { $dbMsg .=  "checktoken true. Processing form<br />\n"; }
 	$message = "";
 	$userid = getField("userid,safepq");
@@ -90,25 +84,25 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	$destination = getField("destination,urlpath");
 	if (lg_debug) { $dbMsg .= "destination  ". htmlentities($destination) ."<br />\n"; }
 	if ($userid=="") {
-		$message .=  lg_phrase_userid_empty ."<br />\n"; }
+		$message .=  lg_phrase_userid_empty ."<br />\n";
 	}
 	if (isUser($userid) && ($userid!="")) {
-		$message .= lg_phrase_userid_inuse ."<br />\n"; }
+		$message .= lg_phrase_userid_inuse ."<br />\n";
 	}
 	if ($password=="") {
-		$message .=  lg_phrase_password_empty ."<br />\n"; }
+		$message .=  lg_phrase_password_empty ."<br />\n";
 	}
 	if ($confirm=="") {
-		$message .=  lg_phrase_confirm_empty . "<br />\n"; }
+		$message .=  lg_phrase_confirm_empty . "<br />\n";
 	}
 	if ($email=="") {
-		$message .=  lg_phrase_email_empty . "<br />\n"; }
+		$message .=  lg_phrase_email_empty . "<br />\n";
 	}
 	if ($name=="") {
-		$message .=  lg_phrase_name_empty . "<br />\n"; }
+		$message .=  lg_phrase_name_empty . "<br />\n";
 	}
 	if (($password!="") && ($confirm!="") && ($password!=$confirm)) {
-		$message .=  lg_phrase_password_nomatch_confirm . "<br />\n"; }
+		$message .=  lg_phrase_password_nomatch_confirm . "<br />\n";
 	}
 	$passhash = sha1($password . $userid);
 	if (lg_debug) { $dbMsg .= "pashash = " . htmlentities($passhash) . "<br />\n"; }
