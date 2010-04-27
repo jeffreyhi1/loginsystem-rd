@@ -1,8 +1,8 @@
 <?PHP
 /*******************************************************************************************************************
 * general Purpose
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  Stable 1.6
+* Last Modification: 27 APR 2010 RQuadling
+* Version:  Stable 1.7
 * On Entry: None
 * Input:    PRIMARY: tainted field, regular expression, GET|POST
 * Output:   PRIMARY: filtered field
