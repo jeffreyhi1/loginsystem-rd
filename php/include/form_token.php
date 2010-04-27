@@ -54,8 +54,8 @@ function checkToken() {
 		header("Location: http://". lg_domain . lg_loginPath . lg_form_error ."?p=" . $page . "&t=e");
 	}
 }
-	
-function writeToken() {
+
+function generateToken(){
 	/*****************************************************************************************
 	* Create and set a new token for CSRF protection
 	* on initial entry or after form errors and we are going to redisplay the form.
@@ -73,7 +73,16 @@ function writeToken() {
 	if (setcookie("token", $_SESSION["token"], time()+500)) {
 		$_SESSION["usecookie"]=True;
 	}
+}
+
+function writeToken() {
+	generateToken();
 	echo '<input id="token" name="token" type="hidden" accesskey="u" tabindex="999" value="' .$_SESSION['token']. '" />';
+}
+
+function writeTokenH() {
+	generateToken();
+	echo '<input id="token" name="token" type="hidden" accesskey="u" tabindex="999" value="' .$_SESSION['token']. '">';
 }
 
 ?>
