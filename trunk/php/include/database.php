@@ -1,7 +1,7 @@
 <?PHP
 /**
 * Login System Database Functions
-* 19 APR 2010 Version alpha 0.1a
+* 27 APR 2010 Version alpha 0.1c
 * MySql
 */
 
@@ -603,16 +603,6 @@ function isUser($pUserid) {
 	closeConnection($dbConn);
 }
 
-/* Test function isUser()
-
-if (isUser('rdivilbiss')) {
-	echo "userid in use.<br>\n";
-}else{
-	echo "userid available<br>\n";
-}
-
-*/
-
 
 function addUser($pDateRegistered, $pUserid, $pPassword, $pName, $pEmail, $pIp, $pRegion, $pCity, $pCountry, $pUseragent, $pWebsite, $pNews, $pLocked, $pDateLocked, $pToken) {
 	global $numAffected;	
@@ -632,29 +622,6 @@ function addUser($pDateRegistered, $pUserid, $pPassword, $pName, $pEmail, $pIp, 
 	closeConnection($dbConn);
 }
 
-/* Test function addUser() 
-
-$dateRegistered = dbNow();
-$userid="fflintstone";
-$password = sha1($userid . "password");
-$name = "Fred Flintstone"; 
-$email = "fflintstone@rodsdot.com";
-$ip = "198.162.15.105";
-$region = "Kansas";
-$city = "Overland Park";
-$country = "United States";
-$useragent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.2) Gecko/20100115 Firefox/3.6";
-$website = "http://www.example.com";
-$news = "yes";
-$locked = "1";
-$dateLocked = dbNow();
-$token = strtoupper(substr(sha1(getGUID()),1,40));
-
-addUser($dateRegistered, $userid, $password, $name, $email, $ip, $region, $city, $country, $useragent, $website, $news, $locked, $dateLocked, $token);
-echo $numAffected."<br>\n";
-echo sha1(getGUID())." ".strlen(sha1(getGUID()))."<br>\n";
-
-*/
 
 /* set new password */
 
