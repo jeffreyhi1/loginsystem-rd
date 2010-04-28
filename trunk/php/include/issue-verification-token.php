@@ -1,15 +1,14 @@
 <?PHP
 /*******************************************************************************************************************
 * Page Name: Issue Verification Token
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010 rdivilbiss
+* Version:  alpha 0.1b debug Debug
 * On Entry: Check SSL State
 * Input   : userid, email
 * Output  : message
 * On Exit : email sent to account owner with password reset token, account locked
 '******************************************************************************************************************
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /*******************************************************************************************************************
 * If SSL required and not using SSL, redirect to https
 *******************************************************************************************************************/

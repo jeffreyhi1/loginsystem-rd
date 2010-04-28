@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 19 APR 2010 alpha 0.1a -->
+			<!-- 27 APR 2010 alpha 0.1b -->
 			<div id="login-system">
     		<?PHP if ($numAffected!=1) { ?>
     		<div id="message"><?PHP echo $message; ?></div>
@@ -32,15 +32,15 @@
     		</form>
     		<?PHP }else{ ?>
     		<div id="registered"><p><?PHP echo lg_term_registration_thankyou; ?><br /><br />
-    		  <strong><?PHP echo lg_term_userid; ?></strong>: <?PHP echo $userid; ?><br />
-    		  <strong><?PHP echo lg_term_email; ?></strong>: <?PHP echo $email; ?><br />
-    		  <strong><?PHP echo lg_term_name; ?></strong>: <?PHP echo $name; ?><br />
-    		  <strong><?PHP echo lg_term_website; ?></strong>: <?PHP echo $website; ?><br />
-    		  <strong><?PHP echo lg_term_ip; ?></strong>: <?PHP echo $ip; ?><br />
-    		  <strong><?PHP echo lg_term_region; ?></strong>: <?PHP echo $region; ?><br />
-    		  <strong><?PHP echo lg_term_city; ?></strong>: <?PHP echo $city; ?><br />
-    		  <strong><?PHP echo lg_term_country; ?></strong>: <?PHP echo $country; ?><br />
-    		  <strong><?PHP echo lg_term_useragent; ?></strong>: <?PHP echo $useragent; ?><br />
+    		  <strong><?PHP echo lg_term_userid; ?></strong>: <?PHP echo htmlentities($userid); ?><br />
+    		  <strong><?PHP echo lg_term_email; ?></strong>: <?PHP echo htmlentities($email); ?><br />
+    		  <strong><?PHP echo lg_term_name; ?></strong>: <?PHP echo htmlentities($name); ?><br />
+    		  <strong><?PHP echo lg_term_website; ?></strong>: <?PHP echo htmlentities($website); ?><br />
+    		  <strong><?PHP echo lg_term_ip; ?></strong>: <?PHP echo htmlentities($ip); ?><br />
+    		  <strong><?PHP echo lg_term_region; ?></strong>: <?PHP echo htmlentities($region); ?><br />
+    		  <strong><?PHP echo lg_term_city; ?></strong>: <?PHP echo htmlentities($city); ?><br />
+    		  <strong><?PHP echo lg_term_country; ?></strong>: <?PHP echo htmlentities($country); ?><br />
+    		  <strong><?PHP echo lg_term_useragent; ?></strong>: <?PHP echo htmlentities($useragent); ?><br />
     		  <?PHP If ($destination!="") { ?></p>
     		  	<p><a href="<?PHP echo lg_verify_page; ?>" title="<?PHP echo lg_phrase_logout_continue; ?>"><?PHP echo lg_phrase_logout_continue; ?></a></p>
     		  	<?PHP }else{ ?>

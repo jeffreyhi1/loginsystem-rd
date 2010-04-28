@@ -1,15 +1,14 @@
 <?PHP
 /*******************************************************************************************************************
 * Page Name: Recover Password
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010 rdivilbiss
+* Version:  alpha 0.1b debug Debug
 * On Entry: check SSL state
 * Input   : userid, email
 * Output  : message
 * On Exit : mail sent to account owner with password reset token
 ******************************************************************************************************************/
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /*******************************************************************************************************************
 * If SSL required and not using SSL, redirect to https
 *******************************************************************************************************************/

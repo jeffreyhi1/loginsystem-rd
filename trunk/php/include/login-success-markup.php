@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 19 APR 2010 alpha 0.1a -->
+			<!-- 27 APR 2010 alpha 0.1b debug -->
 			<div id="login-system">
 			  <h1><?PHP echo lg_term_login_success; ?></h1>
 			  <div id="loginSuccess"><p><?PHP echo htmlentities($_SESSION["name"]) . lg_phrase_is_logged_in; ?>.</p>

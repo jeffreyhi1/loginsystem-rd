@@ -1,15 +1,14 @@
 <?PHP
 /*******************************************************************************************************************
 * Page Name: Set New Password
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010 rdivilbiss
+* Version:  alpha 0.1b debug Debug
 * On Entry: Expecting reset token, account is locked
 * Input   : current password, new password, confirm new password
 * Output  : message
 * On Exit : password changed and account unlocked
 ******************************************************************************************************************/
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /*******************************************************************************************************************
 * Declare all page variables and initialize default values
 *******************************************************************************************************************/
