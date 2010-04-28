@@ -2,7 +2,7 @@
 // $Id$
 /*******************************************************************************************************************
 * Page Name: Login
-* Last Modification: 27 APR 2010 rdivilbiss
+* Last Modification: 28 APR 2010 rdivilbiss
 * Version:  alpha 0.1b debug Debug Version
 * On Entry: check for destination, $_SESSION["login"], and for SSL state
 * Input   : userid, password
@@ -194,7 +194,7 @@ if ($_SERVER["REQUEST_METHOD"]!="POST") {
 				if (lg_debug) { $dbMsg .= "getField remember = ".getField("remember")." <br />\n"; }
 				if ((lg_term_remember) AND (getField("remember")=="Yes")) {
 					if (lg_debug) { $dbMsg .= "Setting cookie user <br />\n"; }
-					setcookie("user", $value, time()+31536000); // 1 Year
+					setcookie("user", $useridValue, time()+31536000); // 1 Year
 				}
 			
 				/*******************************************************************************************************************
