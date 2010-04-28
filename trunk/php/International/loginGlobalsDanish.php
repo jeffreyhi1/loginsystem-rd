@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -27,7 +27,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: 26 APR 2010 - alpha 0.1b - Hindi - ASP
+* Version: 26 APR 2010 - alpha 0.1b - Danish - ASP
 ******************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
 define("lg_change_password_page", "change_password.php");
@@ -67,8 +67,6 @@ define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
 define("lg_webmaster_email", "Webmaster <webmaster@example.com>");
 define("lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmaster</a>');
-
-
 /*********************************************************************
 * Login system database globals
 *********************************************************************/
@@ -76,7 +74,6 @@ define("lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmas
 function dbNow() {
 	return date("Y-m-d H:i:s");
 }
-
 
 /*********************************************************************
 * Login system language globals
@@ -140,48 +137,48 @@ define("lg_term_website_address", "Website adresse");
 define("lg_term_welcome", "Velkommen");
 define("lg_phrase_attention_webmaster", "Webmaster bemærk venligst");
 define("lg_phrase_cancel_account_cacelled", "Denne konto er blevet annuleret.");
-define("lg_phrase_cancel_account_error", "Der var en uventet fejl da vi annullerede din konto. Kontakt venligst webmasteren ");
-define("lg_phrase_cancel_account_warning", "Indtast dit brugernavn og password for at annullere din konto.<br>ADVARSEL: Denne handling kan ikke fortrydes.<br>Hvis du har glemt dit password brug <i>genopret password</i> linket herunder.");
+define("lg_phrase_cancel_account_error", "Der var en uventet fejl da vi annullerede din konto. Kontakt venligst webmasteren");
+define("lg_phrase_cancel_account_warning", "Indtast dit brugernavn og password for at annullere din konto.<p>ADVARSEL: Denne handling kan ikke fortrydes.</p>Hvis du har glemt dit password brug <i>genopret password</i> linket herunder.");
 define("lg_phrase_change_password", "Indtast din nuværende adgangskode, derefter dit ønskede nye kodeord");
-define("lg_phrase_confirm_empty", "Bekræft Password feltet er tomt, men er påkrævet. Bekræft venligst dit password. ");
-define("lg_phrase_confirm_title", "Bekræft venligst din ønskede adgangskode. Dette felt er påkrævet. ");
+define("lg_phrase_confirm_empty", "Bekræft Password feltet er tomt, men er påkrævet. Bekræft venligst dit password.");
+define("lg_phrase_confirm_title", "Bekræft venligst din ønskede adgangskode. Dette felt er påkrævet.");
 define("lg_phrase_contact_webmaster", "kontakt webmaster");
 define("lg_phrase_delete_account", "Slet konto");
 define("lg_phrase_delete_already_verified", "Denne konto er allerede blevet verificeret og kunne ikke slettes");
 define("lg_phrase_delete_deleted", "Kontoen er blevet slettet");
-define("lg_phrase_email_empty", "Email feltet er tomt, men er påkrævet. Indtast din e-mail-adresse. ");
-define("lg_phrase_email_title", "Indtast din e-mail adresse. Dette felt er påkrævet. ");
+define("lg_phrase_email_empty", "Email feltet er tomt, men er påkrævet. Indtast din e-mail-adresse.");
+define("lg_phrase_email_title", "Indtast din e-mail adresse. Dette felt er påkrævet.");
 define("lg_phrase_enter_unlock_code", "Indtast din Unlock kode");
 define("lg_phrase_is_logged_in", "er logget ind");
 define("lg_phrase_issue_new_token", "Indtast dit userid og din e-mail for at modtage en ny bekræftelses token.");
-define("lg_phrase_issue_new_token_error", "Der opstod en uventet fejl da vi genererede din kontrol token. Kontakt venligst webmaster. ");
+define("lg_phrase_issue_new_token_error", "Der opstod en uventet fejl da vi genererede din kontrol token. Kontakt venligst webmaster.");
 define("lg_phrase_issue_new_token_success", "Dit nye bekræftelseskendetegn vil blive sendt til din e-mail adresse.");
-define("lg_phrase_login_error", "Der var en fejl. Indtast dit brugernavn og adgangskode igen. ");
+define("lg_phrase_login_error", "Der var en fejl. Indtast dit brugernavn og adgangskode igen.");
 define("lg_phrase_login_token_problem", "Enten er verifikation token blevet brugt (og du er verificeret), eller token er ikke gyldig.");
 define("lg_phrase_logged_out", "Du er logget ud.");
 define("lg_phrase_logout_continue", "klik her for at fortsætte.");
-define("lg_phrase_name_empty", "Feltet er tomt, men er påkrævet. Indtast dit navn. ");
-define("lg_phrase_name_title", "Indtast dit fulde navn. Dette felt er påkrævet. ");
-define("lg_phrase_newpassword_empty", "Det Nye Password felt er tomt, men er påkrævet. Indtast dit kodeord. ");
+define("lg_phrase_name_empty", "Feltet er tomt, men er påkrævet. Indtast dit navn.");
+define("lg_phrase_name_title", "Indtast dit fulde navn. Dette felt er påkrævet.");
+define("lg_phrase_newpassword_empty", "Det Nye Password felt er tomt, men er påkrævet. Indtast dit kodeord.");
 define("lg_phrase_news", "Ønsker du at modtage regelmæssige e-mails, når hjemmesiden ændres eller nye artikler er indsendt?");
 define("lg_phrase_no_matching_registration", "Der var ingen registrering, der matcher det Bruger ID og den e-mail-adresse, du har indtastet.");
 define("lg_phrase_oldpassword_does_not_match", "Den nuværende adgangskode matcher ikke dine gemte adgangskode. Prøv igen");
-define("lg_phrase_oldpassword_empty", "Det Gamle Password felt er tomt, men er påkrævet. Indtast dit kodeord. ");
-define("lg_phrase_oldpassword_title", "Indtast din nuværende adgangskode. Dette felt er påkrævet. ");
+define("lg_phrase_oldpassword_empty", "Det Gamle Password felt er tomt, men er påkrævet. Indtast dit kodeord.");
+define("lg_phrase_oldpassword_title", "Indtast din nuværende adgangskode. Dette felt er påkrævet.");
 define("lg_phrase_password_change_authorized", "Hvis du ikke har tilladelse til denne ændring, bedes du kontakte webmaster");
 define("lg_phrase_password_changed", "Din adgangskode blev ændret");
-define("lg_phrase_password_changed_error", "Der opstod en uventet fejl. Adgangskoden blev ikke ændret. Kontakt venligst webmaster ");
+define("lg_phrase_password_changed_error", "Der opstod en uventet fejl. Adgangskoden blev ikke ændret. Kontakt venligst webmaster");
 define("lg_phrase_password_changed_okay", "Password skiftet.");
 define("lg_phrase_password_changed_post", "var ændret til");
 define("lg_phrase_password_changed_pre", "Din adgangskode på");
-define("lg_phrase_password_empty", "Password feltet er tomt, men er påkrævet. Indtast dit kodeord. ");
-define("lg_phrase_password_new_title", "Indtast dit ønskede password. Dette felt er påkrævet. ");
-define("lg_phrase_password_nomatch_confirm", "Password matcher ikke Bekræftelsesadgangskoden. Indtast igen. ");
-define("lg_phrase_password_title", "Indtast din adgangskode. Dette felt er påkrævet. ");
+define("lg_phrase_password_empty", "Password feltet er tomt, men er påkrævet. Indtast dit kodeord.");
+define("lg_phrase_password_new_title", "Indtast dit ønskede password. Dette felt er påkrævet.");
+define("lg_phrase_password_nomatch_confirm", "Password matcher ikke Bekræftelsesadgangskoden. Indtast igen.");
+define("lg_phrase_password_title", "Indtast din adgangskode. Dette felt er påkrævet.");
 define("lg_phrase_register_delete_noemail", "Der er ingen konto som matchede den e-mail adresse, du indtastede.");
 define("lg_phrase_registration_email_verify", "Bekræft din e-mail-adresse");
-define("lg_phrase_registration_email_verify_msg", "En e-mail blev sendt til den email adresse, du angav under registreringen. Klik på linket i den e-mail eller klip og klistr låse-op koden i form feltet nedenfor. Din konto vil ikke være tilgængelig før den er blevet bekræftet. ");
-define("lg_phrase_registration_error", "Der var en uventet fejl da vi fuldførte din registrering. Kontakt venligst webmaster ");
+define("lg_phrase_registration_email_verify_msg", "En e-mail blev sendt til den email adresse, du angav under registreringen. Klik på linket i den e-mail eller klip og klistr låse-op koden i form feltet nedenfor. Din konto vil ikke være tilgængelig før den er blevet bekræftet.");
+define("lg_phrase_registration_error", "Der var en uventet fejl da vi fuldførte din registrering. Kontakt venligst webmaster");
 define("lg_phrase_registration_mail0", "Udsted Ny Registrerings Kontrol Token");
 define("lg_phrase_registration_mail1", "Tak for din registrering hos");
 define("lg_phrase_registration_mail2", "Før du kan logge ind skal du");
@@ -190,14 +187,14 @@ define("lg_phrase_registration_mail4", "Klik her for at kontrollere");
 define("lg_phrase_registration_mail5", "Hvis ovenstående link ikke virker, skal du gå til http://");
 define("lg_phrase_registration_mail6", "kopiere og klistre token nedenfor i skemaet og klik \"Send\"");
 define("lg_phrase_registration_mail7", "Hvis du ikke registrerede, klik på");
-define("lg_phrase_registration_mail8", "dette link: <a href = \"http:// ");
-define("lg_phrase_registration_mail9", "hvis du har spørgsmål så <a href = \"http:// ");
+define("lg_phrase_registration_mail8", "dette link: <a href = \"http://");
+define("lg_phrase_registration_mail9", "hvis du har spørgsmål så <a href = \"http://");
 define("lg_phrase_registration_success", "Registrering lykkedes");
 define("lg_phrase_remember_me_warning", "Tjek ikke \"husk mig\", hvis det er en delt computer.");
 define("lg_phrase_userid_empty", "Bruger-ID feltet er påkrævet, men er tomt. Indtast dit bruger-ID. ");
 define("lg_phrase_userid_inuse", "Bruger-ID er i brug eller ugyldigt.");
 define("lg_phrase_userid_new_title", "Indtast dit ønskede bruger-ID. Dette felt er påkrævet.");
-define("lg_phrase_userid_title", "Indtast dit bruger-ID. Dette felt er påkrævet. ");
+define("lg_phrase_userid_title", "Indtast dit bruger-ID. Dette felt er påkrævet.");
 define("lg_phrase_verify_expired", "Der er gået mere end 24 timer der er gået siden din registrering.");
 define("lg_phrase_verify_login", "Du kan nu logge ind på din konto.");
 define("lg_phrase_verify_newtoken", "Klik her for at generere en ny låse-kode.");
@@ -210,11 +207,11 @@ define("lg_phrase_recover_password3", "Forandr dit Password");
 define("lg_phrase_recover_password4", "Hvis du ikke har anmodet om at gendanne din adgangskode, kan du kontakte webmaster via");
 define("lg_phrase_recover_password5", "E-mail på det følgende e-mail link");
 define("lg_phrase_recover_password_error", "Der opstod en uventet fejl under behandling af din anmodning. Kontakt venligst webmaster.");
-define("lg_phrase_recover_password_success", "Anmodningen om at gendanne din adgangskode blev behandlet med succes. <br> Følg instruktionerne i e-mail sendt til dig for at lave en ny adgangskode.");
+define("lg_phrase_recover_password_success", "Anmodningen om at gendanne din adgangskode blev behandlet med succes.<p>Følg instruktionerne i e-mail sendt til dig for at lave en ny adgangskode.</p>");
 define("lg_term_new_password", "Nyt Password");
 define("lg_term_reset_password", "Password Reset");
 define("lg_term_set_new_password", "Indtast en ny adgangskode");
-define("lg_phrase_set_new_password_good_token", "Din token var gyldig. Indtast en ny adgangskode. ");
+define("lg_phrase_set_new_password_good_token", "Din token var gyldig. Indtast en ny adgangskode.");
 define("lg_phrase_set_new_password_tken_expired", "Mere end 24 timer er gået, siden du har bedt om en gendannelse af adgangskode token.");
 define("lg_phrase_contact_webmaster1", "Kontakt venligst webmaster for at få hjælp.");
 define("lg_phrase_webmaster_may_be_contacted", "Webmasteren kan kontaktes via e-mail via dette link:");
