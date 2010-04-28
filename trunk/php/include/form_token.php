@@ -15,7 +15,7 @@ function generateToken(){
 	$salt="";
 	$tokenStr="";
 	$salt = sha1($_SERVER["HTTP_HOST"]);
-	setcookie("token", "", time()-42000);
+	setcookie("token", "", time()+86400);
 	$_SESSION["salt"]=$salt;
 	$_SESSION["guid"] = com_create_guid();
 	$_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
