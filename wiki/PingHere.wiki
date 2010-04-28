@@ -10,3 +10,5 @@ Add your ping to the end of the page
 rdivilbiss - ping.
 
 RQuadling - ping via the edit option.
+
+RQuadling - Pinged via SVN.
