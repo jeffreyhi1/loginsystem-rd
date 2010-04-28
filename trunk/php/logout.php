@@ -1,8 +1,8 @@
 <?PHP
 /*******************************************************************************************************************
 * Logout
-* Last Modification: 19 APR 2010
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010
+* Version:  alpha 0.1b Debug
 * On Entry: N/A
 * Input:    Session
 * Output:   N/A
