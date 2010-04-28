@@ -69,13 +69,13 @@ If ($_SERVER["REQUEST_METHOD"]=="POST") {
 	if (lg_debug) { $dbMsg .= "Confirm Password: ".$confirm."<br />\n"; }
 	
 	if ($oldpassword=="") {
-		$message .= lg_phrase_oldpassword_empty . "<br />\n"; }
+		$message .= lg_phrase_oldpassword_empty . "<br />\n";
 	}
 	if ($newpassword=="") {
-		$message .= lg_phrase_newpassword_empty . "<br />\n"; }
+		$message .= lg_phrase_newpassword_empty . "<br />\n";
 	}
 	if ($confirm=="") {
-		$message .= lg_phrase_confirm_empty & "<br />\n"; }
+		$message .= lg_phrase_confirm_empty & "<br />\n";
 	}
 	if (lg_debug) { $dbMsg .= "message: " . $message . "<br />\n"; }
 	/*******************************************************************************************************************
