@@ -1,5 +1,5 @@
 			<!-- HTML 4.01 Strict -->
-			<!-- 26 APR 2010 alpha 0.1b -->
+			<!-- 27 APR 2010 alpha 0.1b -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_cancel_account; ?></h1>
 			<?PHP If ($message != lg_phrase_cancel_account_canceled) { ?>
