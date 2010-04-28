@@ -1,5 +1,5 @@
 ﻿<%
-// $Id: loginGlobalsEnglish.php 201 2010-04-28 09:43:15Z rdivilbiss $
+'* $Id: loginGlobalsEnglish.php 201 2010-04-28 09:43:15Z rdivilbiss $
 '********************************************************************************************************************
 '* Login Globals - ASP
 '* 
