@@ -220,10 +220,10 @@ if ($_SERVER["REQUEST_METHOD"]!="POST") {
 				if (lg_debug) { $dbMsg .= "Use SSL = ".lg_useSSL." <br />\n"; }
 				if (lg_debug) { $dbMsg .= "Server Port Secure = ".$_SERVER["SERVER_PORT_SECURE"]." <br />\n"; }
 				if ((lg_useSSL) && ($_SERVER["SERVER_PORT_SECURE"]=="0")) {
-					if (lg_debug) { $dbMsg .= "REDIRECTING TO: https://" . lg_domain . lg_loginPath . $lg_filename ."?p=". $destination." <br />\n"; }
+					if (lg_debug) { $dbMsg .= "REDIRECTING TO: https://" . lg_domain . lg_loginPath . $destination." <br />\n"; }
 					header("Location: https://" . lg_domain . lg_loginPath . $destination);
 				}else{
-					if (lg_debug) { $dbMsg .= "REDIRECTING TO: http://" . lg_domain . lg_loginPath . $lg_filename ."?p=". $destination." <br />\n"; }
+					if (lg_debug) { $dbMsg .= "REDIRECTING TO: http://" . lg_domain . lg_loginPath . $destination." <br />\n"; }
 					header("Location: http://" . lg_domain . lg_loginPath . $destination);
 				}
 			}else{
