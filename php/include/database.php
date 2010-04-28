@@ -345,7 +345,7 @@ function li_deleteLoginAttempt($pIp, $pUserid) {
 	if ($command = $dbConn->prepare("DELETE FROM loginAttempts WHERE loginAttemptIP = ? OR loginAttemptUserID = ?")) {
 
 		/* bind parameters for markers */
-		$command->bind_param("sissi", $pUserid, $pNumber, $pDate, $pIp, $pId);
+		$command->bind_param("ss", $pIp, $pUserid);
 		
 		/* execute query */
 		$command->execute();
