@@ -5,25 +5,28 @@ Implementation Guide
 
 How to Install The Login System On You Site
 
-
 = Implementation =
 
-The Login System is being released as beta code.  While it has been tested thoroughly, it is not guaranteed bug-free.
+The Login System has been released as alpha code in ASP and PHP. Cold Fusion and ASP.NET versions are still in development. While it has been tested thoroughly, it is not guaranteed bug-free. It has been successfully deployed on many servers.
  
 The Login System is meant to be integrated into your site so it has your site's "look and feel." If you will create one template page which contains all the normal content of a page on your site, then implementation is simply a matter of including the server-side code for a given page, along with the necessary library files at the top of the page. The HTML or XHTML markup for a given page is included in the "main content area" of the page.  From one template page, you create as many of the Login System pages as needed for your site.
 
+For more detailed Implementation instructions please refer to the articles beginning with: [http://www.experts-exchange.com/articles/Web_Development/Miscellaneous/A-Better-Website-Login-System-the-EE-Collaborative-Login-System.html EE Collaborative Login System]
+
+ 
 == Prerequisites ==
 
 There are certain pages your site is expected to have prior to implementing the Login System. To avoid multiple, potentially conflicting versions, you can learn about the prerequisites at the Google Code Project wiki: http://code.google.com/p/loginsystem-rd/wiki/Prerequisites.
 
 == Obtaining the code ==
 
-Obtaining the code will require several downloads.  You'll need the one of the:
-  * ASP or PHP code, 
-  * the ASP or PHP Common Library files, and 
-  * either the HTML 4.01 Strict, or XHTML 1.1 Strict page mark-up.
+Obtaining the code will require two downloads.  You'll need the one of the:
+  * ASP or PHP code, in the world language of your choice (Danish, German, etc.), and 
+  * a database creation script or the MS Access database file.
 
-For beta code you may use the downloads section here. (Downloads Tab)
+All packages are currently delivered with XHTML 1.1 Strict markup. If you want HTML 4.01 Strict markup you need an additional download/
+
+All packages are available under the downloads tab on this site.
 
 
 == The database ==
