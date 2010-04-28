@@ -1,16 +1,15 @@
 <?PHP
 /*******************************************************************************************************************
 * Change Password
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1a debug version
+* Last Modification: 27 APR 2010 rdivilbiss
+* Version:  alpha 0.1b debug version
 * On Entry: Verify need for SSL
 * Input:    oldpassword, newpassword, confirm
 * Output:   message - string variable with results
 * On Exit:  Password Changed
 *           Email sent to account owner
 ******************************************************************************************************************/
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /*******************************************************************************************************************
 * Must be logged in to change password. If not logged in redirect to login.asp
 *******************************************************************************************************************/

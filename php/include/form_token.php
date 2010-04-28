@@ -1,7 +1,7 @@
 <?PHP
 /**
 * Login System Form Token (anti-CSRF) Functions
-* 19 APR 2010 Version alpha 0.1a
+* 27 APR 2010 Version alpha 0.1b debug
 */
 if (!isset($_SESSION)) {
 	session_start();

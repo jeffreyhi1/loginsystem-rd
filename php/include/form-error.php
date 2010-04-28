@@ -1,10 +1,8 @@
 <?PHP
 /**
 * Login System Form Error include
-* 19 APR 2010 Version alpha 0.1a
+* 27 APR 2010 Version alpha 0.1b debug
 */
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
 
 $page="";
 $reason="";

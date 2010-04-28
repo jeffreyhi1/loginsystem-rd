@@ -1,7 +1,7 @@
 <?PHP
 /**
 * Login System Database Functions
-* 27 APR 2010 Version alpha 0.1c
+* 27 APR 2010 Version alpha 0.1b debug
 * MySql
 */
 
