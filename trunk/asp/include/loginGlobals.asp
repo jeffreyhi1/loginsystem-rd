@@ -15,7 +15,7 @@
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
 '* Modification: 02 APR 2010 :: acperkins - verified or corrected translation to Spanish (Mexican)
 '* Modification: 01 APR 2010 :: Bob Stone - translated to Spanish (Mexican)
-'* Modification: 28 MAR 2010 :: Jürgen Kraus - translated to German
+'* Modification: 28 MAR 2010 :: Jurgen Kraus - translated to German
 '* Modification: 28 MAR 2010 :: Cam Van T Divilbiss - translated to Vietnamese
 '* Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
 '* Modification: 07 FEB 2010 :: VGR - translation to French
