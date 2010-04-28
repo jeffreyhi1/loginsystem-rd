@@ -1,5 +1,5 @@
 			<!-- HTML 4.01 Strict -->
-			<!-- 26 APR 2010 alpha 0.1b -->
+			<!-- 27 APR 2010 alpha 0.1b -->
 			<div id="login-system">
 			<h1><?PHP echo lg_phrase_recover_password; ?></h1>
 			<?PHP if ($message != lg_phrase_recover_password_success) { ?>
