@@ -47,7 +47,16 @@ function checkToken() {
 		If ($diff<=300) { // Five minutes max
 	    	If ($_SESSION["usecookie"]) {
 			    If ($_COOKIE["token"]===$oldToken) {
-			    	setcookie("token", '', time()-42000);
+			    	/*****************************************************************************************
+					* Destroy the old form token, then
+					* generate a new token for the form, which may or may not be needed. We want to do this
+					* before headers are written. When writeToken() or writeTokenH() is called we are only 
+					* writing the pre-generated token to the form. The cookie will have already been written.
+					******************************************************************************************/
+			    	if (lg_debug) { $dbMsg .= "In Form Token: checkToken: set old cookie to nothing<br />\n"; }
+					setcookie("token", '', time()-42000);
+					if (lg_debug) { $dbMsg .= "In Form Token: checkToken: NEW generateToken<br />\n"; }
+					generateToken();
 					return true;
 				}else{
 					$_SESSION = array();
@@ -76,15 +85,6 @@ function checkToken() {
 		session_destroy();
 		header("Location: http://". lg_domain . lg_loginPath . lg_form_error ."?p=" . $page . "&t=e");
 	}
-	/*****************************************************************************************
-	* generate a new token for the form, which may or may not be needed. We want to do this
-	* before headers are written. When writeToken() or writeTokenH() is called we are only 
-	* writing the pre-generated token to the form. The cookie will have already been written.
-	******************************************************************************************/
-	if (lg_debug) { $dbMsg .= "In Form Token: checkToken: set old cookie to nothing<br />\n"; }
-	setcookie("token", '', time()-42000);
-	if (lg_debug) { $dbMsg .= "In Form Token: checkToken: NEW generateToken<br />\n"; }
-	generateToken();
 }
 
 
