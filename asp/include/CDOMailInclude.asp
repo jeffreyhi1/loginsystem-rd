@@ -1,5 +1,6 @@
 <!--METADATA TYPE="typelib" UUID="CD000000-8B95-11D1-82DB-00C04FB1625D" name="CDO for Windows Library" -->
 <%
+' $Id$
 '*******************************************************************************************************************
 '* CDO Mail Include
 '* Last Modification: 01 JAN 2008 rdivilbiss

@@ -1,3 +1,6 @@
+<?PHP
+// $Id$
+?>
 			<!-- XHTML 1.1 Strict -->
 			<!-- 27 APR 2010 alpha 0.1b -->
 			<div id="login-system">

@@ -1,4 +1,5 @@
 <?PHP
+// $Id$
 /*******************************************************************************************************************
 * Page Name: Issue Verification Token
 * Last Modification: 27 APR 2010 rdivilbiss
