@@ -15,15 +15,17 @@ function generateToken(){
 	$salt="";
 	$tokenStr="";
 	$salt = sha1($_SERVER["HTTP_HOST"]);
-	setcookie("token", "", time()+86400);
+	setcookie("token", "", time()-42000);
 	$_SESSION["salt"]=$salt;
-	$_SESSION["guid"] = com_create_guid();
+	$_SESSION["guid"] = getGUID();
 	$_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
 	$_SESSION["time"] = time();
 	$tokenStr = "IP:" . $_SESSION["ip"] . ",SESSIONID:" . session_id() . ",GUID:" . $_SESSION["guid"];
 	$_SESSION["token"]=sha1(($tokenStr&$_SESSION["salt"]).$_SESSION["salt"]);
-	if (setcookie("token", $_SESSION["token"], time()+500)) {
+	if (lg_debug) { $dbMsg .= "Form Token: " . $_SESSION["token"] . "<br />\n"; }
+	if (setcookie("token", $_SESSION["token"], time()+86400)) {
 		$_SESSION["usecookie"]=True;
+		if (lg_debug) { $dbMsg .= "Form Token: Use Cookie = true<br />\n"; }	
 	}
 }
 
@@ -50,7 +52,7 @@ function checkToken() {
 				}else{
 					$_SESSION = array();
 		  			if (isset($_COOKIE[session_name()])) {
-	    				setcookie(session_name(), '', time()-42000, '/');
+	    				setcookie(session_name(), '', time()-42000);
 					}
 					session_destroy();
 					header("Location: http://". lg_domain . lg_loginPath . lg_form_error ."?p=" . $page . "&t=ec");
@@ -61,7 +63,7 @@ function checkToken() {
 	  	}else{
 	  		$_SESSION = array();
 	  		if (isset($_COOKIE[session_name()])) {
-    			setcookie(session_name(), '', time()-42000, '/');
+    			setcookie(session_name(), '', time()-42000);
 			}
 			session_destroy();
 			header("Location: http://". lg_domain . lg_loginPath . lg_form_error ."?p=" . $page . "&t=et");
@@ -69,7 +71,7 @@ function checkToken() {
 	}else{
 		$_SESSION = array();
 		if (isset($_COOKIE[session_name()])) {
-    		setcookie(session_name(), '', time()-42000, '/');
+    		setcookie(session_name(), '', time()-42000);
 		}
 		session_destroy();
 		header("Location: http://". lg_domain . lg_loginPath . lg_form_error ."?p=" . $page . "&t=e");
@@ -79,6 +81,9 @@ function checkToken() {
 	* before headers are written. When writeToken() or writeTokenH() is called we are only 
 	* writing the pre-generated token to the form. The cookie will have already been written.
 	******************************************************************************************/
+	if (lg_debug) { $dbMsg .= "In Form Token: checkToken: set old cookie to nothing<br />\n"; }
+	setcookie("token", '', time()-42000);
+	if (lg_debug) { $dbMsg .= "In Form Token: checkToken: NEW generateToken<br />\n"; }
 	generateToken();
 }
 
@@ -89,6 +94,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	* writeToken() or writeTokenH() is called we are only writing the pre-generated token to
 	* the form. The cookie has already been sent.
 	******************************************************************************************/
+	if (lg_debug) { $dbMsg .= "In Form Token: METHOD=GET: generateToken<br />\n"; }
 	generateToken();
 }
 
