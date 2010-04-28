@@ -1,4 +1,5 @@
 <?PHP
+// $Id$
 setlocale(LC_ALL, 'English_United States.65001');
 if (!isset($_SESSION)) {
 	session_start();

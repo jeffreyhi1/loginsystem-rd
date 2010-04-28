@@ -7,7 +7,8 @@
 -- PHP Version: 4.4.9
 -- 
 -- Database: `loginproject`
--- 
+--
+-- $Id$ 
 DROP DATABASE `loginproject`;
 CREATE DATABASE `loginproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `loginproject`;
