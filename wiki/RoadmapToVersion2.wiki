@@ -3,7 +3,7 @@ Roadmap, Goals and Objectives For Version 2
 
 = Introduction =
 
-You didn't thin this would end with Version 1 did you?
+You didn't think this would end with Version 1 did you?
 
 
 = Details =
