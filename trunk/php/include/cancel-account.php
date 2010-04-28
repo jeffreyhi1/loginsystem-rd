@@ -1,15 +1,14 @@
 <?PHP
 /*******************************************************************************************************************
 * Cancel Account
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010 rdivilbiss
+* Version:  alpha 0.1b Debug
 * On Entry: Verify need for SSL
 * Input:    userid, password
 * Output:   message - string variable with results
 * On Exit:  Account Deleted.
 ******************************************************************************************************************/
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /*******************************************************************************************************************
 * If SSL required and not using SSL, redirect to https
 *******************************************************************************************************************/
