@@ -1,15 +1,14 @@
 <?PHP
 /*******************************************************************************************************************
 * Page Name
-* Last Modification: 19 APR 2010 rdivilbiss
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010 rdivilbiss
+* Version:  alpha 0.1b debug Debug
 * On Entry: email passed as URL parameter
 * Input   : email address
 * Output  : message
 * On Exit : account marked as deleted in users table
 ******************************************************************************************************************/
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /*******************************************************************************************************************
 * Diminsion all page variables and initialize default values
 *******************************************************************************************************************/

@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 19 APR 2010 alpha 0.1a -->
+			<!-- 27 APR 2010 alpha 0.1b debug -->
 			<div id="login-system">
 			<h1><?PHP echo lg_phrase_registration_email_verify; ?></h1>
 			<?PHP If ($message==lg_phrase_registration_email_verify_msg) { ?>

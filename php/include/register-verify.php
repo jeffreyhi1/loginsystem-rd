@@ -1,15 +1,14 @@
 <?PHP
 /*******************************************************************************************************************
 * Register Verify
-* Last Modification: 19 APR 2010
-* Version:  alpha 0.1a Debug
+* Last Modification: 27 APR 2010
+* Version:  alpha 0.1b debug Debug
 * On Entry: 1. verification token could be passed as a URL parameter
 * Input:    2. verification token could be entered as form field value
 * Output:   message - string variable with results
 * On Exit:  Account activated if 
 ******************************************************************************************************************/
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /*******************************************************************************************************************
 * Declare all page variables and initialize default values
 *******************************************************************************************************************/

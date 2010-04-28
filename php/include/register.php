@@ -2,14 +2,13 @@
 /*******************************************************************************************************************
 * Page Name: Register
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.1c Debug
+* Version:  alpha 0.1b Debug
 * On Entry: check for SSL state
 * Input   : userid, password, confirm password, email, name, website address, remember me 
 * Output  : message
 * On Exit : new account created, locked, account unlock token emailed to account owner
 ******************************************************************************************************************/
-header("Pragma: No-cache");
-header("Cache-control: No-cache");
+
 /******************************************************************************************************************
 * Diminsion all page variables and initialize default values
 ******************************************************************************************************************/

@@ -1,5 +1,5 @@
 			<!-- XHTML 1.1 Strict -->
-			<!-- 19 APR 2010 alpha 0.1a -->
+			<!-- 27 APR 2010 alpha 0.1b debug -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_reset_password; ?></h1>
 			<?PHP if ($_SESSION["action"]=="token") { ?>
