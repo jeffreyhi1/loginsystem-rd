@@ -8,3 +8,5 @@ Add your ping to the end of the page
 = Details =
 
 rdivilbiss - ping.
+
+RQuadling - ping via the edit option.
