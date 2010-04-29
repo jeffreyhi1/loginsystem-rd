@@ -8,9 +8,15 @@
 '*       You must set the database connection details below.
 '* 
 '* 
+'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+'* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
+'* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+'* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
+'* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
+'*                                              loginGlobals.php, and corrected paths in loginGlobals.php
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting 
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
-'* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
 '* Modification: 02 APR 2010 :: acperkins - verified or corrected translation to Spanish (Mexican)
 '* Modification: 01 APR 2010 :: Bob Stone - translated to Spanish (Mexican)
 '* Modification: 28 MAR 2010 :: Jürgen Kraus - translated to German
@@ -21,7 +27,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version:  beta 1.9 - English - ASP
+'* Version:  28 APR 2010 - alpha 0.1b - English - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -60,7 +66,7 @@ Const lg_register_page = "register.asp"
 Const lg_set_new_password_page = "set_new_password.asp"
 Const lg_success_page = "login_success.asp"
 Const lg_useSSL = false
-Const lg_debug = true
+Const lg_debug = false
 Const lg_verify_page = "register_verify.asp"
 Const lg_webmaster_email = "webmaster@example.com"
 Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
@@ -159,7 +165,7 @@ Const lg_term_welcome = "Welcome"
 Const lg_phrase_attention_webmaster = "Attention Webmaster"
 Const lg_phrase_cancel_account_cacelled = "The account has been canceled."
 Const lg_phrase_cancel_account_error = "There was an unexpected error canceling your account. Please contact the webmaster"
-Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to cancel your account.<br>WARNING: THIS ACTION CAN NOT BE UNDONE.<br>If you have forgotten your password use the recover password link below."
+Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to cancel your account.<p>WARNING: THIS ACTION CAN NOT BE UNDONE.</p>If you have forgotten your password use the recover password link below."
 Const lg_phrase_change_password = "Enter your current password, then your desired new password"
 Const lg_phrase_confirm_empty = "The Confirm Password field is empty but is required. Please confirm your password."
 Const lg_phrase_confirm_title = "Please confirm your desired password. This field is required."
@@ -230,7 +236,7 @@ Const lg_phrase_recover_password3 = "Set New Password"
 Const lg_phrase_recover_password4 = "If you did not request to recover your password, contact the webmaster by "
 Const lg_phrase_recover_password5 = "Email at the following Email link "
 Const lg_phrase_recover_password_error = "There was an unexpected error processing your request. Please contact the webmaster."
-Const lg_phrase_recover_password_success = "The request to recover your password was processed successfully.<br>Please follow the instructions in the Email sent to you to set a new password."
+Const lg_phrase_recover_password_success = "The request to recover your password was processed successfully.<p>Please follow the instructions in the Email sent to you to set a new password.</p>"
 Const lg_phrase_set_new_password_good_token = "Your token was valid. Enter a new password."
 Const lg_phrase_set_new_password_token_expired = "More than 24 hours have passed since you requested a password recovery token."
 Const lg_phrase_contact_webmaster1 = "Please contact the webmaster for assistance."
