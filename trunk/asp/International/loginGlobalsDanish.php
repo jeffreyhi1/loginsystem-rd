@@ -1,7 +1,7 @@
 ﻿<%
 '* $Id: loginGlobalsDanish.asp 201 2010-04-28 09:43:15Z rdivilbiss $
 '*******************************************************************************************************************
-'* Login Globals - PHP
+'* Login Globals - ASP
 '* 
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
@@ -10,9 +10,10 @@
 '* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
 '* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+'* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 '* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
 '*                                              loginGlobals.php, and corrected paths in loginGlobals.php
-'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting 
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
@@ -26,7 +27,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: 26 APR 2010 - alpha 0.1b - Danish - ASP
+'* Version: 28 APR 2010 - alpha 0.1b - Danish - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -159,7 +160,7 @@ Const lg_term_welcome = "Velkommen"
 Const lg_phrase_attention_webmaster = "Webmaster bemærk venligst"
 Const lg_phrase_cancel_account_cacelled = "Denne konto er blevet annuleret."
 Const lg_phrase_cancel_account_error = "Der var en uventet fejl da vi annullerede din konto. Kontakt venligst webmasteren "
-Const lg_phrase_cancel_account_warning = "Indtast dit brugernavn og password for at annullere din konto.<p>ADVARSEL: Denne handling kan ikke fortrydes.<br>Hvis du har glemt dit password brug <i>genopret password</i> linket herunder.</p>"
+Const lg_phrase_cancel_account_warning = "Indtast dit brugernavn og password for at annullere din konto.<p>ADVARSEL: Denne handling kan ikke fortrydes.</p>Hvis du har glemt dit password brug <i>genopret password</i> linket herunder.</p>"
 Const lg_phrase_change_password = "Indtast din nuværende adgangskode, derefter dit ønskede nye kodeord"
 Const lg_phrase_confirm_empty = "Bekræft Password feltet er tomt, men er påkrævet. Bekræft venligst dit password. "
 Const lg_phrase_confirm_title = "Bekræft venligst din ønskede adgangskode. Dette felt er påkrævet. "

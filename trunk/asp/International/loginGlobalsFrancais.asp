@@ -7,7 +7,13 @@
 '*       You must set the webmaster e-mail addresses.
 '*       You must set the database connection details below.
 '* 
-'* Modification: 25 APR 2010 :: Rod Divilbiss - corrected file paths.
+'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+'* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
+'* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+'* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
+'* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
+'*                                              loginGlobals.php, and corrected paths in loginGlobals.php
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting 
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
@@ -16,12 +22,12 @@
 '* Modification: 28 MAR 2010 :: Jürgen Kraus - translated to German
 '* Modification: 28 MAR 2010 :: Cam Van T Divilbiss - translated to Vietnamese
 '* Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
-'* Modification: 07 FEB 2010 :: VGR - translation to French
+'* Modification: 07 FEB 2010 :: VGR - translation to French/Francais
 '* Modification: 07 FEB 2010 :: Rod Divilbiss - added MS SQL and MySql Constants.
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version:  alpha 0.1a - French - ASP
+'* Version:  28 APR 2010 - alpha 0.1a - French - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
