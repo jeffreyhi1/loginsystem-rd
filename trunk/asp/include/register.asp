@@ -21,7 +21,7 @@ Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* Dimension all page variables and initialize default values
 '*******************************************************************************************************************
-Dim redirected, destination, password, confirm, passhash, userid, name, email, website, news, mailBody, debug, debugout
+Dim redirected, destination, password, confirm, passhash, userid, name, email, website, news, mailBody, dbMsg
 Dim ip, useragent, region, city, country, dateRegistered, locked, dateLocked, token, cmdTxt, message, objXMLHTTP, xmldoc
 Dim reChallenge, reResponse
 
@@ -46,9 +46,8 @@ dateLocked=""
 token=""
 cmdTxt=""
 message= "<strong>"&lg_term_please_register&"</strong>"
-debug = lg_debug
-If debug Then
-	debugout = "Debugging Enabled<br>"
+If lg_debug Then
+	dbMsg = "DEBUG BEGIN<br>" & vbLF
 End If
 reChallenge = ""
 
@@ -56,7 +55,7 @@ reChallenge = ""
 '* Function to check is userid is available
 '*******************************************************************************************************************
 function isUser(pUserId)
-	debugout = debugout & "entering isUser with pUserId = " &pUserID& "<br>"
+	If lg_debug Then dbMsg = dbMsg & "entering isUser with pUserId = " &pUserID& "<br>" & vbLF End If
 	Dim cmdTxt
 	If lg_database="access" Then
 		cmdTxt = "SELECT [userid] FROM users WHERE ([userid]=?);"
@@ -70,10 +69,10 @@ function isUser(pUserId)
 	getRS db_rs, cmdTxt, "getUserid 3"
 	If (db_rs.bof AND db_rs.eof) Then ' No records
 		isUser = false
-		debugout = debugout & "in isUser with result isUser = false<br>"
+		If lg_debug Then dbMsg = dbMsg & "in isUser with result isUser = false<br>" & vbLF End If
 	Else
 		isUser = true
-		debugout = debugout & "in isUser with result isUser = true<br>"
+		If lg_debug Then dbMsg = dbMsg & "in isUser with result isUser = true<br>" & vbLF End If
 	End IF
 
 	closeRS
@@ -138,48 +137,48 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 	'* Save destination if redirected from Login
 	'*******************************************************************************************************************
 	destination = getField("p,rXurlpath,get")
-	debugout = debugout & "Is method GET, destination = "& destination &"<br>"
+	If lg_debug Then dbMsg = dbMsg & "Is method GET, destination = "& destination &"<br>" & vbLF End If
 	'*******************************************************************************************************************
 	'* If SSL required and not using SSL, redirect to https
 	'*******************************************************************************************************************
 	If lg_useSSL and NOT Request.ServerVariables("SERVER_PORT_SECURE")="1" Then
-		debugout = debugout & "useSSL is true and Session(redirected) = false.  Redirecting<br>"
-		debugout = debugout & "Redirect path = https://" & lg_domain & lg_loginPath & lg_filename & "?r=1&p="& destination & "<br>"
+		If lg_debug Then dbMsg = dbMsg & "useSSL is true and Session(redirected) = false.  Redirecting<br>" & vbLF End If
+		If lg_debug Then dbMsg = dbMsg & "Redirect path = https://" & lg_domain & lg_loginPath & lg_filename & "?r=1&p="& destination & "<br>" & vbLF End If
 		Response.Redirect("https://" & lg_domain & lg_loginPath & lg_filename & "?r=1&p="&destination)
 	End If
 Else
 	'*******************************************************************************************************************
 	'* The form was posted, process the form
 	'*******************************************************************************************************************
-	debugout = debugout & "Form POST checkToken<br>"
+	If lg_debug Then dbMsg = dbMsg & "Form POST checkToken<br>" & vbLF End If
 	checkToken
-	debugout = debugout & "checkToken true. Processing form<br>"
+	If lg_debug Then dbMsg = dbMsg & "checkToken true. Processing form<br>" & vbLF End If
 	message = ""
 	userid = Trim(Left(getField("userid,rXsafepq"),50))
-	debugout = debugout & "userid = " & Server.HTMLEncode(userid) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "userid = " & Server.HTMLEncode(userid) & "<br>" & vbLF End If
 	password = Trim(Left(getField("password,rXsafepq"),255))
-	debugout = debugout & "password = " & Server.HTMLEncode(password) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "password = " & Server.HTMLEncode(password) & "<br>" & vbLF End If
 	confirm = Trim(Left(getField("confirm,rXsafepq"),255))
-	debugout = debugout & "confirm = " & Server.HTMLEncode(confirm) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "confirm = " & Server.HTMLEncode(confirm) & "<br>" & vbLF End If
 	email = Trim(Left(getField("email,rXemail"),100))
-	debugout = debugout & "email = " & Server.HTMLEncode(email) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "email = " & Server.HTMLEncode(email) & "<br>" & vbLF End If
 	name = Trim(Left(getField("name,rXname"),100))
-	debugout = debugout & "name = " & Server.HTMLEncode(name) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "name = " & Server.HTMLEncode(name) & "<br>" & vbLF End If
 	website = Trim(Left(getField("website,rXsafe"),100))
-	debugout = debugout & "website = " & Server.HTMLEncode(website) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "website = " & Server.HTMLEncode(website) & "<br>" & vbLF End If
 	news = Trim(Left(getField("news,rXalpha"),3))
 	If news="" Then
 		news = "No"
-		debugout = debugout & "news = NO (empty)<br>"
+		If lg_debug Then dbMsg = dbMsg & "news = NO (empty)<br>" & vbLF End If
 	Else
-		debugout = debugout & "news = YES<br>"
+		If lg_debug Then dbMsg = dbMsg & "news = YES<br>" & vbLF End If
 	End if
 	destination = getField("destination,rXurlpath")
-	debugout = debugout & "destination = " & Server.HTMLEncode(destination) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "destination = " & Server.HTMLEncode(destination) & "<br>" & vbLF End If
 	reChallenge = getField("recaptcha_challenge_field,rXsafe)
-	debugout = debugout & "reCAPTCHA Challenge = " & Server.HTMLEncode(reChallenge) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Challenge = " & Server.HTMLEncode(reChallenge) & "<br>" & vbLF End If
 	message = recaptcha_confirm(reChallenge, reResponse)
-	debugout = debugout & "message = " & Server.HTMLEncode(message) & "<br>"
+	If lg_debug Then dbMsg = dbMsg & "message = " & Server.HTMLEncode(message) & "<br>" & vbLF End If
 	If userid & ""="" Then
 		message = message & lg_phrase_userid_empty & "<br>" & vbLF
 	End If
@@ -203,55 +202,55 @@ Else
 		message = message & lg_phrase_password_nomatch_confirm & "<br>" & vbLF
 	End If
 	passhash = HashEncode(password & userid)
-	debugout = debugout & "pashash = " & Server.HTMLEncode(passhash) & "<br>"
-	debugout = debugout & "message = " & message
+	If lg_debug Then dbMsg = dbMsg & "pashash = " & Server.HTMLEncode(passhash) & "<br>" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "message = " & message & "<br>" & vbLF End If
 	If message="" Then
 		'*******************************************************************************************************************
 		'* If all required fields exist, create account, first initialize dateRegistered the geo-locate the user's IP
 		'*******************************************************************************************************************
-		debugout = debugout & "All required fields exist. Prepare to insert record.<br>"
+		If lg_debug Then dbMsg = dbMsg & "All required fields exist. Prepare to insert record.<br>" & vbLF End If
 		dateRegistered = dbNow
-		debugout = debugout & "dateRegistered = "& dateRegistered &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "dateRegistered = "& dateRegistered &"<br>" & vbLF End If
 		ip = Request.ServerVariables("REMOTE_ADDR")
-		debugout = debugout & "Remote Address = "& ip &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "Remote Address = "& ip &"<br>" & vbLF End If
 		useragent = Server.HTMLEncode(Trim(Left(Server.HTMLEncode(Request.ServerVariables("HTTP_USER_AGENT")),255)))
-		debugout = debugout & "useragent = "& useragent &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "useragent = "& useragent &"<br>" & vbLF End If
 		
 		on error resume next
 		Set objXMLHTTP = Server.CreateObject("Microsoft.XMLHTTP")
 		If err and debug Then
-			debugout = debugout & err.number & " " & err.description & " " & err.source & "<br>"
+			If lg_debug Then dbMsg = dbMsg & err.number & " " & err.description & " " & err.source & "<br>" & vbLF End If
 		End If	
 		objXMLHTTP.Open "GET", "http://ipinfodb.com/ip_query.php?ip="&ip, False
 		If err and debug Then
-			debugout = debugout & err.number & " " & err.description & " " & err.source & "<br>"
+			If lg_debug Then dbMsg = dbMsg & err.number & " " & err.description & " " & err.source & "<br>" & vbLF End If
 		End If
 		objXMLHTTP.Send
 		If err and debug Then
-			debugout = debugout & err.number & " " & err.description & " " & err.source & "<br>"
+			If lg_debug Then dbMsg = dbMsg & err.number & " " & err.description & " " & err.source & "<br>" & vbLF End If
 		End If
 		Set xmldoc = objXMLHTTP.responseXML
 		If err and debug Then
-			debugout = debugout & err.number & " " & err.description & " " & err.source & "<br>"
+			If lg_debug Then dbMsg = dbMsg & err.number & " " & err.description & " " & err.source & "<br>" & vbLF End If
 		End If
 		
 		country = xmlDoc.documentElement.selectSingleNode("CountryName").text
-		debugout = debugout & "country = "& country &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "country = "& country &"<br>" & vbLF End If
 		region = xmlDoc.documentElement.selectSingleNode("RegionName").text
-		debugout = debugout & "region = "& region &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "region = "& region &"<br>" & vbLF End If
 		city = xmlDoc.documentElement.selectSingleNode("City").text
-		debugout = debugout & "city = "& city &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "city = "& city &"<br>" & vbLF End If
 		set objXMLHTTP=nothing
 		on error goto 0
 		'*******************************************************************************************************************
 		'* Set locked, dateLocked and unlock token
 		'*******************************************************************************************************************
 		locked="1"
-		debugout = debugout & "locked = 1<br>"
+		If lg_debug Then dbMsg = dbMsg & "locked = 1<br>" & vbLF End If
 		dateLocked = dbNow
-		debugout = debugout & "dateLocked = "& dateLocked &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "dateLocked = "& dateLocked &"<br>" & vbLF End If
 		token = Left(HashEncode(getGUID),40)
-		debugout = debugout & "token = "& token &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "token = "& token &"<br>" & vbLF End If
 		'*******************************************************************************************************************
 		'* Write new account to user's table in database
 		'*******************************************************************************************************************
@@ -293,13 +292,13 @@ Else
 		addParam "@dLocked",adDBTimeStamp,adParamInput,CLng(8),dateLocked,lg_term_do_registration&" 15"
 		addParam "@token",adVarChar,adParamInput,CLng(64),token,lg_term_do_registration&" 16"
 		execCmd cmdTxt
-		debugout = debugout & "Database insert occurred. Result = "& numAffected &"<br>"
+		If lg_debug Then dbMsg = dbMsg & "Database insert occurred. Result = "& numAffected &"<br>" & vbLF End If
 
 		If numAffected = 1 Then
 			'*******************************************************************************************************************
 			'* On success, email user the unlock token. Copy the webmaster
 			'*******************************************************************************************************************
-			debugout = debugout & "Database Insert Success: Prepare e-mail.<br>"
+			If lg_debug Then dbMsg = dbMsg & "Database Insert Success: Prepare e-mail.<br>" & vbLF End If
 			message = lg_phrase_registration_success
 			
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
@@ -318,14 +317,14 @@ Else
 			mailBody = mailBody & lg_phrase_registration_mail9 & lg_domain & lg_contact_form & """>"& lg_phrase_contact_webmaster &"</a>.<br><br>"
 			mailBody = mailBody & lg_copyright &"<br>"
 			mailBody = mailBody & "</FONT></DIV></BODY></HTML>"
-			debugout = debugout & "mailbody = "& mailbody &"<br>"
+			If lg_debug Then dbMsg = dbMsg & "mailbody = "& mailbody &"<br>" & vbLF End If
 			
 			sendmail lg_webmaster_email, email, "User Registration", mailBody
 			sendmail lg_webmaster_email, "rod@rodsdot.com", "ATTN:Webmaster User Registration", mailBody
-			debugout = debugout & "mail sent = "& CDOMailIncludeResults &"<br>"
+			If lg_debug Then dbMsg = dbMsg & "mail sent = "& CDOMailIncludeResults &"<br>" & vbLF End If
 		Else
 			message = lg_phrase_registration_error & " " & lg_term_via_email & " " & lg_webmaster_email & " " & lg_term_or & " " & lg_term_at & "<a href=""" & lg_contact_form & """>" & lg_term_contact_form & "</a>"
-			debugout = debugout & "Database Insert Failed: "& message &"<br>"
+			If lg_debug Then dbMsg = dbMsg & "Database Insert Failed: "& message &"<br>" & vbLF End If
 		End If
 		closeRS
 		closeCommand
