@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 26 APR 2010 alpha 0.1b -->
+			<!-- alpha 0.1b -->
 			<div id="login-system">
 			<h1><%=lg_term_cancel_account%></h1>
 			<% If message <> lg_phrase_cancel_account_canceled Then %>
