@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 27 APR 2010 alpha 0.1b -->
+			<!-- alpha 0.1b -->
 			<div id="login-system">
     		<?PHP if ($numAffected!=1) { ?>
     		<div id="message"><?PHP echo $message; ?></div>
@@ -10,7 +10,7 @@
     		  <fieldset>
     		    <legend><?PHP echo lg_term_registration; ?></legend>
     		    <label for="userid"><?PHP echo lg_term_userid; ?></label><br />
-    		    <input id="userid" name="userid" title="<?PHP echo lg_phrase_userid_new_title; ?>" type="text" size="20" maxlength="32" />
+    		    <input id="userid" name="userid" title="<?PHP echo lg_phrase_userid_new_title; ?>" type="text" size="20" maxlength="50" value="<?php echo htmlentities($userid); ?>" />
     		    <span class="field_normal"><?PHP echo lg_term_required; ?></span><br />
     		    <label for="password"><?PHP echo lg_term_password; ?></label><br />
     		    <input id="password" name="password" title="<?PHP echo lg_phrase_password_new_title; ?>" type="password" size="20" maxlength="255" />
@@ -19,16 +19,16 @@
     		    <input id="confirm" name="confirm" title="<?PHP echo lg_phrase_confirm_title; ?>" type="password" size="20" maxlength="255" />
     		    <span class="field_normal"><?PHP echo lg_term_required; ?></span><br />
     		    <label for="email"><?PHP echo lg_term_email; ?></label><br />
-    		    <input id="email" name="email" title="<?PHP echo lg_phrase_email_title; ?>" type="text" size="20" maxlength="100" />
+    		    <input id="email" name="email" title="<?PHP echo lg_phrase_email_title; ?>" type="text" size="20" maxlength="100" value="<?php echo htmlentities($email); ?>" />
     		    <span class="field_normal"><?PHP echo lg_term_required; ?></span><br />
     		    <label for="name"><?PHP echo lg_term_name; ?></label><br />
-    		    <input id="name" name="name" title="<?PHP echo lg_phrase_name_title; ?>" type="text" size="20" maxlength="100" />
+    		    <input id="name" name="name" title="<?PHP echo lg_phrase_name_title; ?>" type="text" size="20" maxlength="100" value="<?php echo htmlentities($name); ?>" />
     		    <span class="field_normal"><?PHP echo lg_term_required; ?></span><br />
     		    <label for="website"><?PHP echo lg_term_website_address; ?></label><br />
-    		    <input id="website" title="<?PHP echo lg_phrase_website_title; ?>" name="website" type="text" size="20" maxlength="100" />
+    		    <input id="website" title="<?PHP echo lg_phrase_website_title; ?>" name="website" type="text" size="20" maxlength="100" value="<?php echo htmlentities($website); ?>" />
     		    <span class="field_normal"><?PHP echo lg_term_optional; ?></span><br />
     		    <label for="news"><?PHP echo lg_phrase_news; ?></label>
-    		    <input id="news" name="news" type="checkbox" value="Yes" />
+    		    <input id="news" name="news" type="checkbox" value="Yes"<?php if ($news=="Yes") { echo " checked"; } ?> />
     		    <input type="hidden" id="destination" name="destination" value="<?PHP echo $destination; ?>" /><br />
     		    <?PHP writeToken(); ?><input type="submit" value="<?PHP echo lg_register_button_text; ?>" />
     		  </fieldset>
