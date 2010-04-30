@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1b -->
+			<!-- 26 APR 2010 alpha 0.1b -->
 			<div id="login-system">
             <h1><%=lg_term_login%></h1>
             <% If Session("login")<>True Then %>
@@ -11,7 +11,7 @@
                 <fieldset>
                 <legend><%=lg_term_login%></legend>
                 <label for="userid"><%=lg_term_userid %></label><br />
-                <input id="userid" name="userid" title="<%=lg_phrase_userid_title%>" type="text" size="20" maxlength="32" value="<%=useridValue%>" />
+                <input id="userid" name="userid" title="<%=lg_phrase_userid_title%>" type="text" size="20" maxlength="50" value="<%=useridValue%>" />
                 <span class="field_normal"><%=lg_term_required%></span><br />
                 <label for="password"><%=lg_term_password %></label><br />
                 <input id="password" name="password" title="<%=lg_phrase_password_title%>" type="password" size="20" maxlength="255" autocomplete="off" />
