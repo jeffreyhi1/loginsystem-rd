@@ -31,5 +31,6 @@ Response.Charset="UTF-8"
 </head>
 <body>
 <!--#include file="include/register-markup.asp"-->
+<% If lg_debug Then Response.Write dbMsg End If %>
 </body>
 </html>
