@@ -17,7 +17,7 @@
                 <input id="password" name="password" title="<%=lg_phrase_password_title%>" type="password" size="20" maxlength="255" autocomplete="off">
                 <span class="field_normal"><%=lg_term_required%></span><br>
                 <label for="remember"><%=lg_term_rememberme %></label>
-                <input id="remember" name="remember" type="checkbox" value="Yes">
+                <input id="remember" name="remember" type="checkbox" value="Yes"<% If remember="Yes" Then Response.Write " checked" End If %>>
                 <input type="hidden" id="destination" name="destination" value="<%=destination%>"><br>
                 <div id="remember_me_warning"><%=lg_phrase_remember_me_warning%></div>
                 <% writeTokenH %>
