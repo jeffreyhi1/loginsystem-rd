@@ -1,4 +1,4 @@
-<?PHP
+﻿<?PHP
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -138,9 +138,8 @@ define("lg_term_userid", "UserID");
 define("lg_term_via_email", "by email at");
 define("lg_term_website_address", "Website Address");
 define("lg_term_welcome","Welcome");
-
 define("lg_phrase_attention_webmaster", "Attention Webmaster");
-define("lg_phrase_cancel_account_cacelled", "The account has been canceled.");
+define("lg_phrase_cancel_account_canceled", "The account has been canceled.");
 define("lg_phrase_cancel_account_error", "There was an unexpected error canceling your account. Please contact the webmaster");
 define("lg_phrase_cancel_account_warning", "Enter your User ID and Password to cancel your account.<br>WARNING: THIS ACTION CAN NOT BE UNDONE.<br>If you have forgotten your password use the recover password link below.");
 define("lg_phrase_change_password", "Enter your current password, then your desired new password");

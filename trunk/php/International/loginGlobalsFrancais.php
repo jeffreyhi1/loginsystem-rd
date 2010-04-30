@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -133,10 +133,8 @@ define("lg_term_userid", "Identifiant");
 define("lg_term_via_email", "par mél à");
 define("lg_term_website", "site internet");
 define("lg_term_website_address", "Adresse du site internet");
-
-
 define("lg_phrase_attention_webmaster", "Attention Ouaibemestre");
-define("lg_phrase_cancel_account_cacelled", "Le compte a été annulé.");
+define("lg_phrase_cancel_account_canceled", "Le compte a été annulé.");
 define("lg_phrase_cancel_account_error", "Il y a eu une erreur inattendue lors de l'annulation de votre compte. S'il vous plaît contactez le ouaibemestre.");
 define("lg_phrase_cancel_account_warning", "Entrez votre identifiant et votre mot de passe pour supprimer votre compte.<p>AVERTISSEMENT: Cette action ne peut pas être annulée.</p>Si vous avez oublié votre mot de passe utilisez le lien \"Mot de passe oublié\" ci-dessous.");
 define("lg_phrase_change_password", "Entrez votre mot de passe actuel, puis votre nouveau mot de passe souhaité.");

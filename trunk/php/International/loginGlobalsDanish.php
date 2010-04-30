@@ -136,7 +136,7 @@ define("lg_term_via_email", "via email på");
 define("lg_term_website_address", "Website adresse");
 define("lg_term_welcome", "Velkommen");
 define("lg_phrase_attention_webmaster", "Webmaster bemærk venligst");
-define("lg_phrase_cancel_account_cacelled", "Denne konto er blevet annuleret.");
+define("lg_phrase_cancel_account_canceled", "Denne konto er blevet annuleret.");
 define("lg_phrase_cancel_account_error", "Der var en uventet fejl da vi annullerede din konto. Kontakt venligst webmasteren");
 define("lg_phrase_cancel_account_warning", "Indtast dit brugernavn og password for at annullere din konto.<p>ADVARSEL: Denne handling kan ikke fortrydes.</p>Hvis du har glemt dit password brug <i>genopret password</i> linket herunder.");
 define("lg_phrase_change_password", "Indtast din nuværende adgangskode, derefter dit ønskede nye kodeord");

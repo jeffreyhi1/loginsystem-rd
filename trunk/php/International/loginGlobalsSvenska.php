@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -140,7 +140,7 @@ define("lg_term_via_email", "via e-post");
 define("lg_term_website_address", "Webbsida adress");
 define("lg_term_welcome", "Välkommen");
 define("lg_phrase_attention_webmaster", "Uppmärksam Webmaster");
-define("lg_phrase_cancel_account_cacelled", "Kontot har är annullerat.");
+define("lg_phrase_cancel_account_canceled", "Kontot har är annullerat.");
 define("lg_phrase_cancel_account_error", "Det var ett oväntat fel när kontot blev avslutat. Vänligen kontakta webmaster");
 define("lg_phrase_cancel_account_warning", "Ange ditt användarnamn och lösenord för att avsluta kontot.<p>VARNING: Denna åtgärd kan inte ångras.</p>Om du har glömt ditt lösenord använder återvinna lösenord länken nedan.");
 define("lg_phrase_change_password", "Ange ditt nuvarande lösenord och sedan önskat nytt lösenord");
