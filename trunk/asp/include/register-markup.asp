@@ -29,7 +29,7 @@
     		    <span class="field_normal"><%=lg_term_optional%></span><br />
     		    <label for="news"><%=lg_phrase_news %></label>
     		    <input id="news" name="news" type="checkbox" value="Yes"<% If news="Yes" Then Response.Write(" checked") End If %> /><br />
-    		    <%=recaptcha_challenge_writer()%>
+    		    <%=recaptcha_challenge_writer(pubKey)%>
     		    <input type="hidden" id="destination" name="destination" value="<%=destination%>" /><br />
     		    <% writeToken %><input type="submit" value="<%=lg_register_button_text %>" />
     		  </fieldset>
@@ -41,7 +41,7 @@
     		  <strong><%=lg_term_name%></strong>: <%=HTMLEncode(name)%><br />
     		  <strong><%=lg_term_website%></strong>: <%=HTMLEncode(website)%><br />
     		  <strong><%=lg_term_ip%></strong>: <%=HTMLEncode(ip)%><br />
-    		  <strong><%=lg_term_region%></strong>: <%=HTMLEncode(region%><br />
+    		  <strong><%=lg_term_region%></strong>: <%=HTMLEncode(region)%><br />
     		  <strong><%=lg_term_city%></strong>: <%=HTMLEncode(city)%><br />
     		  <strong><%=lg_term_country%></strong>: <%=HTMLEncode(country)%><br />
     		  <strong><%=lg_term_useragent%></strong>: <%=HTMLEncode(useragent)%><br />

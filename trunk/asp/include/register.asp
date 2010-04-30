@@ -23,7 +23,7 @@ Response.CacheControl="no-store"
 '*******************************************************************************************************************
 Dim redirected, destination, password, confirm, passhash, userid, name, email, website, news, mailBody, dbMsg
 Dim ip, useragent, region, city, country, dateRegistered, locked, dateLocked, token, cmdTxt, message, objXMLHTTP, xmldoc
-Dim reChallenge, reResponse
+Dim reCAPTCHAChallenge, reCAPTCHAResponse, pubKey, privKey
 
 
 destination=""
@@ -50,6 +50,8 @@ If lg_debug Then
 	dbMsg = "DEBUG BEGIN<br>" & vbLF
 End If
 reChallenge = ""
+pubKey = "6Lfe3rkSAAAAAPrJLxSOPkUCq2OqbA5cNZ6kUYen"
+privKey = "6Lfe3rkSAAAAAMutk1SNbCduQqZpJ8Fnv5FnOIAL"
 
 '*******************************************************************************************************************
 '* Function to check is userid is available
@@ -83,44 +85,45 @@ end function
 '*******************************************************************************************************************
 '* Function to write reCAPTCHA to form
 '*******************************************************************************************************************
-Function recaptcha_challenge_writer()
+' returns string the can be written where you would like the reCAPTCHA challenged placed on your page
+Function recaptcha_challenge_writer(publickey)
 	recaptcha_challenge_writer = "<script type=""text/javascript"">" & _
-	"var RecaptchaOptions = {" & _
-	"   theme : 'white'," & _
-	"   tabindex : 0" & _
-	"};" & _
-	"</script>" & _
-	"<script type=""text/javascript"" src=""http://api.recaptcha.net/challenge?k=" & "6Lfe3rkSAAAAAPrJLxSOPkUCq2OqbA5cNZ6kUYen" & """></script>" & _
-	"<noscript>" & _
-	  "<iframe src=""http://api.recaptcha.net/noscript?k=" & "6Lfe3rkSAAAAAPrJLxSOPkUCq2OqbA5cNZ6kUYen" & """ frameborder=""1""></iframe><br>" & _
-	    "<textarea name=""recaptcha_challenge_field"" rows=""3"" cols=""40""></textarea>" & _
-	    "<input type=""hidden"" name=""recaptcha_response_field"" value=""manual_challenge"">" & _
-	"</noscript>"
+		"var RecaptchaOptions = {" & _
+		"   theme : 'white'," & _
+		"   tabindex : 0" & _
+		"};" & _
+		"</script>" & _
+		"<script type=""text/javascript"" src=""http://api.recaptcha.net/challenge?k=" & publickey & """></script>" & _
+		"<noscript>" & _
+		  "<iframe src=""http://api.recaptcha.net/noscript?k=" & publickey & """ frameborder=""1""></iframe><br>" & _
+		    "<textarea name=""recaptcha_challenge_field"" rows=""3"" cols=""40""></textarea>" & _
+		    "<input type=""hidden"" name=""recaptcha_response_field"" value=""manual_challenge"">" & _
+		"</noscript>"
 End Function
 
 
 '*******************************************************************************************************************
 '* Function to verify reCAPTCHA field
 '*******************************************************************************************************************
-Function recaptcha_confirm(rechallenge, reresponse)
+Function recaptcha_confirm(privkey,rechallenge,reresponse)
 	' Test the captcha field
 
 	Dim VarString
 	VarString = _
-        "privatekey=" & "6Lfe3rkSAAAAAMutk1SNbCduQqZpJ8Fnv5FnOIAL" & _
+        "privatekey=" & privkey & _
         "&remoteip=" & Request.ServerVariables("REMOTE_ADDR") & _
         "&challenge=" & rechallenge & _
         "&response=" & reresponse
 
-	Dim objXMLHTTP
-	Set objXMLHTTP = Server.CreateObject("Msxml2.ServerXMLHTTP")
-	objXMLHTTP.open "POST", "http://api-verify.recaptcha.net/verify",False
-	objXMLHTTP.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
-	objXMLHTTP.send VarString
+	Dim objXmlHttp
+	Set objXmlHttp = Server.CreateObject("Msxml2.ServerXMLHTTP")
+	objXmlHttp.open "POST", "http://api-verify.recaptcha.net/verify", False
+	objXmlHttp.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"
+	objXmlHttp.send VarString
 
 	Dim ResponseString
-	ResponseString = split(objXMLHTTP.responseText, vblf)
-	Set objXMLHTTP = Nothing
+	ResponseString = split(objXmlHttp.responseText, vblf)
+	Set objXmlHttp = Nothing
 
 	If ResponseString(0) = "true" Then
 		'They answered correctly
@@ -130,6 +133,7 @@ Function recaptcha_confirm(rechallenge, reresponse)
 		recaptcha_confirm = ResponseString(1)
 	End If
 End Function
+
 
 
 If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
@@ -175,9 +179,9 @@ Else
 	End if
 	destination = getField("destination,rXurlpath")
 	If lg_debug Then dbMsg = dbMsg & "destination = " & Server.HTMLEncode(destination) & "<br>" & vbLF End If
-	reChallenge = getField("recaptcha_challenge_field,rXsafe)
+	reCAPTCHAChallenge = getField("recaptcha_challenge_field,rXsafe")
 	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Challenge = " & Server.HTMLEncode(reChallenge) & "<br>" & vbLF End If
-	message = recaptcha_confirm(reChallenge, reResponse)
+	message = recaptcha_confirm(privKey, reCAPTCHAChallenge, reCAPTCHAResponse)
 	If lg_debug Then dbMsg = dbMsg & "message = " & Server.HTMLEncode(message) & "<br>" & vbLF End If
 	If userid & ""="" Then
 		message = message & lg_phrase_userid_empty & "<br>" & vbLF
