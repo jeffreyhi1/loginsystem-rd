@@ -1,12 +1,14 @@
 <%
-'*  $Id: ASP_reCAPTCHA_code.asp 239 2010-04-30 09:24:15Z rdivilbiss $
+'*  $Id:$
 '*****************************************************************************************************
-Dim pubKey, privKey
-pubKey = "6Lfe3rkSAAAAAPrJLxSOPkUCq2OqbA5cNZ6kUYen"
-privKey = "6Lfe3rkSAAAAAMutk1SNbCduQqZpJ8Fnv5FnOIAL"
+Dim reChallengeField, reResponseField, publickey, privkey
+publickey = "6Lce3bkSAAAAAHHyw_BOFsIgrHh9TcPrQMQ1oLYU"
+privkey = "6Lce3bkSAAAAADh2-3h0SS30KP5E8gHXBN0yV13j"
 
-' returns string the can be written where you would like the reCAPTCHA challenged placed on your page
-Function recaptcha_challenge_writer(publickey)
+'*****************************************************************************************************
+'* returns string the can be written where you would like the reCAPTCHA challenged placed on your page
+'*****************************************************************************************************
+Function recaptcha_challenge_writer()
 recaptcha_challenge_writer = "<script type=""text/javascript"">" & _
 	"var RecaptchaOptions = {" & _
 	"   theme : 'white'," & _
@@ -21,7 +23,10 @@ recaptcha_challenge_writer = "<script type=""text/javascript"">" & _
 	"</noscript>"
 End Function
 
-Function recaptcha_confirm(privkey,rechallenge,reresponse)
+'*****************************************************************************************************
+'* Verifies the CAPTCHA for correctness
+'*****************************************************************************************************
+Function recaptcha_confirm(rechallenge,reresponse)
 	' Test the captcha field
 
 	Dim VarString
@@ -46,7 +51,7 @@ Function recaptcha_confirm(privkey,rechallenge,reresponse)
 		recaptcha_confirm = ""
 	Else
 		'They answered incorrectly
-		recaptcha_confirm = ResponseString(1)
+		recaptcha_confirm = ResponseString(1) & vbLF
 	End If
 End Function
 %> 
