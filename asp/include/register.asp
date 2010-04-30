@@ -125,6 +125,7 @@ Else
 	End If
 	If isUser(userid) AND userid<>"" then
 		message = message & lg_phrase_userid_inuse & "<br>" & vbLF
+		userid=""
 	End If
 	If password & ""="" Then
 		message = message & lg_phrase_password_empty & "<br>" & vbLF
