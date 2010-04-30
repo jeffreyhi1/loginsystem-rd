@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -141,7 +141,7 @@ define("lg_term_website","वेबसाइट");
 define("lg_term_website_address", "वेबसाइट का पता");
 define("lg_term_welcome","आपका स्वागत है");
 define("lg_phrase_attention_webmaster", "वेबमास्टर ध्यान");
-define("lg_phrase_cancel_account_cacelled", "खाता रद्द कर दिया गया है");
+define("lg_phrase_cancel_account_canceled", "खाता रद्द कर दिया गया है");
 define("lg_phrase_cancel_account_error", "वहाँ एक अप्रत्याशित अपना खाता रद्द त्रुटि थी. कृपया वेबमास्टर से संपर्क");
 define("lg_phrase_cancel_account_warning", "अपने प्रयोक्ता आईडी और पासवर्ड दर्ज करने के लिए अपने खाते को रद्द<br>यह कार्रवाई चेतावनी पीछे लौट नहीं सकती<br>यदि आप अपना पासवर्ड भूल गए हैं नीचे दिए गए लिंक को ठीक पासवर्ड का उपयोग");
 define("lg_phrase_change_password", "अपने वर्तमान पासवर्ड दर्ज करें, तो अपने इच्छित नया पासवर्ड");
