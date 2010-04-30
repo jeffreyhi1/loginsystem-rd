@@ -19,11 +19,11 @@ Response.CacheControl="private"
 Response.CacheControl="no-cache"
 Response.CacheControl="no-store"
 
-Response.Cookies("login") = ""
-Response.Cookies("login").Expires = "January 1, 2009"
-
 Response.Cookies("token") = ""
 Response.Cookies("token").Expires = "January 1, 2009"
+
+Response.Cookies("user") = ""
+Response.Cookies("user").Expires = "January 1, 2009"
 
 Session.Abandon
 Response.Redirect lg_logged_out_page
