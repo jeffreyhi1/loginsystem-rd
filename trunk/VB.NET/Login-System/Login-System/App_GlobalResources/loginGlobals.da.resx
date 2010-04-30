@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lg_login_button_text" xml:space="preserve">
+    <value>Log ind</value>
+  </data>
+  <data name="lg_register_button_text" xml:space="preserve">
+    <value>Registrer</value>
+  </data>
+  <data name="lg_term_at" xml:space="preserve">
+    <value>at</value>
+  </data>
+  <data name="lg_term_cancel" xml:space="preserve">
+    <value>Annuller konto</value>
+  </data>
+  <data name="lg_term_cancel_account" xml:space="preserve">
+    <value>Annuller konto</value>
+  </data>
+  <data name="lg_term_change_password" xml:space="preserve">
+    <value>Skift adgangskode</value>
+  </data>
+  <data name="lg_term_change_password_button_text" xml:space="preserve">
+    <value>Skift adgangskode</value>
+  </data>
+  <data name="lg_term_checkToken" xml:space="preserve">
+    <value>checkToken</value>
+  </data>
+  <data name="lg_term_city" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="lg_term_confirm" xml:space="preserve">
+    <value>Bekræft kodeord</value>
+  </data>
+  <data name="lg_term_contact_form" xml:space="preserve">
+    <value>Kontakt Form</value>
+  </data>
+  <data name="lg_term_country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="lg_term_current_password" xml:space="preserve">
+    <value>Nuværende adgangskode</value>
+  </data>
+  <data name="lg_term_delete_account" xml:space="preserve">
+    <value>Slet konto</value>
+  </data>
+  <data name="lg_term_do_registration" xml:space="preserve">
+    <value>doRegistration</value>
+  </data>
+  <data name="lg_term_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="lg_term_enter_information" xml:space="preserve">
+    <value>Indtast Information</value>
+  </data>
+  <data name="lg_term_error_string" xml:space="preserve">
+    <value>getPasshash</value>
+  </data>
+  <data name="lg_term_example" xml:space="preserve">
+    <value>Eksempel</value>
+  </data>
+  <data name="lg_term_from_error" xml:space="preserve">
+    <value>Form Error</value>
+  </data>
+  <data name="lg_term_get_name" xml:space="preserve">
+    <value>getName</value>
+  </data>
+  <data name="lg_term_get_oldpassword" xml:space="preserve">
+    <value>getOldPassword</value>
+  </data>
+  <data name="lg_term_guest" xml:space="preserve">
+    <value>Gæst</value>
+  </data>
+  <data name="lg_term_home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="lg_term_immediately" xml:space="preserve">
+    <value>med det samme!</value>
+  </data>
+  <data name="lg_term_ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="lg_term_issue_verification_token" xml:space="preserve">
+    <value>Udsted Verifikation Token</value>
+  </data>
+  <data name="lg_term_log_string" xml:space="preserve">
+    <value>logLogin</value>
+  </data>
+  <data name="lg_term_logged_out" xml:space="preserve">
+    <value>Logget ud</value>
+  </data>
+  <data name="lg_term_login" xml:space="preserve">
+    <value>Log ind</value>
+  </data>
+  <data name="lg_term_login_success" xml:space="preserve">
+    <value>Succes</value>
+  </data>
+  <data name="lg_term_name" xml:space="preserve">
+    <value>Navn</value>
+  </data>
+  <data name="lg_term_optional" xml:space="preserve">
+    <value>Frivilligt</value>
+  </data>
+  <data name="lg_term_or" xml:space="preserve">
+    <value>eller</value>
+  </data>
+  <data name="lg_term_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="lg_term_please_login" xml:space="preserve">
+    <value>Venligst login</value>
+  </data>
+  <data name="lg_term_please_register" xml:space="preserve">
+    <value>Tilmeld dig venligst </value>
+  </data>
+  <data name="lg_term_recover_password" xml:space="preserve">
+    <value>Genopret Password</value>
+  </data>
+  <data name="lg_term_region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="lg_term_register" xml:space="preserve">
+    <value>Registrer</value>
+  </data>
+  <data name="lg_term_register_confirmation" xml:space="preserve">
+    <value>Registreringsbekræftelse</value>
+  </data>
+  <data name="lg_term_register_delete_enter_email" xml:space="preserve">
+    <value>Indtast e-mail</value>
+  </data>
+  <data name="lg_term_registration" xml:space="preserve">
+    <value>Registrering</value>
+  </data>
+  <data name="lg_term_registration_thankyou" xml:space="preserve">
+    <value>Tak for din registrering.</value>
+  </data>
+  <data name="lg_term_registration_verification" xml:space="preserve">
+    <value>Registreringsverifikation</value>
+  </data>
+  <data name="lg_term_rememberme" xml:space="preserve">
+    <value>Husk mig</value>
+  </data>
+  <data name="lg_term_remove_registration" xml:space="preserve">
+    <value>Fjern registrering</value>
+  </data>
+  <data name="lg_term_required" xml:space="preserve">
+    <value>nødvendigt</value>
+  </data>
+  <data name="lg_term_set_newpassword" xml:space="preserve">
+    <value>changePassword</value>
+  </data>
+  <data name="lg_term_submit" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="lg_term_to" xml:space="preserve">
+    <value>Til</value>
+  </data>
+  <data name="lg_term_useragent" xml:space="preserve">
+    <value>UserAgent</value>
+  </data>
+  <data name="lg_term_userid" xml:space="preserve">
+    <value>Bruger Identifikation</value>
+  </data>
+  <data name="lg_term_via_email" xml:space="preserve">
+    <value>via email på</value>
+  </data>
+  <data name="lg_term_website_address" xml:space="preserve">
+    <value>Website adresse</value>
+  </data>
+  <data name="lg_term_welcome" xml:space="preserve">
+    <value>Velkommen</value>
+  </data>
+  <data name="lg_phrase_attention_webmaster" xml:space="preserve">
+    <value>Webmaster bemærk venligst</value>
+  </data>
+  <data name="lg_phrase_cancel_account_canceled" xml:space="preserve">
+    <value>Denne konto er blevet annuleret.</value>
+  </data>
+  <data name="lg_phrase_cancel_account_error" xml:space="preserve">
+    <value>Der var en uventet fejl da vi annullerede din konto. Kontakt venligst webmasteren </value>
+  </data>
+  <data name="lg_phrase_cancel_account_warning" xml:space="preserve">
+    <value>Indtast dit brugernavn og password for at annullere din konto.&lt;p&gt;ADVARSEL: Denne handling kan ikke fortrydes.&lt;/p&gt;Hvis du har glemt dit password brug &lt;i&gt;genopret password&lt;/i&gt; linket herunder.&lt;/p&gt;</value>
+  </data>
+  <data name="lg_phrase_change_password" xml:space="preserve">
+    <value>Indtast din nuværende adgangskode, derefter dit ønskede nye kodeord</value>
+  </data>
+  <data name="lg_phrase_confirm_empty" xml:space="preserve">
+    <value>Bekræft Password feltet er tomt, men er påkrævet. Bekræft venligst dit password. </value>
+  </data>
+  <data name="lg_phrase_confirm_title" xml:space="preserve">
+    <value>Bekræft venligst din ønskede adgangskode. Dette felt er påkrævet. </value>
+  </data>
+  <data name="lg_phrase_contact_webmaster" xml:space="preserve">
+    <value>kontakt webmaster</value>
+  </data>
+  <data name="lg_phrase_delete_account" xml:space="preserve">
+    <value>Slet konto</value>
+  </data>
+  <data name="lg_phrase_delete_already_verified" xml:space="preserve">
+    <value>Denne konto er allerede blevet verificeret og kunne ikke slettes</value>
+  </data>
+  <data name="lg_phrase_delete_deleted" xml:space="preserve">
+    <value>Kontoen er blevet slettet</value>
+  </data>
+  <data name="lg_phrase_email_empty" xml:space="preserve">
+    <value>Email feltet er tomt, men er påkrævet. Indtast din e-mail-adresse. </value>
+  </data>
+  <data name="lg_phrase_email_title" xml:space="preserve">
+    <value>Indtast din e-mail adresse. Dette felt er påkrævet. </value>
+  </data>
+  <data name="lg_phrase_enter_unlock_code" xml:space="preserve">
+    <value>Indtast din Unlock kode</value>
+  </data>
+  <data name="lg_phrase_is_logged_in" xml:space="preserve">
+    <value>er logget ind</value>
+  </data>
+  <data name="lg_phrase_issue_new_token" xml:space="preserve">
+    <value>Indtast dit userid og din e-mail for at modtage en ny bekræftelses token.</value>
+  </data>
+  <data name="lg_phrase_issue_new_token_error" xml:space="preserve">
+    <value>Der opstod en uventet fejl da vi genererede din kontrol token. Kontakt venligst webmaster. </value>
+  </data>
+  <data name="lg_phrase_issue_new_token_success" xml:space="preserve">
+    <value>Dit nye bekræftelseskendetegn vil blive sendt til din e-mail adresse.</value>
+  </data>
+  <data name="lg_phrase_login_error" xml:space="preserve">
+    <value>Der var en fejl. Indtast dit brugernavn og adgangskode igen. </value>
+  </data>
+  <data name="lg_phrase_login_token_problem" xml:space="preserve">
+    <value>Enten er verifikation token blevet brugt (og du er verificeret), eller token er ikke gyldig.</value>
+  </data>
+  <data name="lg_phrase_logged_out" xml:space="preserve">
+    <value>Du er logget ud.</value>
+  </data>
+  <data name="lg_phrase_logout_continue" xml:space="preserve">
+    <value>klik her for at fortsætte.</value>
+  </data>
+  <data name="lg_phrase_name_empty" xml:space="preserve">
+    <value>Feltet er tomt, men er påkrævet. Indtast dit navn. </value>
+  </data>
+  <data name="lg_phrase_name_title" xml:space="preserve">
+    <value>Indtast dit fulde navn. Dette felt er påkrævet. </value>
+  </data>
+  <data name="lg_phrase_newpassword_empty" xml:space="preserve">
+    <value>Det Nye Password felt er tomt, men er påkrævet. Indtast dit kodeord. </value>
+  </data>
+  <data name="lg_phrase_news" xml:space="preserve">
+    <value>Ønsker du at modtage regelmæssige e-mails, når hjemmesiden ændres eller nye artikler er indsendt?</value>
+  </data>
+  <data name="lg_phrase_no_matching_registration" xml:space="preserve">
+    <value>Der var ingen registrering, der matcher det Bruger ID og den e-mail-adresse, du har indtastet.</value>
+  </data>
+  <data name="lg_phrase_oldpassword_does_not_match" xml:space="preserve">
+    <value>Den nuværende adgangskode matcher ikke dine gemte adgangskode. Prøv igen</value>
+  </data>
+  <data name="lg_phrase_oldpassword_empty" xml:space="preserve">
+    <value>Det Gamle Password felt er tomt, men er påkrævet. Indtast dit kodeord. </value>
+  </data>
+  <data name="lg_phrase_oldpassword_title" xml:space="preserve">
+    <value>Indtast din nuværende adgangskode. Dette felt er påkrævet. </value>
+  </data>
+  <data name="lg_phrase_password_change_authorized" xml:space="preserve">
+    <value>Hvis du ikke har tilladelse til denne ændring, bedes du kontakte webmaster</value>
+  </data>
+  <data name="lg_phrase_password_changed" xml:space="preserve">
+    <value>Din adgangskode blev ændret</value>
+  </data>
+  <data name="lg_phrase_password_changed_error" xml:space="preserve">
+    <value>Der opstod en uventet fejl. Adgangskoden blev ikke ændret. Kontakt venligst webmaster </value>
+  </data>
+  <data name="lg_phrase_password_changed_okay" xml:space="preserve">
+    <value>Password skiftet.</value>
+  </data>
+  <data name="lg_phrase_password_changed_post" xml:space="preserve">
+    <value>var ændret til</value>
+  </data>
+  <data name="lg_phrase_password_changed_pre" xml:space="preserve">
+    <value>Din adgangskode på</value>
+  </data>
+  <data name="lg_phrase_password_empty" xml:space="preserve">
+    <value>Password feltet er tomt, men er påkrævet. Indtast dit kodeord. </value>
+  </data>
+  <data name="lg_phrase_password_new_title" xml:space="preserve">
+    <value>Indtast dit ønskede password. Dette felt er påkrævet. </value>
+  </data>
+  <data name="lg_phrase_password_nomatch_confirm" xml:space="preserve">
+    <value>Password matcher ikke Bekræftelsesadgangskoden. Indtast igen. </value>
+  </data>
+  <data name="lg_phrase_password_title" xml:space="preserve">
+    <value>Indtast din adgangskode. Dette felt er påkrævet. </value>
+  </data>
+  <data name="lg_phrase_register_delete_noemail" xml:space="preserve">
+    <value>Der er ingen konto som matchede den e-mail adresse, du indtastede.</value>
+  </data>
+  <data name="lg_phrase_registration_email_verify" xml:space="preserve">
+    <value>Bekræft din e-mail-adresse</value>
+  </data>
+  <data name="lg_phrase_registration_email_verify_msg" xml:space="preserve">
+    <value>En e-mail blev sendt til den email adresse, du angav under registreringen. Klik på linket i den e-mail eller klip og klistr låse-op koden i form feltet nedenfor. Din konto vil ikke være tilgængelig før den er blevet bekræftet. </value>
+  </data>
+  <data name="lg_phrase_registration_error" xml:space="preserve">
+    <value>Der var en uventet fejl da vi fuldførte din registrering. Kontakt venligst webmaster </value>
+  </data>
+  <data name="lg_phrase_registration_mail0" xml:space="preserve">
+    <value>Udsted Ny Registrerings Kontrol Token</value>
+  </data>
+  <data name="lg_phrase_registration_mail1" xml:space="preserve">
+    <value>Tak for din registrering hos</value>
+  </data>
+  <data name="lg_phrase_registration_mail2" xml:space="preserve">
+    <value>Før du kan logge ind skal du</value>
+  </data>
+  <data name="lg_phrase_registration_mail3" xml:space="preserve">
+    <value>at bekræfte din e-mail-adresse.</value>
+  </data>
+  <data name="lg_phrase_registration_mail4" xml:space="preserve">
+    <value>Klik her for at kontrollere</value>
+  </data>
+  <data name="lg_phrase_registration_mail5" xml:space="preserve">
+    <value>Hvis ovenstående link ikke virker, skal du gå til http://</value>
+  </data>
+  <data name="lg_phrase_registration_mail6" xml:space="preserve">
+    <value>kopiere og klistre token nedenfor i skemaet og klik ""Send""</value>
+  </data>
+  <data name="lg_phrase_registration_mail7" xml:space="preserve">
+    <value>Hvis du ikke registrerede, klik på</value>
+  </data>
+  <data name="lg_phrase_registration_mail8" xml:space="preserve">
+    <value>dette link: &lt;a href = ""http://</value>
+  </data>
+  <data name="lg_phrase_registration_mail9" xml:space="preserve">
+    <value>hvis du har spørgsmål så &lt;a href = ""http://</value>
+  </data>
+  <data name="lg_phrase_registration_success" xml:space="preserve">
+    <value>Registrering lykkedes</value>
+  </data>
+  <data name="lg_phrase_remember_me_warning" xml:space="preserve">
+    <value>Tjek ikke 'husk mig', hvis det er en delt computer.</value>
+  </data>
+  <data name="lg_phrase_userid_empty" xml:space="preserve">
+    <value>Bruger-ID feltet er påkrævet, men er tomt. Indtast dit bruger-ID. </value>
+  </data>
+  <data name="lg_phrase_userid_inuse" xml:space="preserve">
+    <value>Bruger-ID er i brug eller ugyldigt.</value>
+  </data>
+  <data name="lg_phrase_userid_new_title" xml:space="preserve">
+    <value>Indtast dit ønskede bruger-ID. Dette felt er påkrævet.</value>
+  </data>
+  <data name="lg_phrase_userid_title" xml:space="preserve">
+    <value>Indtast dit bruger-ID. Dette felt er påkrævet. </value>
+  </data>
+  <data name="lg_phrase_verify_expired" xml:space="preserve">
+    <value>Der er gået mere end 24 timer der er gået siden din registrering.</value>
+  </data>
+  <data name="lg_phrase_verify_login" xml:space="preserve">
+    <value>Du kan nu logge ind på din konto.</value>
+  </data>
+  <data name="lg_phrase_verify_newtoken" xml:space="preserve">
+    <value>Klik her for at generere en ny låse-kode.</value>
+  </data>
+  <data name="lg_phrase_verify_verified" xml:space="preserve">
+    <value>Du har bekræftet din e-mail-adresse.</value>
+  </data>
+  <data name="lg_phrase_website_title" xml:space="preserve">
+    <value>Indtast dit website adresse.</value>
+  </data>
+  <data name="lg_phrase_recover_password" xml:space="preserve">
+    <value>Gendan Password</value>
+  </data>
+  <data name="lg_phrase_request_password1" xml:space="preserve">
+    <value>Der er blevet anmodt om at gendanne din adgangskode ved</value>
+  </data>
+  <data name="lg_phrase_recover_password2" xml:space="preserve">
+    <value>Du kan angive en ny adgangskode ved at klikke på linket nedenfor.</value>
+  </data>
+  <data name="lg_phrase_recover_password3" xml:space="preserve">
+    <value>Forandr dit Password</value>
+  </data>
+  <data name="lg_phrase_recover_password4" xml:space="preserve">
+    <value>Hvis du ikke har anmodet om at gendanne din adgangskode, kan du kontakte webmaster via</value>
+  </data>
+  <data name="lg_phrase_recover_password5" xml:space="preserve">
+    <value>E-mail på det følgende e-mail link</value>
+  </data>
+  <data name="lg_phrase_recover_password_error" xml:space="preserve">
+    <value>Der opstod en uventet fejl under behandling af din anmodning. Kontakt venligst webmaster.</value>
+  </data>
+  <data name="lg_phrase_recover_password_success" xml:space="preserve">
+    <value>Anmodningen om at gendanne din adgangskode blev behandlet med succes. &lt;p&gt; Følg instruktionerne i e-mail sendt til dig for at lave en ny adgangskode.&lt;/p&gt;</value>
+  </data>
+  <data name="lg_term_new_password" xml:space="preserve">
+    <value>Nyt Password</value>
+  </data>
+  <data name="lg_term_reset_password" xml:space="preserve">
+    <value>Password Reset</value>
+  </data>
+  <data name="lg_term_set_new_password" xml:space="preserve">
+    <value>Indtast en ny adgangskode</value>
+  </data>
+  <data name="lg_phrase_set_new_password_good_token" xml:space="preserve">
+    <value>Din token var gyldig. Indtast en ny adgangskode. </value>
+  </data>
+  <data name="lg_phrase_set_new_password_tken_expired" xml:space="preserve">
+    <value>Mere end 24 timer er gået, siden du har bedt om en gendannelse af adgangskode token.</value>
+  </data>
+  <data name="lg_phrase_contact_webmaster1" xml:space="preserve">
+    <value>Kontakt venligst webmaster for at få hjælp.</value>
+  </data>
+  <data name="lg_phrase_webmaster_may_be_contacted" xml:space="preserve">
+    <value>Webmasteren kan kontaktes via e-mail via dette link:</value>
+  </data>
+  <data name="lg_phrase_set_new_password_error" xml:space="preserve">
+    <value>Der var en uventet fejl ved udfyldelsen af din anmodning.</value>
+  </data>
+  <data name="lg_phrase_set_new_password_success" xml:space="preserve">
+    <value>Dit password er blevet ændret.</value>
+  </data>
+  <data name="lg_phrase_user_registration" xml:space="preserve">
+    <value>Bruger registrering.</value>
+  </data>
+</root>

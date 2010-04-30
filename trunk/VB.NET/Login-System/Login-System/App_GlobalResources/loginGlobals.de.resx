@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lg_login_button_text" xml:space="preserve">
+    <value>Anmeldung</value>
+  </data>
+  <data name="lg_register_button_text" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
+  <data name="lg_term_at" xml:space="preserve">
+    <value>bei</value>
+  </data>
+  <data name="lg_term_cancel" xml:space="preserve">
+    <value>Konto löschen</value>
+  </data>
+  <data name="lg_term_cancel_account" xml:space="preserve">
+    <value>Konto löschen</value>
+  </data>
+  <data name="lg_term_change_password" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="lg_term_change_password_button_text" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="lg_term_checkToken" xml:space="preserve">
+    <value>checkToken</value>
+  </data>
+  <data name="lg_term_city" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="lg_term_confirm" xml:space="preserve">
+    <value>Passwort bestätigen</value>
+  </data>
+  <data name="lg_term_contact_form" xml:space="preserve">
+    <value>Kontaktformular</value>
+  </data>
+  <data name="lg_term_country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="lg_term_current_password" xml:space="preserve">
+    <value>Aktuelles Passwort</value>
+  </data>
+  <data name="lg_term_delete_account" xml:space="preserve">
+    <value>Konto löschen</value>
+  </data>
+  <data name="lg_term_do_registration" xml:space="preserve">
+    <value>doRegistration</value>
+  </data>
+  <data name="lg_term_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="lg_term_enter_information" xml:space="preserve">
+    <value>Bitte Informationen eingeben</value>
+  </data>
+  <data name="lg_term_error_string" xml:space="preserve">
+    <value>getPasshash</value>
+  </data>
+  <data name="lg_term_example" xml:space="preserve">
+    <value>Beispiel</value>
+  </data>
+  <data name="lg_term_from_error" xml:space="preserve">
+    <value>Form-Fehler</value>
+  </data>
+  <data name="lg_term_get_name" xml:space="preserve">
+    <value>getName</value>
+  </data>
+  <data name="lg_term_get_oldpassword" xml:space="preserve">
+    <value>getOldPassword</value>
+  </data>
+  <data name="lg_term_guest" xml:space="preserve">
+    <value>Gast</value>
+  </data>
+  <data name="lg_term_home" xml:space="preserve">
+    <value>Heim</value>
+  </data>
+  <data name="lg_term_immediately" xml:space="preserve">
+    <value>sofor</value>
+  </data>
+  <data name="lg_term_ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="lg_term_issue_verification_token" xml:space="preserve">
+    <value>Ausgabe des Verification Tokens</value>
+  </data>
+  <data name="lg_term_log_string" xml:space="preserve">
+    <value>logLogin</value>
+  </data>
+  <data name="lg_term_log_out" xml:space="preserve">
+    <value>Log Aus</value>
+  </data>
+  <data name="lg_term_logged_out" xml:space="preserve">
+    <value>Abgemeldet</value>
+  </data>
+  <data name="lg_term_login" xml:space="preserve">
+    <value>Anmeldung</value>
+  </data>
+  <data name="lg_term_login_success" xml:space="preserve">
+    <value>Erfolg</value>
+  </data>
+  <data name="lg_term_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lg_term_new_password" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="lg_term_optional" xml:space="preserve">
+    <value>Optional</value>
+  </data>
+  <data name="lg_term_or" xml:space="preserve">
+    <value>oder</value>
+  </data>
+  <data name="lg_term_password" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="lg_term_please_login" xml:space="preserve">
+    <value>Bitte anmelden</value>
+  </data>
+  <data name="lg_term_please_register" xml:space="preserve">
+    <value>Bitte registrieren</value>
+  </data>
+  <data name="lg_term_recover_password" xml:space="preserve">
+    <value>Passwort wiederherstellen</value>
+  </data>
+  <data name="lg_term_region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="lg_term_register" xml:space="preserve">
+    <value>Registrieren</value>
+  </data>
+  <data name="lg_term_register_confirmation" xml:space="preserve">
+    <value>Bestätigung der Registrierung</value>
+  </data>
+  <data name="lg_term_register_delete_enter_email" xml:space="preserve">
+    <value>E-Mail eingeben</value>
+  </data>
+  <data name="lg_term_registration" xml:space="preserve">
+    <value>Anmeldung</value>
+  </data>
+  <data name="lg_term_registration_thankyou" xml:space="preserve">
+    <value>Vielen Dank für Ihre Anmeldung.</value>
+  </data>
+  <data name="lg_term_registration_verification" xml:space="preserve">
+    <value>Überprüfung der Registrierung</value>
+  </data>
+  <data name="lg_term_rememberme" xml:space="preserve">
+    <value>Angemeldet bleiben</value>
+  </data>
+  <data name="lg_term_remove_registration" xml:space="preserve">
+    <value>Registrierung löschen</value>
+  </data>
+  <data name="lg_term_reset_password" xml:space="preserve">
+    <value>Passwort zurücksetzen</value>
+  </data>
+  <data name="lg_term_required" xml:space="preserve">
+    <value>erforderlich</value>
+  </data>
+  <data name="lg_term_set_new_password" xml:space="preserve">
+    <value>ein neues Passwort eingeben</value>
+  </data>
+  <data name="lg_term_set_newpassword" xml:space="preserve">
+    <value>changePassword</value>
+  </data>
+  <data name="lg_term_submit" xml:space="preserve">
+    <value>Übermitteln</value>
+  </data>
+  <data name="lg_term_to" xml:space="preserve">
+    <value>Zu</value>
+  </data>
+  <data name="lg_term_useragent" xml:space="preserve">
+    <value>Useragent</value>
+  </data>
+  <data name="lg_term_userid" xml:space="preserve">
+    <value>UserID</value>
+  </data>
+  <data name="lg_term_via_email" xml:space="preserve">
+    <value>per E-Mail an</value>
+  </data>
+  <data name="lg_term_website" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="lg_term_website_address" xml:space="preserve">
+    <value>Website-Adresse</value>
+  </data>
+  <data name="lg_term_welcome" xml:space="preserve">
+    <value>Willkommen</value>
+  </data>
+  <data name="lg_phrase_attention_webmaster" xml:space="preserve">
+    <value>Webmaster benachrichtigen</value>
+  </data>
+  <data name="lg_phrase_cancel_account_canceled" xml:space="preserve">
+    <value>Das Konto wurde gelöscht.</value>
+  </data>
+  <data name="lg_phrase_cancel_account_error" xml:space="preserve">
+    <value>Ein unerwarteter Fehler trat beim Löschen des Kontos auf. Bitte kontaktieren Sie den Webmaster</value>
+  </data>
+  <data name="lg_phrase_cancel_account_warning" xml:space="preserve">
+    <value>Geben Sie Ihre User-ID und Passwort ein, um Ihren Account zu löschen.&lt;p&gt;WARNUNG: Dieser Vorgang kann nicht rückgängig gemacht werden.&lt;/p&gt;Benutzen Sie den unten stehenden Link Passwort wiederherstellen, wenn Ihr Kennwort Vergessenes wurde.</value>
+  </data>
+  <data name="lg_phrase_change_password" xml:space="preserve">
+    <value>Geben Sie Ihr aktuelles Passwort ein, gefolgt von Ihrem gewünschten neuen Passwort</value>
+  </data>
+  <data name="lg_phrase_confirm_empty" xml:space="preserve">
+    <value>Das Feld 'Kennwort bestätigen' ist leer, wird aber benötigt. Bitte bestätigen Sie Ihr Passwort.</value>
+  </data>
+  <data name="lg_phrase_confirm_title" xml:space="preserve">
+    <value>Bitte bestätigen Sie Ihr gewünschtes Passwort ein. Dieses Feld ist unbedingt nötig.</value>
+  </data>
+  <data name="lg_phrase_contact_webmaster" xml:space="preserve">
+    <value>an den Webmaster</value>
+  </data>
+  <data name="lg_phrase_delete_account" xml:space="preserve">
+    <value>Konto löschen</value>
+  </data>
+  <data name="lg_phrase_delete_already_verified" xml:space="preserve">
+    <value>Das Konto wurde bereits überprüft und konnte nicht gelöscht werden.</value>
+  </data>
+  <data name="lg_phrase_delete_deleted" xml:space="preserve">
+    <value>Das Konto wurde gelöscht</value>
+  </data>
+  <data name="lg_phrase_email_empty" xml:space="preserve">
+    <value>Die E-Mail-Feld ist leer, wird aber benötigt. Geben Sie bitte Ihre E-Mail-Adresse ein.</value>
+  </data>
+  <data name="lg_phrase_email_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihre E-Mail-Adresse. Dieses Feld ist obligatorisch.</value>
+  </data>
+  <data name="lg_phrase_enter_set_new_password_token" xml:space="preserve">
+    <value>Geben Sie Passwort-Reset-Token in das entsprechende Feld ein und drücken Sie die Absenden</value>
+  </data>
+  <data name="lg_phrase_enter_unlock_code" xml:space="preserve">
+    <value>Geben Sie den Entsperr-Code ein.</value>
+  </data>
+  <data name="lg_phrase_is_logged_in" xml:space="preserve">
+    <value>angemeldet ist</value>
+  </data>
+  <data name="lg_phrase_issue_new_token" xml:space="preserve">
+    <value>Geben Sie Ihren Benutzernamen und E-Mail-Adresse ein, um ein neues Bestätigungs-Token zu erhalten.</value>
+  </data>
+  <data name="lg_phrase_issue_new_token_error" xml:space="preserve">
+    <value>Ein unerwarteter Fehler ist beim Erstellen Ihres Bestätigungs-Tokens aufgetreten. Bitte kontaktieren Sie den Webmaster.</value>
+  </data>
+  <data name="lg_phrase_issue_new_token_success" xml:space="preserve">
+    <value>Ihr neuer Überprüfungscode wird an Ihre E-Mail-Adresse verschickt.</value>
+  </data>
+  <data name="lg_phrase_login_error" xml:space="preserve">
+    <value>Es ist ein Fehler aufgetreten. Bitte geben Sie Ihre User-ID und Ihr Passwort ein.</value>
+  </data>
+  <data name="lg_phrase_login_token_problem" xml:space="preserve">
+    <value>Entweder ist der Bestätigungs-Token benutzt worden ist, (und überprüft werden,) oder das Zeichen ist nicht gültig.</value>
+  </data>
+  <data name="lg_phrase_logged_out" xml:space="preserve">
+    <value>Sie sind ausgeloggt.</value>
+  </data>
+  <data name="lg_phrase_logout_continue" xml:space="preserve">
+    <value>Klicken Sie hier, um fortzufahren.</value>
+  </data>
+  <data name="lg_phrase_name_empty" xml:space="preserve">
+    <value>Das Feld Name ist leer, aber notwendig . Geben Sie Ihren Namen ein.</value>
+  </data>
+  <data name="lg_phrase_name_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihren vollständigen Namen ein. Dieses Feld ist obligatorisch.</value>
+  </data>
+  <data name="lg_phrase_newpassword_empty" xml:space="preserve">
+    <value>Das 'Neues Passwort'-Feld ist leer, wird aber benötigt. Bitte geben Sie Ihr neues Kennwort ein.</value>
+  </data>
+  <data name="lg_phrase_news" xml:space="preserve">
+    <value>Möchten Sie in regelmäßigen Abständen E-Mails empfangen, wenn die Webseite geändert oder neue Artikel geschrieben wurden?</value>
+  </data>
+  <data name="lg_phrase_no_matching_registration" xml:space="preserve">
+    <value>Es wurde kein passender Registrierungeintrag mit dieser Benutzer-ID und E-Mail-Adresse gefunden.</value>
+  </data>
+  <data name="lg_phrase_oldpassword_does_not_match" xml:space="preserve">
+    <value>Das eingegebene Passwort stimmt nicht mit Ihrem gespeicherten Passwort überein. Wiederholen</value>
+  </data>
+  <data name="lg_phrase_oldpassword_empty" xml:space="preserve">
+    <value>Das 'altes Passwort'-Feld ist leer, wird aber benötigt. Bitte geben Sie Ihr altes Kennwort ein.</value>
+  </data>
+  <data name="lg_phrase_oldpassword_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihr aktuelles Passwort ein. Dieses Feld ist obligatorisch.</value>
+  </data>
+  <data name="lg_phrase_password_change_authorized" xml:space="preserve">
+    <value>Wenn Sie diese Änderung nicht selbst veranlasst haben, wenden Sie sich bitte an den Webmaster</value>
+  </data>
+  <data name="lg_phrase_password_changed" xml:space="preserve">
+    <value>Ihr Passwort wurde geändert.</value>
+  </data>
+  <data name="lg_phrase_password_changed_error" xml:space="preserve">
+    <value>Es ist ein unerwarteter Fehler aufgetreten. Das Passwort wurde nicht geändert. Bitte kontaktieren Sie den Webmaster</value>
+  </data>
+  <data name="lg_phrase_password_changed_okay" xml:space="preserve">
+    <value>Passwort erfolgreich geändert.</value>
+  </data>
+  <data name="lg_phrase_password_changed_post" xml:space="preserve">
+    <value> wurde geändert um </value>
+  </data>
+  <data name="lg_phrase_password_changed_pre" xml:space="preserve">
+    <value>Ihr Kennwort bei </value>
+  </data>
+  <data name="lg_phrase_password_empty" xml:space="preserve">
+    <value>Das 'Passwort'-Feld ist leer, wird aber benötigt. Bitte geben Sie Ihr Kennwort ein.</value>
+  </data>
+  <data name="lg_phrase_password_new_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihre gewünschtes Passwort ein. Dieses Feld ist obligatorisch.</value>
+  </data>
+  <data name="lg_phrase_password_nomatch_confirm" xml:space="preserve">
+    <value>Das Passwort stimmt nicht mit der Bestätigungs-Passwort überein. Bitte wiederholen.</value>
+  </data>
+  <data name="lg_phrase_password_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihr Kennwort ein. Dieses Feld ist obligatorisch.</value>
+  </data>
+  <data name="lg_phrase_register_delete_noemail" xml:space="preserve">
+    <value>Es existiert kein Benutzerkonto für die angegebene Email-Adresse.</value>
+  </data>
+  <data name="lg_phrase_registration_email_verify" xml:space="preserve">
+    <value>Überprüfen Sie Ihre Email-Adresse</value>
+  </data>
+  <data name="lg_phrase_registration_email_verify_msg" xml:space="preserve">
+    <value>Es wurde eine E-Mail an die E-Mail-Adresse versandt, die Sie während der Registrierung angegeben haben. Klicken Sie auf den Link in der E-Mail oder kopieren und fügen Sie den Freischalt-Code in das Feld unten ein. Ihr Konto wird nicht verfügbar sein, bevor dies geprüft worden ist.</value>
+  </data>
+  <data name="lg_phrase_registration_error" xml:space="preserve">
+    <value>Es wurde ein unerwarteter Fehler bei der Registrierung festgestellt. Bitte kontaktieren Sie den Webmaster</value>
+  </data>
+  <data name="lg_phrase_registration_mail0" xml:space="preserve">
+    <value>Ein Überprüfungs-Token für die Neuregistrierung wurde erstellt.</value>
+  </data>
+  <data name="lg_phrase_registration_mail1" xml:space="preserve">
+    <value>Vielen Dank für Ihre Anmeldung auf dieser Seite</value>
+  </data>
+  <data name="lg_phrase_registration_mail2" xml:space="preserve">
+    <value>Bevor Sie sich einloggen können benötigen Sie</value>
+  </data>
+  <data name="lg_phrase_registration_mail3" xml:space="preserve">
+    <value> um Ihre E-Mail-Adresse zu überprüfen</value>
+  </data>
+  <data name="lg_phrase_registration_mail4" xml:space="preserve">
+    <value>Clicken Sie hier zur Überprüfung</value>
+  </data>
+  <data name="lg_phrase_registration_mail5" xml:space="preserve">
+    <value>Falls der Link nicht funktioniert, besuchen Sie bitte &lt;p&gt;http://</value>
+  </data>
+  <data name="lg_phrase_registration_mail6" xml:space="preserve">
+    <value>Kopieren Sie das Token fügen Sie es unten in das Formular ein. Dann klicken Sie auf ""Abschicken""</value>
+  </data>
+  <data name="lg_phrase_registration_mail7" xml:space="preserve">
+    <value>Wenn Sie sich nicht registrieren konnten, klicken Sie auf</value>
+  </data>
+  <data name="lg_phrase_registration_mail8" xml:space="preserve">
+    <value>diesen Link: &lt;a href = ""http://</value>
+  </data>
+  <data name="lg_phrase_registration_mail9" xml:space="preserve">
+    <value>wenn Sie Fragen haben, besuchen Sie &lt;a href=""http://</value>
+  </data>
+  <data name="lg_phrase_registration_success" xml:space="preserve">
+    <value>Anmeldung erfolgreich</value>
+  </data>
+  <data name="lg_phrase_remember_me_warning" xml:space="preserve">
+    <value>Bitte aktivieren Sie nicht 'Angemeldet bleiben', wenn Sie sich an einem gemeinsam genutzten Computer befinden.</value>
+  </data>
+  <data name="lg_phrase_user_registration" xml:space="preserve">
+    <value>Benutzer-Registrierung</value>
+  </data>
+  <data name="lg_phrase_userid_empty" xml:space="preserve">
+    <value>Die Benutzer-ID ist erforderlich, aber leer. Bitte geben Sie Ihre User-ID an.</value>
+  </data>
+  <data name="lg_phrase_userid_inuse" xml:space="preserve">
+    <value>Die Benutzer-ID ist ungültig oder wird bereits verwendet.</value>
+  </data>
+  <data name="lg_phrase_userid_new_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihre gewünschte Benutzer-ID an. Dieses Feld ist obligatorisch.</value>
+  </data>
+  <data name="lg_phrase_userid_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihre Benutzerkennung an. Dieses Feld ist obligatorisch.</value>
+  </data>
+  <data name="lg_phrase_verify_expired" xml:space="preserve">
+    <value>Mehr als 24 Stunden seit Ihrer Anmeldung verstrichen.</value>
+  </data>
+  <data name="lg_phrase_verify_login" xml:space="preserve">
+    <value>Sie können sich nun mit Ihrem Konto anmelden.</value>
+  </data>
+  <data name="lg_phrase_verify_newtoken" xml:space="preserve">
+    <value>Klicken Sie hier, um einen neuen Freischalt code zu generieren.</value>
+  </data>
+  <data name="lg_phrase_verify_verified" xml:space="preserve">
+    <value>Sie haben Ihre E-Mail-Adresse bestätigt.</value>
+  </data>
+  <data name="lg_phrase_website_title" xml:space="preserve">
+    <value>Bitte geben Sie Ihre Website-Adresse an.</value>
+  </data>
+  <data name="lg_phrase_recover_password" xml:space="preserve">
+    <value>Passwort wiederherstellen.</value>
+  </data>
+  <data name="lg_phrase_request_password1" xml:space="preserve">
+    <value>Eine Anfrage auf Passwortwiederherstellung wurde gesendet von </value>
+  </data>
+  <data name="lg_phrase_recover_password2" xml:space="preserve">
+    <value>Sie können ein neues Passwort setzen, indem Sie auf den Link unten klicken.</value>
+  </data>
+  <data name="lg_phrase_recover_password3" xml:space="preserve">
+    <value>Neues Kennwort setzen</value>
+  </data>
+  <data name="lg_phrase_recover_password4" xml:space="preserve">
+    <value>Wenn Sie keine Passwortwiederherstellung angefordert haben, wenden Sie sich an den Webmaster von</value>
+  </data>
+  <data name="lg_phrase_recover_password5" xml:space="preserve">
+    <value>E-Mail an die folgenden E-Mail-Link</value>
+  </data>
+  <data name="lg_phrase_recover_password_error" xml:space="preserve">
+    <value>Es gab einen unerwarteten Fehler bei der Bearbeitung Ihrer Anfrage. Bitte kontaktieren Sie den Webmaster.</value>
+  </data>
+  <data name="lg_phrase_recover_password_success" xml:space="preserve">
+    <value>Der Anfrage zur Passwortwiederherstellung wurde erfolgreich verarbeitet.&lt;p&gt;Bitte folgen Sie den Anweisungen in der E-Mail, die an Sie gesendet wurde, um ein neues Passwort zu setzen.&lt;/p&gt;</value>
+  </data>
+  <data name="lg_phrase_set_new_password_good_token" xml:space="preserve">
+    <value>Ihr Token war gültig. Geben Sie ein neues Passwort ein.</value>
+  </data>
+  <data name="lg_phrase_set_new_password_token_expired" xml:space="preserve">
+    <value>Mehr als 24 Stunde sind vergangen, seit Sie ein Passwort-Wiederherstellungs-Token angefordert haben.</value>
+  </data>
+  <data name="lg_phrase_contact_webmaster1" xml:space="preserve">
+    <value>Bitte kontaktieren Sie den Webmaster um Unterstützung.</value>
+  </data>
+  <data name="lg_phrase_webmaster_may_be_contacted" xml:space="preserve">
+    <value>Sie können den Webmaster per E-Mail über diesen Link kontaktieren:</value>
+  </data>
+  <data name="lg_phrase_set_new_password_error" xml:space="preserve">
+    <value>Es war ein unerwarteter Fehler beim Ausfüllen Ihrer Anfrage aufgetreten.</value>
+  </data>
+  <data name="lg_phrase_set_new_password_success" xml:space="preserve">
+    <value>Ihr Passwort wurde erfolgreich geändert.</value>
+  </data>
+</root>

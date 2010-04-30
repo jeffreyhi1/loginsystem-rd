@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lg_login_button_text" xml:space="preserve">
+    <value>Logga in</value>
+  </data>
+  <data name="lg_register_button_text" xml:space="preserve">
+    <value>Registrera dig</value>
+  </data>
+  <data name="lg_term_at" xml:space="preserve">
+    <value>p�</value>
+  </data>
+  <data name="lg_term_cancel" xml:space="preserve">
+    <value>Avsluta konto</value>
+  </data>
+  <data name="lg_term_cancel_account" xml:space="preserve">
+    <value>Avsluta konto</value>
+  </data>
+  <data name="lg_term_change_password" xml:space="preserve">
+    <value>�ndra l�senord</value>
+  </data>
+  <data name="lg_term_change_password_button_text" xml:space="preserve">
+    <value>�ndra l�senord</value>
+  </data>
+  <data name="lg_term_checkToken" xml:space="preserve">
+    <value>checkToken</value>
+  </data>
+  <data name="lg_term_city" xml:space="preserve">
+    <value>Stad</value>
+  </data>
+  <data name="lg_term_confirm" xml:space="preserve">
+    <value>Bekr�fta l�senord</value>
+  </data>
+  <data name="lg_term_contact_form" xml:space="preserve">
+    <value>Kontaktformul�r</value>
+  </data>
+  <data name="lg_term_country" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="lg_term_current_password" xml:space="preserve">
+    <value>Nuvarande l�senord</value>
+  </data>
+  <data name="lg_term_delete_account" xml:space="preserve">
+    <value>Ta bort konto</value>
+  </data>
+  <data name="lg_term_do_registration" xml:space="preserve">
+    <value>doRegistration</value>
+  </data>
+  <data name="lg_term_email" xml:space="preserve">
+    <value>E-post</value>
+  </data>
+  <data name="lg_term_enter_information" xml:space="preserve">
+    <value>Ange information</value>
+  </data>
+  <data name="lg_term_error_string" xml:space="preserve">
+    <value>getPasshash</value>
+  </data>
+  <data name="lg_term_example" xml:space="preserve">
+    <value>Exempel</value>
+  </data>
+  <data name="lg_term_form_error" xml:space="preserve">
+    <value>Form Fel</value>
+  </data>
+  <data name="lg_term_home" xml:space="preserve">
+    <value>Hem</value>
+  </data>
+  <data name="lg_term_get_name" xml:space="preserve">
+    <value>getName</value>
+  </data>
+  <data name="lg_term_get_oldpassword" xml:space="preserve">
+    <value>getOldPassword</value>
+  </data>
+  <data name="lg_term_guest" xml:space="preserve">
+    <value>G�st.</value>
+  </data>
+  <data name="lg_term_immediately" xml:space="preserve">
+    <value>omedelbart!</value>
+  </data>
+  <data name="lg_term_ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="lg_term_issue_verification_token" xml:space="preserve">
+    <value>Fr�ga identifieringskod</value>
+  </data>
+  <data name="lg_term_log_out" xml:space="preserve">
+    <value>Logga ut</value>
+  </data>
+  <data name="lg_term_log_string" xml:space="preserve">
+    <value>logLogin</value>
+  </data>
+  <data name="lg_term_logged_out" xml:space="preserve">
+    <value>Utloggad</value>
+  </data>
+  <data name="lg_term_login" xml:space="preserve">
+    <value>Logga in</value>
+  </data>
+  <data name="lg_term_login_success" xml:space="preserve">
+    <value>Framg�ng</value>
+  </data>
+  <data name="lg_term_name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="lg_term_new_password" xml:space="preserve">
+    <value>Nytt l�senord</value>
+  </data>
+  <data name="lg_term_optional" xml:space="preserve">
+    <value>Valfritt</value>
+  </data>
+  <data name="lg_term_or" xml:space="preserve">
+    <value>eller</value>
+  </data>
+  <data name="lg_term_password" xml:space="preserve">
+    <value>l�senord</value>
+  </data>
+  <data name="lg_term_please_login" xml:space="preserve">
+    <value>V�nligen Logga in</value>
+  </data>
+  <data name="lg_term_please_register" xml:space="preserve">
+    <value>V�nligen registrera</value>
+  </data>
+  <data name="lg_term_recover_password" xml:space="preserve">
+    <value>�terst�ll l�senord</value>
+  </data>
+  <data name="lg_term_region" xml:space="preserve">
+    <value>region</value>
+  </data>
+  <data name="lg_term_register" xml:space="preserve">
+    <value>Registrera dig</value>
+  </data>
+  <data name="lg_term_register_confirmation" xml:space="preserve">
+    <value>bekr�ftelse p� registrering</value>
+  </data>
+  <data name="lg_term_register_delete_enter_email" xml:space="preserve">
+    <value>Ange Email</value>
+  </data>
+  <data name="lg_term_registration" xml:space="preserve">
+    <value>Registrering</value>
+  </data>
+  <data name="lg_term_registration_thankyou" xml:space="preserve">
+    <value>Tack f�r din registrering.</value>
+  </data>
+  <data name="lg_term_registration_verification" xml:space="preserve">
+    <value>Registrering Verification</value>
+  </data>
+  <data name="lg_term_rememberme" xml:space="preserve">
+    <value>Kom ih�g mig</value>
+  </data>
+  <data name="lg_term_remove_registration" xml:space="preserve">
+    <value>Ta bort Registrering</value>
+  </data>
+  <data name="lg_term_required" xml:space="preserve">
+    <value>obligatoriskt</value>
+  </data>
+  <data name="lg_term_reset_password" xml:space="preserve">
+    <value>�terst�ll l�senord</value>
+  </data>
+  <data name="lg_term_set_new_password" xml:space="preserve">
+    <value>ange ett nytt l�senord</value>
+  </data>
+  <data name="lg_term_set_newpassword" xml:space="preserve">
+    <value>changePassword</value>
+  </data>
+  <data name="lg_term_submit" xml:space="preserve">
+    <value>Skicka</value>
+  </data>
+  <data name="lg_term_to" xml:space="preserve">
+    <value>till</value>
+  </data>
+  <data name="lg_term_useragent" xml:space="preserve">
+    <value>useragent</value>
+  </data>
+  <data name="lg_term_userid" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="lg_term_via_email" xml:space="preserve">
+    <value>via e-post</value>
+  </data>
+  <data name="lg_term_website_address" xml:space="preserve">
+    <value>Webbsida adress</value>
+  </data>
+  <data name="lg_term_welcome" xml:space="preserve">
+    <value>V�lkommen</value>
+  </data>
+  <data name="lg_phrase_attention_webmaster" xml:space="preserve">
+    <value>Uppm�rksam Webmaster</value>
+  </data>
+  <data name="lg_phrase_cancel_account_canceled" xml:space="preserve">
+    <value>Kontot har �r annullerat.</value>
+  </data>
+  <data name="lg_phrase_cancel_account_error" xml:space="preserve">
+    <value>Det var ett ov�ntat fel n�r kontot blev avslutat. V�nligen kontakta webmaster</value>
+  </data>
+  <data name="lg_phrase_cancel_account_warning" xml:space="preserve">
+    <value>Ange ditt anv�ndarnamn och l�senord f�r att avsluta kontot.&lt;p&gt;VARNING: Denna �tg�rd kan inte �ngras.&lt;/p&gt;Om du har gl�mt ditt l�senord anv�nder �tervinna l�senord l�nken nedan.</value>
+  </data>
+  <data name="lg_phrase_change_password" xml:space="preserve">
+    <value>Ange ditt nuvarande l�senord och sedan �nskat nytt l�senord</value>
+  </data>
+  <data name="lg_phrase_confirm_empty" xml:space="preserve">
+    <value>f�ltet Bekr�fta l�senord �r tomt men obligatoriskt. V�nligen bekr�fta ditt l�senord.</value>
+  </data>
+  <data name="lg_phrase_confirm_title" xml:space="preserve">
+    <value>V�nligen bekr�fta �nskat l�senord. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_contact_webmaster" xml:space="preserve">
+    <value>kontakta webmastern</value>
+  </data>
+  <data name="lg_phrase_delete_account" xml:space="preserve">
+    <value>Ta bort konto</value>
+  </data>
+  <data name="lg_phrase_delete_already_verified" xml:space="preserve">
+    <value>kontot �r redan verificerad och kunde inte tas bort</value>
+  </data>
+  <data name="lg_phrase_delete_deleted" xml:space="preserve">
+    <value>Kontot har raderats</value>
+  </data>
+  <data name="lg_phrase_email_empty" xml:space="preserve">
+    <value>The E-postadres f�ltet �r tomt, men obligatoriskt. Ange din e-postadress.</value>
+  </data>
+  <data name="lg_phrase_email_title" xml:space="preserve">
+    <value>Ange din E-postadress. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_enter_unlock_code" xml:space="preserve">
+    <value>Ange uppl�sningskoden</value>
+  </data>
+  <data name="lg_phrase_is_logged_in" xml:space="preserve">
+    <value>�r inloggad</value>
+  </data>
+  <data name="lg_phrase_issue_new_token" xml:space="preserve">
+    <value>Ange ditt anv�ndarnamn och E-post f�r att f� en ny identifieringskod.</value>
+  </data>
+  <data name="lg_phrase_issue_new_token_error" xml:space="preserve">
+    <value>Det var ett ov�ntat fel du skapar en identifieringskod. Kontakta den webbansvariga.</value>
+  </data>
+  <data name="lg_phrase_issue_new_token_success" xml:space="preserve">
+    <value>Ditt nya identifieringskod skickas till din E-postadress.</value>
+  </data>
+  <data name="lg_phrase_login_error" xml:space="preserve">
+    <value>Det uppstod ett fel. Skriv in ditt anv�ndarnamn och l�senord.</value>
+  </data>
+  <data name="lg_phrase_login_token_problem" xml:space="preserve">
+    <value>Antingen identifieringskod har anv�nts, (och du kontrolleras) eller token �r inte giltig.</value>
+  </data>
+  <data name="lg_phrase_logged_out" xml:space="preserve">
+    <value>Du �r utloggad.</value>
+  </data>
+  <data name="lg_phrase_logout_continue" xml:space="preserve">
+    <value>Klicka h�r f�r att forts�tta.</value>
+  </data>
+  <data name="lg_phrase_name_empty" xml:space="preserve">
+    <value>Namn f�ltet �r tomt, men obligatoriskt. V�nligen ange ditt namn.</value>
+  </data>
+  <data name="lg_phrase_name_title" xml:space="preserve">
+    <value>Ange ditt fullst�ndiga namn. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_newpassword_empty" xml:space="preserve">
+    <value>F�ltet Nytt L�senord �r tomt, men obligatoriskt. V�nligen ange ditt l�senord.</value>
+  </data>
+  <data name="lg_phrase_news" xml:space="preserve">
+    <value>Vill du ta emot regelbundna e-post n�r hemsidan �ndringar eller nya artiklar l�ggs ut?</value>
+  </data>
+  <data name="lg_phrase_no_matching_registration" xml:space="preserve">
+    <value>Det var ingen registrering som matchade anv�ndar-ID och e-postadress du angav.</value>
+  </data>
+  <data name="lg_phrase_oldpassword_does_not_match" xml:space="preserve">
+    <value>Den nuvarande l�senord matchar inte den lagrade l�senord. F�rs�k igen</value>
+  </data>
+  <data name="lg_phrase_oldpassword_empty" xml:space="preserve">
+    <value>F�ltet Gamla L�senordet �r tomt, men obligatoriskt. V�nligen ange ditt l�senord.</value>
+  </data>
+  <data name="lg_phrase_oldpassword_title" xml:space="preserve">
+    <value>Ange ditt nuvarande l�senord. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_password_change_authorized" xml:space="preserve">
+    <value>Om du inte till�ter denna f�r�ndring, kontakta webmaster</value>
+  </data>
+  <data name="lg_phrase_password_changed" xml:space="preserve">
+    <value>Ditt l�senord har �ndrats</value>
+  </data>
+  <data name="lg_phrase_password_changed_error" xml:space="preserve">
+    <value>Det var ett ov�ntat fel. L�senordet �ndrades inte. V�nligen kontakta webmaster</value>
+  </data>
+  <data name="lg_phrase_password_changed_okay" xml:space="preserve">
+    <value>l�senord har �ndrats.</value>
+  </data>
+  <data name="lg_phrase_password_changed_post" xml:space="preserve">
+    <value>var �ndrats till</value>
+  </data>
+  <data name="lg_phrase_password_changed_pre" xml:space="preserve">
+    <value>Ditt l�senord p�</value>
+  </data>
+  <data name="lg_phrase_password_empty" xml:space="preserve">
+    <value>L�senordet �r tomt men obligatoriskt. V�nligen ange ditt l�senord.</value>
+  </data>
+  <data name="lg_phrase_password_new_title" xml:space="preserve">
+    <value>Ange ditt �nskade l�senord. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_password_nomatch_confirm" xml:space="preserve">
+    <value>L�senordet inte matchar Bekr�ftelse l�senord. Skriv in igen.</value>
+  </data>
+  <data name="lg_phrase_password_title" xml:space="preserve">
+    <value>Ange ditt l�senord. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_register_delete_noemail" xml:space="preserve">
+    <value>Det var ingen konto som matchar den E-postadress du angav.</value>
+  </data>
+  <data name="lg_phrase_registration_email_verify" xml:space="preserve">
+    <value>Kontrollera din E-postadress</value>
+  </data>
+  <data name="lg_phrase_registration_email_verify_msg" xml:space="preserve">
+    <value>Ett mail skickades till den e-postadress du angav vid registreringen. Klicka p� l�nken i e-post eller kopiera och klistra in uppl�sningskoden i form f�ltet nedan. Ditt konto �r inte tillg�ngligt f�rr�n den har verifierats.</value>
+  </data>
+  <data name="lg_phrase_registration_error" xml:space="preserve">
+    <value>Det var ett ov�ntat fel att slutf�ra din registrering. V�nligen kontakta webmaster</value>
+  </data>
+  <data name="lg_phrase_registration_mail0" xml:space="preserve">
+    <value>utf�rdat nya Registrering identifieringskod</value>
+  </data>
+  <data name="lg_phrase_registration_mail1" xml:space="preserve">
+    <value>Tack f�r din registrering p�</value>
+  </data>
+  <data name="lg_phrase_registration_mail2" xml:space="preserve">
+    <value>Innan du kan logga in m�ste du</value>
+  </data>
+  <data name="lg_phrase_registration_mail3" xml:space="preserve">
+    <value>att bekr�fta din E-postadress</value>
+  </data>
+  <data name="lg_phrase_registration_mail4" xml:space="preserve">
+    <value>Klicka h�r f�r att verifiera</value>
+  </data>
+  <data name="lg_phrase_registration_mail5" xml:space="preserve">
+    <value>Om l�nken ovan inte fungerar g�r du till http://</value>
+  </data>
+  <data name="lg_phrase_registration_mail6" xml:space="preserve">
+    <value>kopiera och klistra in symbolen nedan i formul�ret och klicka p� ""Skicka""</value>
+  </data>
+  <data name="lg_phrase_registration_mail7" xml:space="preserve">
+    <value>Om du inte registrera dig, klicka p�</value>
+  </data>
+  <data name="lg_phrase_registration_mail8" xml:space="preserve">
+    <value>den h�r l�nken: &lt;a href = ""http://</value>
+  </data>
+  <data name="lg_phrase_registration_mail9" xml:space="preserve">
+    <value>om du har n�gra fr�gor sedan &lt;a href = ""http://</value>
+  </data>
+  <data name="lg_phrase_registration_success" xml:space="preserve">
+    <value>Registrering lyckades</value>
+  </data>
+  <data name="lg_phrase_remember_me_warning" xml:space="preserve">
+    <value>Kontrollera inte ih�g mig om detta �r en delad dator.</value>
+  </data>
+  <data name="lg_phrase_userid_empty" xml:space="preserve">
+    <value>�r den anv�ndare f�ltet som obligatoriskt men �r tom. Ange ditt anv�ndar-ID.</value>
+  </data>
+  <data name="lg_phrase_userid_inuse" xml:space="preserve">
+    <value>Anv�ndar-id anv�nds eller �r ogiltigt.</value>
+  </data>
+  <data name="lg_phrase_userid_new_title" xml:space="preserve">
+    <value>Ange ditt �nskade anv�ndarnamn. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_userid_title" xml:space="preserve">
+    <value>V�nligen ange ditt anv�ndarnamn. Detta f�lt �r obligatoriskt.</value>
+  </data>
+  <data name="lg_phrase_verify_expired" xml:space="preserve">
+    <value>Mer �n 24 timmar har g�tt sedan din registrering.</value>
+  </data>
+  <data name="lg_phrase_verify_login" xml:space="preserve">
+    <value>Du kan nu logga in p� ditt konto.</value>
+  </data>
+  <data name="lg_phrase_verify_newtoken" xml:space="preserve">
+    <value>Klicka h�r f�r att skapa en ny uppl�sningskod.</value>
+  </data>
+  <data name="lg_phrase_verify_verified" xml:space="preserve">
+    <value>Du har bekr�ftat din e-postadress.</value>
+  </data>
+  <data name="lg_phrase_website_title" xml:space="preserve">
+    <value>Ange webbplatsens adress.</value>
+  </data>
+  <data name="lg_phrase_recover_password" xml:space="preserve">
+    <value>�terst�ll l�senord</value>
+  </data>
+  <data name="lg_phrase_request_password1" xml:space="preserve">
+    <value>har en beg�ran gjorts f�r att �terst�lla ditt l�senord p�</value>
+  </data>
+  <data name="lg_phrase_recover_password2" xml:space="preserve">
+    <value>Du kan ange ett nytt l�senord genom att klicka p� l�nken nedan.</value>
+  </data>
+  <data name="lg_phrase_recover_password3" xml:space="preserve">
+    <value>Set Nytt l�senord</value>
+  </data>
+  <data name="lg_phrase_recover_password4" xml:space="preserve">
+    <value>Om du inte bad om att �terf� ditt l�senord, kontakta webbansvarig av</value>
+  </data>
+  <data name="lg_phrase_recover_password5" xml:space="preserve">
+    <value>E-post p� f�ljande e-l�nk</value>
+  </data>
+  <data name="lg_phrase_recover_password_error" xml:space="preserve">
+    <value>Det var ett ov�ntat fel n�r din beg�ran. Kontakta webmaster.</value>
+  </data>
+  <data name="lg_phrase_recover_password_success" xml:space="preserve">
+    <value>En beg�ran om att �terf� ditt l�senord behandlades med success.&lt;p&gt;F�lj instruktionerna i mailet till dig att s�tta ett nytt l�senord.&lt;/p&gt;</value>
+  </data>
+  <data name="lg_phrase_set_new_password_good_token" xml:space="preserve">
+    <value>Din token var giltig. Ange ett nytt l�senord.</value>
+  </data>
+  <data name="lg_phrase_set_new_password_tken_expired" xml:space="preserve">
+    <value>Mer �n 24 timmar har g�tt sedan du beg�rt ett l�senord �terh�mtning.</value>
+  </data>
+  <data name="lg_phrase_contact_webmaster1" xml:space="preserve">
+    <value>V�nligen kontakta webmaster f�r att f� hj�lp.</value>
+  </data>
+  <data name="lg_phrase_webmaster_may_be_contacted" xml:space="preserve">
+    <value>kan Webmastern bli kontaktad via E-post via denna l�nk:</value>
+  </data>
+  <data name="lg_phrase_set_new_password_error" xml:space="preserve">
+    <value>Det var ett ov�ntat fel vid ifyllandet av din beg�ran.</value>
+  </data>
+  <data name="lg_phrase_set_new_password_success" xml:space="preserve">
+    <value>Ditt l�senord har �ndrats.</value>
+  </data>
+  <data name="lg_phrase_user_registration" xml:space="preserve">
+    <value> Registrering.</value>
+  </data>
+</root>
