@@ -1,5 +1,5 @@
 <%
-'*  $Id: ASP_reCAPTCHA_code.asp 187 2010-04-28 09:43:15Z RQuadling $
+'*  $Id: ASP_reCAPTCHA_code.asp 239 2010-04-30 09:24:15Z rdivilbiss $
 '*****************************************************************************************************
 ' returns string the can be written where you would like the reCAPTCHA challenged placed on your page.
 Function recaptcha_challenge_writer(publickey)
