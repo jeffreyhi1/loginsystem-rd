@@ -48,7 +48,7 @@ message = lg_phrase_recover_password
 '*******************************************************************************************************************
 If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 	message=""
-	userid = getField("userid")
+	userid = getField("userid,rXsafepq")
 	email = getField("email,rXemail")
 	If userid="" Then
 		message = lg_phrase_userid_empty
