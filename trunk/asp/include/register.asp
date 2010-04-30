@@ -23,7 +23,7 @@ Response.CacheControl="no-store"
 '*******************************************************************************************************************
 Dim redirected, destination, password, confirm, passhash, userid, name, email, website, news, mailBody, dbMsg
 Dim ip, useragent, region, city, country, dateRegistered, locked, dateLocked, token, cmdTxt, message, objXMLHTTP, xmldoc
-Dim reCAPTCHAChallenge, reCAPTCHAResponse, pubKey, privKey
+Dim reChallengeField, reResponseField, publickey, privkey
 
 
 destination=""
@@ -49,9 +49,10 @@ message= "<strong>"&lg_term_please_register&"</strong>"
 If lg_debug Then
 	dbMsg = "DEBUG BEGIN<br>" & vbLF
 End If
-reChallenge = ""
-pubKey = "6Lfe3rkSAAAAAPrJLxSOPkUCq2OqbA5cNZ6kUYen"
-privKey = "6Lfe3rkSAAAAAMutk1SNbCduQqZpJ8Fnv5FnOIAL"
+reChallengeField = ""
+reResponseField = ""
+publickey = "6Lce3bkSAAAAAHHyw_BOFsIgrHh9TcPrQMQ1oLYU"
+privkey = "6Lce3bkSAAAAADh2-3h0SS30KP5E8gHXBN0yV13j"
 
 '*******************************************************************************************************************
 '* Function to check is userid is available
@@ -86,7 +87,7 @@ end function
 '* Function to write reCAPTCHA to form
 '*******************************************************************************************************************
 ' returns string the can be written where you would like the reCAPTCHA challenged placed on your page
-Function recaptcha_challenge_writer(publickey)
+Function recaptcha_challenge_writer()
 	recaptcha_challenge_writer = "<script type=""text/javascript"">" & _
 		"var RecaptchaOptions = {" & _
 		"   theme : 'white'," & _
@@ -105,7 +106,7 @@ End Function
 '*******************************************************************************************************************
 '* Function to verify reCAPTCHA field
 '*******************************************************************************************************************
-Function recaptcha_confirm(privkey,rechallenge,reresponse)
+Function recaptcha_confirm(rechallenge,reresponse)
 	' Test the captcha field
 
 	Dim VarString
@@ -179,9 +180,11 @@ Else
 	End if
 	destination = getField("destination,rXurlpath")
 	If lg_debug Then dbMsg = dbMsg & "destination = " & Server.HTMLEncode(destination) & "<br>" & vbLF End If
-	reCAPTCHAChallenge = getField("recaptcha_challenge_field,rXsafe")
-	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Challenge = " & Server.HTMLEncode(reChallenge) & "<br>" & vbLF End If
-	message = recaptcha_confirm(privKey, reCAPTCHAChallenge, reCAPTCHAResponse)
+	reChallengeField = getField("recaptcha_challenge_field,rXsafe")
+	reResponseField = getField("recaptcha_response_field,rXsafe")
+	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Challenge = " & Server.HTMLEncode(reChallengeField) & "<br>" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Response = " & Server.HTMLEncode(reResponseField) & "<br>" & vbLF End If
+	message = recaptcha_confirm(reChallengeField, reResponseField)
 	If lg_debug Then dbMsg = dbMsg & "message = " & Server.HTMLEncode(message) & "<br>" & vbLF End If
 	If userid & ""="" Then
 		message = message & lg_phrase_userid_empty & "<br>" & vbLF
