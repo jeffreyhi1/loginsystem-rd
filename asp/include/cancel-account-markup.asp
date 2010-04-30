@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 26 APR 2010 alpha 0.1b -->
+			<!-- alpha 0.1b -->
 			<div id="login-system">
 			<h1><%=lg_term_cancel_account%></h1>
 			<% If message <> lg_phrase_cancel_account_canceled Then %>
@@ -11,7 +11,7 @@
 			<fieldset>
 			  <legend><%=lg_term_cancel_account%></legend>
 			  <div id="warning"><%=lg_phrase_cancel_account_warning%></div>
-			  <label for="userid"><%=lg_term_userid %></label><br /><input id="userid" name="userid" title="lg_phrase_userid_title" type="text" size="20" maxlength="50" /><span class="field_normal"><%=lg_term_required%></span><br />
+			  <label for="userid"><%=lg_term_userid %></label><br /><input id="userid" name="userid" title="lg_phrase_userid_title" type="text" size="20" maxlength="50" value="<%=Server.HTMLEncode(userid) %>" /><span class="field_normal"><%=lg_term_required%></span><br />
 			  <label for="password"><%=lg_term_password %></label><br /><input id="password" name="password" title="lg_phrase_password_title" type="password" size="20" maxlength="255" autocomplete="off" /><span class="field_normal"><%=lg_term_required%></span><br />
 			  <input type="submit" value="<%=lg_term_cancel%>" /><% writeToken %>
 			</fieldset>
