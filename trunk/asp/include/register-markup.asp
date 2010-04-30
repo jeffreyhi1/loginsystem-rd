@@ -35,15 +35,15 @@
     		</form>
     		<% Else %>
     		<div id="registered"><p><%=lg_term_registration_thankyou%><br /><br />
-    		  <strong><%=lg_term_userid%></strong>: <%=userid%><br />
-    		  <strong><%=lg_term_email%></strong>: <%=email%><br />
-    		  <strong><%=lg_term_name%></strong>: <%=name%><br />
-    		  <strong><%=lg_term_website%></strong>: <%=website%><br />
-    		  <strong><%=lg_term_ip%></strong>: <%=ip%><br />
-    		  <strong><%=lg_term_region%></strong>: <%=region%><br />
-    		  <strong><%=lg_term_city%></strong>: <%=city%><br />
-    		  <strong><%=lg_term_country%></strong>: <%=country%><br />
-    		  <strong><%=lg_term_useragent%></strong>: <%=useragent%><br />
+    		  <strong><%=lg_term_userid%></strong>: <%=Server.HTMLEncode(userid)%><br />
+    		  <strong><%=lg_term_email%></strong>: <%=HTMLEncode(email)%><br />
+    		  <strong><%=lg_term_name%></strong>: <%=HTMLEncode(name)%><br />
+    		  <strong><%=lg_term_website%></strong>: <%=HTMLEncode(website)%><br />
+    		  <strong><%=lg_term_ip%></strong>: <%=HTMLEncode(ip)%><br />
+    		  <strong><%=lg_term_region%></strong>: <%=HTMLEncode(region%><br />
+    		  <strong><%=lg_term_city%></strong>: <%=HTMLEncode(city)%><br />
+    		  <strong><%=lg_term_country%></strong>: <%=HTMLEncode(country)%><br />
+    		  <strong><%=lg_term_useragent%></strong>: <%=HTMLEncode(useragent)%><br />
     		  <% If destination<>"" Then %></p>
     		  	<p><a href="<%=lg_verify_page%>" title="<%=lg_phrase_logout_continue%>"><%=lg_phrase_logout_continue%></a></p>
     		  	<% Else %>
