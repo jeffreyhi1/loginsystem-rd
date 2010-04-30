@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"]!="POST") {
 	//checkToken();
 	$message = "";
 	$password = getField("password,safe");
-	$userid = getField("userid,safe");
+	$userid = getField("userid,safepq");
 	$remember = getField("remember,alpha"); // Yes or empty
 	$destination = getField("destination,urlpath");       // saved final destination
 	if (lg_debug) { $dbMsg .= "POSTED password = ".$password." <br />\n"; }
