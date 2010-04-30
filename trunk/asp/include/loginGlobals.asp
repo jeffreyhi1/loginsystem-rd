@@ -7,7 +7,7 @@
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
 '*       You must set the database connection details below.
-'* 
+'*
 '* Modification: 29 APR 2010 :: Rod Divilbiss - addressed Issues 38 and 40
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
 '* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
