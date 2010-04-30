@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 27 APR 2010 alpha 0.1b debug -->
+			<!-- alpha 0.1b debug -->
 			<div id="login-system">
 			<h1><?PHP echo lg_phrase_recover_password; ?></h1>
 			<?PHP if ($message != lg_phrase_recover_password_success) { ?>
