@@ -28,7 +28,8 @@
     		    <input id="website" title="<%=lg_phrase_website_title%>" name="website" type="text" size="20" maxlength="100" value="<%=Server.HTMLEncode(website)%>" />
     		    <span class="field_normal"><%=lg_term_optional%></span><br />
     		    <label for="news"><%=lg_phrase_news %></label>
-    		    <input id="news" name="news" type="checkbox" value="Yes"<% If news="Yes" Then Response.Write(" checked") End If %> />
+    		    <input id="news" name="news" type="checkbox" value="Yes"<% If news="Yes" Then Response.Write(" checked") End If %> /><br />
+    		    <%=recaptcha_challenge_writer()%>
     		    <input type="hidden" id="destination" name="destination" value="<%=destination%>" /><br />
     		    <% writeToken %><input type="submit" value="<%=lg_register_button_text %>" />
     		  </fieldset>
