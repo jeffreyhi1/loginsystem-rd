@@ -99,7 +99,7 @@ Else
 	checkToken
 	debugout = debugout & "checkToken true. Processing form<br>"
 	message = ""
-	userid = Trim(Left(getField("userid,rXsafepq"),32))
+	userid = Trim(Left(getField("userid,rXsafepq"),50))
 	debugout = debugout & "userid = " & Server.HTMLEncode(userid) & "<br>"
 	password = Trim(Left(getField("password,rXsafepq"),255))
 	debugout = debugout & "password = " & Server.HTMLEncode(password) & "<br>"

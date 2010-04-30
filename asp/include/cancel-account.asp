@@ -2,8 +2,7 @@
 ' $Id$
 '*******************************************************************************************************************
 '* Cancel Account
-'* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 0.1b
+'* Version:  alpha 0.1b debug
 '* On Entry: Verify need for SSL
 '* Input:    userid, password
 '* Output:   message - string variable with results
@@ -29,7 +28,7 @@ End If
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
-Dim message, userid, password, passhash, dbPasshash, dbId, dateCancelled, cmdTxt
+Dim message, userid, password, passhash, dbPasshash, dbId, dateCancelled, cmdTxt, dbMsg
 
 userid = ""
 password = ""
@@ -39,14 +38,21 @@ dbPasshash = ""
 dbId = ""
 dateCancelled = dbNow
 cmdTxt = ""
+If lg_debug Then
+	dbMsg = "DEBUG BEGIN"
+Else
+	dbMsg = ""
+End If
 
 '*******************************************************************************************************************
 '* If the form was posted, process the form
 '*******************************************************************************************************************
 If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
+	If lg_debug Then dbMsg = dbMsg & "METHOD=POST<br />" & vbLF
 	checkToken
+	If lg_debug Then dbMsg = dbMsg & "checkToken Okay.<br />" & vbLF
 	message=""
-	userid = Left(getField("userid,rXsafepq"),32)
+	userid = Left(getField("userid,rXsafepq"),50)
 	password = Left(getField("password,rXsafepq"),255)
 	If userid & ""="" Then
 		message = message & lg_phrase_userid_empty
