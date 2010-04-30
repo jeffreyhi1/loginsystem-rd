@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -142,7 +142,7 @@ define("lg_term_website","Trang web");
 define("lg_term_website_address","Địa chỉ website");
 define("lg_term_welcome","Chào mừng");
 define("lg_phrase_attention_webmaster","Chú ý cho web người chủ");
-define("lg_phrase_cancel_account_cacelled","Tài khoản đã được hủy bỏ.");
+define("lg_phrase_cancel_account_canceled","Tài khoản đã được hủy bỏ.");
 define("lg_phrase_cancel_account_error","Có một lỗi bất ngờ không thể hủy bỏ tài khoản của bạn. Xin vui lòng liên lạc với web người chủ.");
 define("lg_phrase_cancel_account_warning","Cảnh báo! Tài khoản của bạn không bao giờ có thể được phục hồi.");
 define("lg_phrase_change_password","Nhập mật khẩu hiện tại của bạn, sau đó nhập mật khẩu mới của bạn.");

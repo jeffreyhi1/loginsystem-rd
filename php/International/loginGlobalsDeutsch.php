@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -137,7 +137,7 @@ define("lg_term_via_email", "per E-Mail an");
 define("lg_term_website", "Website");
 define("lg_term_website_address", "Website-Adresse");
 define("lg_phrase_attention_webmaster", "Webmaster benachrichtigen");
-define("lg_phrase_cancel_account_cacelled", "Das Konto wurde gelöscht.");
+define("lg_phrase_cancel_account_canceled", "Das Konto wurde gelöscht.");
 define("lg_phrase_cancel_account_error", "Ein unerwarteter Fehler trat beim Löschen des Kontos auf. Bitte kontaktieren Sie den Webmaster");
 define("lg_phrase_cancel_account_warning", "Geben Sie Ihre User-ID und Passwort ein, um Ihren Account zu löschen.<p>WARNUNG: Dieser Vorgang kann nicht rückgängig gemacht werden.</p>Benutzen Sie den unten stehenden Link Passwort wiederherstellen, wenn Ihr Kennwort Vergessenes wurde.");
 define("lg_phrase_change_password", "Geben Sie Ihr aktuelles Passwort ein, gefolgt von Ihrem gewünschten neuen Passwort");
