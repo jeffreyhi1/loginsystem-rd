@@ -8,6 +8,7 @@
 '*       You must set the webmaster e-mail addresses.
 '*       You must set the database connection details below.
 '* 
+'* Modification: 29 APR 2010 :: Rod Divilbiss - addressed Issues 38 and 40
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
 '* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
@@ -69,13 +70,13 @@ Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmas
 '**********************************************************************
 '* Login system database globals
 '**********************************************************************
-Const lg_database = "access"
-'Const lg_database = "mysql"
+'Const lg_database = "access"
+Const lg_database = "mysql"
 'Const lg_database = "mssql"
 
 'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
-Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
-'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
 
 Const lg_database_userid = ""
 Const lg_database_password = ""
@@ -158,7 +159,7 @@ Const lg_term_website = "Website"
 Const lg_term_website_address = "Website Address"
 Const lg_term_welcome = "Welcome"
 Const lg_phrase_attention_webmaster = "Attention Webmaster"
-Const lg_phrase_cancel_account_cacelled = "The account has been canceled."
+Const lg_phrase_cancel_account_canceled = "The account has been canceled."
 Const lg_phrase_cancel_account_error = "There was an unexpected error canceling your account. Please contact the webmaster"
 Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to cancel your account.<p>WARNING: THIS ACTION CAN NOT BE UNDONE.</p>If you have forgotten your password use the recover password link below."
 Const lg_phrase_change_password = "Enter your current password, then your desired new password"
