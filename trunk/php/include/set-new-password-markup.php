@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 27 APR 2010 alpha 0.1b debug -->
+			<!-- alpha 0.1b debug -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_reset_password; ?></h1>
 			<?PHP if ($_SESSION["action"]=="token") { ?>
@@ -25,8 +25,8 @@
 			<form id="frm2" method="post" action="<?PHP echo $lg_filename; ?>" onsubmit="return validate(this);">
 			<fieldset>
 			  <legend><?PHP echo lg_term_set_new_password; ?></legend>
-			  <p><label for="newpassword"><?PHP echo lg_term_new_password; ?></label><br /><input id="newpassword" name="newpassword" type="password" size="50" maxlength="255" /><br />
-			  <label for="newpassword"><?PHP echo lg_term_confirm; ?></label><br /><input id="confirm" name="confirm" type="password" size="50" maxlength="255" /><br />
+			  <p><label for="newpassword"><?PHP echo lg_term_new_password; ?></label><br /><input id="newpassword" name="newpassword" type="password" size="50" maxlength="255" autocomplete="off" /><br />
+			  <label for="newpassword"><?PHP echo lg_term_confirm; ?></label><br /><input id="confirm" name="confirm" type="password" size="50" maxlength="255" autocomplete="off" /><br />
 			  <input type="submit" value="<?PHP echo lg_term_submit; ?>" /><?PHP writeToken(); ?><input name="changePassword" type="hidden" value="1" /><input type="hidden" name="resettoken" value="<?PHP echo $resettoken; ?>" /></p>
 			</fieldset>
 			</form>

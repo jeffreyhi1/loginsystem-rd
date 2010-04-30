@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 27 APR 2010 alpha 0.1b debug -->
+			<!-- alpha 0.1b debug -->
 			<div id="login-system">
             <h1><?PHP echo lg_term_login; ?></h1>
             <?PHP 
@@ -13,13 +13,13 @@
                 <fieldset>
                 <legend><?PHP echo lg_term_login; ?></legend>
                 <label for="userid"><?PHP echo lg_term_userid; ?></label><br />
-                <input id="userid" name="userid" title="<?PHP echo lg_phrase_userid_title; ?>" type="text" size="20" maxlength="32" value="<?PHP echo $useridValue; ?>" />
+                <input id="userid" name="userid" title="<?PHP echo lg_phrase_userid_title; ?>" type="text" size="20" maxlength="50" value="<?PHP echo $useridValue; ?>" />
                 <span class="field_normal"><?PHP echo lg_term_required; ?></span><br />
                 <label for="password"><?PHP echo lg_term_password; ?></label><br />
                 <input id="password" name="password" title="<?PHP echo lg_phrase_password_title; ?>" type="password" size="20" maxlength="255" />
                 <span class="field_normal"><?PHP echo lg_term_required; ?></span><br />
                 <label for="remember"><?PHP echo lg_term_rememberme; ?></label>
-                <input id="remember" name="remember" type="checkbox" value="Yes" />
+                <input id="remember" name="remember" type="checkbox" value="Yes"<?php if (remember=="Yes") { echo " checked"; } ?> />
                 <input type="hidden" id="destination" name="destination" value="<?PHP echo $destination; ?>" /><br />
                 <div id="remember_me_warning"><?PHP echo lg_phrase_remember_me_warning; ?></div>
                 <?PHP writeToken(); ?>
