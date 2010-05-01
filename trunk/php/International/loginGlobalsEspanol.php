@@ -61,6 +61,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -175,6 +176,7 @@ define("lg_phrase_password_empty", "El campo de la contraseña está vacía, per
 define("lg_phrase_password_new_title", "Por favor, introduzca su contraseña deseada . Este campo es obligatorio. "); 
 define("lg_phrase_password_nomatch_confirm", "La contraseña no coincide con la Contraseña de Confirmación. Por favor, vuelva a entrar. "); 
 define("lg_phrase_password_title", "Por favor, introduzca su contraseña. Este campo es obligatorio. "); 
+define("lg_phrase_recaptcha_error", "El reCAPTCHA no se ha escrito correctamente.");
 define("lg_phrase_register_delete_noemail", "No se encuentra un cuenta con la dirección de correo electrónico indicada. "); 
 define("lg_phrase_registration_email_verify", "Verifique su correo electrónico"); 
 define("lg_phrase_registration_email_verify_msg", "Un correo electrónico fue enviado a la dirección de correo electrónico que proporcionó durante el registro. Haga clic en el vínculo que contiene dicho correo electrónico o copiar y pegar el código de desbloqueo en el campo de formulario a continuación. Su cuenta no estará disponible hasta que se haya verificado.");

@@ -62,6 +62,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -175,6 +176,7 @@ define("lg_phrase_password_empty", "Password feltet er tomt, men er påkrævet. 
 define("lg_phrase_password_new_title", "Indtast dit ønskede password. Dette felt er påkrævet.");
 define("lg_phrase_password_nomatch_confirm", "Password matcher ikke Bekræftelsesadgangskoden. Indtast igen.");
 define("lg_phrase_password_title", "Indtast din adgangskode. Dette felt er påkrævet.");
+define("lg_phrase_recaptcha_error", "Den reCAPTCHA var ikke indtastet korrekt.");
 define("lg_phrase_register_delete_noemail", "Der er ingen konto som matchede den e-mail adresse, du indtastede.");
 define("lg_phrase_registration_email_verify", "Bekræft din e-mail-adresse");
 define("lg_phrase_registration_email_verify_msg", "En e-mail blev sendt til den email adresse, du angav under registreringen. Klik på linket i den e-mail eller klip og klistr låse-op koden i form feltet nedenfor. Din konto vil ikke være tilgængelig før den er blevet bekræftet.");

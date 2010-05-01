@@ -61,6 +61,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -182,6 +183,7 @@ define("lg_phrase_password_empty"," Lĩnh vực mật khẩu được yêu cầu
 define("lg_phrase_password_new_title","Hãy nhập mật khẩu của bạn mong muốn. Lĩnh vực này là bắt buộc.");
 define("lg_phrase_password_nomatch_confirm","The Mật khẩu không khớp với mật khẩu xác nhận. Vui lòng nhập lại.");
 define("lg_phrase_password_title","Hãy nhập mật khẩu của bạn. Lĩnh vực này là bắt buộc.");
+define("lg_phrase_recaptcha_error", "reCAPTCHA đã không được nhập chính xác.");
 define("lg_phrase_register_delete_noemail ","Không có tài khoản phù hợp với địa chỉ thư điện tử bạn đã nhập.");
 define("lg_phrase_registration_email_verify","Xác minh địa chỉ thư điện tử của bạn.");
 define("lg_phrase_registration_email_verify_msg"," Một thư điện tử đã được gửi đến địa chỉ thư điện tử mà bạn cung cấp trong quá trình đăng ký. Nhấp vào liên kết trong thư điện tử đó hoặc sao chép và dán mã mở khóa vào trường mẫu dưới đây. Tài khoản của bạn sẽ không có sẵn cho đến khi nó đã được xác minh.");

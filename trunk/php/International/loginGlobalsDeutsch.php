@@ -61,6 +61,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", true);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -176,6 +177,7 @@ define("lg_phrase_password_empty", "Das 'Passwort'-Feld ist leer, wird aber ben�
 define("lg_phrase_password_new_title", "Bitte geben Sie Ihre gewünschtes Passwort ein. Dieses Feld ist obligatorisch.");
 define("lg_phrase_password_nomatch_confirm", "Das Passwort stimmt nicht mit der Bestätigungs-Passwort überein. Bitte wiederholen.");
 define("lg_phrase_password_title", "Bitte geben Sie Ihr Kennwort ein. Dieses Feld ist obligatorisch.");
+define("lg_phrase_recaptcha_error", "Die reCAPTCHA wurde nicht richtig eingegeben.");
 define("lg_phrase_register_delete_noemail", "Es existiert kein Benutzerkonto für die angegebene Email-Adresse.");
 define("lg_phrase_registration_email_verify", "Überprüfen Sie Ihre Email-Adresse");
 define("lg_phrase_registration_email_verify_msg", "Es wurde eine E-Mail an die E-Mail-Adresse versandt, die Sie während der Registrierung angegeben haben. Klicken Sie auf den Link in der E-Mail oder kopieren und fügen Sie den Freischalt-Code in das Feld unten ein. Ihr Konto wird nicht verfügbar sein, bevor dies geprüft worden ist.");

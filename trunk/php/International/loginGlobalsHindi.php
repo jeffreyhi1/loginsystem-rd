@@ -61,6 +61,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", true);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -181,6 +182,7 @@ define("lg_phrase_password_empty", "पासवर्ड क्षेत्र 
 define("lg_phrase_password_new_title", "कृपया अपना इच्छित पासवर्ड दर्ज करें. इस फ़ील्ड की आवश्यकता है.");
 define("lg_phrase_password_nomatch_confirm", "पासवर्ड की पुष्टि पासवर्ड मेल नहीं खाता. कृपया फिर से दर्ज करें.");
 define("lg_phrase_password_title", "कृपया अपना पासवर्ड दर्ज करें. इस फ़ील्ड की आवश्यकता है.");
+define("lg_phrase_recaptcha_error", "ReCAPTCHA सही ढंग से दर्ज नहीं किया था.");
 define("lg_phrase_register_delete_noemail", "कोई मेल खाता ईमेल पता था कि तुम में प्रवेश किया.");
 define("lg_phrase_registration_email_verify", "आपका ईमेल पता सत्यापित करें");
 define("lg_phrase_registration_email_verify_msg", "एक ईमेल ईमेल पते पंजीकरण के दौरान प्रदान करने के लिए भेजा गया था. क्लिक करें कि ईमेल या कॉपी और पेस्ट नीचे दिए गए फार्म क्षेत्र में कोड अनलॉक लिंक. अपने खाते में उपलब्ध नहीं हो जब तक यह सत्यापित कर दिया गया है.");
