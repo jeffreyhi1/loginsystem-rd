@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 }
 include "include/loginGlobals.php";
 
-// alpha 0.1b debug - 27 APR 2010
+// alpha 0.1c debug - 27 APR 2010
 
 /* You should add
 * header("Pragma: No-cache");

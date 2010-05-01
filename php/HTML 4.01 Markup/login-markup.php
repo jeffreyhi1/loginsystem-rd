@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- HTML 4.01 Strict -->
-			<!-- 27 APR 2010 alpha 0.1b -->
+			<!-- 27 APR 2010 alpha 0.1c -->
 			<div id="login-system">
             <h1><?PHP echo lg_term_login; ?></h1>
             <?PHP 

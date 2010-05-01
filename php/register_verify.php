@@ -11,7 +11,7 @@ include "include/loginGlobals.php";
 include "include/database.php";
 include "include/register-verify.php";
 
-// alpha 0.1b debug - 27 APR 2010
+// alpha 0.1c debug - 27 APR 2010
 
 /* You should add
 * header("Pragma: No-cache");

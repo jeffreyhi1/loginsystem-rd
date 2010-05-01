@@ -1,4 +1,4 @@
-﻿<?PHP
+<?PHP
 // $Id$
 setlocale(LC_ALL, 'English_United States.65001');
 
@@ -13,7 +13,7 @@ include "include/database.php";
 include "include/recaptchalib.php";
 include "include/register.php";
 
-// alpha 0.1b debug
+// alpha 0.1c debug
 
 /* You should add
 * header("Pragma: No-cache");

@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- HTML 4.01 Strict -->
-			<!-- alpha 0.1b -->
+			<!-- alpha 0.1c -->
 			<div id="login-system">
 				<h1><?PHP echo lg_phrase_delete_account; ?></h1>
 				<?PHP if ($message==lg_term_register_delete_enter_email) { ?>

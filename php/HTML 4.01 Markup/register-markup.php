@@ -1,8 +1,8 @@
-﻿<?PHP
+<?PHP
 // $Id$
 ?>
 			<!-- HTML 4.01 Strict -->
-			<!-- alpha 0.1b -->
+			<!-- alpha 0.1c -->
 			<div id="login-system">
     		<?PHP if ($numAffected!=1) { ?>
     		<div id="message"><?PHP echo $message; ?></div>
