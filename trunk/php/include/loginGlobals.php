@@ -58,6 +58,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -135,7 +136,6 @@ define("lg_term_userid", "UserID");
 define("lg_term_via_email", "by email at");
 define("lg_term_website_address", "Website Address");
 define("lg_term_welcome","Welcome");
-
 define("lg_phrase_attention_webmaster", "Attention Webmaster");
 define("lg_phrase_cancel_account_canceled", "The account has been canceled.");
 define("lg_phrase_cancel_account_error", "There was an unexpected error cancelling your account. Please contact the webmaster");
@@ -176,6 +176,7 @@ define("lg_phrase_password_empty", "The Password field is empty but is required.
 define("lg_phrase_password_new_title", "Please enter your desired password. This field is required.");
 define("lg_phrase_password_nomatch_confirm", "The Password does not match the Confirmation Password. Please re-enter.");
 define("lg_phrase_password_title", "Please enter your password. This field is required.");
+define("lg_phrase_recaptcha_error", "The reCAPTCHA wasn't entered correctly.");
 define("lg_phrase_register_delete_noemail", "There was no account matching the email address you entered.");
 define("lg_phrase_registration_email_verify", "Verify Your Email Address");
 define("lg_phrase_registration_email_verify_msg", "An Email was sent to the Email address you provided during registration.&nbsp; Click the link in that Email or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified.");

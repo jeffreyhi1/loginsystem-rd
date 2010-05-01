@@ -1,4 +1,4 @@
-<?PHP
+﻿<?PHP
 // $Id$
 /*******************************************************************************************************************
 * Page Name: Register
@@ -35,6 +35,8 @@ $locked="";
 $dateLocked="";
 $token="";
 $message= "<strong>".lg_term_please_register."</strong>";
+$publickey = "6Lfe3rkSAAAAAPrJLxSOPkUCq2OqbA5cNZ6kUYen";
+$privatekey = "6Lfe3rkSAAAAAMutk1SNbCduQqZpJ8Fnv5FnOIAL";
 
 if (lg_debug) {
 	$dbMsg .= "Debugging Enabled<br />\n";
@@ -83,6 +85,14 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	}
 	$destination = getField("destination,urlpath");
 	if (lg_debug) { $dbMsg .= "destination  ". htmlentities($destination) ."<br />\n"; }
+	$recaptcha_challenge_field = getField("recaptcha_challenge_field,safe");
+	if (lg_debug) { $dbMsg .= "recaptcha_challenge_field  ". htmlentities($recaptcha_challenge_field) ."<br />\n"; }
+	$recaptcha_response_field = getField("recaptcha_response_field,safe");
+	if (lg_debug) { $dbMsg .= "recaptcha_response_field  ". htmlentities($recaptcha_response_field) ."<br />\n"; }
+	$resp = recaptcha_check_answer ($privatekey,$_SERVER["REMOTE_ADDR"],$recaptcha_challenge_field,$recaptcha_response_field);
+	if (!$resp->is_valid) {
+		$message = lg_phrase_recaptcha_error . htmlentities($resp->error) . "<br />\n";
+	}
 	if ($userid=="") {
 		$message .=  lg_phrase_userid_empty ."<br />\n";
 	}
