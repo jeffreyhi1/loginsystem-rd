@@ -1,11 +1,11 @@
-<%
+﻿<%
 ' $Id: login.asp 233 2010-04-30 05:21:49Z rdivilbiss $
 '*******************************************************************************************************************
 '* Login.asp
 '* Last Modification: rdivilbiss - added anti Session Fixation cookie and
 '*                                 corrected a flaw where any properly named cookie would
 '*                                 bypass authentication.
-'* Version:  alpha 0.1c debug
+'* Version:  alpha 0.1c debug 
 '* On Entry: Check for need of SSL, check for Login cookie, check for account lockout
 '* Input   : UserID, Password
 '* Output  : message
