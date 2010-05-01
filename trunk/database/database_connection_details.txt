@@ -1,0 +1,57 @@
+MS SQL Remote VCNSQL81.webhost4life.com
+db name loginproject
+db server VCNSQL81
+db webuser lgproject                      (datareader, datawriter)
+webuser password A8349&ijq9!ww
+
+mySql 
+db name loginproject
+db server rdivilbiss.webhost4lifemysql.com
+db webuser lgwebuser                      (select, insert, update, delete)
+webuser password A8349&ijq9!ww
+
+<?php 
+$link = mysql_connect('rdivilbiss.webhost4lifemysql.com', 'lgwebuser', 'A8349&ijq9!ww'); 
+if (!$link) { 
+    die('Could not connect: ' . mysql_error()); 
+} 
+echo 'Connected successfully'; 
+mysql_select_db(loginproject); 
+?> 
+
+
+http://www.webloginproject.com/mysqlConnTest.asp
+<% 
+connectionString ="DRIVER={MySQL ODBC 3.51 Driver}; SERVER=rdivilbiss.webhost4lifemysql.com; PORT=3306;" &_ "DATABASE=loginproject; USER=lgwebuser; PASSWORD=A8349&ijq9!ww; OPTION=3;"
+
+Set conn = Server.CreateObject("ADODB.Connection")
+on error resume next
+conn.open connectionString
+If err then
+    Response.Write err.number & " " & err.description & " " & err.source & "<br>" & vbLF
+    Response.End
+Else
+    Response.Write "Connected to database<br>" & vbLF
+    conn.close
+    Set conn=nothing
+End If
+%>
+
+
+
+http://www.webloginproject.com/sqlConnTest.asp
+<%
+connectionString = "Provider=SQLOLEDB; Server=VCNSQL81\loginproject,1433; UID=lgproject; PWD=A8349&ijq9!ww; Database=loginproject"
+
+Set conn = Server.CreateObject("ADODB.Connection")
+on error resume next
+conn.open connectionString
+If err then
+    Response.Write err.number & " " & err.description & " " & err.source & "<br>" & vbLF
+    Response.End
+Else
+    Response.Write "Connected to database<br>" & vbLF
+    conn.close
+    Set conn=nothing
+End If
+%>
