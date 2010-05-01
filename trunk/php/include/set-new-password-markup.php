@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1b debug -->
+			<!-- alpha 0.1c debug -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_reset_password; ?></h1>
 			<?PHP if ($_SESSION["action"]=="token") { ?>

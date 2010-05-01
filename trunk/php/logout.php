@@ -3,7 +3,7 @@
 /*******************************************************************************************************************
 * Logout
 * Last Modification: 27 APR 2010
-* Version:  alpha 0.1b Debug
+* Version:  alpha 0.1c Debug
 * On Entry: N/A
 * Input:    Session
 * Output:   N/A
