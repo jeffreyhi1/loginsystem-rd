@@ -1,5 +1,5 @@
 <%
-'*  $Id:$
+'*  $Id: ASP_reCAPTCHA_code.asp 239 2010-04-30 09:24:15Z rdivilbiss $
 '*****************************************************************************************************
 Dim reChallengeField, reResponseField, publickey, privkey
 publickey = "6Lce3bkSAAAAAHHyw_BOFsIgrHh9TcPrQMQ1oLYU"
@@ -54,4 +54,23 @@ Function recaptcha_confirm(rechallenge,reresponse)
 		recaptcha_confirm = ResponseString(1) & vbLF
 	End If
 End Function
+
+'*****************************************************************************************************
+'* Example Useage
+'*****************************************************************************************************
+	reChallengeField = getField("recaptcha_challenge_field,rXsafe")
+	reResponseField = getField("recaptcha_response_field,rXsafe")
+	'*************************************************************
+	'* Debug messages optional
+	'*************************************************************
+	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Challenge = " & Server.HTMLEncode(reChallengeField) & "<br>" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Response = " & Server.HTMLEncode(reResponseField) & "<br>" & vbLF End If
+	'*************************************************************
+	'* If response is correct message = "" which is what we check
+	'* for before processing fields. If response in incorrect then
+	'* message gets an error message from reCAPTCHA which will
+	'* stop the processing of the form fields and return to the
+	'* regestration form.
+	'*************************************************************
+	message = recaptcha_confirm(reChallengeField, reResponseField)
 %> 
