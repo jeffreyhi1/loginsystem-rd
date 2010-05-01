@@ -1,8 +1,8 @@
-﻿<%
+<%
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1b -->
+			<!-- alpha 0.1c -->
 			<div id="login-system">
     		<% If numAffected<>1 Then %>
     		<div id="message"><%=message%></div>

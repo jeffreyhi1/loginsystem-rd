@@ -5,7 +5,7 @@
 '* Last Modification: rdivilbiss - added anti Session Fixation cookie and
 '*                                 corrected a flaw where any properly named cookie would
 '*                                 bypass authentication.
-'* Version:  alpha 0.1b debug
+'* Version:  alpha 0.1c debug
 '* On Entry: Check for need of SSL, check for Login cookie, check for account lockout
 '* Input   : UserID, Password
 '* Output  : message

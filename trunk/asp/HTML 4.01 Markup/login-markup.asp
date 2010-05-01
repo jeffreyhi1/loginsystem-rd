@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- HTML 4.01 Strict -->
-			<!-- alpha 0.1b -->
+			<!-- alpha 0.1c -->
 			<div id="login-system">
             <h1><%=lg_term_login%></h1>
             <% If Session("login")<>True Then %>
