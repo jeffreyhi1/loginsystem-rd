@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1b -->
+			<!-- alpha 0.1c -->
 			<div id="login-system">
 				<h1><%=lg_term_issue_verification_token%></h1>
 				<% If (message = lg_phrase_issue_new_token) Then %>

@@ -1,4 +1,4 @@
-﻿<%
+<%
 ' $Id$
 '* English
 '********************************************************************************************************************
@@ -24,7 +24,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: 26 APR 2010 - alpha 0.1b - English - ASP
+'* Version: 26 APR 2010 - alpha 0.1c - English - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))

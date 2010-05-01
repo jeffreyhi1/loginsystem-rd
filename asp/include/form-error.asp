@@ -3,7 +3,7 @@
 '*******************************************************************************************************************
 '* Form Error
 '* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 0.1b
+'* Version:  alpha 0.1c
 '* On Entry: URL parameters
 '* Input:    p (page) and t (reason for error)
 '* Output:   message - reason for error and link to page

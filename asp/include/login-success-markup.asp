@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 26 APR 2010 alpha 0.1b -->
+			<!-- 26 APR 2010 alpha 0.1c -->
 			<div id="login-system">
 				<h1><%=lg_term_login_success%></h1>
 				<div id="loginSuccess"><p><%=Server.HTMLEncode(Session("name"))%>&nbsp;<%=lg_phrase_is_logged_in%>.</p>

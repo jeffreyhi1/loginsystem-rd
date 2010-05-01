@@ -3,7 +3,7 @@
 '*******************************************************************************************************************
 '* Page Name
 '* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 0.1b
+'* Version:  alpha 0.1c
 '* On Entry: reset token
 '* Input   : current password, new password, confirmation password
 '* Output  : message
