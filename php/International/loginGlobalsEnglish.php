@@ -61,6 +61,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");

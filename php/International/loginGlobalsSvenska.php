@@ -61,6 +61,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -179,6 +180,7 @@ define("lg_phrase_password_empty", "Lösenordet är tomt men obligatoriskt. Vän
 define("lg_phrase_password_new_title", "Ange ditt önskade lösenord. Detta fält är obligatoriskt.");
 define("lg_phrase_password_nomatch_confirm", "Lösenordet inte matchar Bekräftelse lösenord. Skriv in igen.");
 define("lg_phrase_password_title", "Ange ditt lösenord. Detta fält är obligatoriskt.");
+define("lg_phrase_recaptcha_error", "Den reCAPTCHA var inte korrekt.");
 define("lg_phrase_register_delete_noemail", "Det var ingen konto som matchar den E-postadress du angav.");
 define("lg_phrase_registration_email_verify", "Kontrollera din E-postadress");
 define("lg_phrase_registration_email_verify_msg", "Ett mail skickades till den e-postadress du angav vid registreringen.&nbsp; Klicka på länken i e-post eller kopiera och klistra in upplåsningskoden i form fältet nedan. Ditt konto är inte tillgängligt förrän den har verifierats.");

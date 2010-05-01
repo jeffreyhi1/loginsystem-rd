@@ -61,6 +61,7 @@ define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
+define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
@@ -173,6 +174,7 @@ define("lg_phrase_password_empty", "Le champ Mot de passe est vide, mais est né
 define("lg_phrase_password_new_title", "S'il vous plaît entrez votre mot de passe souhaité. Ce champ est requis.");
 define("lg_phrase_password_nomatch_confirm", "Le mot de passe ne correspondent pas du mot de passe Confirmation. S'il vous plaît resaisissez.");
 define("lg_phrase_password_title", "S'il vous plaît entrer votre mot de passe. Ce champ est requis.");
+define("lg_phrase_recaptcha_error", "Le reCAPTCHA n'a pas été entré correctement.");
 define("lg_phrase_register_delete_noemail", "Il n'y avait pas de compte correspondant à l'adresse mél que vous avez entré.");
 define("lg_phrase_registration_email_verify", "Vérifier Votre Adresse mél");
 define("lg_phrase_registration_email_verify_msg", "Un mél a été envoyé à l'adresse fournie lors de votre inscription.&nbsp; Cliquez sur le lien contenu dans ce mél, ou copiez et collez le code de déverrouillage dans le champ de formulaire ci-dessous. Votre compte ne sera pas disponible tant qu'il n'aura pas été vérifié.");
