@@ -86,7 +86,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\LoginResources.vb" />
+    <Compile Include="DataAccess.vb" />
+    <Compile Include="LoginResources.vb" />
+    <Compile Include="test.vb" />
     <Compile Include="App_GlobalResources\loginGlobals.da.designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
