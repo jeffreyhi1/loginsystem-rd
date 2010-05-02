@@ -202,48 +202,83 @@ function ivt_issueToken($pToken,$pLocked,$pDateLocked,$pId) {
 
 /* login */
 
-function li_checkForLocked($pIp,$pUserid=NULL,&$pResults=array()) {
+function li_checkForDeletedOrLockedUserid($pUserid,&$pResults=array()) {
 	$dbConn = getConnection();
-	if ($pUserid==NULL) {
-		if ($command = $dbConn->prepare("SELECT loginAttemptLocked FROM loginAttempts WHERE loginAttemptIP = ?")) {
-			/* bind parameters for markers */
-			$command->bind_param("s", $pIp);
+
+	if ($command = $dbConn->prepare("SELECT deleted, locked FROM users WHERE userid=?")) {
+		/* bind parameters for markers */
+		$command->bind_param("s", $pUserid);
 		
-	    	/* execute query */
-	    	$command->execute();
+    	/* execute query */
+    	$command->execute();
 	    
-	    	/* bind result variables */
-    		$command->bind_result($locked);
+    	/* bind result variables */
+   		$command->bind_result($deleted, $locked);
 
-	    	/* fetch value */
-	    	$command->fetch();
+    	/* fetch value */
+    	$command->fetch();
 
-	    	/* assign results */
-			$pResults["locked"]=$locked;
+    	/* assign results */
+		$pResults["deleted"]=$deleted;
+		$pResults["locked"]=$locked;
 			
-			$command->close();
-		}else{
-			if ($command = $dbConn->prepare("SELECT loginAttemptLocked FROM loginAttempts WHERE loginAttemptUserID = ? OR loginAttemptIP = ?")) {
-				$command->bind_param("ss", $pIp, $pUserid);
-			
-				/* execute query */
-		    	$command->execute();
+		$command->close();
+	}
+	closeConnection($dbConn);
+}
+
+function li_checkForLockedIP($pIp,&$pResults=array()) {
+	$dbConn = getConnection();
+
+	if ($command = $dbConn->prepare("SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ?")) {
+		/* bind parameters for markers */
+		$command->bind_param("s", $pIp);
+		
+    	/* execute query */
+    	$command->execute();
 	    
-		    	/* bind result variables */
-	    		$command->bind_result($locked);
+    	/* bind result variables */
+   		$command->bind_result($locked);
 
-		    	/* fetch value */
-		    	$command->fetch();
+    	/* fetch value */
+    	$command->fetch();
 
-		    	/* assign results */
-				$pResults["locked"]=$locked;
+    	/* assign results */
+		$pResults["locked"]=$locked;
 			
-				$command->close();
-			}
+		$command->close();
+		
+		if ($pResults["locked"]==NULL && $pResults["locked"]=="") {
+			$pResults["locked"]="0";
 		}
 	}
-	if ($pResults["locked"]==NULL && $pResults["locked"]=="") {
-		$pResults["locked"]=0;
+	closeConnection($dbConn);
+}
+
+function li_checkForLocked($pIp, $pUserid, &$pResults=array()) {	
+	$dbConn = getConnection();		
+
+	if ($command = $dbConn->prepare("SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ? OR loginAttemptUserID = ?")) {
+		/* bind parameters for markers */
+		$command->bind_param("ss", $pIp, $pUserid);
+			
+		/* execute query */
+    	$command->execute();
+	    
+    	/* bind result variables */
+   		$command->bind_result($locked);
+
+    	/* fetch value */
+    	$command->fetch();
+
+    	/* assign results */
+		$pResults["locked"]=$locked;
+			
+		$command->close();
+		
+		if ($pResults["locked"]==NULL && $pResults["locked"]=="") {
+			$pResults["locked"]="0";
+		}
 	}
 	closeConnection($dbConn);
 }
@@ -316,14 +351,14 @@ function li_lockLoginAttemtpt($pLocked, $pNumber, $pId) {
 }
 
 
-function li_updateLoginAttempt($pUserid, $pNumber, $pDate, $pId) {
+function li_updateLoginAttempt($pUserid, $pNumber, $pDate, $pIp, $pId) {
 	global $numAffected;
 
 	$dbConn = getConnection();
-	if ($command = $dbConn->prepare("UPDATE loginAttempts SET loginAttemptUserID = ?, loginAttemptNumber = ?, loginAttemptDate = ? WHERE id = ?")) {
+	if ($command = $dbConn->prepare("UPDATE loginAttempts SET loginAttemptUserID = ?, loginAttemptNumber = ?, loginAttemptDate = ?, loginAttemptIP = ? WHERE id = ?")) {
 
 		/* bind parameters for markers */
-		$command->bind_param("sisi", $pUserid, $pNumber, $pDate, $pId);
+		$command->bind_param("sissi", $pUserid, $pNumber, $pDate, $pIp, $pId);
 		
 		/* execute query */
 		$command->execute();

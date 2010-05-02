@@ -86,6 +86,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 					$message .= lg_phrase_cancel_account_error;
 					if (lg_debug) { $dbMsg = "message = ".$message."<br />\n"; }
 				}
+				// Eliminate any residual account information
+				$_SESSION["login"]=false;
+				$_SESSION["userid"]="";
+				$_SESSION["name"]="";
+				setcookie("token", "", time()-42000);
+				setcookie("login", "", time()-42000);
 			}else{
 				/**********************************************************************************************************			
 				* ERROR: Invalid password, show generic error message
