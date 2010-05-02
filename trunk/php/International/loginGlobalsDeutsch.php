@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -62,7 +62,7 @@ define("lg_register_page", "register.php");
 define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
 define("lg_useCAPTCHA", true);
-define("lg_useSSL", true);
+define("lg_useSSL", false);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
 define("lg_webmaster_email", "Webmaster <webmaster@example.com>");
@@ -156,6 +156,7 @@ define("lg_phrase_issue_new_token", "Geben Sie Ihren Benutzernamen und E-Mail-Ad
 define("lg_phrase_issue_new_token_error", "Ein unerwarteter Fehler ist beim Erstellen Ihres Bestätigungs-Tokens aufgetreten. Bitte kontaktieren Sie den Webmaster.");
 define("lg_phrase_issue_new_token_success", "Ihr neuer Überprüfungscode wird an Ihre E-Mail-Adresse verschickt.");
 define("lg_phrase_login_error", "Es ist ein Fehler aufgetreten. Bitte geben Sie Ihre User-ID und Ihr Passwort ein.");
+define("lg_phrase_login_error_token", "Sie müssen Ihre E-Mail-Adresse validieren mit dem Token, das Sie wurden geschickt, bevor du dich einloggen kannst in.");
 define("lg_phrase_login_token_problem", "Entweder ist der Bestätigungs-Token benutzt worden ist, (und überprüft werden,) oder das Zeichen ist nicht gültig.");
 define("lg_phrase_logged_out", "Sie sind ausgeloggt.");
 define("lg_phrase_logout_continue", "Klicken Sie hier, um fortzufahren.");

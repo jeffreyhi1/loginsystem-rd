@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -155,6 +155,7 @@ define("lg_phrase_issue_new_token", "Escriba su nombre de usuario y correo elect
 define("lg_phrase_issue_new_token_error", "Se produjo un error inesperado generar su clave de verificación. Póngase en contacto con el webmaster.");
 define("lg_phrase_issue_new_token_success", "Tu nuevo clave de verificación será enviado a tu dirección de correo electrónico.");
 define("lg_phrase_login_error", "Se ha producido un error. Por favor introduzca su usuario y contraseña otra vez.");
+define("lg_phrase_login_error_token", "Usted tendrá que validar su dirección de correo electrónico utilizando el token que se han enviado antes de iniciar la sesiÃ");
 define("lg_phrase_login_token_problem", "O bien la clave de verificación se ha utilizado (y que son verificados,) o de la ficha de la no es válido.");
 define("lg_phrase_logged_out", "Usted se cerrará la sesión.");
 define("lg_phrase_logout_continue", "Haga clic aquí para continuar.");

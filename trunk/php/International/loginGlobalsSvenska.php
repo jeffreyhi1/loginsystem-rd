@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -159,6 +159,7 @@ define("lg_phrase_issue_new_token", "Ange ditt användarnamn och E-post för att
 define("lg_phrase_issue_new_token_error", "Det var ett oväntat fel du skapar en identifieringskod. Kontakta den webbansvariga.");
 define("lg_phrase_issue_new_token_success", "Ditt nya identifieringskod skickas till din E-postadress.");
 define("lg_phrase_login_error", "Det uppstod ett fel. Skriv in ditt användarnamn och lösenord.");
+define("lg_phrase_login_error_token", "Du måste bekräfta din e-postadress med hjälp av token du fick innan du kan logga in.");
 define("lg_phrase_login_token_problem", "Antingen identifieringskod har använts, (och du kontrolleras) eller token är inte giltig.");
 define("lg_phrase_logged_out", "Du är utloggad.");
 define("lg_phrase_logout_continue", "Klicka här för att fortsätta.");
