@@ -1,4 +1,4 @@
-<% 
+﻿<% 
 '* $Id$
 '*******************************************************************************************************************
 '* Login Globals - ASP
@@ -183,6 +183,7 @@ Const lg_phrase_issue_new_token = "Geben Sie Ihren Benutzernamen und E-Mail-Adre
 Const lg_phrase_issue_new_token_error = "Ein unerwarteter Fehler ist beim Erstellen Ihres Bestätigungs-Tokens aufgetreten. Bitte kontaktieren Sie den Webmaster."
 Const lg_phrase_issue_new_token_success = "Ihr neuer Überprüfungscode wird an Ihre E-Mail-Adresse verschickt."
 Const lg_phrase_login_error = "Es ist ein Fehler aufgetreten. Bitte geben Sie Ihre User-ID und Ihr Passwort ein."
+Const lg_phrase_login_error_token = "Sie müssen Ihre E-Mail-Adresse validieren mit dem Token, das Sie wurden geschickt, bevor du dich einloggen kannst in."
 Const lg_phrase_login_token_problem = "Entweder ist der Bestätigungs-Token benutzt worden ist, (und überprüft werden,) oder das Zeichen ist nicht gültig."
 Const lg_phrase_logged_out = "Sie sind ausgeloggt."
 Const lg_phrase_logout_continue = "Klicken Sie hier, um fortzufahren."

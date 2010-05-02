@@ -1,4 +1,4 @@
-<%
+﻿<%
 '* $Id: loginGlobalsEnglish.asp 201 2010-04-28 09:43:15Z rdivilbiss $
 '********************************************************************************************************************
 '* Login Globals - ASP
@@ -183,6 +183,7 @@ Const lg_phrase_issue_new_token = "Enter your userid and Email to receive a new 
 Const lg_phrase_issue_new_token_error = "There was an unexpected error generating your verification token. Please contact the webmaster."
 Const lg_phrase_issue_new_token_success = "Your new verification token will be mailed to your Email address."
 Const lg_phrase_login_error = "There was an error. Please re-enter your User ID and Password."
+Const lg_phrase_login_error_token = "You must validate your email address using the token you were sent before you can log in."
 Const lg_phrase_login_token_problem = "Either the verification token has been used, (and you are verified,) or the token is not valid."
 Const lg_phrase_logged_out = "You are logged out."
 Const lg_phrase_logout_continue = "Click here to continue."
