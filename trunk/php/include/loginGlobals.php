@@ -209,7 +209,7 @@ define("lg_phrase_recover_password3", "Set New Password");
 define("lg_phrase_recover_password4", "If you did not request to recover your password, contact the webmaster by ");
 define("lg_phrase_recover_password5", "Email at the following Email link ");
 define("lg_phrase_recover_password_error", "There was an unexpected error processing your request. Please contact the webmaster.");
-define("lg_phrase_recover_password_success", "The request to recover your password was processed successfully.<br>Please follow the instructions in the Email sent to you to set a new password.");
+define("lg_phrase_recover_password_success", "The request to recover your password was processed successfully.<p>Please follow the instructions in the Email sent to you to set a new password.</p>");
 define("lg_term_new_password", "New Password");
 define("lg_term_reset_password", "Password Reset");
 define("lg_term_set_new_password", "Enter A New Password");

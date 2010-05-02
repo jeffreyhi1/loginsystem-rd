@@ -1,5 +1,5 @@
 <?PHP
-// $Id$
+// $Id: login.php 268 2010-05-01 04:11:45Z rdivilbiss $
 /*******************************************************************************************************************
 * Page Name: Login
 * Last Modification: 01 MAY 2010 rdivilbiss
@@ -42,28 +42,12 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	}
 
 	/*******************************************************************************************************************
-	* If already logged on, redirect - assuming if $_SESSION["login"]==true then user is not locked out.
+	* If already logged on, redirect
 	*******************************************************************************************************************/
 	if (lg_debug) { $dbMsg .= "Checking for session login <br />\n"; }
 	if (isset($_SESSION["login"])) {
-		if ($_SESSION["login"]==true) {
+		if ($_SESSION["login"]) {
 			if (lg_debug) { $dbMsg .= "Session login = ".$_SESSION["login"]." <br />\n"; }
-			li_checkForDeletedOrLockedUserid($userid,$dbResults);
-			if (($dbResults["deleted"]=="1") || ($dbResults["locked"]=="1")) {
-				if (isset($_SESSION["login"])) {
-					$_SESSION["login"]=false;
-				}
-				if (isset($_SESSION["userid"])) {
-					$_SESSION["userid"]="";
-				}	
-				if (isset($_SESSION["name"])) {	
-					$_SESSION["name"]="";
-				}
-				setcookie("token", "", time()-42000);
-				setcookie("login", "", time()-42000);
-				header("Location: http://". lg_domain . lg_forbidden);
-				exit();
-			}
 			if (lg_useSSL) {
 				if (lg_debug) { $dbMsg .= "Use SSL is True <br />\n"; }
 				header("Location: https://". lg_domain_secure . lg_loginPath . $destination);
@@ -86,18 +70,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 		*******************************************************************************************************************/
 		li_checkForLockedIP($ip,$dbResults);
 		if (lg_debug) { $dbMsg .= "dbResults locked = " .$dbResults["locked"]. "<br />\n"; } 
-		if ($dbResults["locked"]=="1") {
-			if (isset($_SESSION["login"])) {
-				$_SESSION["login"]=false;
-			}
-			if (isset($_SESSION["userid"])) {
-				$_SESSION["userid"]="";
-			}	
-			if (isset($_SESSION["name"])) {	
-				$_SESSION["name"]="";
-			}
-			setcookie("token", "", time()-42000);
-			setcookie("login", "", time()-42000);		
+		if ($dbResults["locked"]==1) {
 			header("Location: http://". lg_domain . lg_forbidden);
 			exit();
 		}
@@ -120,29 +93,6 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 		* User Login Is Saved In Login Cookie.
 		*******************************************************************************************************************/
 		$userid = $_COOKIE["login"];
-		/*******************************************************************************************************************
-		* Cookie or no cookie the userid could be deleted or locked.
-		*******************************************************************************************************************/
-		li_checkForDeletedOrLockedUserid($userid,$dbResults);
-		if (($dbResults["deleted"]=="1") || ($dbResults["locked"]=="1")) {
-			if (isset($_SESSION["login"])) {
-				$_SESSION["login"]=false;
-			}
-			if (isset($_SESSION["userid"])) {
-				$_SESSION["userid"]="";
-			}	
-			if (isset($_SESSION["name"])) {	
-				$_SESSION["name"]="";
-			}
-			setcookie("token", "", time()-42000);
-			setcookie("login", "", time()-42000);		
-			header("Location: http://". lg_domain . lg_forbidden);
-			exit();
-		}
-		
-		/*******************************************************************************************************************
-		* Userid was not deleted or locked in users
-		*******************************************************************************************************************/
 		$_SESSION["userid"]=$userid;
 		$destination = lg_success_page;
 		if (lg_debug) { $dbMsg .= "UserID = ". $userid . "<br />\n"; }
@@ -150,22 +100,16 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 		if (lg_debug) { $dbMsg .= "destination = " . $destination . "<br />\n"; }
 		
 		/*******************************************************************************************************************
-		* Cookie or not the UserID and/or IP could be locked out by loginAttempts
+		* Make sure userid and/or IP are not locked out by loginAttempts
 		*******************************************************************************************************************/
 		if (lg_debug) { $dbMsg .= "Has cookie but checking for loginAttempt lock out <br />\n"; }
-		li_checkForLocked($ip,$pUserid, $dbResults);
-		if ($dbResults["locked"]=="1") {
-			if (isset($_SESSION["login"])) {
-				$_SESSION["login"]=false;
-			}
-			if (isset($_SESSION["userid"])) {
-				$_SESSION["userid"]="";
-			}	
-			if (isset($_SESSION["name"])) {	
-				$_SESSION["name"]="";
-			}
-			setcookie("token", "", time()-42000);
-			setcookie("login", "", time()-42000);
+		li_checkForLockedIP($ip,$dbResults);
+		if ($dbResults["locked"]==1) {
+			header("Location: http://". lg_domain . lg_forbidden);
+			exit();
+		}
+		li_checkForLockedUserID($userid,$dbResults);
+		if ($dbResults["locked"]==1) {
 			header("Location: http://". lg_domain . lg_forbidden);
 			exit();
 		}
@@ -178,18 +122,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 		li_getName($userid,$dbResults);
 		
 		$name = $dbResults["name"];
-		if ($dbResults["locked"]=="1") {
-			if (isset($_SESSION["login"])) {
-				$_SESSION["login"]=false;
-			}
-			if (isset($_SESSION["userid"])) {
-				$_SESSION["userid"]="";
-			}	
-			if (isset($_SESSION["name"])) {	
-				$_SESSION["name"]="";
-			}
-			setcookie("token", "", time()-42000);
-			setcookie("login", "", time()-42000);
+		if ($dbResults["locked"]==1) {
 			header("Location: http://". lg_domain . lg_forbidden);
 			exit();
 		}
@@ -249,36 +182,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	if (lg_debug) { $dbMsg .= "Message = ".$message." <br />\n"; }
 	if ($message=="") {
 		/*******************************************************************************************************************
-		* Userid could be deleted or locked.
-		*******************************************************************************************************************/
-		li_checkForDeletedOrLockedUserid($userid,$dbResults);
-		if (($dbResults["deleted"]=="1") || ($dbResults["locked"]=="1")) {
-			if (isset($_SESSION["login"])) {
-				$_SESSION["login"]=false;
-			}
-			if (isset($_SESSION["userid"])) {
-				$_SESSION["userid"]="";
-			}	
-			if (isset($_SESSION["name"])) {	
-				$_SESSION["name"]="";
-			}
-			setcookie("token", "", time()-42000);
-			setcookie("login", "", time()-42000);		
-			header("Location: http://". lg_domain . lg_forbidden);
-			exit();
-		}	
-	
-		/*******************************************************************************************************************
-		* Check for lock out on loginAttempts
-		*******************************************************************************************************************/
-		li_checkForLocked($ip, $userid, $dbResults);
-		if ($dbResults["locked"]=="1") {
-			header("Location: http://". lg_domain . lg_forbidden);
-			exit();
-		}          
-
-		/*******************************************************************************************************************
-		* If all required fields exist, attempt to authenticate the credentials
+		* If all required fields exist, attempt to autenticate the credentials
 		*******************************************************************************************************************/
 		if (lg_debug) { $dbMsg .= "Looking up login details from database <br />\n"; }
 		li_getLoginDetails($userid, $dbResults);
@@ -289,13 +193,12 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 		if (lg_debug) { $dbMsg .= "Database Passhash   = ".$passhash." <br />\n"; }
 		if (lg_debug) { $dbMsg .= "Name = ".$name." <br />\n"; }
 		if (lg_debug) { $dbMsg .= "Locked = ".$locked." <br />\n"; }
-                
 		if ($locked!="1") {
 			if (lg_debug) { $dbMsg .= "Account Not Locked <br />\n"; }
 			if ($passhash==sha1($password . $userid)) {
 				if (lg_debug) { $dbMsg .= "Passhash matches password <br />\n"; }
 				/*******************************************************************************************************************
-				* If credentials are valid log the user in
+				* If credential are valid log the user in
 				*******************************************************************************************************************/
 				session_regenerate_id(true); // anti-session fixation
 				$_SESSION["login"]=true;
@@ -382,25 +285,8 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 				$message = lg_phrase_login_error;
 			}
 		}else{
-			// UserID is locked
-			/*******************************************************************************************************************
-			* Cookie or no cookie the userid could be deleted or locked.
-			*******************************************************************************************************************/
-			if (isset($_SESSION["login"])) {
-				$_SESSION["login"]=false;
-			}
-			if (isset($_SESSION["userid"])) {
-				$_SESSION["userid"]="";
-			}	
-			if (isset($_SESSION["name"])) {	
-				$_SESSION["name"]="";
-			}
-			setcookie("token", "", time()-42000);
-			setcookie("login", "", time()-42000);		
-			header("Location: http://". lg_domain . lg_forbidden);
-			exit();
-		}			
-		$message = lg_phrase_login_error;	
+			$message = lg_phrase_login_error;
+		}	
 	}
 }
 ?>

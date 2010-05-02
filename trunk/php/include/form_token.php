@@ -1,4 +1,4 @@
-﻿<?PHP
+<?PHP
 // $Id$
 /**
 * Login System Form Token (anti-CSRF) Functions
