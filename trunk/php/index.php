@@ -29,7 +29,8 @@ include "include/database.php";
 
 <body>
 <?PHP
-if (isset($_SESSION["name"])) {
+if ((isset($_SESSION["name"])) && (isset($_SESSION["login"])) && ($_SESSION["login"]==true)) {
+
 	echo "<h1>".lg_term_welcome.' '.$_SESSION["name"]."</h1><br />";
 	echo '<p><a href="logout.php" title="'. lg_term_log_out .'">'. lg_term_log_out .'</a></p>';
 }else{
