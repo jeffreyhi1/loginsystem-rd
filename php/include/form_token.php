@@ -1,4 +1,4 @@
-<?PHP
+﻿<?PHP
 // $Id$
 /**
 * Login System Form Token (anti-CSRF) Functions
@@ -13,6 +13,7 @@ function generateToken(){
 	* Create and set a new token for CSRF protection
 	* on initial entry or after form errors and we are going to redisplay the form.
 	******************************************************************************************/
+	if (lg_debug) { $dbMsg .= "In generateToken<br />\n"; }
 	$salt="";
 	$tokenStr="";
 	$salt = sha1($_SERVER["HTTP_HOST"]);
@@ -21,9 +22,13 @@ function generateToken(){
 	$_SESSION["guid"] = getGUID();
 	$_SESSION["ip"] = $_SERVER["REMOTE_ADDR"];
 	$_SESSION["time"] = time();
+	if (lg_debug) { $dbMsg .= "Session SALT = ". $_SESSION["salt"] ."<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Session GUID = ". $_SESSION["guid"] ."<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Session IP = ". $_SESSION["ip"] ."<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Session TIME = ". $_SESSION["time"] ."<br />\n"; }
 	$tokenStr = "IP:" . $_SESSION["ip"] . ",SESSIONID:" . session_id() . ",GUID:" . $_SESSION["guid"];
-	$_SESSION["token"]=sha1(($tokenStr&$_SESSION["salt"]).$_SESSION["salt"]);
-	if (lg_debug) { $dbMsg .= "Form Token: " . $_SESSION["token"] . "<br />\n"; }
+	$_SESSION["token"]=sha1(($tokenStr.$_SESSION["salt"]).$_SESSION["salt"]);
+	if (lg_debug) { $dbMsg .= "Form Token = ". $_SESSION["token"] ."<br />\n"; }
 	if (setcookie("token", $_SESSION["token"], time()+86400)) {
 		$_SESSION["usecookie"]=True;
 		if (lg_debug) { $dbMsg .= "Form Token: Use Cookie = true<br />\n"; }	
@@ -41,7 +46,7 @@ function checkToken() {
 	$page=$_SERVER["SCRIPT_NAME"];
 	$oldToken=$_POST["token"];
 	$tokenStr = "IP:" . $_SESSION["ip"] . ",SESSIONID:" . session_id() . ",GUID:" . $_SESSION["guid"];
-	$testToken=sha1(($tokenStr&$_SESSION["salt"]).$_SESSION["salt"]);
+	$testToken=sha1(($tokenStr.$_SESSION["salt"]).$_SESSION["salt"]);
 	$checkToken=False;
 	If ($oldToken===$testToken) {
 	    $diff = time() - $_SESSION["time"]; 
