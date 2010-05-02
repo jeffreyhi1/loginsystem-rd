@@ -18,7 +18,7 @@
 			</div>
 			<?PHP 
 			}else{
-				if (($message!=lg_phrase_set_new_password_success) && ($_SESSION["action"]!="token")) {
+				if ($_SESSION["action"]=="password") {
 			 ?>
 			<div id="message"><?PHP echo $message; ?></div>	
 			<div id="formDiv">
