@@ -54,7 +54,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 		if (lg_debug) { $dbMsg .= "Confirm password = " . $confirm . "<br />\n"; }
 		if (lg_debug) { $dbMsg .= "Change password = " . $changePassword . "<br />\n"; }
 	}else{
-		$_SESSION["action"] = "resettoken";
+		if ($resettoken=="") {
+			$_SESSION["action"] = "token";
+		}else{	
+			$_SESSION["action"] = "resettoken";
+		}	
 		if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
 	}
 }
@@ -69,6 +73,11 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	if (lg_debug) { $dbMsg .= "Reset token = " . $resettoken . "<br />\n"; }
 	if (lg_debug) { $dbMsg .= "Destination = " . $destination . "<br />\n"; }
 	if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
+	if (($resettoken=="") OR (!isset($_GET["resettoken"]))) {
+		$_SESSION["action"] = "token";
+	}else{
+		$_SESSION["action"] = "resettoken";
+	}
 }
 
 /*******************************************************************************************************************
