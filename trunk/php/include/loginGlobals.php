@@ -155,6 +155,7 @@ define("lg_phrase_issue_new_token", "Enter your userid and Email to receive a ne
 define("lg_phrase_issue_new_token_error", "There was an unexpected error generating your verification token. Please contact the webmaster.");
 define("lg_phrase_issue_new_token_success", "Your new verification token will be mailed to your Email address.");
 define("lg_phrase_login_error", "There was an error. Please re-enter your User ID and Password.");
+define("lg_phrase_login_error_token", ""You must validate your email address using the token you were sent before you can log in.");
 define("lg_phrase_login_token_problem", "Either the verification token has been used, (and you are verified,) or the token is not valid.");
 define("lg_phrase_logged_out", "You are logged out.");
 define("lg_phrase_logout_continue", "Click here to continue.");
