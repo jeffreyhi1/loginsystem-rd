@@ -1,4 +1,4 @@
-<%
+﻿<%
 '* $Id: loginGlobalsEspanol.asp 201 2010-04-28 09:43:15Z rdivilbiss $
 '*******************************************************************************************************************
 '* Login Globals - ASP
@@ -183,6 +183,7 @@ Const lg_phrase_issue_new_token = "Escriba su nombre de usuario y correo electr�
 Const lg_phrase_issue_new_token_error = "Se produjo un error inesperado generar su clave de verificación. Póngase en contacto con el webmaster."
 Const lg_phrase_issue_new_token_success = "Tu nuevo clave de verificación será enviado a tu dirección de correo electrónico."
 Const lg_phrase_login_error = "Se ha producido un error. Por favor introduzca su usuario y contraseña otra vez."
+Const lg_phrase_login_error_token = "Usted tendrá que validar su dirección de correo electrónico utilizando el token que se han enviado antes de iniciar la sesiÃ."
 Const lg_phrase_login_token_problem = "O bien la clave de verificación se ha utilizado (y que son verificados,) o de la ficha de la no es válido."
 Const lg_phrase_logged_out = "Usted se cerrará la sesión."
 Const lg_phrase_logout_continue = "Haga clic aquí para continuar."

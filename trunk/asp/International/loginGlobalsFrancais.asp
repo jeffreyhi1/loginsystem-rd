@@ -1,4 +1,4 @@
-<%
+﻿<%
 '* $Id: loginGlobalsFracais.asp 201 2010-04-28 09:43:15Z rdivilbiss $
 '*******************************************************************************************************************
 '* Login Globals - ASP
@@ -183,6 +183,7 @@ Const lg_phrase_issue_new_token = "Entrez vos nom d'utilisateur et mél pour rec
 Const lg_phrase_issue_new_token_error = "Il y a eu une erreur inattendue de la génération du jeton de contrôle. S'il vous plaît contactez le ouaibemestre."
 Const lg_phrase_issue_new_token_success = "Votre nouvelle vérification va vous être envoyée à votre adresse mél."
 Const lg_phrase_login_error = "Il y a eu une erreur. S'il vous plaît saisissez à nouveau vos identifiant utilisateur et mot de passe."
+Const lg_phrase_login_error_token = "Vous devez valider votre adresse e-mail en utilisant le jeton que vous ont été envoyés avant que vous puissiez connecter!"
 Const lg_phrase_login_token_problem = "Soit le jeton de contrôle a été utilisé (et revu), ou le caractère n'est pas valide."
 Const lg_phrase_logged_out = "Vous êtes déconnecté."
 Const lg_phrase_logout_continue = "Cliquez ici pour continuer."
