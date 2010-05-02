@@ -70,6 +70,18 @@ If ($email!="") {
 			*******************************************************************************************************************/
 			if (lg_debug) { $dbMsg .= "Token was empty: delete record.<br>\n"; }
 			rd_deleteUser($id);
+			// none of these should be set
+			if (isset($_SESSION["login"])) {
+				$_SESSION["login"]=false;
+			}
+			if (isset($_SESSION["userid"])) {	
+				$_SESSION["userid"]="";
+			}
+			if (isset($_SESSION["name"])) {
+				$_SESSION["name"]="";
+			}
+			setcookie("token", "", time()-42000);
+			setcookie("login", "", time()-42000);
 			$message = "<h2>".lg_phrase_delete_deleted."</h2>";
 		}else{
 			/*******************************************************************************************************************
@@ -79,13 +91,16 @@ If ($email!="") {
 			$message .= "If you wish to cancel the account use the account<br />";
 			$message .= 'cancellation page at <a href="'.lg_cancel_account_page.'">'.lg_term_cancel_account.'</a>';
 			if (lg_debug) { $dbMsg .= "Message = ".$message."<br>\n"; }
+			setcookie("token", "", time()-42000);
 		}
 	}else{
 		$message = lg_phrase_register_delete_noemail;
 		if (lg_debug) { $dbMsg .= "Message = ".$message."<br>\n"; }
+		setcookie("token", "", time()-42000);
 	}
 }else{
 	$message = lg_term_register_delete_enter_email;
 	if (lg_debug) { $dbMsg .= "Message = ".$message."<br>\n"; }
+	setcookie("token", "", time()-42000);
 }
 ?>
