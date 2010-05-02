@@ -88,6 +88,13 @@
   <ItemGroup>
     <Compile Include="DataAccess.vb" />
     <Compile Include="LoginResources.vb" />
+    <Compile Include="Register.aspx.designer.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="test.vb" />
     <Compile Include="App_GlobalResources\loginGlobals.da.designer.vb">
       <AutoGen>True</AutoGen>
@@ -194,6 +201,7 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>loginGlobals.designer.vb</LastGenOutput>
     </Content>
+    <Content Include="Register.aspx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
