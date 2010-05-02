@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -162,6 +162,7 @@ define("lg_phrase_issue_new_token","Nhập tên truy nhập và địa chỉ th�
 define("lg_phrase_issue_new_token_error","Có một lỗi không mong muốn tạo ra mã xác minh của bạn. Xin vui lòng liên lạc với web người chủ.");
 define("lg_phrase_issue_new_token_success","Mã xác minh mới sẽ được gửi đến địa chỉ thư điện tử của bạn.");
 define("lg_phrase_login_error","Có một lỗi. Vui lòng nhập lại tên truy nhập và mật khẩu của bạn.");
+define("lg_phrase_login_error_token","Bạn phải xác nhận địa chỉ email của bạn bằng cách sử dụng mã thông báo bạn đã được gửi trước khi bạn có thể đăng nhập.");
 define("lg_phrase_login_token_problem","Hoặc là mã xác minh đã được sử dụng, và bạn được xác minh; hoặc mã xác minh là không hợp lệ.");
 define("lg_phrase_logged_out","Bạn đang đăng xuất.");
 define("lg_phrase_logout_continue","Nhấp vào đây để tiếp tục.");

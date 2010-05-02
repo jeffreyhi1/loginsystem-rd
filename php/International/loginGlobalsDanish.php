@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -155,6 +155,7 @@ define("lg_phrase_issue_new_token", "Indtast dit userid og din e-mail for at mod
 define("lg_phrase_issue_new_token_error", "Der opstod en uventet fejl da vi genererede din kontrol token. Kontakt venligst webmaster.");
 define("lg_phrase_issue_new_token_success", "Dit nye bekræftelseskendetegn vil blive sendt til din e-mail adresse.");
 define("lg_phrase_login_error", "Der var en fejl. Indtast dit brugernavn og adgangskode igen.");
+define("lg_phrase_login_error_token", "Du skal validere din e-mail adresse ved hjælp af symbolske du blev sendt, før du kan logge ind.");
 define("lg_phrase_login_token_problem", "Enten er verifikation token blevet brugt (og du er verificeret), eller token er ikke gyldig.");
 define("lg_phrase_logged_out", "Du er logget ud.");
 define("lg_phrase_logout_continue", "klik her for at fortsætte.");

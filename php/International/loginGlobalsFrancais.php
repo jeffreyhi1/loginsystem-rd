@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -152,7 +152,7 @@ define("lg_phrase_issue_new_token", "Entrez vos nom d'utilisateur et mél pour r
 define("lg_phrase_issue_new_token_error", "Il y a eu une erreur inattendue de la génération du jeton de contrôle. S'il vous plaît contactez le ouaibemestre.");
 define("lg_phrase_issue_new_token_success", "Votre nouvelle vérification va vous être envoyée à votre adresse mél.");
 define("lg_phrase_login_error", "Il y a eu une erreur. S'il vous plaît saisissez à nouveau vos identifiant utilisateur et mot de passe.");
-/* Need Confirmation */
+define("lg_phrase_login_error_token", "Vous devez valider votre adresse e-mail en utilisant le jeton que vous ont été envoyés avant que vous puissiez connecter!");
 define("lg_phrase_login_token_problem", "Soit le jeton de contrôle a été utilisé (et revu), ou le caractère n'est pas valide.");
 define("lg_phrase_logged_out", "Vous êtes déconnecté.");
 define("lg_phrase_logout_continue", "Cliquez ici pour continuer.");
