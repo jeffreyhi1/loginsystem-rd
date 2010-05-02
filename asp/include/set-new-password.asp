@@ -3,7 +3,7 @@
 '*******************************************************************************************************************
 '* Page Name
 '* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 0.1c
+'* Version:  alpha 0.1b
 '* On Entry: reset token
 '* Input   : current password, new password, confirmation password
 '* Output  : message
@@ -64,8 +64,12 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 		changePassword=getField("changePassword,rXint")
 		If debug Then debugout=debugout&"change password="&changePassword&"<br>" & vbLF End If
 	Else
-		Session("action") = "resettoken"
-		If debug Then debugout=debugout&"Session(action)=resettoken in POST<br>" & vbLF End If	
+		If resettoken="" Then
+			Session("action") = "token"
+		Else	
+			Session("action") = "resettoken"
+		End If	
+		If debug Then debugout=debugout&"Session(action)="& Session("action") &" in POST<br>" & vbLF End If	
 	End if	
 End if
 '*******************************************************************************************************************
@@ -77,8 +81,12 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="get" Then
 	If debug Then debugout=debugout&"reset token="&resettoken&"<br>" & vbLF End If
 	destination = getField("p,rXurlpath,get")
 	If debug Then debugout=debugout&"destination="&destination&"<br>" & vbLF End If
-	Session("action") = "resettoken"
-	If debug Then debugout=debugout&"Session(action)=resettoken in GET<br>" & vbLF End If
+	If Request.Querystring = "" OR resettoken="" Then
+		Session("action") = "token"
+	Else
+		Session("action") = "resettoken"
+	End If
+	If debug Then debugout=debugout&"Session(action)="& Session("action") &" in GET<br>" & vbLF End If
 End if
 '*******************************************************************************************************************
 '* If the token exists, process account activation
@@ -228,6 +236,8 @@ Else
 						If debug Then debugout=debugout&"message="&message&"<br>" & vbLF End If
 						Session("action")="Success"
 						If debug Then debugout=debugout&"Session(action)=Success<br>" & vbLF End If
+						Response.Cookies("token")=""
+						Response.Cookies("token").Expires = "December 31, 2000"
 						'*******************************************************************************************************************
 						'* Notify account holder of password change
 						'*******************************************************************************************************************
@@ -246,6 +256,8 @@ Else
 						message = lg_phrase_set_new_password_error & "Error 2. "& lg_phrase_contact_webmaster1 &"<br>"
 				 		message = lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 						Session("action")="Error"
+						Response.Cookies("token")=""
+						Response.Cookies("token").Expires = "December 31, 2000"
 						If debug Then debugout=debugout&"message="&message&"<br>" & vbLF End If
 						If debug Then debugout=debugout&"Session(action)=Error<br>" & vbLF End If
 					End If
@@ -253,6 +265,8 @@ Else
 					message = "<h2>lg_phrase_verify_expired</h2><br>"& lg_phrase_contact_webmaster1 &"<br>"
 					message = message & lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 					Session("action")="Error"
+					Response.Cookies("token")=""
+					Response.Cookies("token").Expires = "December 31, 2000"
 					If debug Then debugout=debugout&"message="&message&"<br>" & vbLF End If
 					If debug Then debugout=debugout&"Session(action)=Error<br>" & vbLF End If
 				End If
@@ -260,6 +274,8 @@ Else
 				message = lg_phrase_set_new_password_error & "Error 3. "& lg_phrase_contact_webmaster1 &"<br>"
 				message = lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 				Session("action")="Error"
+				Response.Cookies("token")=""
+				Response.Cookies("token").Expires = "December 31, 2000"
 				If debug Then debugout=debugout&"message="&message&"<br>" & vbLF End If
 				If debug Then debugout=debugout&"Session(action)=Error<br>" & vbLF End If
 			End If
@@ -267,6 +283,8 @@ Else
 			message = lg_phrase_set_new_password_error & "Error 4. "& lg_phrase_contact_webmaster1 &"<br>"
 			message = lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 			Session("action")="Error"
+			Response.Cookies("token")=""
+			Response.Cookies("token").Expires = "December 31, 2000"
 			If debug Then debugout=debugout&"message="&message&"<br>" & vbLF End If
 			If debug Then debugout=debugout&"Session(action)=Error<br>" & vbLF End If
 		End If		
