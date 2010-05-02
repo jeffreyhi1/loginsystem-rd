@@ -97,6 +97,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 				* ERROR: Invalid password, show generic error message
 				**********************************************************************************************************/
 				$message .= lg_phrase_login_error;
+				setcookie("token", "", time()-42000);
 				if (lg_debug) { $dbMsg = "message = ".$message."<br />\n"; }
 			}
 		}else{
@@ -104,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 			* ERROR: Invalid userid, show generic error message
 			**********************************************************************************************************/
 			$message .= lg_phrase_login_error;
+			setcookie("token", "", time()-42000);
 			if (lg_debug) { $dbMsg = "message = ".$message."<br />\n"; }
 		}
 	} // if $message=="", nothing else needed...message already set.
