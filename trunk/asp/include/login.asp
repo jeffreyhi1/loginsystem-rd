@@ -33,13 +33,13 @@ date = dbNow
 useragent = Server.HTMLEncode(Left(Request.ServerVariables("HTTP_USER_AGENT"),255))
 locked=""
 If lg_debug Then
-	dbMsg = "DEBUG BEGIN"
+	dbMsg = "DEBUG BEGIN<br />" & vbLF
 Else
 	dbMsg = ""
 End If
 
 	
-If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
+If UCase(Request.ServerVariables("HTTP_METHOD"))="GET" Then
 	If lg_debug Then dbMsg = dbMsg & "METHOD=GET<br />" & vbLF End If
 	'*******************************************************************************************************************
 	'* On entry determine if we have a destination page
@@ -125,9 +125,9 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		'*******************************************************************************************************************
 		If lg_debug Then dbMsg = dbMsg & "Check for IP ban by loginAttempts<br />" & vbLF End If
 		If lg_database="access" Then	
-			cmdTxt = "SELECT MAX([loginLocked]) as loginLocked FROM loginAttempts WHERE [loginAttemptIP] = ?);"
+			cmdTxt = "SELECT MAX([loginLocked]) as loginLocked FROM loginAttempts WHERE [loginAttemptIP] = ?;"
 		Else
-			cmdTxt = "SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ?);"
+			cmdTxt = "SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ?;"
 		End If
 		openCommand lg_term_command_string,lg_term_error_string&" 4"
 		addParam "@i",adVarChar,adParamInput,CLng(Len(ip)),ip,lg_term_error_string&" 5"
@@ -233,9 +233,9 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		'*******************************************************************************************************************
 		If lg_debug Then dbMsg = dbMsg & "Check if userid or IP is locked out by loginAttempts<br />" & vbLF End If
 		If lg_database="access" Then
-			cmdTxt = "SELECT MAX([loginLocked]) as loginLocked FROM loginAttempts WHERE [loginAttemptIP] = ? OR [loginAttemptUserID] = ?);"
+			cmdTxt = "SELECT MAX([loginLocked]) as loginLocked FROM loginAttempts WHERE [loginAttemptIP] = ? OR [loginAttemptUserID] = ?;"
 		Else
-			cmdTxt = "SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ? OR loginAttemptUserID = ?);"
+			cmdTxt = "SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ? OR loginAttemptUserID = ?;"
 		End If
 		openCommand lg_term_command_string,lg_term_error_string&" 13"
 		addParam "@u",adVarChar,adParamInput,CLng(50),userid,lg_term_error_string&" 14"
@@ -268,9 +268,9 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		'*******************************************************************************************************************
 		If lg_debug Then dbMsg = dbMsg & "Lookup username<br />" & vbLF End If
 		If lg_database="access" Then
-			cmdTxt = "SELECT [name], [locked] FROM users WHERE ([userid]=?);"
+			cmdTxt = "SELECT [name], [locked] FROM users WHERE [userid]=?;"
 		Else
-			cmdTxt = "SELECT name, locked FROM users WHERE (userid=?);"
+			cmdTxt = "SELECT name, locked FROM users WHERE userid=?;"
 		End If
 		openCommand lg_term_command_string,lg_term_error_string&" 17"
 		addParam "@u",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_error_string&" 18"
@@ -298,51 +298,51 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 			Session.Abandon
 			Response.Redirect("http://" & lg_domain & lg_forbidden &"?r=6")
 		End If
-			'*******************************************************************************************************************
-			'* Not locked out, login via cookie
-			'*******************************************************************************************************************		
-			Session("login")=True
-			Session("name")=name
-			Session("userid")=userid
-			If lg_debug Then dbMsg = dbMsg & "Session login = "& Session("login") &"<br />" & vbLF End If
-			If lg_debug Then dbMsg = dbMsg & "Session name = "& Session("name") &"<br />" & vbLF End If
-			If lg_debug Then dbMsg = dbMsg & "Session userid = "& Session("userid") &"<br />" & vbLF End If
-			
-			'*******************************************************************************************************************
-			'* Credentials are valid, issue a anti Session Fixation cookie
-			'*******************************************************************************************************************
-			If lg_debug Then dbMsg = dbMsg & "Credentials are valid - issue anti Session Fixation cookie.<br />" & vbLF End If
-			tmpStr = getGUID
-			If lg_debug Then dbMsg = dbMsg & "GUID = "& tmpStr &"<br />" & vbLF End If
-			tmpStr = HashEncode(Session.SessionID & Request.ServerVariables("REMOTE_ADDR") & tmpStr)
-			If lg_debug Then dbMsg = dbMsg & "anti Session Fixation Token = "& tmpStr &"<br />" & vbLF End If
-			Response.Cookies("user") = tmpStr
-			Response.Cookies("user").Expires = Dateadd("s", 1200, Now()) ' 20 minutes
-			Session("antiFixation") = tmpStr
-			If lg_debug Then dbMsg = dbMsg & "Session antiFixation = "& Session("antiFixation") &"<br />" & vbLF End If
+		
+		'*******************************************************************************************************************
+		'* Not locked out, login via cookie
+		'*******************************************************************************************************************		
+		Session("login")=True
+		Session("name")=name
+		Session("userid")=userid
+		If lg_debug Then dbMsg = dbMsg & "Session login = "& Session("login") &"<br />" & vbLF End If
+		If lg_debug Then dbMsg = dbMsg & "Session name = "& Session("name") &"<br />" & vbLF End If
+		If lg_debug Then dbMsg = dbMsg & "Session userid = "& Session("userid") &"<br />" & vbLF End If
+		
+		'*******************************************************************************************************************
+		'* Credentials are valid, issue a anti Session Fixation cookie
+		'*******************************************************************************************************************
+		If lg_debug Then dbMsg = dbMsg & "Credentials are valid - issue anti Session Fixation cookie.<br />" & vbLF End If
+		tmpStr = getGUID
+		If lg_debug Then dbMsg = dbMsg & "GUID = "& tmpStr &"<br />" & vbLF End If
+		tmpStr = HashEncode(Session.SessionID & Request.ServerVariables("REMOTE_ADDR") & tmpStr)
+		If lg_debug Then dbMsg = dbMsg & "anti Session Fixation Token = "& tmpStr &"<br />" & vbLF End If
+		Response.Cookies("user") = tmpStr
+		Response.Cookies("user").Expires = Dateadd("s", 1200, Now()) ' 20 minutes
+		Session("antiFixation") = tmpStr
+		If lg_debug Then dbMsg = dbMsg & "Session antiFixation = "& Session("antiFixation") &"<br />" & vbLF End If
 
-			'*******************************************************************************************************************
-			'* If we are logging user authentications, write to the logins table
-			'*******************************************************************************************************************
-			If lg_log_logins Then
-				If lg_debug Then dbMsg = dbMsg & "log_logins = "& log_logins &"<br />" & vbLF End If
-				If lg_database="access" Then
-					cmdTxt = "INSERT INTO logins ([date], [userid], [ip], [useragent]) VALUES (?, ?, ?, ?);"
-				Else
-					cmdTxt = "INSERT INTO logins (date, userid, ip, useragent) VALUES (?, ?, ?, ?);"
-				End If
-				openCommand lg_term_command_string,lg_term_log_string&" 20"
-				addParam "@sate",adDate,adParamInput,CLng(8),date,lg_term_log_string&" 21"
-				addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),Session("userid"),lg_term_log_string&" 22"
-				addParam "@ip",adVarChar,adParamInput,CLng(32),ip,lg_term_log_string&" 23"
-				addParam "@ua",adVarChar,adParamInput,CLng(255),useragent,lg_term_log_string&" 24"
-				execCmd cmdTxt
-				If lg_debug Then dbMsg = dbMsg & "Log Login Number Affected = "& numAffected &"<br />" & vbLF End If
-				closeCommand	
+		'*******************************************************************************************************************
+		'* If we are logging user authentications, write to the logins table
+		'*******************************************************************************************************************
+		If lg_log_logins Then
+			If lg_debug Then dbMsg = dbMsg & "lg_log_logins = "& lg_log_logins &"<br />" & vbLF End If
+			If lg_database="access" Then
+				cmdTxt = "INSERT INTO logins ([date], [userid], [ip], [useragent]) VALUES (?, ?, ?, ?);"
+			Else
+				cmdTxt = "INSERT INTO logins (date, userid, ip, useragent) VALUES (?, ?, ?, ?);"
 			End If
-			If Session("login")=True Then
-				Response.Redirect(destination)
-			End If
+			openCommand lg_term_command_string,lg_term_log_string&" 20"
+			addParam "@sate",adDate,adParamInput,CLng(8),date,lg_term_log_string&" 21"
+			addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),Session("userid"),lg_term_log_string&" 22"
+			addParam "@ip",adVarChar,adParamInput,CLng(32),ip,lg_term_log_string&" 23"
+			addParam "@ua",adVarChar,adParamInput,CLng(255),useragent,lg_term_log_string&" 24"
+			execCmd cmdTxt
+			If lg_debug Then dbMsg = dbMsg & "Log Login Number Affected = "& numAffected &"<br />" & vbLF End If
+			closeCommand	
+		End If
+		If Session("login")=True Then
+			Response.Redirect(destination)
 		End If
 	End If
 Else
@@ -414,9 +414,9 @@ Else
 		'*******************************************************************************************************************
 		If lg_debug Then dbMsg = dbMsg & "Check if userid or IP is locked out by loginAttempts<br />" & vbLF End If
 		If lg_database="access" Then
-			cmdTxt = "SELECT MAX([loginLocked]) as loginLocked FROM loginAttempts WHERE [loginAttemptIP] = ? OR [loginAttemptUserID] = ?);"
+			cmdTxt = "SELECT MAX([loginLocked]) as loginLocked FROM loginAttempts WHERE [loginAttemptIP] = ? OR [loginAttemptUserID] = ?;"
 		Else
-			cmdTxt = "SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ? OR loginAttemptUserID = ?);"
+			cmdTxt = "SELECT MAX(loginLocked) as loginLocked FROM loginAttempts WHERE loginAttemptIP = ? OR loginAttemptUserID = ?;"
 		End If
 		openCommand lg_term_command_string,lg_term_error_string&" 28"
 		addParam "@u",adVarChar,adParamInput,CLng(50),userid,lg_term_error_string&" 29"
@@ -449,9 +449,9 @@ Else
 		'*******************************************************************************************************************
 		If lg_debug Then dbMsg = dbMsg & "All required fields exist, attempt to authenticate.<br />" & vbLF End If
 		If lg_database="access" Then
-			cmdTxt = "SELECT [name], [password], [locked] FROM users WHERE ([userid]=?);"
+			cmdTxt = "SELECT [name], [password], [locked] FROM users WHERE [userid]=?;"
 		Else
-			cmdTxt = "SELECT name, password, locked FROM users WHERE (userid=?);"
+			cmdTxt = "SELECT name, password, locked FROM users WHERE userid=?;"
 		End If
 		openCommand lg_term_command_string,lg_term_get_name&" 32"
 		addParam "@u",adVarChar,adParamInput,CLng(50),userid,lg_term_get_name&" 33"
@@ -485,7 +485,7 @@ Else
 				'*******************************************************************************************************************
 				'* If credential are valid log the user in
 				'*******************************************************************************************************************
-				Session("login")=True
+				Session("login")=true
 				Session("userid")=userid
 				Session("name")=name
 				If lg_debug Then dbMsg = dbMsg & "Session login = "& Session("login") &"<br />" & vbLF End If
@@ -507,7 +507,7 @@ Else
 				'* If we are logging user authentications, write to the logins table
 				'*******************************************************************************************************************
 				If lg_log_logins Then
-					If lg_debug Then dbMsg = dbMsg & "log_logins = "& log_logins &"<br />" & vbLF End If
+					If lg_debug Then dbMsg = dbMsg & "lg_log_logins = "& lg_log_logins &"<br />" & vbLF End If
 					If lg_database="access" Then
 						cmdTxt = "INSERT INTO logins ([date], [userid], [ip], [useragent]) VALUES (?, ?, ?, ?);"
 					Else
@@ -528,9 +528,9 @@ Else
 				'*******************************************************************************************************************
 				If lg_debug Then dbMsg = dbMsg & "Clear the Login from attemptedLogins table<br />" & vbLF End If
 				If lg_database="access" Then
-					cmdTxt = "DELETE FROM loginAttempts WHERE ([loginAttemptUserID]=?) OR ([loginAttemptIP]=?);"
+					cmdTxt = "DELETE FROM loginAttempts WHERE [loginAttemptUserID]=? OR [loginAttemptIP]=?;"
 				Else
-					cmdTxt = "DELETE FROM loginAttempts WHERE (loginAttemptUserID=?) OR (loginAttemptIP=?);"
+					cmdTxt = "DELETE FROM loginAttempts WHERE loginAttemptUserID=? OR loginAttemptIP=?;"
 				End If		
 				openCommand lg_term_command_string,lg_term_log_string&" 40"
 				addParam "@user",adVarChar,adParamInput,CLng(Len(userid)),Session("userid"),lg_term_log_string&" 41"
@@ -549,7 +549,10 @@ Else
 				'*******************************************************************************************************************
 				'* Logged in, redirect
 				'*******************************************************************************************************************
-				If lg_debug Then dbMsg = dbMsg & "Valid login, redirect<br />" & vbLF End If
+				If lg_debug Then dbMsg = dbMsg & "Valid login, redirect to: "& destination &"<br />" & vbLF End If
+				If lg_debug Then dbMsg = dbMsg & "Session(login) = "& Session("login") &"<br />" & vbLF End If
+				' If lg_debug Then Response.Write dbMsg End If
+				' Response.End
 				Response.Redirect(destination)
 			Else
 				'*******************************************************************************************************************
@@ -558,9 +561,9 @@ Else
 				If lg_debug Then dbMsg = dbMsg & "Bad Login: increment attemptedLogins record.<br />" & vbLF End If
 				'Bad Login attempt - log it and count
 				If lg_database="access" Then
-					cmdTxt = "SELECT [id], [loginAttemptNumber] FROM loginAttempts WHERE ([loginAttemptUserID] = ?) OR ([loginAttemptIP] = ?);"
+					cmdTxt = "SELECT [id], [loginAttemptNumber] FROM loginAttempts WHERE [loginAttemptUserID] = ? OR [loginAttemptIP] = ?;"
 				Else	
-					cmdTxt = "SELECT id, loginAttemptNumber FROM loginAttempts WHERE (loginAttemptUserID = ?) OR (loginAttemptIP = ?);"
+					cmdTxt = "SELECT id, loginAttemptNumber FROM loginAttempts WHERE loginAttemptUserID = ? OR loginAttemptIP = ?;"
 				End If
 				If lg_debug Then dbMsg = dbMsg & "First look-up the attemptedLogin record<br />" & vbLF End If
 				openCommand lg_term_command_string,lg_term_error_string&" 33"
@@ -634,7 +637,7 @@ Else
 			Response.Redirect("http://" & lg_domain & lg_forbidden &"?r=10")
 			If lg_debug Then dbMsg = dbMsg & "Userid is locked, redirect to forbidden<br />" & vbLF End If
 		End if
-		message = lg_phrase_login_error;
+		message = lg_phrase_login_error
 		If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 	End If
 End if
