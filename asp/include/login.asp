@@ -84,7 +84,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		If (laLocked="1") OR (laDeleted="1") Then
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -105,7 +105,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		Else
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -144,7 +144,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		If laLocked="1" Then
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -210,7 +210,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		If (laLocked="1") OR (laDeleted="1") Then
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -254,7 +254,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		If laLocked="1" Then
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -290,7 +290,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "get" Then
 		If laLocked="1" Then
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -400,7 +400,7 @@ Else
 		If (laLocked="1") OR (laDeleted="1") Then
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -435,7 +435,7 @@ Else
 		If laLocked="1" Then
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
@@ -625,7 +625,7 @@ Else
 			'*******************************************************************************************************************
 			Session("userid") = ""
 			Session("login") = false
-			Session("name) = ""
+			Session("name") = ""
 			Response.Cookies("login") = ""
 			Response.Cookies("login").Expires = "December 31, 2000"
 			Response.Cookies("token") = ""
