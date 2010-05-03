@@ -1,9 +1,8 @@
 <%
 ' $Id$
 '*******************************************************************************************************************
-'* Page Name
-'* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 0.1c
+'* Page Name: Recover Password
+'* Version:  alpha 0.1c debug
 '* On Entry: Check for SSL
 '* Input   : userid, email
 '* Output  : reset/recover password token emailed to email address of account owner
@@ -18,18 +17,11 @@ Response.AddHeader "pragma","no-cache"
 Response.CacheControl="private"
 Response.CacheControl="no-cache"
 Response.CacheControl="no-store"
-'*******************************************************************************************************************
-'* If SSL required and not using SSL, redirect to https
-'*******************************************************************************************************************
-If lg_useSSL and NOT Request.ServerVariables("SERVER_PORT_SECURE")="1" Then
-	Response.Redirect("https://" & lg_domain & lg_loginPath & lg_filename)
-End If
-
 
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
-Dim userid, name, email, id, locked, token, dateLocked, mailBody, cmdTxt, message
+Dim userid, name, email, id, locked, token, dateLocked, mailBody, cmdTxt, message, dbMsg
 
 userid=""
 name=""
@@ -41,25 +33,41 @@ dateLocked=""
 mailBody=""
 cmdTxt=""
 message = lg_phrase_recover_password
+dbMsg=""
+If lg_debug Then dbMsg = "DEBUG BEGIN<br />" & vbLF End If
+If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
+
+'*******************************************************************************************************************
+'* If SSL required and not using SSL, redirect to https
+'*******************************************************************************************************************
+If lg_useSSL and NOT Request.ServerVariables("SERVER_PORT_SECURE")="1" Then
+	Response.Redirect("https://" & lg_domain & lg_loginPath & lg_filename)
+End If
 
 
 '*******************************************************************************************************************
 '* If the form was posted, process the form
 '*******************************************************************************************************************
 If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
+	If lg_debug Then dbMsg = dbMsg & "METHOD=POST<br />" & vbLF End If
 	message=""
 	userid = getField("userid,rXsafepq")
 	email = getField("email,rXemail")
+	If lg_debug Then dbMsg = dbMsg & "userid = "& userid &"<br />" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "email = "& email &"<br />" & vbLF End If
 	If userid="" Then
 		message = lg_phrase_userid_empty
+		If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 	End If
 	If email="" Then
 		message = lg_phrase_email_empty
+		If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 	End If
 	If message="" Then
 		'*******************************************************************************************************************
 		'* If all required fields exist, verify there is a valid account and it is locked
 		'*******************************************************************************************************************
+		If lg_debug Then dbMsg = dbMsg & "All fields present. Process field.<br />" & vbLF End If
 		If lg_database="access" Then
 			cmdTxt = "SELECT [id], [userid], [name], [email], [locked] FROM users WHERE ([userid]=?) AND ([email]=?);"
 		Else
@@ -73,11 +81,16 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			id = db_rs("id")
 			locked = db_rs("locked")
 			name = db_rs("name")
+			If lg_debug Then dbMsg = dbMsg & "ID = "& id &"<br />" & vbLF End If
+			If lg_debug Then dbMsg = dbMsg & "Locked = "& locked &"<br />" & vbLF End If
+			If lg_debug Then dbMsg = dbMsg & "Name = "& name &"<br />" & vbLF End If
 			If locked="1" Then ' This account is locked; the user must contact the webmaster.
 				message = lg_phrase_recover_password_error & " 1"
+				If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 			End If
 		Else
 			message = lg_phrase_no_matching_registration
+			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 		End If
 		closeRS
 		closeCommand
@@ -86,9 +99,13 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		'*******************************************************************************************************************
 		'* We have a valid, locked account, issue a new token and update the user table
 		'*******************************************************************************************************************
+		If lg_debug Then dbMsg = dbMsg & "Valid and locked account. Issue token. Update table.<br />" & vbLF End If
 		locked="1"
 		dateLocked = dbNow
 		token = Left(HashEncode(getGUID),40)
+		If lg_debug Then dbMsg = dbMsg & "Locked = "& locked &"<br />" & vbLF End If
+		If lg_debug Then dbMsg = dbMsg & "dateLocked = "& dateLocked &"<br />" & vbLF End If
+		If lg_debug Then dbMsg = dbMsg & "token = "& token &"<br />" & vbLF End If
 		If lg_database="access" Then
 			cmdTxt = "UPDATE users SET [token] = ?, [locked] = ?, [dateLocked] = ? WHERE ([id]=?);"
 		Else
@@ -100,11 +117,13 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		addParam "@dateLocked",adDate,adParamInput,CLng(8),dateLocked,lg_phrase_recover_password&" 8"
 		addParam "@id",adInteger,adParamInput,CLng(4),CInt(id),lg_phrase_recover_password&" 9"
 		execCmd cmdTxt
+		If lg_debug Then dbMsg = dbMsg & "numAffected = "& numAffected &"<br />" & vbLF End If
 		If numAffected = 1 Then
 			'*******************************************************************************************************************
 			'* Send verification email with new account unlock token to user
 			'*******************************************************************************************************************
 			message = lg_phrase_recover_password_success
+			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 		
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
@@ -120,10 +139,14 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			mailBody = mailBody & lg_phrase_recover_password5 & lg_webmaster_email_link & "<br><br>"
 			mailBody = mailBody & lg_copyright &"<br>"
 			mailBody = mailBody & "</FONT></DIV></BODY></HTML>"
+			If lg_debug Then dbMsg = dbMsg & "mailBody = "& mailBody &"<br />" & vbLF End If
+			
 			sendmail lg_webmaster_email, email, lg_phrase_recover_password, mailBody
-			sendmail lg_webmaster_email, lg_webmaster_email, "ATTN:Webmaster " & lg_phrase_recover_password, mailBody
+			sendmail lg_webmaster_email, lg_webmaster_email, lg_phrase_attention_webmaster &" "& lg_phrase_recover_password, mailBody
+			If lg_debug Then dbMsg = dbMsg & "Email notifications sent.<br />" & vbLF End If
 		Else
 			message = lg_phrase_recover_password_error & " 2"
+			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 		End If
 	End If
 End If

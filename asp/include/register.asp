@@ -1,9 +1,8 @@
 <%
 ' $Id$
 '*******************************************************************************************************************
-'* Page Name 
-'* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 0.1c
+'* Page Name: Register
+'* Version:  alpha 0.1c debug
 '* On Entry: check if SSL is needed and redirect if needed.
 '* Input   : UserID, Password, Name, Email, Website, Subscription
 '* Output  : Register confirmation
@@ -25,7 +24,7 @@ Dim redirected, destination, password, confirm, passhash, userid, name, email, w
 Dim ip, useragent, region, city, country, dateRegistered, locked, dateLocked, token, cmdTxt, message, objXMLHTTP, xmldoc
 Dim reChallengeField, reResponseField, publickey, privkey
 
-
+redirected=""
 destination=""
 password=""
 confirm=""
@@ -35,6 +34,8 @@ name=""
 email=""
 website=""
 news=""
+mailBody=""
+dbMsg=""
 ip=""
 useragent=""
 region=""
@@ -46,19 +47,28 @@ dateLocked=""
 token=""
 cmdTxt=""
 message= "<strong>"&lg_term_please_register&"</strong>"
-If lg_debug Then
-	dbMsg = "DEBUG BEGIN<br>" & vbLF
-End If
-reChallengeField = ""
-reResponseField = ""
+objXMLHTTP = ""
+xmldoc=""
+reChallengeField=""
+reResponseField=""
+'*******************************************************************************************************************
+'* These keys only work for www.webloginproject.com
+'*******************************************************************************************************************
 publickey = "6Lce3bkSAAAAAHHyw_BOFsIgrHh9TcPrQMQ1oLYU"
 privkey = "6Lce3bkSAAAAADh2-3h0SS30KP5E8gHXBN0yV13j"
+'*******************************************************************************************************************
+'* Obtain free keys for your site at http://recaptcha.net/
+'*******************************************************************************************************************
+
+If lg_debug Then
+	dbMsg = "DEBUG BEGIN<br />" & vbLF
+End If
 
 '*******************************************************************************************************************
 '* Function to check is userid is available
 '*******************************************************************************************************************
 function isUser(pUserId)
-	If lg_debug Then dbMsg = dbMsg & "entering isUser with pUserId = " &pUserID& "<br>" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "Entering isUser with pUserId = " &pUserID& "<br>" & vbLF End If
 	Dim cmdTxt
 	If lg_database="access" Then
 		cmdTxt = "SELECT [userid] FROM users WHERE ([userid]=?);"
@@ -80,6 +90,7 @@ function isUser(pUserId)
 
 	closeRS
 	closeCommand
+	If lg_debug Then dbMsg = dbMsg & "Exiting isUser.<br>" & vbLF End If
 end function
 
 
@@ -88,6 +99,7 @@ end function
 '*******************************************************************************************************************
 ' returns string the can be written where you would like the reCAPTCHA challenged placed on your page
 Function recaptcha_challenge_writer()
+	If lg_debug Then dbMsg = dbMsg & "Entered recaptcha_challenge_writer function.<br>" & vbLF End If
 	recaptcha_challenge_writer = "<script type=""text/javascript"">" & _
 		"var RecaptchaOptions = {" & _
 		"   theme : 'white'," & _
@@ -100,6 +112,7 @@ Function recaptcha_challenge_writer()
 		    "<textarea name=""recaptcha_challenge_field"" rows=""3"" cols=""40""></textarea>" & _
 		    "<input type=""hidden"" name=""recaptcha_response_field"" value=""manual_challenge"">" & _
 		"</noscript>"
+	If lg_debug Then dbMsg = dbMsg & "Exiting recaptcha_challenge_writer function.<br>" & vbLF End If	
 End Function
 
 
@@ -107,8 +120,10 @@ End Function
 '* Function to verify reCAPTCHA field
 '*******************************************************************************************************************
 Function recaptcha_confirm(rechallenge,reresponse)
-	' Test the captcha field
-
+	If lg_debug Then dbMsg = dbMsg & "Entered recaptcha_confirm function.<br>" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "rechallenge = "& rechallenge &"<br>" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "reresponse = "& reresponse &"<br>" & vbLF End If
+	
 	Dim VarString
 	VarString = _
         "privatekey=" & privkey & _
@@ -124,6 +139,7 @@ Function recaptcha_confirm(rechallenge,reresponse)
 
 	Dim ResponseString
 	ResponseString = split(objXmlHttp.responseText, vblf)
+	If lg_debug Then "ResponseString = "& ResponseString &"<br>" & vbLF End If
 	Set objXmlHttp = Nothing
 
 	If ResponseString(0) = "true" Then
@@ -133,6 +149,8 @@ Function recaptcha_confirm(rechallenge,reresponse)
 		'They answered incorrectly
 		recaptcha_confirm = ResponseString(1)
 	End If
+	
+	If lg_debug Then "Exiting recaptcha_confirm<br>" & vbLF End If
 End Function
 
 

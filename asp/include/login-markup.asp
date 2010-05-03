@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 26 APR 2010 alpha 0.1c -->
+			<!-- alpha 0.1c -->
 			<div id="login-system">
             <h1><%=lg_term_login%></h1>
             <% If Session("login")<>True Then %>

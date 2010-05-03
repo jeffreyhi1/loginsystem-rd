@@ -1,9 +1,8 @@
 <%
 ' $Id$
 '*******************************************************************************************************************
-'* Page Name
-'* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 0.1c
+'* Page Name: Login Success
+'* Version:  alpha 0.1c debug
 '* On Entry: None
 '* Input   : None
 '* Output  : None

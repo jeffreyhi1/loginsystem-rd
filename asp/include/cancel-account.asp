@@ -60,14 +60,19 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 	If password & ""="" Then
 		message = message & lg_phrase_password_empty
 	End If
+	If lg_debug Then dbMsg = dbMsg & "userid = "& userid &"<br />" & vbLF
+	If lg_debug Then dbMsg = dbMsg & "password = "& password &"<br />" & vbLF
+	If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF
 	If message="" Then
 	    '*******************************************************************************************************************
 		'* If all required fields exist, begin process of deleting the account
 		'*******************************************************************************************************************
 		passhash = HashEncode(password & userid)
+		If lg_debug Then dbMsg = dbMsg & "passhash calculated as = "& passhash &"<br />" & vbLF
 		'*******************************************************************************************************************
 		'* First, is this a valid userid and password?
 		'*******************************************************************************************************************
+		If lg_debug Then dbMsg = dbMsg & "Check if userid exists in users table.<br />" & vbLF
 		If lg_database="access" Then
 			cmdTxt = "SELECT [id], [password] FROM users WHERE ([userid]=?);"
 		Else
@@ -80,12 +85,16 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 		If Not(db_rs.bof AND db_rs.eof) Then
 			dbPasshash = db_rs("password")
 			dbId = db_rs("id")
+			If lg_debug Then dbMsg = dbMsg & "db passhash = "& dbPasshash &"<br />" & vbLF
+			If lg_debug Then dbMsg = dbMsg & "db ID = "& dbId &"<br />" & vbLF
 			closeRS
 			closeCommand
 			If passhash = dbPasshash Then
+				If lg_debug Then dbMsg = dbMsg & "calculated passhash = database passhash<br />" & vbLF
 				'**********************************************************************************************************
 				'* Valid used id and password, do cancel.
 				'**********************************************************************************************************
+				If lg_debug Then dbMsg = dbMsg & "Valid credentials, do the account cancelation.<br />" & vbLF
 				If lg_database="access" Then			
 					cmdTxt = "UPDATE users SET [deleted]=1, [dateDeleted]=? WHERE ([userid]=?) AND ([password]=?);"
 				Else
@@ -96,9 +105,18 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 				addParam "@userid",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_cancel_account&" 5"
 				addParam "@passhash",adVarChar,adParamInput,CLng(Len(passhash)),passhash,lg_term_cancel_account&" 6"
 				execCmd cmdTxt
+				If lg_debug Then dbMsg = dbMsg & "numAffected = "& nubAffected &"<br />" & vbLF
 				If numAffected = 1 Then
+					If lg_debug Then dbMsg = dbMsg & "Kill session and cookies<br />" & vbLF
 					Response.Cookies("user") = ""
 					Response.Cookies("user").Expires = "January 1, 2009"
+					Response.Cookies("login") = ""
+					Response.Cookies("login").Expires = "January 1, 2009"
+					Response.Cookies("token") = ""
+					Response.Cookies("token").Expires = "January 1, 2009"
+					Session("userid")=""
+					Session("name")=""
+					Session("login")=false
 					Session.Abandon
 					Response.Redirect lg_logged_out_page & "?r=cancel"
 				Else
