@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	}
 	$destination = getField("destination,urlpath");
 	if (lg_debug) { $dbMsg .= "destination  ". htmlentities($destination) ."<br />\n"; }
-	$recaptcha_challenge_field = getField("recaptcha_challenge_field,safe");
+	$recaptcha_challenge_field = $_POST["recaptcha_challenge_field"];
 	if (lg_debug) { $dbMsg .= "recaptcha_challenge_field  ". htmlentities($recaptcha_challenge_field) ."<br />\n"; }
 	$recaptcha_response_field = getField("recaptcha_response_field,safe");
 	if (lg_debug) { $dbMsg .= "recaptcha_response_field  ". htmlentities($recaptcha_response_field) ."<br />\n"; }
