@@ -2,8 +2,8 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
-'* 26 APR 2010 alpha 0.1c
-' $Id$
+'* alpha 0.1c
+'* $Id$
 %>
 <!--#include file="include/loginGlobals.asp"-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

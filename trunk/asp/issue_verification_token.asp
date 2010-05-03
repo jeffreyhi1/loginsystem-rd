@@ -3,8 +3,8 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
-'* 26 APR 2010 alpha 0.1c
-' $Id$
+'* alpha 0.1c
+'* $Id$
 %>
 <!--#include file="include/loginGlobals.asp"-->
 <!--#include file="include/hashSHA1.asp"-->
@@ -31,5 +31,6 @@ Response.Charset="UTF-8"
 </head>
 <body>
 <!--#include file="include/issue-verification-token-markup.asp"-->
+<% If lg_debug Then Response.Write dbMsg End If %>
 </body>
 </html>
