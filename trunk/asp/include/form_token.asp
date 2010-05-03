@@ -2,8 +2,7 @@
 ' $Id$
 '*******************************************************************************************************************
 '* Form Token
-'* Last Modification: 19 FEB 2010 rdivilbiss
-'* Version:  1.0
+'* Version:  1.1
 '* On Entry: none
 '* Input:    CSRF token to verify
 '* Output:   CSRF token writen as a hidden field
@@ -28,9 +27,9 @@ function checkToken
 	'*****************************************************************************************
 	Dim oldToken, testToken, tokenStr, page
         If lg_useSSL Then
-  	    page = Replace(Request.ServerVariables("HTTP_REFERER"),"https://"& lg_domain_secure,"")
+  	    	page = Replace(Request.ServerVariables("HTTP_REFERER"),"https://"& lg_domain_secure,"")
         Else
-	    page = Replace(Request.ServerVariables("HTTP_REFERER"),"http://"& lg_domain,"")
+	    	page = Replace(Request.ServerVariables("HTTP_REFERER"),"http://"& lg_domain,"")
         End If
         if page="" Then ' posted to self
 		page = Request.ServerVariables("SCRIPT_NAME")
@@ -43,17 +42,41 @@ function checkToken
 		If Request.Cookies("token")=oldToken Then 
 			If DateDiff("s", Session("time"), Time)<=300 Then ' Five minutes max
 	  			checkToken=true
+	  			Session("token")=""
+	  			Response.Cookies("token") = ""
+				Response.Cookies("token").Expires = "January 1, 2009"
+	  			generateToken
 	  		Else
-	  			Session.Abandon
 	  			'*****************************************************************************
 	  			'* Too much time taken, token expired
 	  			'*****************************************************************************
+	  			Session("token")=""
+	  			Session("userid")=""
+	  			Session("name")=""
+	  			Session("login")=false
+	  			Response.Cookies("user") = ""
+				Response.Cookies("user").Expires = "January 1, 2009"
+				Response.Cookies("login") = ""
+				Response.Cookies("login").Expires = "January 1, 2009"
+				Response.Cookies("token") = ""
+				Response.Cookies("token").Expires = "January 1, 2009"
+	  			Session.Abandon
 				Response.Redirect "http://"& lg_domain & lg_form_error & "?p="&page&"&t=etime"
 			End If
 		Else
 			'*****************************************************************************
 			'* Cokkie error or cookies not enabled
 			'*****************************************************************************
+			Session("token")=""
+			Session("userid")=""
+	  		Session("name")=""
+	  		Session("login")=false
+	  		Response.Cookies("user") = ""
+			Response.Cookies("user").Expires = "January 1, 2009"
+			Response.Cookies("login") = ""
+			Response.Cookies("login").Expires = "January 1, 2009"
+			Response.Cookies("token") = ""
+			Response.Cookies("token").Expires = "January 1, 2009"
 			Session.Abandon
 			Response.Redirect "http://"& lg_domain & lg_form_error & "?p="&page&"&t=ecook"
 		End If		
@@ -61,15 +84,24 @@ function checkToken
 		'*****************************************************************************
 		'* Bad token.
 		'*****************************************************************************
+		Session("token")=""
+		Session("userid")=""
+	  	Session("name")=""
+	  	Session("login")=false
+	  	Response.Cookies("user") = ""
+		Response.Cookies("user").Expires = "January 1, 2009"
+		Response.Cookies("login") = ""
+		Response.Cookies("login").Expires = "January 1, 2009"
+		Response.Cookies("token") = ""
+		Response.Cookies("token").Expires = "January 1, 2009"
 		Session.Abandon
 		Response.Redirect "http://"& lg_domain & lg_form_error & "?p="&page&"&t=etok"  	
 	End If
 End Function
-	
-function writeToken
+
+Function generateToken
 	'*****************************************************************************************
-	' Create and set a new XHTML token for CSRF protection
-	' on initial entry or after form errors and we are going to redisplay the form.
+	' Create and set a new token for CSRF protection
 	'*****************************************************************************************
 	Dim salt, tokenStr
 	salt = getSalt(10)
@@ -80,23 +112,13 @@ function writeToken
 	tokenStr = "IP:" & Session("ip") & ",SESSIONID:" & Session.SessionID & ",GUID:" &Session("guid")
 	Session("token")=HashEncode(tokenStr&Session("salt"))&Session("salt")
 	Response.Cookies("token") = Session("token")
+End Function
+	
+function writeToken
 	Response.Write("<input id=""token"" name=""token"" type=""hidden"" accesskey=""u"" tabindex=""999"" value=""" & Session("token") & """ />")
 End Function
 
 function writeTokenH
-	'*****************************************************************************************
-	' Create and set a new HTML token for CSRF protection
-	' on initial entry or after form errors and we are going to redisplay the form.
-	'*****************************************************************************************
-	Dim salt, tokenStr
-	salt = getSalt(10)
-	Session("salt")=salt
-	Session("guid")=getGUID
-	Session("ip") = Request.ServerVariables("REMOTE_ADDR")
-	Session("time") = Time
-	tokenStr = "IP:" & Session("ip") & ",SESSIONID:" & Session.SessionID & ",GUID:" &Session("guid")
-	Session("token")=HashEncode(tokenStr&Session("salt"))&Session("salt")
-	Response.Cookies("token") = Session("token")
 	Response.Write("<input id=""token"" name=""token"" type=""hidden"" accesskey=""u"" tabindex=""999"" value=""" & Session("token") & """>")
 End Function
 %>

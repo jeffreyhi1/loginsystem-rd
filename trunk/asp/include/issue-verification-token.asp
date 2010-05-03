@@ -1,9 +1,8 @@
 <%
 ' $Id$
 '*******************************************************************************************************************
-'* Page Name
-'* Last Modification: 26 APR 2010 rdivilbiss
-'* Version:  alpha 1.0
+'* Page Name: Issue Verification Token
+'* Version:  alpha 1.0c debug
 '* On Entry: None
 '* Input   : userid, email
 '* Output  : new verification token emailed to account owner
@@ -19,17 +18,9 @@ Response.CacheControl="private"
 Response.CacheControl="no-cache"
 Response.CacheControl="no-store"
 '*******************************************************************************************************************
-'* If SSL required and not using SSL, redirect to https
-'*******************************************************************************************************************
-If lg_useSSL and NOT Request.ServerVariables("SERVER_PORT_SECURE")="1" Then
-	Response.Redirect("https://" & lg_domain & lg_loginPath & lg_filename)
-End If
-
-
-'*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
-Dim userid, name, email, id, locked, token, dateLocked, mailBody, cmdTxt, message
+Dim userid, name, email, id, locked, token, dateLocked, mailBody, cmdTxt, message, dbMsg
 
 userid=""
 name=""
@@ -42,22 +33,36 @@ mailBody=""
 cmdTxt=""
 message = lg_phrase_issue_new_token
 name=""
+dbMsg=""
+if lg_debug Then dbMsg = "DEBUG BEGIN<br />" & vbLF End If
+
+'*******************************************************************************************************************
+'* If SSL required and not using SSL, redirect to https
+'*******************************************************************************************************************
+If lg_useSSL and NOT Request.ServerVariables("SERVER_PORT_SECURE")="1" Then
+	Response.Redirect("https://" & lg_domain & lg_loginPath & lg_filename)
+End If
 
 '*******************************************************************************************************************
 '* If the form was posted, process the form
 '*******************************************************************************************************************
 If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
+	if lg_debug Then dbMsg = "METHOD=POST<br />" & vbLF End If
 	message=""
 	userid = getField("userid,rXsafepq")
 	email = getField("email,rXemail")
+	if lg_debug Then dbMsg = "userid = "& userid &"<br />" & vbLF End If
+	if lg_debug Then dbMsg = "email = "& email &"<br />" & vbLF End If
 	'*****************************************************************************
 	'* Check for required fields
 	'*****************************************************************************
 	If userid="" Then
 		message = lg_phrase_userid_empty
+		if lg_debug Then dbMsg = "message = "& message &"<br />" & vbLF End If
 	End If
 	If email="" Then
 		message = lg_phrase_email_empty
+		if lg_debug Then dbMsg = "message = "& message &"<br />" & vbLF End If
 	End If
 	If message="" Then
 		'*******************************************************************************************************************
@@ -65,6 +70,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		'* The account is locked when a peron registers. The account must still be locked in order to
 		'* receive a new verification token.
 		'*******************************************************************************************************************
+		if lg_debug Then dbMsg = "All required fields, process form<br />" & vbLF End If
 		If lg_database="access" Then
 			cmdTxt = "SELECT [id], [userid], [name], [email], [locked] FROM users WHERE ([userid]=?) AND ([email]=?);"
 		Else
@@ -78,17 +84,22 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			id = db_rs("id")
 			locked = db_rs("locked")
 			name = db_rs("name")
+			if lg_debug Then dbMsg = "db ID = "& id &"<br />" & vbLF End If
+			if lg_debug Then dbMsg = "db Locked = "& locked &"<br />" & vbLF End If
+			if lg_debug Then dbMsg = "db Name = "& name &"<br />" & vbLF End If
 			If locked<>"1" Then
 				'*****************************************************************************
 				'* The account was not locked. Can not issue a token.
 				'*****************************************************************************
 				message = lg_phrase_issue_new_token_error & " 1"
+				if lg_debug Then dbMsg = "message = "& message &"<br />" & vbLF End If
 			End If
 		Else
 			'*****************************************************************************
 			'* No account matching the posted information
 			'*****************************************************************************
 			message = lg_phrase_no_matching_registration
+			if lg_debug Then dbMsg = "message = "& message &"<br />" & vbLF End If
 		End If
 		closeRS
 		closeCommand
@@ -100,6 +111,10 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		locked="1"
 		dateLocked = dbNow
 		token = Left(HashEncode(getGUID),40)
+		if lg_debug Then dbMsg = "Valid and locked account. Issue token. Update table.<br />" & vbLF End If
+		if lg_debug Then dbMsg = "Locked = "& locked &"<br />" & vbLF End If
+		if lg_debug Then dbMsg = "dateLocked = "& dateLocked &"<br />" & vbLF End If
+		if lg_debug Then dbMsg = "token = "& token &"<br />" & vbLF End If
 		If lg_database="access" Then
 			cmdTxt = "UPDATE users SET [token] = ?, [locked] = ?, [dateLocked] = ? WHERE ([id]=?);"
 		Else
@@ -111,12 +126,14 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 		addParam "@dateLocked",adDate,adParamInput,CLng(8),dateLocked,lg_term_issue_verification_token&" 8"
 		addParam "@id",adInteger,adParamInput,CLng(4),CInt(id),lg_term_issue_verification_token&" 9"
 		execCmd cmdTxt
+		if lg_debug Then dbMsg = "numAffected = "& numAffected &"<br />" & vbLF End If
 		If numAffected = 1 Then
 			'*******************************************************************************************************************
 			'* We updated the record, so send verification email with new account unlock token to user
 			'*******************************************************************************************************************
 			message = lg_phrase_issue_new_token_success
-		
+			if lg_debug Then dbMsg = "message = "& message &"<br />" & vbLF End If
+			
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
 			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_phrase_registration_mail0 &"<br /><br />"
@@ -132,13 +149,18 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			mailBody = mailBody & lg_phrase_registration_mail9 & lg_domain & lg_contact_form & ">"& lg_phrase_contact_webmaster &"</a><br /><br />"
 			mailBody = mailBody & lg_copyright &"<br />"
 			mailBody = mailBody & "</FONT></DIV></BODY></HTML>"
+			if lg_debug Then dbMsg = "mailBody = "& mailBody &"<br />" & vbLF End If
+			
 			sendmail lg_webmaster_email, email, lg_term_registration_newtoken, mailBody
-			sendmail lg_webmaster_email, "rod@rodsdot.com", "WEBMASTER NOTICE: "&lg_term_registration_newtoken, mailBody
+			sendmail lg_webmaster_email, lg_webmaster_email, lg_phrase_attention_webmaster &" "&lg_term_registration_newtoken, mailBody
+			
+			if lg_debug Then dbMsg = "Email notifications sent.<br />" & vbLF End If
 		Else
 			'*****************************************************************************
 			'* There was an error updating the record and no new token was issued.
 			'*****************************************************************************
 			message = lg_phrase_issue_new_token_error & " 2"
+			if lg_debug Then dbMsg = "message = "& message &"<br />" & vbLF End If
 		End If
 	End If
 End If

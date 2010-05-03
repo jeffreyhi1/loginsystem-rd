@@ -1,9 +1,8 @@
 <%
 ' $Id$
 '*******************************************************************************************************************
-'* Logout
-'* Last Modification: 26 APR 2010
-'* Version:  alpha 0.1c
+'* Page Name: Logout
+'* Version:  alpha 0.1c debug
 '* On Entry: N/A
 '* Input:    Session
 '* Output:   N/A
@@ -25,6 +24,10 @@ Response.Cookies("token").Expires = "January 1, 2009"
 Response.Cookies("user") = ""
 Response.Cookies("user").Expires = "January 1, 2009"
 
+Session("userid")=""
+Session("name")=""
+Session("token")=""
+Session("login")=false
 Session.Abandon
 Response.Redirect lg_logged_out_page
 %>

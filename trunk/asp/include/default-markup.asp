@@ -2,7 +2,7 @@
 ' $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- 26 APR 2010 alpha 0.1c -->
+			<!-- alpha 0.1c -->
 			<div id="login-system">
 			<h1><strong>Welcome</strong></h1>
           	<p><% If Session("login") Then Response.Write("<a href=""logout.asp"">"& lg_term_log_out &"</a>&nbsp;<a href=""change_password.asp"">"& lg_term_change_password &"</a>&nbsp;<a href=""cancel_account.asp"">"& lg_term_cancel_account &"</a>") Else Response.Write("<a href=""login.asp"">"& lg_term_login &"</a>") End If %></p>
