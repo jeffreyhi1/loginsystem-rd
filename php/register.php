@@ -10,7 +10,7 @@ include "include/generalPurpose.php";
 include "include/form_token.php";
 include "include/loginGlobals.php";
 include "include/database.php";
-include "include/recaptchalib.php";
+require_once('include/recaptchalib.php');
 include "include/register.php";
 
 // alpha 0.1c debug
