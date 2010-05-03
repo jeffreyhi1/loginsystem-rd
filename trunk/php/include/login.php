@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	if (isset($_SESSION["login"])) {
 		if ($_SESSION["login"]==true) {
 			if (lg_debug) { $dbMsg .= "Session login = ".$_SESSION["login"]." <br />\n"; }
-			li_checkForDeletedOrLockedUserid($userid,$dbResults);
+			li_checkForDeletedOrLockedUserid($_SESSION["userid"],$dbResults);
 			if (($dbResults["deleted"]=="1") || ($dbResults["locked"]=="1")) {
 				if (isset($_SESSION["login"])) {
 					$_SESSION["login"]=false;
