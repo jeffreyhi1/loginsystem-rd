@@ -8,15 +8,7 @@
 '* Output  : None
 '* On Exit : Redirect to destination
 '******************************************************************************************************************
-' no browser caching of this page !! to be used on all pages
-Response.Expires=-1
-Response.ExpiresAbsolute = Now() - 1
 
-' do not allow proxy servers to cache this page !! to be used on all pages
-Response.AddHeader "pragma","no-cache"
-Response.CacheControl="private"
-Response.CacheControl="no-cache"
-Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* On login success, provide link.
 '*******************************************************************************************************************
