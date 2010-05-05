@@ -26,7 +26,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: 27 APR 2010 - alpha 0.1c - Spanish-Mexican/Espanol - PHP
+* Version: alpha 0.1c - Spanish-Mexican/Espanol - PHP
 ******************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
 define("lg_change_password_page", "change_password.php");
