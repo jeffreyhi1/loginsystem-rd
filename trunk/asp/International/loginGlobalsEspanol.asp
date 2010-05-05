@@ -27,7 +27,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version:  28 APR 2010 - alpha 0.1c - Espanol - ASP
+'* Version: alpha 0.1c - Espanol - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -75,12 +75,12 @@ Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmas
 '*********************************************************************
 '* Login system database globals
 '*********************************************************************
-Const lg_database = "access"
+'Const lg_database = "access"
 'Const lg_database = "mysql"
 'Const lg_database = "mssql"
 
 'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
-Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
 'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
 
 Const lg_database_userid = ""
