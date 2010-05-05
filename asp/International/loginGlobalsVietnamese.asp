@@ -27,7 +27,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version:  28 APR 2010 - alpha 0.1ca - Vietnamese - ASP
+'* Version: alpha 0.1ca - Vietnamese - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -37,27 +37,27 @@ Const lg_change_password_page = "change_password.asp"
 '******************************************************************************************************************
 '* contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_contact_form = "/login-system/asp/Viet/contact.asp"
+Const lg_contact_form = "/login-system/contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 Const lg_domain = "www.example.com"
 Const lg_domain_secure = "www.example.com"
 '******************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_forbidden = "/login-system/asp/Viet/forbidden.asp"
+Const lg_forbidden = "/login-system/forbidden.asp"
 '******************************************************************************************************************
 '* form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_form_error = "/login-system/asp/Viet/form_error.asp"
+Const lg_form_error = "/login-system/form_error.asp"
 '******************************************************************************************************************
 '* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_home = "/login-system/asp/Viet/default.asp"
+Const lg_home = "/login-system/default.asp"
 Const lg_log_logins = true
 Const lg_logged_out_page = "loggedout.asp"
 Const lg_login_attempts = 5
 Const lg_loginPage = "login.asp"
-Const lg_loginPath = "/login-system/asp/Viet/"
+Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
 Const lg_recover_passsword_page = "recover_password.asp"
@@ -75,12 +75,12 @@ Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Web ng
 '**********************************************************************
 '* Login system database globals
 '**********************************************************************
-Const lg_database = "access"
+'Const lg_database = "access"
 'Const lg_database = "mysql"
 'Const lg_database = "mssql"
 
 'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
-Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
 'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
 
 Const lg_database_userid = ""

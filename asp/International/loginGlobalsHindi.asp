@@ -1,7 +1,7 @@
 ﻿<%
 '* $Id: loginGlobalsHindi.asp 268 2010-05-01 04:11:45Z rdivilbiss $
 '*******************************************************************************************************************
-'* Login Globals - PHP
+'* Login Globals - ASP
 '* 
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
@@ -10,7 +10,7 @@
 '* Modification: ?? ??? 2010 :: Saurabh - translation t'o Hindi
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
 '* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
-'*                                              loginGlobals.php, and corrected paths in loginGlobals.php
+'*                                              loginGlobals.asp, and corrected paths in loginGlobals.asp
 '* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
@@ -27,53 +27,74 @@
 '*
 '* Version: 26 APR 2010 - alpha 0.1c - Hindi - ASP
 '*******************************************************************************************************************
-Const lg_cancel_account_page = "cancel_account.php"
-Const lg_change_password_page = "change_password.php"
+Dim lg_filename
+lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
+'******************************************************************************************************************
+Const lg_cancel_account_page = "cancel_account.asp"
+Const lg_change_password_page = "change_password.asp"
 '*****************************************************************************************************************
 * contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_contact_form = "/your-path/contact.php"
+Const lg_contact_form = "/login-system/contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
-Const lg_domain = "www.your-domain.com"
-Const lg_domain_secure = "www.your-domain.com"
+Const lg_domain = "www.example.com"
+Const lg_domain_secure = "www.example.com"
 '*****************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_forbidden = "/your-path/forbidden.php"
+Const lg_forbidden = "/login-system/forbidden.asp"
 '*****************************************************************************************************************
 '* form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_form_error = "/your-path/form_error.php"
+Const lg_form_error = "/login-system/form_error.asp"
 '*****************************************************************************************************************
 '* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_home = "/your-path/index.php"
+Const lg_home = "/login-system/index.asp"
 Const lg_log_logins", true
-Const lg_logged_out_page = "loggedout.php"
+Const lg_logged_out_page = "loggedout.asp"
 Const lg_login_attempts = 5
-Const lg_loginPage = "login.php"
+Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
-Const lg_logout_page = "logout.php"
-Const lg_new_token_page = "issue_verification_token.php"
-Const lg_recover_passsword_page = "recover_password.php"
-Const lg_register_delete_page = "register_delete.php"
-Const lg_register_page = "register.php"
-Const lg_set_new_password_page = "set_new_password.php"
-Const lg_success_page = "login_success.php"
+Const lg_logout_page = "logout.asp"
+Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_recover_passsword_page = "recover_password.asp"
+Const lg_register_delete_page = "register_delete.asp"
+Const lg_register_page = "register.asp"
+Const lg_set_new_password_page = "set_new_password.asp"
+Const lg_success_page = "login_success.asp"
 Const lg_useCAPTCHA = true
 Const lg_useSSL = true
 Const lg_debug = false
-Const lg_verify_page = "register_verify.php"
-Const lg_webmaster_email = "webmaster@webloginproject.com"
-Const lg_webmaster_email_link = '<a href="mailto:webmaster@webloginproject.com">Webmaster</a>'
+Const lg_verify_page = "register_verify.asp"
+Const lg_webmaster_email = "webmaster@example.com"
+Const lg_webmaster_email_link = '<a href="mailto:webmaster@example.com">Webmaster</a>'
 
 '*********************************************************************
 '* Login system database globals
 '**********************************************************************
+'Const lg_database = "access"
+'Const lg_database = "mysql"
+'Const lg_database = "mssql"
 
-function dbNow() {
-    return date("Y-m-d H:i:s"
-}
+'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
+
+Const lg_database_userid = ""
+Const lg_database_password = ""
+
+Function dbNow
+	'MS Access & MS SQL Server datetime fileds accept ASP now
+	'MySql requires YYYY-MM-DD HH:MM:SS
+	Dim dt
+	dt = now
+	If lg_database = "mysql" Then
+		dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
+	Else
+		dbNow = dt
+	End If	
+End Function
 
 '*********************************************************************
 '* Login system language globals
