@@ -26,29 +26,29 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: 26 APR 2010 - alpha 0.1c - Hindi - ASP
+* Version: alpha 0.1c - Hindi - PHP
 ******************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
 define("lg_change_password_page", "change_password.php");
 /*****************************************************************************************************************
 * contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 *****************************************************************************************************************/
-define("lg_contact_form", "/your-path/contact.php");
+define("lg_contact_form", "/login-system/contact.php");
 define("lg_copyright", "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com");
-define("lg_domain", "www.your-domain.com");
-define("lg_domain_secure", "www.your-domain.com");
+define("lg_domain", "www.example.com");
+define("lg_domain_secure", "www.example.com");
 /*****************************************************************************************************************
 * forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 *****************************************************************************************************************/
-define("lg_forbidden", "/your-path/forbidden.php");
+define("lg_forbidden", "/login-system/forbidden.php");
 /*****************************************************************************************************************
 * form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 *****************************************************************************************************************/
-define("lg_form_error", "/your-path/form_error.php");
+define("lg_form_error", "/login-system/form_error.php");
 /*****************************************************************************************************************
 * home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 *****************************************************************************************************************/
-define("lg_home", "/your-path/index.php");
+define("lg_home", "/login-system/index.php");
 define("lg_log_logins", true);
 define("lg_logged_out_page", "loggedout.php");
 define("lg_login_attempts", 5);
@@ -65,8 +65,8 @@ define("lg_useCAPTCHA", true);
 define("lg_useSSL", true);
 define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
-define("lg_webmaster_email", "webmaster@webloginproject.com");
-define("lg_webmaster_email_link", '<a href="mailto:webmaster@webloginproject.com">Webmaster</a>');
+define("lg_webmaster_email", "webmaster@example.com");
+define("lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmaster</a>');
 
 /*********************************************************************
 * Login system database globals

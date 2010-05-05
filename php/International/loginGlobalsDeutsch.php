@@ -26,10 +26,10 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: 27 APR 2010 - alpha 0.1c - German/Deutsch - ASP
+* Version: alpha 0.1c - German/Deutsch - PHP
 ******************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
-define("lg_change_password_page", "change_password.asp");
+define("lg_change_password_page", "change_password.php");
 /******************************************************************************************************************
 * contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
@@ -40,11 +40,11 @@ define("lg_domain_secure", "www.example.com");
 /*****************************************************************************************************************
 * forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
-define("lg_forbidden", "/login-system/forbidden.asp");
+define("lg_forbidden", "/login-system/forbidden.php");
 /*****************************************************************************************************************
 * form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
-define("lg_form_error", "/login-system/oops.asp");
+define("lg_form_error", "/login-system/form_error.php");
 /*****************************************************************************************************************
 * home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
