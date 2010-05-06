@@ -7,7 +7,7 @@
         Dim Result As New System.Text.StringBuilder
 
         For Each b As Byte In bytes
-            Result.Append(b.ToString("x2"))
+            Result.Append(b.ToString("X2"))
         Next
 
         Return Result.ToString.Substring(0, 40)
