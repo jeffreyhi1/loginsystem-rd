@@ -1,5 +1,5 @@
-ï»¿<%
-'* $Id: loginGlobalsDanish.asp 201 2010-04-28 09:43:15Z rdivilbiss $
+<%
+'* $Id: loginGlobalsDanish.asp 298 2010-05-06 02:53:46Z rdivilbiss $
 '*******************************************************************************************************************
 '* Login Globals - ASP
 '* 
@@ -10,16 +10,15 @@
 '* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
 '* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
-'* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 '* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
 '*                                              loginGlobals.php, and corrected paths in loginGlobals.php
-'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting 
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
 '* Modification: 02 APR 2010 :: acperkins - verified or corrected translation to Spanish (Mexican)
 '* Modification: 01 APR 2010 :: Bob Stone - translated to Spanish (Mexican)
-'* Modification: 28 MAR 2010 :: JÃ¼rgen Kraus - translated to German
+'* Modification: 28 MAR 2010 :: Jürgen Kraus - translated to German
 '* Modification: 28 MAR 2010 :: Cam Van T Divilbiss - translated to Vietnamese
 '* Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
 '* Modification: 07 FEB 2010 :: VGR - translation to French
@@ -28,7 +27,7 @@
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
 '* Version: alpha 0.1c - Danish - ASP
-'******************************************************************************************************************
+'*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
 '******************************************************************************************************************
@@ -36,26 +35,26 @@ Const lg_cancel_account_page = "cancel_account.php"
 Const lg_change_password_page = "change_password.php"
 '******************************************************************************************************************
 '* contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'******************************************************************************************************************
+'*******************************************************************************************************************
 Const lg_contact_form = "/login-system/contact.php"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 Const lg_domain = "www.example.com"
 Const lg_domain_secure = "www.example.com"
 '******************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'******************************************************************************************************************
+'*******************************************************************************************************************
 Const lg_forbidden = "/login-system/forbidden.php"
 '******************************************************************************************************************
 '* form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'******************************************************************************************************************
+'*******************************************************************************************************************
 Const lg_form_error = "/login-system/form_error.php"
 '******************************************************************************************************************
-* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-*******************************************************************************************************************
+'* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
+'*******************************************************************************************************************
 Const lg_home = "/login-system/index.php"
-Const lg_log_logins", true
+Const lg_log_logins = true
 Const lg_logged_out_page = "loggedout.php"
-Const lg_login_attempts", 5
+Const lg_login_attempts = 5
 Const lg_loginPage = "login.php"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.php"
@@ -70,7 +69,7 @@ Const lg_useSSL = false
 Const lg_debug = false
 Const lg_verify_page = "register_verify.php"
 Const lg_webmaster_email = "Webmaster <webmaster@example.com>"
-Const lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmaster</a>'
+Const lg_webmaster_email_link  "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
 '*********************************************************************
 '* Login system database globals
 '*********************************************************************
@@ -84,6 +83,7 @@ Const lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmaste
 
 Const lg_database_userid = ""
 Const lg_database_password = ""
+'**********************************************************************
 
 Function dbNow
 	'MS Access & MS SQL Server datetime fileds accept ASP now
@@ -100,7 +100,7 @@ End Function
 
 '*********************************************************************
 '* Login system language globals
-'*********************************************************************
+'**********************************************************************
 Const lg_login_button_text = "Log ind"
 Const lg_register_button_text = "Registrer"
 Const lg_term_at = "at"
@@ -110,10 +110,10 @@ Const lg_term_change_password = "Skift adgangskode"
 Const lg_term_change_password_button_text = "Skift adgangskode"
 Const lg_term_checkToken = "checkToken"
 Const lg_term_city = "City"
-Const lg_term_confirm = "BekrÃ¦ft kodeord"
+Const lg_term_confirm = "Bekræft kodeord"
 Const lg_term_contact_form = "Kontakt Form"
 Const lg_term_country = "Land"
-Const lg_term_current_password = "NuvÃ¦rende adgangskode"
+Const lg_term_current_password = "Nuværende adgangskode"
 Const lg_term_delete_account = "Slet konto"
 Const lg_term_do_registration = "doRegistration"
 Const lg_term_email = "Email"
@@ -123,7 +123,7 @@ Const lg_term_example = "Eksempel"
 Const lg_term_from_error = "Form Error"
 Const lg_term_get_name = "getName"
 Const lg_term_get_oldpassword = "getOldPassword"
-Const lg_term_guest = "GÃ¦st"
+Const lg_term_guest = "Gæst"
 Const lg_term_home = "Home"
 Const lg_term_immediately = "med det samme!"
 Const lg_term_ip = "IP"
@@ -137,11 +137,11 @@ Const lg_term_optional = "Frivilligt"
 Const lg_term_or = "eller"
 Const lg_term_password = "Password"
 Const lg_term_please_login = "Venligst login"
-Const lg_term_please_register = "Tilmeld dig venligst "
+Const lg_term_please_register = "Tilmeld dig venligst"
 Const lg_term_recover_password = "Genopret Password"
 Const lg_term_region = "Region"
 Const lg_term_register = "Registrer"
-Const lg_term_register_confirmation = "RegistreringsbekrÃ¦ftelse"
+Const lg_term_register_confirmation = "Registreringsbekræftelse"
 Const lg_term_register_delete_enter_email = "Indtast e-mail"
 Const lg_term_registration = "Registrering"
 Const lg_term_registration_thankyou = "Tak for din registrering."
@@ -149,98 +149,98 @@ Const lg_term_registration_verification = "Registreringsverifikation"
 Const lg_term_remember = true
 Const lg_term_rememberme = "Husk mig"
 Const lg_term_remove_registration = "Fjern registrering"
-Const lg_term_required = "nÃ¸dvendigt"
+Const lg_term_required = "nødvendigt"
 Const lg_term_set_newpassword = "changePassword"
 Const lg_term_submit = "Send"
 Const lg_term_to = "Til"
 Const lg_term_useragent = "UserAgent"
 Const lg_term_userid = "Bruger Identifikation"
-Const lg_term_via_email = "via email pÃ¥"
+Const lg_term_via_email = "via email på"
 Const lg_term_website_address = "Website adresse"
 Const lg_term_welcome = "Velkommen"
-Const lg_phrase_attention_webmaster = "Webmaster bemÃ¦rk venligst"
-Const lg_phrase_cancel_account_canceled = "Denne konto er blevet annuleret."
+Const lg_phrase_attention_webmaster = "Webmaster bemærk venligst"
+Const lg_phrase_cancel_account_cacelled = "Denne konto er blevet annuleret."
 Const lg_phrase_cancel_account_error = "Der var en uventet fejl da vi annullerede din konto. Kontakt venligst webmasteren "
-Const lg_phrase_cancel_account_warning = "Indtast dit brugernavn og password for at annullere din konto.<p>ADVARSEL: Denne handling kan ikke fortrydes.</p>Hvis du har glemt dit password brug <i>genopret password</i> linket herunder.</p>"
-Const lg_phrase_change_password = "Indtast din nuvÃ¦rende adgangskode, derefter dit Ã¸nskede nye kodeord"
-Const lg_phrase_confirm_empty = "BekrÃ¦ft Password feltet er tomt, men er pÃ¥krÃ¦vet. BekrÃ¦ft venligst dit password. "
-Const lg_phrase_confirm_title = "BekrÃ¦ft venligst din Ã¸nskede adgangskode. Dette felt er pÃ¥krÃ¦vet. "
+Const lg_phrase_cancel_account_warning = "Indtast dit brugernavn og password for at annullere din konto.<p>ADVARSEL: Denne handling kan ikke fortrydes.</p>Hvis du har glemt dit password brug <i>genopret password</i> linket herunder."
+Const lg_phrase_change_password = "Indtast din nuværende adgangskode, derefter dit ønskede nye kodeord"
+Const lg_phrase_confirm_empty = "Bekræft Password feltet er tomt, men er påkrævet. Bekræft venligst dit password."
+Const lg_phrase_confirm_title = "Bekræft venligst din ønskede adgangskode. Dette felt er påkrævet."
 Const lg_phrase_contact_webmaster = "kontakt webmaster"
 Const lg_phrase_delete_account = "Slet konto"
 Const lg_phrase_delete_already_verified = "Denne konto er allerede blevet verificeret og kunne ikke slettes"
 Const lg_phrase_delete_deleted = "Kontoen er blevet slettet"
-Const lg_phrase_email_empty = "Email feltet er tomt, men er pÃ¥krÃ¦vet. Indtast din e-mail-adresse. "
-Const lg_phrase_email_title = "Indtast din e-mail adresse. Dette felt er pÃ¥krÃ¦vet. "
+Const lg_phrase_email_empty = "Email feltet er tomt, men er påkrævet. Indtast din e-mail-adresse."
+Const lg_phrase_email_title = "Indtast din e-mail adresse. Dette felt er påkrævet."
 Const lg_phrase_enter_unlock_code = "Indtast din Unlock kode"
 Const lg_phrase_is_logged_in = "er logget ind"
-Const lg_phrase_issue_new_token = "Indtast dit userid og din e-mail for at modtage en ny bekrÃ¦ftelses token."
-Const lg_phrase_issue_new_token_error = "Der opstod en uventet fejl da vi genererede din kontrol token. Kontakt venligst webmaster. "
-Const lg_phrase_issue_new_token_success = "Dit nye bekrÃ¦ftelseskendetegn vil blive sendt til din e-mail adresse."
+Const lg_phrase_issue_new_token = "Indtast dit userid og din e-mail for at modtage en ny bekræftelses token."
+Const lg_phrase_issue_new_token_error = "Der opstod en uventet fejl da vi genererede din kontrol token. Kontakt venligst webmaster."
+Const lg_phrase_issue_new_token_success = "Dit nye bekræftelseskendetegn vil blive sendt til din e-mail adresse."
 Const lg_phrase_login_error = "Der var en fejl. Indtast dit brugernavn og adgangskode igen."
-Const lg_phrase_login_error_token = "Du skal validere din e-mail adresse ved hjÃ¦lp af symbolske du blev sendt, fÃ¸r du kan logge ind."
+Const lg_phrase_login_error_token = "Du skal validere din e-mail adresse ved hjælp af symbolske du blev sendt, før du kan logge ind."
 Const lg_phrase_login_token_problem = "Enten er verifikation token blevet brugt (og du er verificeret), eller token er ikke gyldig."
 Const lg_phrase_logged_out = "Du er logget ud."
-Const lg_phrase_logout_continue = "klik her for at fortsÃ¦tte."
-Const lg_phrase_name_empty = "Feltet er tomt, men er pÃ¥krÃ¦vet. Indtast dit navn. "
-Const lg_phrase_name_title = "Indtast dit fulde navn. Dette felt er pÃ¥krÃ¦vet. "
-Const lg_phrase_newpassword_empty = "Det Nye Password felt er tomt, men er pÃ¥krÃ¦vet. Indtast dit kodeord. "
-Const lg_phrase_news = "Ã˜nsker du at modtage regelmÃ¦ssige e-mails, nÃ¥r hjemmesiden Ã¦ndres eller nye artikler er indsendt?"
+Const lg_phrase_logout_continue = "klik her for at fortsætte."
+Const lg_phrase_name_empty = "Feltet er tomt, men er påkrævet. Indtast dit navn."
+Const lg_phrase_name_title = "Indtast dit fulde navn. Dette felt er påkrævet."
+Const lg_phrase_newpassword_empty = "Det Nye Password felt er tomt, men er påkrævet. Indtast dit kodeord."
+Const lg_phrase_news = "Ønsker du at modtage regelmæssige e-mails, når hjemmesiden ændres eller nye artikler er indsendt?"
 Const lg_phrase_no_matching_registration = "Der var ingen registrering, der matcher det Bruger ID og den e-mail-adresse, du har indtastet."
-Const lg_phrase_oldpassword_does_not_match = "Den nuvÃ¦rende adgangskode matcher ikke dine gemte adgangskode. PrÃ¸v igen"
-Const lg_phrase_oldpassword_empty = "Det Gamle Password felt er tomt, men er pÃ¥krÃ¦vet. Indtast dit kodeord. "
-Const lg_phrase_oldpassword_title = "Indtast din nuvÃ¦rende adgangskode. Dette felt er pÃ¥krÃ¦vet. "
-Const lg_phrase_password_change_authorized = "Hvis du ikke har tilladelse til denne Ã¦ndring, bedes du kontakte webmaster"
-Const lg_phrase_password_changed = "Din adgangskode blev Ã¦ndret"
-Const lg_phrase_password_changed_error = "Der opstod en uventet fejl. Adgangskoden blev ikke Ã¦ndret. Kontakt venligst webmaster "
+Const lg_phrase_oldpassword_does_not_match = "Den nuværende adgangskode matcher ikke dine gemte adgangskode. Prøv igen"
+Const lg_phrase_oldpassword_empty = "Det Gamle Password felt er tomt, men er påkrævet. Indtast dit kodeord."
+Const lg_phrase_oldpassword_title = "Indtast din nuværende adgangskode. Dette felt er påkrævet."
+Const lg_phrase_password_change_authorized = "Hvis du ikke har tilladelse til denne ændring, bedes du kontakte webmaster"
+Const lg_phrase_password_changed = "Din adgangskode blev ændret"
+Const lg_phrase_password_changed_error = "Der opstod en uventet fejl. Adgangskoden blev ikke ændret. Kontakt venligst webmaster"
 Const lg_phrase_password_changed_okay = "Password skiftet."
-Const lg_phrase_password_changed_post = "var Ã¦ndret til"
-Const lg_phrase_password_changed_pre = "Din adgangskode pÃ¥"
-Const lg_phrase_password_empty = "Password feltet er tomt, men er pÃ¥krÃ¦vet. Indtast dit kodeord. "
-Const lg_phrase_password_new_title = "Indtast dit Ã¸nskede password. Dette felt er pÃ¥krÃ¦vet. "
-Const lg_phrase_password_nomatch_confirm = "Password matcher ikke BekrÃ¦ftelsesadgangskoden. Indtast igen. "
-Const lg_phrase_password_title = "Indtast din adgangskode. Dette felt er pÃ¥krÃ¦vet. "
+Const lg_phrase_password_changed_post = "var ændret til"
+Const lg_phrase_password_changed_pre = "Din adgangskode på"
+Const lg_phrase_password_empty = "Password feltet er tomt, men er påkrævet. Indtast dit kodeord."
+Const lg_phrase_password_new_title = "Indtast dit ønskede password. Dette felt er påkrævet."
+Const lg_phrase_password_nomatch_confirm = "Password matcher ikke Bekræftelsesadgangskoden. Indtast igen."
+Const lg_phrase_password_title = "Indtast din adgangskode. Dette felt er påkrævet. "
 Const lg_phrase_recaptcha_error = "Den reCAPTCHA var ikke indtastet korrekt."
 Const lg_phrase_register_delete_noemail = "Der er ingen konto som matchede den e-mail adresse, du indtastede."
-Const lg_phrase_registration_email_verify = "BekrÃ¦ft din e-mail-adresse"
-Const lg_phrase_registration_email_verify_msg = "En e-mail blev sendt til den email adresse, du angav under registreringen. Klik pÃ¥ linket i den e-mail eller klip og klistr lÃ¥se-op koden i form feltet nedenfor. Din konto vil ikke vÃ¦re tilgÃ¦ngelig fÃ¸r den er blevet bekrÃ¦ftet. "
-Const lg_phrase_registration_error = "Der var en uventet fejl da vi fuldfÃ¸rte din registrering. Kontakt venligst webmaster "
+Const lg_phrase_registration_email_verify = "Bekræft din e-mail-adresse"
+Const lg_phrase_registration_email_verify_msg = "En e-mail blev sendt til den email adresse, du angav under registreringen. Klik på linket i den e-mail eller klip og klistr låse-op koden i form feltet nedenfor. Din konto vil ikke være tilgængelig før den er blevet bekræftet."
+Const lg_phrase_registration_error = "Der var en uventet fejl da vi fuldførte din registrering. Kontakt venligst webmaster"
 Const lg_phrase_registration_mail0 = "Udsted Ny Registrerings Kontrol Token"
 Const lg_phrase_registration_mail1 = "Tak for din registrering hos"
-Const lg_phrase_registration_mail2 = "FÃ¸r du kan logge ind skal du"
-Const lg_phrase_registration_mail3 = "at bekrÃ¦fte din e-mail-adresse."
+Const lg_phrase_registration_mail2 = "Før du kan logge ind skal du"
+Const lg_phrase_registration_mail3 = "at bekræfte din e-mail-adresse."
 Const lg_phrase_registration_mail4 = "Klik her for at kontrollere"
-Const lg_phrase_registration_mail5 = "Hvis ovenstÃ¥ende link ikke virker, skal du gÃ¥ til http://"
+Const lg_phrase_registration_mail5 = "Hvis ovenstående link ikke virker, skal du gå til http://"
 Const lg_phrase_registration_mail6 = "kopiere og klistre token nedenfor i skemaet og klik ""Send"""
-Const lg_phrase_registration_mail7 = "Hvis du ikke registrerede, klik pÃ¥"
+Const lg_phrase_registration_mail7 = "Hvis du ikke registrerede, klik på"
 Const lg_phrase_registration_mail8 = "dette link: <a href = ""http://"
-Const lg_phrase_registration_mail9 = "hvis du har spÃ¸rgsmÃ¥l sÃ¥ <a href = ""http://"
+Const lg_phrase_registration_mail9 = "hvis du har spørgsmål så <a href = ""http://"
 Const lg_phrase_registration_success = "Registrering lykkedes"
-Const lg_phrase_remember_me_warning = "Tjek ikke 'husk mig', hvis det er en delt computer."
-Const lg_phrase_userid_empty = "Bruger-ID feltet er pÃ¥krÃ¦vet, men er tomt. Indtast dit bruger-ID. "
+Const lg_phrase_remember_me_warning = "Tjek ikke <b>husk mig</b>, hvis det er en delt computer."
+Const lg_phrase_userid_empty = "Bruger-ID feltet er påkrævet, men er tomt. Indtast dit bruger-ID."
 Const lg_phrase_userid_inuse = "Bruger-ID er i brug eller ugyldigt."
-Const lg_phrase_userid_new_title = "Indtast dit Ã¸nskede bruger-ID. Dette felt er pÃ¥krÃ¦vet."
-Const lg_phrase_userid_title = "Indtast dit bruger-ID. Dette felt er pÃ¥krÃ¦vet. "
-Const lg_phrase_verify_expired = "Der er gÃ¥et mere end 24 timer der er gÃ¥et siden din registrering."
-Const lg_phrase_verify_login = "Du kan nu logge ind pÃ¥ din konto."
-Const lg_phrase_verify_newtoken = "Klik her for at generere en ny lÃ¥se-kode."
-Const lg_phrase_verify_verified = "Du har bekrÃ¦ftet din e-mail-adresse."
+Const lg_phrase_userid_new_title = "Indtast dit ønskede bruger-ID. Dette felt er påkrævet."
+Const lg_phrase_userid_title = "Indtast dit bruger-ID. Dette felt er påkrævet."
+Const lg_phrase_verify_expired = "Der er gået mere end 24 timer der er gået siden din registrering."
+Const lg_phrase_verify_login = "Du kan nu logge ind på din konto."
+Const lg_phrase_verify_newtoken = "Klik her for at generere en ny låse-kode."
+Const lg_phrase_verify_verified = "Du har bekræftet din e-mail-adresse."
 Const lg_phrase_website_title = "Indtast dit website adresse."
 Const lg_phrase_recover_password = "Gendan Password"
 Const lg_phrase_request_password1 = "Der er blevet anmodt om at gendanne din adgangskode ved"
-Const lg_phrase_recover_password2 = "Du kan angive en ny adgangskode ved at klikke pÃ¥ linket nedenfor."
+Const lg_phrase_recover_password2 = "Du kan angive en ny adgangskode ved at klikke på linket nedenfor."
 Const lg_phrase_recover_password3 = "Forandr dit Password"
 Const lg_phrase_recover_password4 = "Hvis du ikke har anmodet om at gendanne din adgangskode, kan du kontakte webmaster via"
-Const lg_phrase_recover_password5 = "E-mail pÃ¥ det fÃ¸lgende e-mail link"
+Const lg_phrase_recover_password5 = "E-mail på det følgende e-mail link"
 Const lg_phrase_recover_password_error = "Der opstod en uventet fejl under behandling af din anmodning. Kontakt venligst webmaster."
-Const lg_phrase_recover_password_success = "Anmodningen om at gendanne din adgangskode blev behandlet med succes. <p> FÃ¸lg instruktionerne i e-mail sendt til dig for at lave en ny adgangskode.</p>"
+Const lg_phrase_recover_password_success = "Anmodningen om at gendanne din adgangskode blev behandlet med succes.<p>Følg instruktionerne i e-mail sendt til dig for at lave en ny adgangskode.</p>"
 Const lg_term_new_password = "Nyt Password"
 Const lg_term_reset_password = "Password Reset"
 Const lg_term_set_new_password = "Indtast en ny adgangskode"
-Const lg_phrase_set_new_password_good_token = "Din token var gyldig. Indtast en ny adgangskode. "
-Const lg_phrase_set_new_password_tken_expired = "Mere end 24 timer er gÃ¥et, siden du har bedt om en gendannelse af adgangskode token."
-Const lg_phrase_contact_webmaster1 = "Kontakt venligst webmaster for at fÃ¥ hjÃ¦lp."
+Const lg_phrase_set_new_password_good_token = "Din token var gyldig. Indtast en ny adgangskode."
+Const lg_phrase_set_new_password_tken_expired = "Mere end 24 timer er gået, siden du har bedt om en gendannelse af adgangskode token."
+Const lg_phrase_contact_webmaster1 = "Kontakt venligst webmaster for at få hjælp."
 Const lg_phrase_webmaster_may_be_contacted = "Webmasteren kan kontaktes via e-mail via dette link:"
 Const lg_phrase_set_new_password_error = "Der var en uventet fejl ved udfyldelsen af din anmodning."
-Const lg_phrase_set_new_password_success = "Dit password er blevet Ã¦ndret."
+Const lg_phrase_set_new_password_success = "Dit password er blevet ændret."
 Const lg_phrase_user_registration = "Bruger registrering."
 %>
