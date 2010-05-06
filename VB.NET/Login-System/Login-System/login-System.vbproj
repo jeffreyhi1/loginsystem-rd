@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess.vb" />
+    <Compile Include="hashSHA1.vb" />
     <Compile Include="LoginResources.vb" />
     <Compile Include="Register.aspx.designer.vb">
       <DependentUpon>Register.aspx</DependentUpon>

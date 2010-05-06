@@ -42,7 +42,7 @@
     <div id="login-system">
         <div id="message">
             <%=Message%></div>
-        <% If False Then%>
+        <% If NumAffected=0 Then%>
         <fieldset>
             <legend>
                 <%=ResString("lg_term_register")%></legend>

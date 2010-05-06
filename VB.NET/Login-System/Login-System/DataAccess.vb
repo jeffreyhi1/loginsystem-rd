@@ -36,6 +36,8 @@ Public Class DataAccess
     Public Sub ExecuteNonQuery(ByVal Sql As String)
         mConn.Open()
         Using cmd As DbCommand = mConn.CreateCommand()
+            cmd.CommandText = Sql
+            cmd.CommandType = CommandType.Text
             cmd.ExecuteNonQuery()
         End Using
         mConn.Close()
@@ -49,6 +51,8 @@ Public Class DataAccess
     Public Sub ExecuteNonQuery(ByVal Sql As String, ByVal Parms() As DbParameter)
         mConn.Open()
         Using cmd As DbCommand = mConn.CreateCommand()
+            cmd.CommandText = Sql
+            cmd.CommandType = CommandType.Text
             For Each p As DbParameter In Parms
                 cmd.Parameters.Add(p)
             Next
@@ -66,6 +70,8 @@ Public Class DataAccess
         Dim RetVal As Integer
         mConn.Open()
         Using cmd As DbCommand = mConn.CreateCommand()
+            cmd.CommandText = Sql
+            cmd.CommandType = CommandType.Text
             RetVal = CInt(cmd.ExecuteScalar())
         End Using
         mConn.Close()
@@ -81,6 +87,8 @@ Public Class DataAccess
         Dim RetVal As Integer
         mConn.Open()
         Using cmd As DbCommand = mConn.CreateCommand()
+            cmd.CommandText = Sql
+            cmd.CommandType = CommandType.Text
             For Each p As DbParameter In Parms
                 cmd.Parameters.Add(p)
             Next
@@ -133,6 +141,18 @@ Public Class DataAccess
         End Using
         mConn.Close()
         Return ds
+    End Function
+
+    Public Function Factory() As DbProviderFactory
+        Return mFactory
+    End Function
+
+    Public Function ParmWithValue(ByVal Name As String, ByVal Value As Object, Optional ByVal Direction As Data.ParameterDirection = ParameterDirection.Input) As DbParameter
+        Dim Parm As DbParameter = mFactory.CreateParameter
+        Parm.ParameterName = Name
+        Parm.Value = Value
+        Parm.Direction = Direction
+        Return Parm
     End Function
 
 
