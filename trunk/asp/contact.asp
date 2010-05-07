@@ -1,14 +1,14 @@
 <%
+'* alpha 0.2
 '* $Id$
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<%=lg_term_xhtml_xmlns%>
 <head>
-<title>Contact</title>
-<!-- alpha 0.1c -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="content-language" content="en-US" />
-<meta name="language" content="en-US" />
+<%=lg_term_content_language%>
+<%=lg_term_language%>
+<title><%=lg_term_contact%></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="&copy; 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
@@ -18,6 +18,6 @@
 </style>
 </head>
 <body>
-<p>This is your contact page.&nbsp; Usually it would be a form.&nbsp; At a minimum you should provide the Webmaster&#39;s email address</p>
+<%=lg_phrase_contact_body%>
 </body>
 </html>

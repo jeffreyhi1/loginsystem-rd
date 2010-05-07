@@ -2,18 +2,18 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
-'* alpha 0.1c
+'* alpha 0.2
 '* $Id$
 %>
 <!--#include file="include/loginGlobals.asp"-->
 <!--#include file="include/login-success.asp"-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<%=lg_term_xhtml_xmlns%>
 <head>
-<title><%=lg_term_login_success%></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="content-language" content="en-US" />
-<meta name="language" content="en-US" />
+<%=lg_term_content_language%>
+<%=lg_term_language%>
+<title><%=lg_term_login_success%></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="&copy; 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
