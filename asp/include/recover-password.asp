@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Page Name: Recover Password
-'* Version:  alpha 0.1c debug
 '* On Entry: Check for SSL
 '* Input   : userid, email
 '* Output  : reset/recover password token emailed to email address of account owner

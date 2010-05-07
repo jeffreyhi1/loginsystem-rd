@@ -1,22 +1,26 @@
 ﻿<%
-' $Id$
-'* English
+'* $Id$
 '********************************************************************************************************************
 '* Login Globals - ASP
 '* 
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
 '*       You must set the database connection details below.
-'*
-'* Modification: 29 APR 2010 :: Rod Divilbiss - addressed Issues 38 and 40
+'* 
+'* 
+'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+'* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
-'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
+'* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
+'* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
+'*                                              loginGlobals.php, and corrected paths in loginGlobals.php
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting 
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
 '* Modification: 02 APR 2010 :: acperkins - verified or corrected translation to Spanish (Mexican)
 '* Modification: 01 APR 2010 :: Bob Stone - translated to Spanish (Mexican)
-'* Modification: 28 MAR 2010 :: Jurgen Kraus - translated to German
+'* Modification: 28 MAR 2010 :: Jürgen Kraus - translated to German
 '* Modification: 28 MAR 2010 :: Cam Van T Divilbiss - translated to Vietnamese
 '* Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
 '* Modification: 07 FEB 2010 :: VGR - translation to French
@@ -24,7 +28,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.1c - English - ASP
+'* Version: alpha 0.2 - English - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -37,7 +41,7 @@ Const lg_change_password_page = "change_password.asp"
 Const lg_contact_form = "/login-system/contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 Const lg_domain = "www.example.com"
-Const lg_domain_secure = "www.example.com"     '<--- must be set if Const lg_useSSL = true
+Const lg_domain_secure = "www.example.com"
 '******************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
@@ -68,16 +72,17 @@ Const lg_debug = false
 Const lg_verify_page = "register_verify.asp"
 Const lg_webmaster_email = "webmaster@example.com"
 Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
+
 '**********************************************************************
 '* Login system database globals
 '**********************************************************************
 'Const lg_database = "access"
-Const lg_database = "mysql"
+'Const lg_database = "mysql"
 'Const lg_database = "mssql"
 
 'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
 'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
-Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
+'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
 
 Const lg_database_userid = ""
 Const lg_database_password = ""
@@ -108,6 +113,8 @@ Const lg_term_checkToken = "checkToken"
 Const lg_term_city = "City"
 Const lg_term_confirm = "Confirm Password"
 Const lg_term_contact_form = "Contact Form"
+Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""en-US"" />"
+Const lg_term_language = "<meta name=""language"" content=""en-US"" />"
 Const lg_term_country = "Country"
 Const lg_term_current_password = "Current Password"
 Const lg_term_delete_account = "Delete Account"
@@ -116,6 +123,7 @@ Const lg_term_email = "Email"
 Const lg_term_enter_information = "Enter Information"
 Const lg_term_error_string = "getPasshash"
 Const lg_term_example = "Example"
+Const lg_term_forbidden = "Forbidden"
 Const lg_term_from_error = "Form Error"
 Const lg_term_get_name = "getName"
 Const lg_term_get_oldpassword = "getOldPassword"
@@ -128,6 +136,7 @@ Const lg_term_log_string = "logLogin"
 Const lg_term_log_out = "Log out"
 Const lg_term_logged_out = "Logged Out"
 Const lg_term_login = "Login"
+Const lg_term_project_home_link = "<a title=""Login System on Google Code"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
 Const lg_term_login_success = "Success"
 Const lg_term_name = "Name"
 Const lg_term_new_password = "New Password"
@@ -156,9 +165,11 @@ Const lg_term_to = "To "
 Const lg_term_useragent = "Useragent"
 Const lg_term_userid = "UserID"
 Const lg_term_via_email = "by email at"
+Const lg_term_webloginproject_link = "<a title=""Web Login Project"" href=""http://www.webloginproject.com/index.php"">Web Login Project</a>"
 Const lg_term_website = "Website"
 Const lg_term_website_address = "Website Address"
 Const lg_term_welcome = "Welcome"
+Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""en"" lang=""en"">"
 Const lg_phrase_attention_webmaster = "Attention Webmaster"
 Const lg_phrase_cancel_account_canceled = "The account has been canceled."
 Const lg_phrase_cancel_account_error = "There was an unexpected error canceling your account. Please contact the webmaster"
@@ -166,7 +177,11 @@ Const lg_phrase_cancel_account_warning = "Enter your User ID and Password to can
 Const lg_phrase_change_password = "Enter your current password, then your desired new password"
 Const lg_phrase_confirm_empty = "The Confirm Password field is empty but is required. Please confirm your password."
 Const lg_phrase_confirm_title = "Please confirm your desired password. This field is required."
+Const lg_phrase_contact_body = "<p>This is your contact page. Usually it would be a form. At a minimum you should provide the Webmaster&#39;s email address.</p>"
 Const lg_phrase_contact_webmaster = "contact the webmaster"
+Const lg_phrase_default_body1 = "This site was created to demonstrate incorporating the Login System into your web site design.</p><p>Every web site can be conceptualized as a template. Common sections of a web page template might include a banner, navigation, a main content area, and maybe a footer with links to Terms Of Use, Copyright details, and the Privacy Policy.</p><p>The area where you are now reading in the &quot;Main Content Area&quot; of this page. This is the area where you will insert the HTML or XHTML markup templates that enable the Login System. Feel free to click the login link above, register and test the login system as implemented. This is a working beta test site and certain features may or not be implemented while you are testing.</p><p>Visit the project home on Google Code at: "
+Const lg_phrase_default_body2 = ".</p><p>Or visit various demo pages in a number of world languages at the"
+Const lg_phrase_default_body3 = "demonstration and test site.</p>"
 Const lg_phrase_delete_account = "Delete Account"
 Const lg_phrase_delete_already_verified = "The account has already been verified and could not be deleted"
 Const lg_phrase_delete_deleted = "The account has been deleted"
@@ -174,6 +189,7 @@ Const lg_phrase_email_empty = "The Email field is empty but is required. Please 
 Const lg_phrase_email_title = "Please enter your Email address. This field is required."
 Const lg_phrase_enter_set_new_password_token = "Enter set new password token"
 Const lg_phrase_enter_unlock_code = "Enter Unlock Code"
+Const lg_phrase_forbidden_body = "<p><h1>You do not have access to that resource.</h1></p><p>Contact the webmaster at:"
 Const lg_phrase_is_logged_in = "is logged in."
 Const lg_phrase_issue_new_token = "Enter your userid and Email to receive a new verification token."
 Const lg_phrase_issue_new_token_error = "There was an unexpected error generating your verification token. Please contact the webmaster."
@@ -204,7 +220,7 @@ Const lg_phrase_password_title = "Please enter your password. This field is requ
 Const lg_phrase_recaptcha_error = "The reCAPTCHA wasn't entered correctly."
 Const lg_phrase_register_delete_noemail = "There was no account matching the email address you entered."
 Const lg_phrase_registration_email_verify = "Verify Your Email Address"
-Const lg_phrase_registration_email_verify_msg = "An Email was sent to the Email address you provided during registration. Click the link in that Email or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified."
+Const lg_phrase_registration_email_verify_msg = "An Email was sent to the Email address you provided during registration.&nbsp; Click the link in that Email or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified."
 Const lg_phrase_registration_error = "There was an unexpected error completing your registration. Please contact the webmaster"
 Const lg_phrase_registration_mail0 = "Issued New Registration Verification Token"
 Const lg_phrase_registration_mail1 = "Thank you for registering at"

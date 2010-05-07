@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2
+'* $Id$
 '*******************************************************************************************************************
 '* Change Password
-'* Version:  alpha 0.1c debug version
 '* On Entry: Verify need for SSL
 '* Input:    oldpassword, newpassword, confirm
 '* Output:   message - string variable with results

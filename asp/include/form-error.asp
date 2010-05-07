@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2
+'* $Id$
 '*******************************************************************************************************************
 '* Form Error
-'* Version:  alpha 0.1c
 '* On Entry: URL parameters
 '* Input:    p (page) and t (reason for error)
 '* Output:   message - reason for error and link to page
@@ -21,20 +21,18 @@ Response.AddHeader "pragma","no-cache"
 Response.CacheControl="private"
 Response.CacheControl="no-cache"
 Response.CacheControl="no-store"
-%>
-<!--#include virtual="/login-project/aspdemo/include/generalPurpose.asp"-->
-<!--#include virtual="/login-project/aspdemo/include/loginGlobals.asp"-->
-<%
+
+
 Dim page, reason, message
 page = getField("p,rXsafepq,get")
 reason = getField("t,rXalpha,get")
 
 Select Case reason
     Case "etime"
-        message = "The form timed out before completion. Please complete the form in less than 5 minutes."
+        message = lg_phrase_form_error_time
     Case "ecook"
-    	message = "Cookies are required for login. Please ensure your browser accepts cookies from this site."
+    	message = lg_phrase_form_error_cookie
     Case "etok"
-        message = "There was a form error. This can be caused by using your browser's back button to return to a previously completed form and re-submitting it."
+        message = lg_phrase_form_error_token
 End Select
 %>

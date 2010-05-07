@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2
+'* $Id$
 %>
           <!-- XHTML 1.1 Strict -->
-          <!-- alpha 0.1c -->
           <div id="login-system">
 			<h1><%=lg_term_change_password%></h1>
 			<h2><%=Session("name")%></h2>

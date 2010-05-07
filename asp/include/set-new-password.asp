@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Page Name: Set New Password
-'* Version:  alpha 0.1c debug
 '* On Entry: reset token
 '* Input   : current password, new password, confirmation password
 '* Output  : message

@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1c -->
 			<div id="login-system">
 			<h1><%=lg_phrase_recover_password%></h1>
 			<% If (message <> lg_phrase_recover_password_success) Then %>

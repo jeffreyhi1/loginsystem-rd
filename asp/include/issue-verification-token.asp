@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Page Name: Issue Verification Token
-'* Version:  alpha 1.0c debug
 '* On Entry: None
 '* Input   : userid, email
 '* Output  : new verification token emailed to account owner

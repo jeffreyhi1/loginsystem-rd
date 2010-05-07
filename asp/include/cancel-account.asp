@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Cancel Account
-'* Version:  alpha 0.1c debug
 '* On Entry: Verify need for SSL
 '* Input:    userid, password
 '* Output:   message - string variable with results

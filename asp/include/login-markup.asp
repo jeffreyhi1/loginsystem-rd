@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1c -->
 			<div id="login-system">
             <h1><%=lg_term_login%></h1>
             <% If Session("login")<>True Then %>
