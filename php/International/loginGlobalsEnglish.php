@@ -1,5 +1,5 @@
-﻿<?PHP
-// $Id$
+<?PHP
+// $Id: loginGlobalsEnglish.php 297 2010-05-05 22:40:09Z rdivilbiss $
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
 * Login Globals - PHP
@@ -7,7 +7,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 *       You must set the webmaster e-mail addresses.
 *       You must set the database connection details in database.php.     
-*
+* 
 * Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
 * Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
 * Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
@@ -18,7 +18,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
 * Modification: 02 APR 2010 :: acperkins - verified or corrected translation to Spanish (Mexican)
 * Modification: 01 APR 2010 :: Bob Stone - translated to Spanish (Mexican)
-* Modification: 28 MAR 2010 :: Jürgen Kraus - translated to German
+* Modification: 28 MAR 2010 :: J�rgen Kraus - translated to German
 * Modification: 28 MAR 2010 :: Cam Van T Divilbiss - translated to Vietnamese
 * Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
 * Modification: 07 FEB 2010 :: VGR - translation to French
@@ -91,7 +91,10 @@ define("lg_term_change_password_button_text", "Change Password");
 define("lg_term_checkToken", "checkToken");
 define("lg_term_city", "City");
 define("lg_term_confirm", "Confirm Password");
+define("lg_term_contact", "Contact");
 define("lg_term_contact_form", "Contact Form");
+define("lg_term_content_language", "<meta http-equiv=\"content-language\" content=\"en-US\" />");
+define("lg_term_language", "<meta name=\"language\" content=\"en-US\" />");
 define("lg_term_country", "Country");
 define("lg_term_current_password", "Current Password");
 define("lg_term_delete_account", "Delete Account");
@@ -119,6 +122,7 @@ define("lg_term_or", "or");
 define("lg_term_password", "Password");
 define("lg_term_please_login", "Please Login");
 define("lg_term_please_register", "Please Register");
+define("lg_term_project_home_link", "<a title=\"Login System on Google Code\" href=\"http://code.google.com/p/loginsystem-rd/\">http://code.google.com/p/loginsystem-rd/</a>");
 define("lg_term_recover_password", "Recover Password");
 define("lg_term_region", "Region");
 define("lg_term_register", "Register");
@@ -137,15 +141,20 @@ define("lg_term_to", "To ");
 define("lg_term_useragent", "Useragent");
 define("lg_term_userid", "UserID");
 define("lg_term_via_email", "by email at");
+define("lg_term_webloginproject_link", "<a title=\"Web Login Project\" href=\"http://www.webloginproject.com/index.php\">Web Login Project</a>");
 define("lg_term_website_address", "Website Address");
 define("lg_term_welcome","Welcome");
+define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">");
 define("lg_phrase_attention_webmaster", "Attention Webmaster");
 define("lg_phrase_cancel_account_canceled", "The account has been canceled.");
-define("lg_phrase_cancel_account_error", "There was an unexpected error canceling your account. Please contact the webmaster");
+define("lg_phrase_cancel_account_error", "There was an unexpected error cancelling your account. Please contact the webmaster");
 define("lg_phrase_cancel_account_warning", "Enter your User ID and Password to cancel your account.<br>WARNING: THIS ACTION CAN NOT BE UNDONE.<br>If you have forgotten your password use the recover password link below.");
 define("lg_phrase_change_password", "Enter your current password, then your desired new password");
 define("lg_phrase_confirm_empty", "The Confirm Password field is empty but is required. Please confirm your password.");
 define("lg_phrase_confirm_title", "Please confirm your desired password. This field is required.");
+define("lg_phrase_contact_body", "<p>This is your contact page. Usually it would be a form. At a minimum you should provide the Webmaster&#39;s email address.</p>");
+define("lg_phrase_default_body1", "This site was created to demonstrate incorporating the Login System into your web site design.</p><p>Every web site can be conceptualized as a template. Common sections of a web page template might include a banner, navigation, a main content area, and maybe a footer with links to Terms Of Use, Copyright details, and the Privacy Policy.</p><p>The area where you are now reading in the &quot;Main Content Area&quot; of this page. This is the area where you will insert the HTML or XHTML markup templates that enable the Login System. Feel free to click the login link above, register and test the login system as implemented. This is a working beta test site and certain features may or not be implemented while you are testing.</p><p>Visit the project home on Google Code at:");
+define("lg_phrase_default_body2", ".</p><p>Or visit various demo pages in a number of world languages at the");
 define("lg_phrase_contact_webmaster", "contact the webmaster");
 define("lg_phrase_delete_account", "Delete Account");
 define("lg_phrase_delete_already_verified", "The account has already been verified and could not be deleted");
@@ -153,12 +162,16 @@ define("lg_phrase_delete_deleted", "The account has been deleted");
 define("lg_phrase_email_empty", "The Email field is empty but is required. Please enter your Email address.");
 define("lg_phrase_email_title", "Please enter your Email address. This field is required.");
 define("lg_phrase_enter_unlock_code", "Enter Unlock Code");
+define("lg_phrase_forbidden_body", "<p><h1>You do not have access to that resource.</h1></p><p>Contact the webmaster at:");
+define("lg_phrase_form_error_cookie", "Cookies are required for login. Please ensure your browser accepts cookies from this site.");
+define("lg_phrase_form_error_time", "The form timed out before completion. Please complete the form in less than 5 minutes.");
+define("lg_phrase_form_error_token", "There was a form error. This can be caused by using your browser's back button to return to a previously completed form and re-submitting it.");
 define("lg_phrase_is_logged_in"," is logged in.");
 define("lg_phrase_issue_new_token", "Enter your userid and Email to receive a new verification token.");
 define("lg_phrase_issue_new_token_error", "There was an unexpected error generating your verification token. Please contact the webmaster.");
 define("lg_phrase_issue_new_token_success", "Your new verification token will be mailed to your Email address.");
 define("lg_phrase_login_error", "There was an error. Please re-enter your User ID and Password.");
-define("lg_phrase_login_error_token", "You must validate your email address using the token you were sent before you can log in.")
+define("lg_phrase_login_error_token", "You must validate your email address using the token you were sent before you can log in.");
 define("lg_phrase_login_token_problem", "Either the verification token has been used, (and you are verified,) or the token is not valid.");
 define("lg_phrase_logged_out", "You are logged out.");
 define("lg_phrase_logout_continue", "Click here to continue.");
@@ -180,6 +193,7 @@ define("lg_phrase_password_empty", "The Password field is empty but is required.
 define("lg_phrase_password_new_title", "Please enter your desired password. This field is required.");
 define("lg_phrase_password_nomatch_confirm", "The Password does not match the Confirmation Password. Please re-enter.");
 define("lg_phrase_password_title", "Please enter your password. This field is required.");
+define("lg_phrase_recaptcha_error", "The reCAPTCHA wasn't entered correctly.");
 define("lg_phrase_register_delete_noemail", "There was no account matching the email address you entered.");
 define("lg_phrase_registration_email_verify", "Verify Your Email Address");
 define("lg_phrase_registration_email_verify_msg", "An Email was sent to the Email address you provided during registration.&nbsp; Click the link in that Email or copy and paste the unlock code in the form field below. Your account will not be available until it has been verified.");
@@ -212,7 +226,7 @@ define("lg_phrase_recover_password3", "Set New Password");
 define("lg_phrase_recover_password4", "If you did not request to recover your password, contact the webmaster by ");
 define("lg_phrase_recover_password5", "Email at the following Email link ");
 define("lg_phrase_recover_password_error", "There was an unexpected error processing your request. Please contact the webmaster.");
-define("lg_phrase_recover_password_success", "The request to recover your password was processed successfully.<br>Please follow the instructions in the Email sent to you to set a new password.");
+define("lg_phrase_recover_password_success", "The request to recover your password was processed successfully.<p>Please follow the instructions in the Email sent to you to set a new password.</p>");
 define("lg_term_new_password", "New Password");
 define("lg_term_reset_password", "Password Reset");
 define("lg_term_set_new_password", "Enter A New Password");
