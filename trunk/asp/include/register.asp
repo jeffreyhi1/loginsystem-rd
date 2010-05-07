@@ -1,8 +1,8 @@
 <%
+'* alpha 0.2 debug
 ' $Id$
 '*******************************************************************************************************************
 '* Page Name: Register
-'* Version:  alpha 0.1c debug
 '* On Entry: check if SSL is needed and redirect if needed.
 '* Input   : UserID, Password, Name, Email, Website, Subscription
 '* Output  : Register confirmation
@@ -52,7 +52,7 @@ xmldoc=""
 reChallengeField=""
 reResponseField=""
 '*******************************************************************************************************************
-'* These keys only work for www.webloginproject.com
+'* These keys only work only for www.webloginproject.com
 '*******************************************************************************************************************
 publickey = "6Lce3bkSAAAAAHHyw_BOFsIgrHh9TcPrQMQ1oLYU"
 privkey = "6Lce3bkSAAAAADh2-3h0SS30KP5E8gHXBN0yV13j"

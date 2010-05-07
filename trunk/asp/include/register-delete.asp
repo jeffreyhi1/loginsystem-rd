@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Page Name: Register Delete
-'* Version:  alpha 1.0c debug
 '* On Entry: None
 '* Input   : email
 '* Output  : None - account marked as deleted

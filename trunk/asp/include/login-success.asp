@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Page Name: Login Success
-'* Version:  alpha 0.1c debug
 '* On Entry: None
 '* Input   : None
 '* Output  : None

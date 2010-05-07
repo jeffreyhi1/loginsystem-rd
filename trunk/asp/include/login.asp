@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Page Name: Login
-'* Version:  alpha 0.1c debug
 '* On Entry: Check for need of SSL, check for Login cookie, check for account lockout
 '* Input   : UserID, Password
 '* Output  : message

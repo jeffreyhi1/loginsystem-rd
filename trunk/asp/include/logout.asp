@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 '*******************************************************************************************************************
 '* Page Name: Logout
-'* Version:  alpha 0.1c debug
 '* On Entry: N/A
 '* Input:    Session
 '* Output:   N/A

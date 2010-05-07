@@ -1,8 +1,8 @@
 <%
-' $Id$
+'* alpha 0.2 debug
+'* $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1c -->
 			<div id="login-system">
 				<h1><%=lg_phrase_delete_account%></h1>
 				<% If message = lg_term_register_delete_enter_email Then %>
