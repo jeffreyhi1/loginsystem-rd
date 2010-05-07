@@ -1,0 +1,9 @@
+﻿You must obtain reCAPTCHA keys for your website at http://reCAPTCHA.net and put them in register.asp at lines 57 and 58.
+
+Dansk: Du skal indhente reCAPTCHA nøgler til dit websted http://reCAPTCHA.net og sætte dem i register.asp på linjer 57 og 58.
+Deutsch: Sie müssen reCAPTCHA Schlüssel für Ihre Website am http://reCAPTCHA.net erhalten und steckte sie in register.asp in den Zeilen 57 und 58.
+Español: Usted debe obtener claves de reCAPTCHA en tu sitio web en http://reCAPTCHA.net y ponerlos en register.asp en las líneas 57 y 58.
+Français: Vous devez obtenir des clés de reCAPTCHA pour votre site web à http://reCAPTCHA.net et les mettre dans register.asp aux lignes 57 et 58.
+Svenska: Du måste erhålla reCAPTCHA nycklar för din webbplats http://reCAPTCHA.net och lägg dem i register.asp på linjerna 57 och 58.
+Việt: Bạn phải có chìa khóa reCAPTCHA cho trang web của bạn tại http://reCAPTCHA.net và đặt chúng trong register.asp tại đường 57 và 58.
+हिन्दी: आप http://reCAPTCHA.net पर अपनी वेबसाइट के लिए reCAPTCHA चाबी प्राप्त करने और register.asp में उन्हें 57 और 58 लाइनों में डाल चाहिए.
