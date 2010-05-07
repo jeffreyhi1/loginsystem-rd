@@ -1,4 +1,5 @@
 <?php
+// alpha 0.2 debug
 // $Id$
 setlocale(LC_ALL, 'English_United States.65001');
 
@@ -13,8 +14,6 @@ include "include/database.php";
 require_once('include/recaptchalib.php');
 include "include/register.php";
 
-// alpha 0.1c debug
-
 /* You should add
 * header("Pragma: No-cache");
 * header("Cache-control: No-cache");
@@ -22,12 +21,12 @@ include "include/register.php";
 */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<?php echo lg_term_xhtml_xmlns ?>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php echo lg_term_content_language ?>
+<?php echo lg_term_language ?>
 <title><?PHP echo lg_term_register; ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="content-language" content="en-US" />
-<meta name="language" content="en-US" />
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="© 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">

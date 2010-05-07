@@ -1,9 +1,8 @@
 <?php
+// alpha 0.2 debug
 // $Id$
 /*******************************************************************************************************************
-* Logout
-* Last Modification: 27 APR 2010
-* Version:  alpha 0.1c Debug
+* Page Name: Logout
 * On Entry: N/A
 * Input:    Session
 * Output:   N/A
@@ -17,13 +16,12 @@ if (!isset($_SESSION)) {
 include "include/loginGlobals.php";
 
 setcookie ("user", "", time() - 3600);
+setcookie ("token", "", time() - 3600);
 
 if (isset($_SESSION["user"])) {
 	$_SESSION["user"]="";
 }
-if (isset($_SESSION["login"])) {
-	$_SESSION["login"]="";
-}
+
 if (isset($_SESSION["name"])) {
 	$_SESSION["name"]="";
 }

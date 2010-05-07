@@ -1,4 +1,5 @@
 <?php
+// alpha 0.2 debug
 // $Id$
 setlocale(LC_ALL, 'English_United States.65001');
 if (!isset($_SESSION)) {
@@ -17,8 +18,6 @@ if (isset($_SESSION["name"])) {
 }
 session_destroy();
 
-// alpha 0.1c debug - 27 APR 2010
-
 /* You should add
 * header("Pragma: No-cache");
 * header("Cache-control: No-cache");
@@ -26,12 +25,12 @@ session_destroy();
 */
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<?php echo lg_term_xhtml_xmlns ?>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="content-language" content="en-US" />
-<meta name="language" content="en-US" />
-<title>Forbidden</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php echo lg_term_content_language ?>
+<?php echo lg_term_language ?>
+<title><?php echo lg_term_forbidden ?></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="© 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
@@ -42,7 +41,7 @@ session_destroy();
 </head>
 
 <body>
-<h1>Forbidden</h1>
-<p>The maximum number of login attempts have occurred. Please contact webmaster.</p>
+<h1><?php echo lg_term_forbidden ?></h1>
+<?php echo lg_phrase_forbidden_body . " " . lg_webmaster_email_link . "</p>" ?>
 </body>
 </html>
