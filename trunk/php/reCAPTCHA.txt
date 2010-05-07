@@ -1,0 +1,9 @@
+﻿You must obtain reCAPTCHA keys for your website at http://reCAPTCHA.net and put them in register.php at lines 42 and 43.
+
+Dansk: Du skal indhente reCAPTCHA nøgler til dit websted http://reCAPTCHA.net og sætte dem i register.php på linjer 42 og 43.
+Deutsch: Sie müssen reCAPTCHA Schlüssel für Ihre Website am http://reCAPTCHA.net erhalten und steckte sie in register.php in den Zeilen 42 und 43.
+Español: Usted debe obtener claves de reCAPTCHA en tu sitio web en http://reCAPTCHA.net y ponerlos en register.php en las líneas 42 y 43.
+Français: Vous devez obtenir des clés de reCAPTCHA pour votre site web à http://reCAPTCHA.net et les mettre dans register.php aux lignes 42 et 43.
+Svenska: Du måste erhålla reCAPTCHA nycklar för din webbplats http://reCAPTCHA.net och lägg dem i register.php på linjerna 42 och 43.
+Việt: Bạn phải có chìa khóa reCAPTCHA cho trang web của bạn tại http://reCAPTCHA.net và đặt chúng trong register.php tại đường 42 và 43.
+हिन्दी: आप http://reCAPTCHA.net पर अपनी वेबसाइट के लिए reCAPTCHA चाबी प्राप्त करने और register.php में उन्हें 42 और 43 लाइनों में डाल चाहिए.
