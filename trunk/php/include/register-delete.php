@@ -3,7 +3,7 @@
 /*******************************************************************************************************************
 * Page Name
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.1c debug Debug
+* Version:  alpha 0.2 debug Debug
 * On Entry: email passed as URL parameter
 * Input   : email address
 * Output  : message

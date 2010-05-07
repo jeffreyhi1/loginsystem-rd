@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1c -->
+			<!-- alpha 0.2 -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_cancel_account; ?></h1>
 			<?PHP If ($message != lg_phrase_cancel_account_canceled) { ?>

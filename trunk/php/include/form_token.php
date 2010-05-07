@@ -2,7 +2,7 @@
 // $Id$
 /**
 * Login System Form Token (anti-CSRF) Functions
-* 27 APR 2010 Version alpha 0.1c debug
+* 27 APR 2010 Version alpha 0.2 debug
 */
 if (!isset($_SESSION)) {
 	session_start();
