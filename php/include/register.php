@@ -3,7 +3,7 @@
 /*******************************************************************************************************************
 * Page Name: Register
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.1c Debug
+* Version:  alpha 0.2 Debug
 * On Entry: check for SSL state
 * Input   : userid, password, confirm password, email, name, website address, remember me 
 * Output  : message
@@ -35,8 +35,13 @@ $locked="";
 $dateLocked="";
 $token="";
 $message= "<strong>".lg_term_please_register."</strong>";
-$publickey = "6Lfe3rkSAAAAAPrJLxSOPkUCq2OqbA5cNZ6kUYen";
-$privatekey = "6Lfe3rkSAAAAAMutk1SNbCduQqZpJ8Fnv5FnOIAL";
+
+/******************************************************************************************************************
+* Obtain your own public and private reCAPTCHA keys for free at http://recaptcha.net/ and enter below.
+******************************************************************************************************************/
+$publickey = "";
+$privatekey = "";
+/*****************************************************************************************************************/
 
 if (lg_debug) {
 	$dbMsg .= "Debugging Enabled<br />\n";

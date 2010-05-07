@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.1c debug -->
+			<!-- alpha 0.2 debug -->
 			<div id="login-system">
             <h1><?PHP echo lg_term_login; ?></h1>
             <?PHP 

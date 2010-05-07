@@ -3,7 +3,7 @@
 /*******************************************************************************************************************
 * Change Password
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.1c debug version
+* Version:  alpha 0.2 debug version
 * On Entry: Verify need for SSL
 * Input:    oldpassword, newpassword, confirm
 * Output:   message - string variable with results
