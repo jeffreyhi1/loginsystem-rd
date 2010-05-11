@@ -1,4 +1,5 @@
-﻿Module hashSHA1
+﻿' $Id$
+Module hashSHA1
     Function HashEncode(ByVal ToHash As String) As String
         Dim Sha1Obj As New System.Security.Cryptography.SHA1CryptoServiceProvider
         Dim bytes() As Byte = System.Text.Encoding.UTF8.GetBytes(ToHash)

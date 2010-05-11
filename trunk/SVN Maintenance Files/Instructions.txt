@@ -22,8 +22,9 @@ When correctly edited and ran, run a commit to push the new file properties.
 
 Only missing entries will be posted.
 
-It will only look as .PHP, .ASP, .SQL and .BAT files. Other file types can
-easily be added (HTML, CSS, JS, etc.)
+It will only look as .PHP, .ASP, .SQL, .BAT and .VB files.
+
+Other file types can easily be added (HTML, CSS, JS, etc.)
 
 The files really should be plain text files and allow for the text ...
 

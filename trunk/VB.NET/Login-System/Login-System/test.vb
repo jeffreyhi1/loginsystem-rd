@@ -1,4 +1,5 @@
-﻿Imports System.Data
+﻿' $Id$
+Imports System.Data
 
 Module test
     Public Sub test()

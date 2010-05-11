@@ -1,5 +1,5 @@
 ﻿<%
-'*  $Id: ASP_reCAPTCHA_code.asp 239 2010-04-30 09:24:15Z rdivilbiss $
+'*  $Id$
 '*****************************************************************************************************
 Dim reChallengeField, reResponseField, publickey, privkey
 publickey = "6Lce3bkSAAAAAHHyw_BOFsIgrHh9TcPrQMQ1oLYU"

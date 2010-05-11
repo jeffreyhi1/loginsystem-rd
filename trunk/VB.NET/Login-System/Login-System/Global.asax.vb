@@ -1,4 +1,5 @@
-﻿Imports System.Web.SessionState
+﻿' $Id$
+Imports System.Web.SessionState
 
 Public Class Global_asax
     Inherits System.Web.HttpApplication

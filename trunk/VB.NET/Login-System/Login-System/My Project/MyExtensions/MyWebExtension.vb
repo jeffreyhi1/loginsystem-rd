@@ -1,4 +1,5 @@
-﻿#If _MyType <> "Empty" Then
+﻿' $Id$
+#If _MyType <> "Empty" Then
 
 Namespace My
     ''' <summary>
