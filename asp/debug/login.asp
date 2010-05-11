@@ -1,5 +1,5 @@
 ﻿<%
-' $Id: login.asp 233 2010-04-30 05:21:49Z rdivilbiss $
+' $Id$
 '*******************************************************************************************************************
 '* Login.asp
 '* Last Modification: rdivilbiss - added anti Session Fixation cookie and
