@@ -1,4 +1,6 @@
 @ECHO OFF
+REM $Id$
+
 SETLOCAL ENABLEDELAYEDEXPANSION
 PUSHD .
 CD /D "D:\Checkouts\loginsystem-rd"
@@ -16,11 +18,13 @@ FOR /F "tokens=1-6 delims=.-/: " %%A IN ("%DATE% %TIME%") DO (
 
 ECHO Id Rev Revision Date LastChangedDate LastChangedRevision Author LastChangedBy HeadURL URL > %TEMP%\SVNKeywords.txt
 
-ECHO Updating LoginSystem-RD
-IF "%1"=="" SVN update .
+IF "%1"=="" (
+	ECHO Updating LoginSystem-RD
+	SVN update .
+)
 
 ECHO Collecting ASP, PHP and SQL filenames.
-FOR /R . %%X in (*.ASP *.PHP *.SQL) DO (
+FOR /R . %%X in (*.ASP *.PHP *.SQL *.BAT *.VB) DO (
 	SET LSRD_Filename=%%~nX
 	IF NOT "!LSRD_Filename:~0,9!"=="entities." (
 		ECHO %%~X >> "%TEMP%\svnxml_%YY%_%MM%_%DD%_%HH%_%II%_%SS%.LST"
@@ -33,4 +37,6 @@ ECHO Setting svn:keywords
 SVN propset svn:keywords -F %TEMP%\SVNKeywords.txt --targets "%TEMP%\svnxml_%YY%_%MM%_%DD%_%HH%_%II%_%SS%.LST" 1>NUL 2>CON
 
 DEL "%TEMP%\svnxml_%YY%_%MM%_%DD%_%HH%_%II%_%SS%.LST
+DEL "%TEMP%\SVNKeywords.txt"
+
 POPD

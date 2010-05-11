@@ -2,20 +2,47 @@ When you create a new file, you will need to set the svn properties.
 
 You can set them globally, but not on a per-project basis which is a pain.
 
-I use the attached files to keep PHPDOC uptodate (SVNKwds.bat and SVNKeywords.txt).
+I've created a standalone batch script to do a lot of the work for you:
 
-I've created a standalone version for loginsystem-rd (LGKwds.bat).
+    lgkwds.bat.
 
-Just edit the 4th line to set the correct location of the svn checkout.
+Just edit the 6th line to set the correct location of the svn checkout.
 
-When setup and ran, run a commit to push the new file properties.
+For example, from 
+
+CD /D "D:\Checkouts\loginsystem-rd"
+
+to
+
+CD /D "Z:\OpenSource\SVN Checkouts\loginsystem-rd"
+
+
+
+When correctly edited and ran, run a commit to push the new file properties.
 
 Only missing entries will be posted.
 
-It will only look as .PHP, .ASP and .SQL files. Other file types can easily be added (HTML, CSS, JS, etc.)
+It will only look as .PHP, .ASP, .SQL and .BAT files. Other file types can
+easily be added (HTML, CSS, JS, etc.)
 
 The files really should be plain text files and allow for the text ...
 
 $Id$
 
 to be included as a comment.
+
+This will be expanded to something like ...
+
+$Id: issue_verification_token.php 310 2010-05-07 03:26:50Z rdivilbiss $
+
+This includes :
+
+The name of the file : issue_verification_token.php
+The SVN revision number : 310
+The zulu date and time of the commit : 2010-05-07 03:26:50Z
+And the person who made the change : rdivilbiss
+
+All changes committed at the same time have the same revision number.
+
+For files with fixed formats or binary files, no editing should take place.
+
