@@ -1,5 +1,5 @@
 <%
-'* alpha 0.2 debug
+'* alpha 0.3 debug
 '* $Id$
 '*******************************************************************************************************************
 '* Page Name: Set New Password
@@ -128,7 +128,7 @@ If resettoken<>"" AND Session("action")="resettoken" then
 			'*******************************************************************************************************************
 			'* The token has expired: show link to Issue Verification Token page
 			'*******************************************************************************************************************
-			message = "<h2>lg_phrase_set_new_password_tken_expired</h2><br><br>"
+			message = "<h2>lg_phrase_set_new_password_token_expired</h2><br><br>"
 			message = message & lg_phrase_contact_webmaster1 & " " & lg_phrase_webmaster_may_be_contacted & lg_webmaster_email_link
 			Session("action")="Error"
 			If lg_debug Then dbMsg=dbMsg&"message="&message&"<br>" & vbLF End If

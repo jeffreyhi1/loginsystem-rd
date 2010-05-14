@@ -5,10 +5,11 @@
 '* 
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
-'*       You must set the database connection details below.
+'*       You must set the database connection details in database.asp.     
 '*
 '* 
-'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+'* Modification: 13 MAY 2010 :: Karol Piczak - translation to Polish
+'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi (pending)
 '* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
 '* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
@@ -28,8 +29,8 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.2 - Danish - ASP
-'*******************************************************************************************************************
+'* Version: alpha 0.3 - Danish - ASP
+'******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
 '******************************************************************************************************************
@@ -44,15 +45,16 @@ Const lg_domain = "www.example.com"
 Const lg_domain_secure = "www.example.com"
 '******************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'*******************************************************************************************************************
+'******************************************************************************************************************
 Const lg_forbidden = "/login-system/forbidden.asp"
 '******************************************************************************************************************
 '* form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'*******************************************************************************************************************
+'******************************************************************************************************************
 Const lg_form_error = "/login-system/form_error.asp"
 '******************************************************************************************************************
 '* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
+Const lg_debug = false
 Const lg_home = "/login-system/default.asp"
 Const lg_log_logins = true
 Const lg_logged_out_page = "loggedout.asp"
@@ -68,108 +70,39 @@ Const lg_set_new_password_page = "set_new_password.asp"
 Const lg_success_page = "login_success.asp"
 Const lg_useCAPTCHA = true
 Const lg_useSSL = false
-Const lg_debug = false
 Const lg_verify_page = "register_verify.asp"
-Const lg_webmaster_email = "Webmaster <webmaster@example.com>"
-Const lg_webmaster_email_link  "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
+Const lg_webmaster_email = "webmaster@example.com"
+Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
+
 '*********************************************************************
 '* Login system database globals
 '*********************************************************************
-'Const lg_database = "access"
 'Const lg_database = "mysql"
+'Const lg_database = "access"
 'Const lg_database = "mssql"
 
-'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
-'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
 'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
 
-Const lg_database_userid = ""
 Const lg_database_password = ""
+Const lg_database_userid = ""
 
 Function dbNow
-	'MS Access & MS SQL Server datetime fileds accept ASP now
-	'MySql requires YYYY-MM-DD HH:MM:SS
-	Dim dt
-	dt = now
-	If lg_database = "mysql" Then
-		dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
-	Else
-		dbNow = dt
-	End If	
+    'MS Access & MS SQL Server datetime fileds accept ASP now
+    'MySql requires YYYY-MM-DD HH:MM:SS
+    Dim dt
+    dt = now
+    If lg_database = "mysql" Then
+        dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
+    Else
+        dbNow = dt
+    End If
 End Function
-
 
 '*********************************************************************
 '* Login system language globals
-'**********************************************************************
-Const lg_register_button_text = "Registrer"
-Const lg_term_at = "at"
-Const lg_term_cancel = "Annuller konto"
-Const lg_term_cancel_account = "Annuller konto"
-Const lg_term_change_password = "Skift adgangskode"
-Const lg_term_change_password_button_text = "Skift adgangskode"
-Const lg_term_checkToken = "checkToken"
-Const lg_term_city = "City"
-Const lg_term_confirm = "Bekræft kodeord"
-Const lg_term_contact = "Contact"
-Const lg_term_contact_form = "Kontakt Form"
-Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""en-US"" />"
-Const lg_term_country = "Land"
-Const lg_term_current_password = "Nuværende adgangskode"
-Const lg_term_delete_account = "Slet konto"
-Const lg_term_do_registration = "doRegistration"
-Const lg_term_email = "Email"
-Const lg_term_enter_information = "Indtast Information"
-Const lg_term_error_string = "getPasshash"
-Const lg_term_example = "Eksempel"
-Const lg_term_forbidden = "Forbidden"
-Const lg_term_forbidden = "Forbidden"
-Const lg_term_form_error = "Form Error"
-Const lg_term_from_error = "Form Error"
-Const lg_term_get_name = "getName"
-Const lg_term_get_oldpassword = "getOldPassword"
-Const lg_term_guest = "Gæst"
-Const lg_term_home = "Home"
-Const lg_term_immediately = "med det samme!"
-Const lg_term_ip = "IP"
-Const lg_term_issue_verification_token = "Udsted Verifikation Token"
-Const lg_term_language = "<meta name="language" content="en-US" />"
-Const lg_term_log_string = "logLogin"
-Const lg_term_logged_out = "Logget ud"
-Const lg_term_login = "Log ind"
-Const lg_term_login_success = "Succes"
-Const lg_term_name = "Navn"
-Const lg_term_new_password = "Nyt Password"
-Const lg_term_optional = "Frivilligt"
-Const lg_term_or = "eller"
-Const lg_term_password = "Password"
-Const lg_term_please_login = "Venligst login"
-Const lg_term_please_register = "Tilmeld dig venligst"
-Const lg_term_project_home_link = "<a title=""Login System on Google Code"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
-Const lg_term_recover_password = "Genopret Password"
-Const lg_term_region = "Region"
-Const lg_term_register = "Registrer"
-Const lg_term_register_confirmation = "Registreringsbekræftelse"
-Const lg_term_register_delete_enter_email = "Indtast e-mail"
-Const lg_term_registration = "Registrering"
-Const lg_term_registration_thankyou = "Tak for din registrering."
-Const lg_term_registration_verification = "Registreringsverifikation"
-Const lg_term_remember = true
-Const lg_term_rememberme = "Husk mig"
-Const lg_term_remove_registration = "Fjern registrering"
-Const lg_term_required = "nødvendigt"
-Const lg_term_reset_password = "Password Reset"
-Const lg_term_set_new_password = "Indtast en ny adgangskode"
-Const lg_term_set_newpassword = "changePassword"
-Const lg_term_submit = "Send"
-Const lg_term_to = "Til"
-Const lg_term_useragent = "UserAgent"
-Const lg_term_userid = "Bruger Identifikation"
-Const lg_term_via_email = "via email på"
-Const lg_term_webloginproject_link = "<a title=""Web Login Project"" href=""http://www.webloginproject.com/index.php"">Web Login Project</a>"
-Const lg_term_website_address = "Website adresse"
-Const lg_term_welcome = "Velkommen"
-Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""en"" lang=""en"">"
+'*********************************************************************
 Const lg_login_button_text = "Log ind"
 Const lg_phrase_attention_webmaster = "Webmaster bemærk venligst"
 Const lg_phrase_cancel_account_cacelled = "Denne konto er blevet annuleret."
@@ -189,6 +122,7 @@ Const lg_phrase_delete_already_verified = "Denne konto er allerede blevet verifi
 Const lg_phrase_delete_deleted = "Kontoen er blevet slettet"
 Const lg_phrase_email_empty = "Email feltet er tomt, men er påkrævet. Indtast din e-mail-adresse."
 Const lg_phrase_email_title = "Indtast din e-mail adresse. Dette felt er påkrævet."
+Const lg_phrase_enter_set_new_password_token = "Indtast sat nye password token"
 Const lg_phrase_enter_unlock_code = "Indtast din Unlock kode"
 Const lg_phrase_forbidden_body = "<p><h1>You do not have access to that resource.</h1></p><p>Contact the webmaster at:"
 Const lg_phrase_form_error_cookie = "Cookies are required for login. Please ensure your browser accepts cookies from this site."
@@ -261,4 +195,72 @@ Const lg_phrase_verify_newtoken = "Klik her for at generere en ny låse-kode."
 Const lg_phrase_verify_verified = "Du har bekræftet din e-mail-adresse."
 Const lg_phrase_webmaster_may_be_contacted = "Webmasteren kan kontaktes via e-mail via dette link:"
 Const lg_phrase_website_title = "Indtast dit website adresse."
+Const lg_register_button_text = "Registrer"
+Const lg_term_at = "at"
+Const lg_term_cancel = "Annuller konto"
+Const lg_term_cancel_account = "Annuller konto"
+Const lg_term_change_password = "Skift adgangskode"
+Const lg_term_change_password_button_text = "Skift adgangskode"
+Const lg_term_checkToken = "checkToken"
+Const lg_term_city = "City"
+Const lg_term_confirm = "Bekræft kodeord"
+Const lg_term_contact = "Contact"
+Const lg_term_contact_form = "Kontakt Form"
+Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""da-DK"" />"
+Const lg_term_country = "Land"
+Const lg_term_current_password = "Nuværende adgangskode"
+Const lg_term_delete_account = "Slet konto"
+Const lg_term_do_registration = "doRegistration"
+Const lg_term_email = "Email"
+Const lg_term_enter_information = "Indtast Information"
+Const lg_term_error_string = "getPasshash"
+Const lg_term_example = "Eksempel"
+Const lg_term_forbidden = "Forbidden"
+Const lg_term_form_error = "Form Error"
+Const lg_term_get_name = "getName"
+Const lg_term_get_oldpassword = "getOldPassword"
+Const lg_term_guest = "Gæst"
+Const lg_term_home = "Home"
+Const lg_term_immediately = "med det samme!"
+Const lg_term_ip = "IP"
+Const lg_term_issue_verification_token = "Udsted Verifikation Token"
+Const lg_term_language = "<meta name=""language"" content=""da-DK"" />"
+Const lg_term_log_out = "Log ud"
+Const lg_term_log_string = "logLogin"
+Const lg_term_logged_out = "Logget ud"
+Const lg_term_login = "Log ind"
+Const lg_term_login_success = "Succes"
+Const lg_term_name = "Navn"
+Const lg_term_new_password = "Nyt Password"
+Const lg_term_optional = "Frivilligt"
+Const lg_term_or = "eller"
+Const lg_term_password = "Password"
+Const lg_term_please_login = "Venligst login"
+Const lg_term_please_register = "Tilmeld dig venligst"
+Const lg_term_project_home_link = "<a title=""Login System på Google Code"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
+Const lg_term_recover_password = "Genopret Password"
+Const lg_term_region = "Region"
+Const lg_term_register = "Registrer"
+Const lg_term_register_confirmation = "Registreringsbekræftelse"
+Const lg_term_register_delete_enter_email = "Indtast e-mail"
+Const lg_term_registration = "Registrering"
+Const lg_term_registration_thankyou = "Tak for din registrering."
+Const lg_term_registration_verification = "Registreringsverifikation"
+Const lg_term_remember = true
+Const lg_term_rememberme = "Husk mig"
+Const lg_term_remove_registration = "Fjern registrering"
+Const lg_term_required = "nødvendigt"
+Const lg_term_reset_password = "Password Reset"
+Const lg_term_set_new_password = "Indtast en ny adgangskode"
+Const lg_term_set_newpassword = "changePassword"
+Const lg_term_submit = "Send"
+Const lg_term_to = "Til"
+Const lg_term_useragent = "UserAgent"
+Const lg_term_userid = "Bruger Identifikation"
+Const lg_term_via_email = "via email på"
+Const lg_term_webloginproject_link = "<a title=""Web Login Project"" href=""http://www.webloginproject.com/index.php"">Web Login Project</a>"
+Const lg_term_website = "Website"
+Const lg_term_website_address = "Website adresse"
+Const lg_term_welcome = "Velkommen"
+Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""da"" lang=""da"">"
 %>
