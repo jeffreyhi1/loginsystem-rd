@@ -1,14 +1,18 @@
 ﻿<%
 '* $Id$
-'*******************************************************************************************************************
+'********************************************************************************************************************
 '* Login Globals - ASP
 '* 
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
-'*       You must set the database connection details below.
+'*       You must set the database connection details in database.asp.     
 '*
-'* Modification: ?? ??? 2010 :: Saurabh - translation t'o Hindi
+'* 
+'* Modification: 13 MAY 2010 :: Karol Piczak - translation to Polish
+'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi (pending)
+'* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+'* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 '* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
 '*                                              loginGlobals.asp, and corrected paths in loginGlobals.asp
 '* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
@@ -25,33 +29,34 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.2 - Hindi - ASP
-'*******************************************************************************************************************
+'* Version: alpha 0.3 - Hindi - ASP
+'******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
 '******************************************************************************************************************
 Const lg_cancel_account_page = "cancel_account.asp"
 Const lg_change_password_page = "change_password.asp"
-'*****************************************************************************************************************
-* contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
+'******************************************************************************************************************
+'* contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
 Const lg_contact_form = "/login-system/contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 Const lg_domain = "www.example.com"
 Const lg_domain_secure = "www.example.com"
-'*****************************************************************************************************************
+'******************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
 Const lg_forbidden = "/login-system/forbidden.asp"
-'*****************************************************************************************************************
+'******************************************************************************************************************
 '* form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
 Const lg_form_error = "/login-system/form_error.asp"
-'*****************************************************************************************************************
+'******************************************************************************************************************
 '* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
-Const lg_home = "/login-system/index.asp"
-Const lg_log_logins", true
+Const lg_debug = false
+Const lg_home = "/login-system/default.asp"
+Const lg_log_logins = true
 Const lg_logged_out_page = "loggedout.asp"
 Const lg_login_attempts = 5
 Const lg_loginPage = "login.asp"
@@ -64,110 +69,41 @@ Const lg_register_page = "register.asp"
 Const lg_set_new_password_page = "set_new_password.asp"
 Const lg_success_page = "login_success.asp"
 Const lg_useCAPTCHA = true
-Const lg_useSSL = true
-Const lg_debug = false
+Const lg_useSSL = false
 Const lg_verify_page = "register_verify.asp"
 Const lg_webmaster_email = "webmaster@example.com"
-Const lg_webmaster_email_link = '<a href="mailto:webmaster@example.com">Webmaster</a>'
+Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
 
 '*********************************************************************
 '* Login system database globals
-'**********************************************************************
-'Const lg_database = "access"
+'*********************************************************************
 'Const lg_database = "mysql"
+'Const lg_database = "access"
 'Const lg_database = "mssql"
 
-'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
-'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
 'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
 
-Const lg_database_userid = ""
 Const lg_database_password = ""
+Const lg_database_userid = ""
 
 Function dbNow
-	'MS Access & MS SQL Server datetime fileds accept ASP now
-	'MySql requires YYYY-MM-DD HH:MM:SS
-	Dim dt
-	dt = now
-	If lg_database = "mysql" Then
-		dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
-	Else
-		dbNow = dt
-	End If	
+    'MS Access & MS SQL Server datetime fileds accept ASP now
+    'MySql requires YYYY-MM-DD HH:MM:SS
+    Dim dt
+    dt = now
+    If lg_database = "mysql" Then
+        dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
+    Else
+        dbNow = dt
+    End If
 End Function
 
 '*********************************************************************
 '* Login system language globals
-'**********************************************************************
+'*********************************************************************
 Const lg_login_button_text = "लॉग इन"
-Const lg_term_at = "पर"
-Const lg_term_cancel = "खाता रद्द करें"
-Const lg_term_cancel_account = "खाता रद्द करें"
-Const lg_term_change_password = "पासवर्ड बदलें"
-Const lg_term_change_password_button_text = "पासवर्ड बदलें"
-Const lg_term_checkToken = "checkToken"
-Const lg_term_city = "शहर"
-Const lg_term_confirm = "पासवर्ड की पुष्टि करें"
-Const lg_term_contact = "संपर्क"
-Const lg_term_contact_form = "संपर्क प्रपत्र"
-Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""hi-IN"" />"
-Const lg_term_country = "देश"
-Const lg_term_current_password = "वर्तमान पासवर्ड"
-Const lg_term_delete_account = "खाता हटाना"
-Const lg_term_do_registration = "doRegistration"
-Const lg_term_email = "ईमेल"
-Const lg_term_enter_information = "जानकारी दर्ज करें"
-Const lg_term_error_string = "getPasshash"
-Const lg_term_example = "उदाहरण"
-Const lg_term_forbidden = "निषिद्ध"
-Const lg_term_form_error = "फार्म में त्रुटि"
-Const lg_term_from_error = "फार्म में त्रुटि"
-Const lg_term_get_name = "getName"
-Const lg_term_get_oldpassword = "getOldPassword"
-Const lg_term_guest = "अतिथि"
-Const lg_term_home = "घर"
-Const lg_term_immediately = "तुरंत"
-Const lg_term_ip = "IP"
-Const lg_term_issue_verification_token = "मुद्दा टोकन सत्यापन"
-Const lg_term_language = "<meta name="language" content="hi-IN" />"
-Const lg_term_log_out = "बाहर प्रवेश करें"
-Const lg_term_log_string = "logLogin"
-Const lg_term_logged_out = "लॉग आउट"
-Const lg_term_login = "लॉग इन"
-Const lg_term_login_success = "सफलता"
-Const lg_term_name = "नाम"
-Const lg_term_new_password = "नया पासवर्ड"
-Const lg_term_optional = "ऐच्छिक"
-Const lg_term_or = "या"
-Const lg_term_password = "पासवर्ड"
-Const lg_term_please_login = "कृपया लॉगिन"
-Const lg_term_please_register = "कृपया रजिस्टर"
-Const lg_term_project_home_link = "<a title=""Google कोड पर प्रवेश प्रणाली"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
-Const lg_term_recover_password = "पुनर्प्राप्त पासवर्ड"
-Const lg_term_region = "क्षेत्र"
-Const lg_term_register = "रजिस्टर"
-Const lg_term_register_confirmation = "पंजीकरण की पुष्टि"
-Const lg_term_register_delete_enter_email = "ईमेल दर्ज करें"
-Const lg_term_registration = "पंजीकरण"
-Const lg_term_registration_thankyou = "आप पंजीकरण के लिए धन्यवाद"
-Const lg_term_registration_verification = "पंजीकरण सत्यापन"
-Const lg_term_remember = true
-Const lg_term_rememberme = "मुझे याद रखें"
-Const lg_term_remove_registration = "निकालें पंजीकरण"
-Const lg_term_required = "अपेक्षित"
-Const lg_term_reset_password = "पासवर्ड रीसेट"
-Const lg_term_set_new_password = "नया पासवर्ड सेट करें"
-Const lg_term_set_newpassword = "changePassword"
-Const lg_term_submit = "प्रस्तुत करना"
-Const lg_term_to = "से"
-Const lg_term_useragent = "Useragent"
-Const lg_term_userid = "प्रयोक्ता आईडी"
-Const lg_term_via_email = "ईमेल द्वारा पर"
-Const lg_term_webloginproject_link = "<a title=""वेब लॉगिन परियोजना"" href=""http://www.webloginproject.com/index.php"">वेब लॉगिन परियोजना</a>"
-Const lg_term_website = "वेबसाइट"
-Const lg_term_website_address = "वेबसाइट का पता"
-Const lg_term_welcome = "आपका स्वागत है"
-Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""hi"" lang=""hi"">"
 Const lg_phrase_attention_webmaster = "वेबमास्टर ध्यान"
 Const lg_phrase_cancel_account_canceled = "खाता रद्द कर दिया गया है"
 Const lg_phrase_cancel_account_error = "वहाँ एक अप्रत्याशित अपना खाता रद्द त्रुटि थी. कृपया वेबमास्टर से संपर्क"
@@ -260,4 +196,71 @@ Const lg_phrase_verify_verified = "आप अपने ईमेल पते �
 Const lg_phrase_webmaster_may_be_contacted = "वेबमास्टर ईमेल द्वारा संपर्क किया जा सकता है इस लिंक का उपयोग: "
 Const lg_phrase_website_title = "कृपया अपनी वेबसाइट के पते दर्ज करें."
 Const lg_register_button_text = "रजिस्टर"
+Const lg_term_at = "पर"
+Const lg_term_cancel = "खाता रद्द करें"
+Const lg_term_cancel_account = "खाता रद्द करें"
+Const lg_term_change_password = "पासवर्ड बदलें"
+Const lg_term_change_password_button_text = "पासवर्ड बदलें"
+Const lg_term_checkToken = "checkToken"
+Const lg_term_city = "शहर"
+Const lg_term_confirm = "पासवर्ड की पुष्टि करें"
+Const lg_term_contact = "संपर्क"
+Const lg_term_contact_form = "संपर्क प्रपत्र"
+Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""hi-IN"" />"
+Const lg_term_country = "देश"
+Const lg_term_current_password = "वर्तमान पासवर्ड"
+Const lg_term_delete_account = "खाता हटाना"
+Const lg_term_do_registration = "doRegistration"
+Const lg_term_email = "ईमेल"
+Const lg_term_enter_information = "जानकारी दर्ज करें"
+Const lg_term_error_string = "getPasshash"
+Const lg_term_example = "उदाहरण"
+Const lg_term_forbidden = "निषिद्ध"
+Const lg_term_form_error = "फार्म में त्रुटि"
+Const lg_term_get_name = "getName"
+Const lg_term_get_oldpassword = "getOldPassword"
+Const lg_term_guest = "अतिथि"
+Const lg_term_home = "घर"
+Const lg_term_immediately = "तुरंत"
+Const lg_term_ip = "IP"
+Const lg_term_issue_verification_token = "मुद्दा टोकन सत्यापन"
+Const lg_term_language = "<meta name=""language"" content=""hi-IN"" />"
+Const lg_term_log_out = "बाहर प्रवेश करें"
+Const lg_term_log_string = "logLogin"
+Const lg_term_logged_out = "लॉग आउट"
+Const lg_term_login = "लॉग इन"
+Const lg_term_login_success = "सफलता"
+Const lg_term_name = "नाम"
+Const lg_term_new_password = "नया पासवर्ड"
+Const lg_term_optional = "ऐच्छिक"
+Const lg_term_or = "या"
+Const lg_term_password = "पासवर्ड"
+Const lg_term_please_login = "कृपया लॉगिन"
+Const lg_term_please_register = "कृपया रजिस्टर"
+Const lg_term_project_home_link = "<a title=""Google कोड पर प्रवेश प्रणाली"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
+Const lg_term_recover_password = "पुनर्प्राप्त पासवर्ड"
+Const lg_term_region = "क्षेत्र"
+Const lg_term_register = "रजिस्टर"
+Const lg_term_register_confirmation = "पंजीकरण की पुष्टि"
+Const lg_term_register_delete_enter_email = "ईमेल दर्ज करें"
+Const lg_term_registration = "पंजीकरण"
+Const lg_term_registration_thankyou = "आप पंजीकरण के लिए धन्यवाद"
+Const lg_term_registration_verification = "पंजीकरण सत्यापन"
+Const lg_term_remember = true
+Const lg_term_rememberme = "मुझे याद रखें"
+Const lg_term_remove_registration = "निकालें पंजीकरण"
+Const lg_term_required = "अपेक्षित"
+Const lg_term_reset_password = "पासवर्ड रीसेट"
+Const lg_term_set_new_password = "नया पासवर्ड सेट करें"
+Const lg_term_set_newpassword = "changePassword"
+Const lg_term_submit = "प्रस्तुत करना"
+Const lg_term_to = "से"
+Const lg_term_useragent = "Useragent"
+Const lg_term_userid = "प्रयोक्ता आईडी"
+Const lg_term_via_email = "ईमेल द्वारा पर"
+Const lg_term_webloginproject_link = "<a title=""वेब लॉगिन परियोजना"" href=""http://www.webloginproject.com/index.php"">वेब लॉगिन परियोजना</a>"
+Const lg_term_website = "वेबसाइट"
+Const lg_term_website_address = "वेबसाइट का पता"
+Const lg_term_welcome = "आपका स्वागत है"
+Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""hi"" lang=""hi"">"
 %>

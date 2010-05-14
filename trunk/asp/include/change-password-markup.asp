@@ -1,5 +1,5 @@
 <%
-'* alpha 0.2
+'* alpha 0.3
 '* $Id$
 %>
           <!-- XHTML 1.1 Strict -->

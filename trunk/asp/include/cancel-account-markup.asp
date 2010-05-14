@@ -1,9 +1,9 @@
 <%
-'* alpha 0.2
+'* alpha 0.3
 '* $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.2 -->
+			<!-- alpha 0.3 -->
 			<div id="login-system">
 			<h1><%=lg_term_cancel_account%></h1>
 			<% If message <> lg_phrase_cancel_account_canceled Then %>
