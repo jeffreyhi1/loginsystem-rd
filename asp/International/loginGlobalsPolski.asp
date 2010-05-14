@@ -1,4 +1,4 @@
-﻿<%
+<%
 * $Id: loginGlobalsPolski.asp 297 2010-05-05 22:40:09Z rdivilbiss $
 '*******************************************************************************************************************
 '* Login Globals - ASP
@@ -216,7 +216,7 @@ Const lg_term_enter_information = "Wprowadź dane"
 Const lg_term_error_string = "getPasshash"
 Const lg_term_example = "Przykład"
 Const lg_term_forbidden = "Dostęp zabroniony"
-Const lg_term_from_error = "Błąd formularza"
+Const lg_term_form_error = "Błąd formularza"
 Const lg_term_get_name = "getName"
 Const lg_term_get_oldpassword = "getOldPassword"
 Const lg_term_guest = "Gościu!"
