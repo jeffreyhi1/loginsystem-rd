@@ -3,7 +3,7 @@
 /*******************************************************************************************************************
 * Page Name: Set New Password
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.2 debug Debug
+* Version:  alpha 0.3 debug Debug
 * On Entry: Expecting reset token, account is locked
 * Input   : current password, new password, confirm new password
 * Output  : message

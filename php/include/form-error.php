@@ -2,7 +2,7 @@
 // $Id$
 /**
 * Login System Form Error include
-* 27 APR 2010 Version alpha 0.2 debug
+* 27 APR 2010 Version alpha 0.3 debug
 */
 
 $page="";

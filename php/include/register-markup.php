@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.2 -->
+			<!-- alpha 0.3 -->
 			<div id="login-system">
     		<?PHP if ($numAffected!=1) { ?>
     		<div id="message"><?PHP echo $message; ?></div>

@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.2 debug -->
+			<!-- alpha 0.3 debug -->
 			<div id="login-system">
 			<h1><?PHP echo lg_term_change_password; ?></h1>
 			<h2><?PHP echo $_SESSION["name"] ?></h2>
