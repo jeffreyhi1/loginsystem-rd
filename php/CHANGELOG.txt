@@ -1,0 +1,5 @@
+CHANGE LOG
+alpha 0.2 to alpha 0.3
+two language constants were not spelled correctly.
+langage files and code were corrected to the proper spellings.
+Added the Polish language translation.
