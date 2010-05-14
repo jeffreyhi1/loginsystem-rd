@@ -5,15 +5,17 @@
 '* 
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
-'*       You must set the database connection details below.
+'*       You must set the database connection details in database.asp.     
 '*
-'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+'* 
+'* Modification: 13 MAY 2010 :: Karol Piczak - translation to Polish
+'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi (pending)
 '* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
 '* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 '* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
-'*                                              loginGlobals.php, and corrected paths in loginGlobals.php
-'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting 
+'*                                              loginGlobals.asp, and corrected paths in loginGlobals.asp
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
@@ -27,8 +29,8 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.2 - Swedish - ASP
-'*******************************************************************************************************************
+* Version: alpha 0.3 - Swedish/Svenska - ASP
+'******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
 '******************************************************************************************************************
@@ -52,6 +54,7 @@ Const lg_form_error = "/login-system/form_error.asp"
 '******************************************************************************************************************
 '* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 '******************************************************************************************************************
+Const lg_debug = false
 Const lg_home = "/login-system/default.asp"
 Const lg_log_logins = true
 Const lg_logged_out_page = "loggedout.asp"
@@ -67,108 +70,40 @@ Const lg_set_new_password_page = "set_new_password.asp"
 Const lg_success_page = "login_success.asp"
 Const lg_useCAPTCHA = true
 Const lg_useSSL = false
-Const lg_debug = false
 Const lg_verify_page = "register_verify.asp"
-Const lg_webmaster_email = "webmaster@www.example.com"
-Const lg_webmaster_email_link = "<a href=""mailto:webmaster@www.example.com"">Webmaster</a>"
+Const lg_webmaster_email = "webmaster@example.com"
+Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
 
-'**********************************************************************
+'*********************************************************************
 '* Login system database globals
-'**********************************************************************
-'Const lg_database = "access"
+'*********************************************************************
 'Const lg_database = "mysql"
+'Const lg_database = "access"
 'Const lg_database = "mssql"
 
-'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
-'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
 'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
 
-Const lg_database_userid = ""
 Const lg_database_password = ""
+Const lg_database_userid = ""
 
 Function dbNow
-	'MS Access & MS SQL Server datetime fileds accept ASP now
-	'MySql requires YYYY-MM-DD HH:MM:SS
-	Dim dt
-	dt = now
-	If lg_database = "mysql" Then
-		dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
-	Else
-		dbNow = dt
-	End If	
+    'MS Access & MS SQL Server datetime fileds accept ASP now
+    'MySql requires YYYY-MM-DD HH:MM:SS
+    Dim dt
+    dt = now
+    If lg_database = "mysql" Then
+        dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
+    Else
+        dbNow = dt
+    End If
 End Function
 
-'**********************************************************************
+'*********************************************************************
 '* Login system language globals
-'**********************************************************************
+'*********************************************************************
 Const lg_login_button_text = "Logga in"
-Const lg_term_at = "på"
-Const lg_term_cancel = "Avsluta konto"
-Const lg_term_cancel_account = "Avsluta konto"
-Const lg_term_change_password = "Ändra lösenord"
-Const lg_term_change_password_button_text = "Ändra lösenord"
-Const lg_term_checkToken = "checkToken"
-Const lg_term_city = "Stad"
-Const lg_term_confirm = "Bekräfta lösenord"
-Const lg_term_contact = "Kontakt"
-Const lg_term_contact_form = "Kontaktformulär"
-Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""sv-SE"" />"
-Const lg_term_country = "Land"
-Const lg_term_current_password = "Nuvarande lösenord"
-Const lg_term_delete_account = "Ta bort konto"
-Const lg_term_do_registration = "doRegistration"
-Const lg_term_email = "E-post"
-Const lg_term_enter_information = "Ange information"
-Const lg_term_error_string = "getPasshash"
-Const lg_term_example = "Exempel"
-Const lg_term_forbidden = "Förbjudna"
-Const lg_term_form_error = "Form Fel"
-Const lg_term_form_error = "Form Fel"
-Const lg_term_get_name = "getName"
-Const lg_term_get_oldpassword = "getOldPassword"
-Const lg_term_guest = "Gäst."
-Const lg_term_home = "Hem"
-Const lg_term_immediately = "omedelbart!"
-Const lg_term_ip = "IP"
-Const lg_term_issue_verification_token = "Fråga identifieringskod"
-Const lg_term_language = "<meta name="language" content="sv-SE" />"
-Const lg_term_log_out = "Logga ut"
-Const lg_term_log_string = "logLogin"
-Const lg_term_logged_out = "Utloggad"
-Const lg_term_login = "Logga in"
-Const lg_term_login_success = "Framgång"
-Const lg_term_name = "Namn"
-Const lg_term_new_password = "Nytt lösenord"
-Const lg_term_optional = "Valfritt"
-Const lg_term_or = "eller"
-Const lg_term_password = "lösenord"
-Const lg_term_please_login = "Vänligen Logga in"
-Const lg_term_please_register = "Vänligen registrera"
-Const lg_term_project_home_link = "<a title=""Logga System på Google Code"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
-Const lg_term_recover_password = "Återställ lösenord"
-Const lg_term_region = "region"
-Const lg_term_register = "Registrera dig"
-Const lg_term_register_confirmation = "bekräftelse på registrering"
-Const lg_term_register_delete_enter_email = "Ange Email"
-Const lg_term_registration = "Registrering"
-Const lg_term_registration_thankyou = "Tack för din registrering."
-Const lg_term_registration_verification = "Registrering Verification"
-Const lg_term_remember = true
-Const lg_term_rememberme = "Kom ihåg mig"
-Const lg_term_remove_registration = "Ta bort Registrering"
-Const lg_term_required = "obligatoriskt"
-Const lg_term_reset_password = "Återställ lösenord"
-Const lg_term_set_new_password = "ange ett nytt lösenord"
-Const lg_term_set_newpassword = "changePassword"
-Const lg_term_submit = "Skicka"
-Const lg_term_to = "till"
-Const lg_term_useragent = "useragent"
-Const lg_term_userid = "ID"
-Const lg_term_via_email = "via e-post"
-Const lg_term_webloginproject_link = "<a title=""Webb Logga Project"" href=""http://www.webloginproject.com/index.php"">Webb Logga Project</a>"
-Const lg_term_website_address = "Webbsida adress"
-Const lg_term_welcome = "Välkommen"
-Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""sv"" lang=""sv"">"
 Const lg_phrase_attention_webmaster = "Uppmärksam Webmaster"
 Const lg_phrase_cancel_account_canceled = "Kontot har är annullerat."
 Const lg_phrase_cancel_account_error = "Det var ett oväntat fel när kontot blev avslutat. Vänligen kontakta webmaster"
@@ -187,6 +122,7 @@ Const lg_phrase_delete_already_verified = "kontot är redan verificerad och kunde
 Const lg_phrase_delete_deleted = "Kontot har raderats"
 Const lg_phrase_email_empty = "The E-postadres fältet är tomt, men obligatoriskt. Ange din e-postadress."
 Const lg_phrase_email_title = "Ange din E-postadress. Detta fält är obligatoriskt."
+Const lg_phrase_enter_set_new_password_token = "Ange som nytt lösenord token"
 Const lg_phrase_enter_unlock_code = "Ange upplåsningskoden"
 Const lg_phrase_forbidden_body = "<p><h1>Du har inte tillgång till denna resurs.</h1></p><p>Kontakta webmaster på:"
 Const lg_phrase_form_error_cookie = "Cookies krävs för inloggning. Se till att din webbläsare accepterar cookies från denna webbplats."
@@ -259,5 +195,72 @@ Const lg_phrase_verify_newtoken = "Klicka här för att skapa en ny upplåsningskod
 Const lg_phrase_verify_verified = "Du har bekräftat din e-postadress."
 Const lg_phrase_webmaster_may_be_contacted = "kan Webmastern bli kontaktad via E-post via denna länk:"
 Const lg_phrase_website_title = "Ange webbplatsens adress."
-Const lg_register_button_text = "Registrera dig"
+Const lg_register_button_text = "Registrera dig"a
+Const lg_term_at = "på"
+Const lg_term_cancel = "Avsluta konto"
+Const lg_term_cancel_account = "Avsluta konto"
+Const lg_term_change_password = "Ändra lösenord"
+Const lg_term_change_password_button_text = "Ändra lösenord"
+Const lg_term_checkToken = "checkToken"
+Const lg_term_city = "Stad"
+Const lg_term_confirm = "Bekräfta lösenord"
+Const lg_term_contact = "Kontakt"
+Const lg_term_contact_form = "Kontaktformulär"
+Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""sv-SE"" />"
+Const lg_term_country = "Land"
+Const lg_term_current_password = "Nuvarande lösenord"
+Const lg_term_delete_account = "Ta bort konto"
+Const lg_term_do_registration = "doRegistration"
+Const lg_term_email = "E-post"
+Const lg_term_enter_information = "Ange information"
+Const lg_term_error_string = "getPasshash"
+Const lg_term_example = "Exempel"
+Const lg_term_forbidden = "Förbjudna"
+Const lg_term_form_error = "Form Fel"
+Const lg_term_get_name = "getName"
+Const lg_term_get_oldpassword = "getOldPassword"
+Const lg_term_guest = "Gäst."
+Const lg_term_home = "Hem"
+Const lg_term_immediately = "omedelbart!"
+Const lg_term_ip = "IP"
+Const lg_term_issue_verification_token = "Fråga identifieringskod"
+Const lg_term_language = "<meta name=""language"" content=""sv-SE"" />"
+Const lg_term_log_out = "Logga ut"
+Const lg_term_log_string = "logLogin"
+Const lg_term_logged_out = "Utloggad"
+Const lg_term_login = "Logga in"
+Const lg_term_login_success = "Framgång"
+Const lg_term_name = "Namn"
+Const lg_term_new_password = "Nytt lösenord"
+Const lg_term_optional = "Valfritt"
+Const lg_term_or = "eller"
+Const lg_term_password = "lösenord"
+Const lg_term_please_login = "Vänligen Logga in"
+Const lg_term_please_register = "Vänligen registrera"
+Const lg_term_project_home_link = "<a title=""Logga System på Google Code"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
+Const lg_term_recover_password = "Återställ lösenord"
+Const lg_term_region = "region"
+Const lg_term_register = "Registrera dig"
+Const lg_term_register_confirmation = "bekräftelse på registrering"
+Const lg_term_register_delete_enter_email = "Ange Email"
+Const lg_term_registration = "Registrering"
+Const lg_term_registration_thankyou = "Tack för din registrering."
+Const lg_term_registration_verification = "Registrering Verification"
+Const lg_term_remember = true
+Const lg_term_rememberme = "Kom ihåg mig"
+Const lg_term_remove_registration = "Ta bort Registrering"
+Const lg_term_required = "obligatoriskt"
+Const lg_term_reset_password = "Återställ lösenord"
+Const lg_term_set_new_password = "ange ett nytt lösenord"
+Const lg_term_set_newpassword = "changePassword"
+Const lg_term_submit = "Skicka"
+Const lg_term_to = "till"
+Const lg_term_useragent = "useragent"
+Const lg_term_userid = "ID"
+Const lg_term_via_email = "via e-post"
+Const lg_term_webloginproject_link = "<a title=""Webb Logga Project"" href=""http://www.webloginproject.com/index.php"">Webb Logga Project</a>"
+Const lg_term_website = "Webbsida"
+Const lg_term_website_address = "Webbsida adress"
+Const lg_term_welcome = "Välkommen"
+Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""sv"" lang=""sv"">"
 %>

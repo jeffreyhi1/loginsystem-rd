@@ -1,19 +1,21 @@
 ﻿<%
-'* $Id$
-'*******************************************************************************************************************
+* $Id$
+'********************************************************************************************************************
 '* Login Globals - ASP
 '* 
 '* NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 '*       You must set the webmaster e-mail addresses.
-'*       You must set the database connection details below.
+'*       You must set the database connection details in database.asp.     
+'*
 '* 
-'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+'* Modification: 13 MAY 2010 :: Karol Piczak - translation to Polish
+'* Modification: ?? ??? 2010 :: Saurabh - translation to Hindi (pending)
 '* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 '* Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
 '* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 '* Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
-'*                                              loginGlobals.php, and corrected paths in loginGlobals.php
-'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting 
+'*                                              loginGlobals.asp, and corrected paths in loginGlobals.asp
+'* Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
 '* Modification: 09 APR 2010 :: Rod Divilbiss - Machine Translation to Hindi
 '* Modification: 05 APR 2010 :: mplugjan - translation to Swedish
 '* Modification: 02 APR 2010 :: Rod Divilbiss - Spelling errors corrected.
@@ -22,36 +24,37 @@
 '* Modification: 28 MAR 2010 :: Jürgen Kraus - translated to German
 '* Modification: 28 MAR 2010 :: Cam Van T Divilbiss - translated to Vietnamese
 '* Modification: 11 FEB 2010 :: Rod Divilbiss - recover password Constants added.
-'* Modification: 07 FEB 2010 :: VGR - translation to French/Francais
+'* Modification: 07 FEB 2010 :: VGR - translation to French
 '* Modification: 07 FEB 2010 :: Rod Divilbiss - added MS SQL and MySql Constants.
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.2 - French - ASP
-'*******************************************************************************************************************
+* Version: alpha 0.3 - French/Français - ASP
+'******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
 '******************************************************************************************************************
 Const lg_cancel_account_page = "cancel_account.asp"
 Const lg_change_password_page = "change_password.asp"
-'*****************************************************************************************************************
+'******************************************************************************************************************
 '* contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'*****************************************************************************************************************
+'******************************************************************************************************************
 Const lg_contact_form = "/login-system/contact.asp"
 Const lg_copyright = "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com"
 Const lg_domain = "www.example.com"
 Const lg_domain_secure = "www.example.com"
-'*****************************************************************************************************************
+'******************************************************************************************************************
 '* forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'*****************************************************************************************************************
+'******************************************************************************************************************
 Const lg_forbidden = "/login-system/forbidden.asp"
-'*****************************************************************************************************************
+'******************************************************************************************************************
 '* form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'*****************************************************************************************************************
+'******************************************************************************************************************
 Const lg_form_error = "/login-system/form_error.asp"
-'*****************************************************************************************************************
+'******************************************************************************************************************
 '* home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-'*****************************************************************************************************************
+'******************************************************************************************************************
+Const lg_debug = false
 Const lg_home = "/login-system/default.asp"
 Const lg_log_logins = true
 Const lg_logged_out_page = "loggedout.asp"
@@ -67,109 +70,40 @@ Const lg_set_new_password_page = "set_new_password.asp"
 Const lg_success_page = "login_success.asp"
 Const lg_useCAPTCHA = true
 Const lg_useSSL = false
-Const lg_debug = false
 Const lg_verify_page = "register_verify.asp"
 Const lg_webmaster_email = "webmaster@example.com"
-Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Ouaibemestre</a>"
+Const lg_webmaster_email_link = "<a href=""mailto:webmaster@example.com"">Webmaster</a>"
 
 '*********************************************************************
 '* Login system database globals
 '*********************************************************************
-'Const lg_database = "access"
 'Const lg_database = "mysql"
+'Const lg_database = "access"
 'Const lg_database = "mssql"
 
-'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
-'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
 'Const lg_term_command_string = "DRIVER={MySQL ODBC 3.51 Driver}; SERVER=localhost; PORT=3306; DATABASE=login-system; USER=webuser; PASSWORD=password; OPTION=3;"
+'Const lg_term_command_string = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='c:\inetpub\wwwroot\login-system\database\login_system.mdb'"
+'Const lg_term_command_string = "Provider=SQLOLEDB; Server=localhost,1433; UID=webuser; PWD=password; Database=loginproject"
 
-Const lg_database_userid = ""
 Const lg_database_password = ""
+Const lg_database_userid = ""
 
 Function dbNow
-	'MS Access & MS SQL Server datetime fileds accept ASP now
-	'MySql requires YYYY-MM-DD HH:MM:SS
-	Dim dt
-	dt = now
-	If lg_database = "mysql" Then
-		dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
-	Else
-		dbNow = dt
-	End If	
+    'MS Access & MS SQL Server datetime fileds accept ASP now
+    'MySql requires YYYY-MM-DD HH:MM:SS
+    Dim dt
+    dt = now
+    If lg_database = "mysql" Then
+        dbNow = Year(dt)&"-"&Right("00"&CStr(Month(dt)),2)&"-"&Right("00"&CStr(Day(dt)),2)&" "&Right("00"&CStr(Hour(dt)),2)&":"&Right("00"&CStr(Minute(dt)),2)&":"&Right("00"&CStr(Second(dt)),2)
+    Else
+        dbNow = dt
+    End If
 End Function
 
 '*********************************************************************
 '* Login system language globals
 '*********************************************************************
 Const lg_login_button_text = "Connexion"
-Const lg_term_at = "à"
-Const lg_term_cancel = "Annuler"
-Const lg_term_cancel_account = "Supprimer Mon Compte"
-Const lg_term_change_password = "Changer le mot de passe"
-Const lg_term_change_password_button_text = "Changer le mot de passe"
-Const lg_term_checkToken = "checkToken"
-Const lg_term_city = "Ville"
-Const lg_term_confirm = "Confirmer le mot de passe"
-Const lg_term_contact = "Contact"
-Const lg_term_contact_form = "Formulaire de contact"
-Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""fr-FR"" />"
-Const lg_term_country = "Pays"
-Const lg_term_current_password = "Mot de passe actuel"
-Const lg_term_delete_account = "Supprimer le compte"
-Const lg_term_do_registration = "doRegistration"
-Const lg_term_email = "Mél"
-Const lg_term_enter_information = "Entrez l'information"
-Const lg_term_error_string = "getPasshash"
-Const lg_term_example = "Exemple"
-Const lg_term_forbidden = "Interdit"
-Const lg_term_form_error = "Formulaire d'erreur"
-Const lg_term_from_error = "Formulaire d'erreur"
-Const lg_term_get_name = "getName"
-Const lg_term_get_oldpassword = "getOldPassword"
-Const lg_term_guest = "Invité"
-Const lg_term_home = "Commencer"
-Const lg_term_immediately = "immédiatement"
-Const lg_term_ip = "IP"
-Const lg_term_issue_verification_token = "question de la vérification par jeton"
-Const lg_term_language = "<meta name="language" content="fr-FR" />"
-Const lg_term_log_out = "Déconnectez-vous"
-Const lg_term_log_string = "logLogin"
-Const lg_term_logged_out = "Déconnecté"
-Const lg_term_login = "Login"
-Const lg_term_login_success = "Succès"
-Const lg_term_name = "Nom"
-Const lg_term_new_password = "Nouveau mot de passe"
-Const lg_term_optional = "facultatif"
-Const lg_term_or = "ou"
-Const lg_term_password = "Mot de passe"
-Const lg_term_please_login = "Identifiez-vous s'il vous plaît"
-Const lg_term_please_register = "enregistrez-vous s'il vous plaît"
-Const lg_term_project_home_link = "<a title=""Système de connexion sur Google Code"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
-Const lg_term_recover_password = "Mot de passe oublié"
-Const lg_term_region = "Région"
-Const lg_term_register = "S'enregistrer"
-Const lg_term_register_confirmation = "Confirmation d'inscription"
-Const lg_term_register_delete_enter_email = "Entrez une adresse mél"
-Const lg_term_registration = "Enregistrement"
-Const lg_term_registration_thankyou = "Merci d'avoir demandé"
-Const lg_term_registration_verification = "Enregistrement de vérification"
-Const lg_term_remember = true
-Const lg_term_rememberme = "Se souvenir de moi"
-Const lg_term_remove_registration = "Supprimer l'enregistrement"
-Const lg_term_required = "nécessaire"
-Const lg_term_reset_password = "Mot de passe oublié"
-Const lg_term_set_new_password = "Entrez un nouveau mot de passe"
-Const lg_term_set_newpassword = "changePassword"
-Const lg_term_submit = "Valider"
-Const lg_term_to = "A"
-Const lg_term_useragent = "Useragent"
-Const lg_term_userid = "Identifiant"
-Const lg_term_via_email = "par mél à"
-Const lg_term_webloginproject_link = "<a title=""Projet de connexion Web"" href=""http://www.webloginproject.com/index.php"">Projet de connexion Web</a>"
-Const lg_term_website = "site internet"
-Const lg_term_website_address = "Adresse du site internet"
-Const lg_term_welcome = "Accueil"
-Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""fr"" lang=""fr"">"
 Const lg_phrase_attention_webmaster = "Attention Ouaibemestre"
 Const lg_phrase_cancel_account_canceled = "Le compte a été annulé."
 Const lg_phrase_cancel_account_error = "Il y a eu une erreur inattendue lors de l'annulation de votre compte. S'il vous plaît contactez le ouaibemestre."
@@ -262,4 +196,71 @@ Const lg_phrase_verify_verified = "Vous avez validé votre adresse mél."
 Const lg_phrase_webmaster_may_be_contacted = "Le ouaibemestre peut être contacté par mél en utilisant le lien suivant:"
 Const lg_phrase_website_title = "S'il vous plaît entrer votre adresse de site Web."
 Const lg_register_button_text = "Inscription"
+Const lg_term_at = "à"
+Const lg_term_cancel = "Annuler"
+Const lg_term_cancel_account = "Supprimer Mon Compte"
+Const lg_term_change_password = "Changer le mot de passe"
+Const lg_term_change_password_button_text = "Changer le mot de passe"
+Const lg_term_checkToken = "checkToken"
+Const lg_term_city = "Ville"
+Const lg_term_confirm = "Confirmer le mot de passe"
+Const lg_term_contact = "Contact"
+Const lg_term_contact_form = "Formulaire de contact"
+Const lg_term_content_language = "<meta http-equiv=""content-language"" content=""fr-FR"" />"
+Const lg_term_country = "Pays"
+Const lg_term_current_password = "Mot de passe actuel"
+Const lg_term_delete_account = "Supprimer le compte"
+Const lg_term_do_registration = "doRegistration"
+Const lg_term_email = "Mél"
+Const lg_term_enter_information = "Entrez l'information"
+Const lg_term_error_string = "getPasshash"
+Const lg_term_example = "Exemple"
+Const lg_term_forbidden = "Interdit"
+Const lg_term_form_error = "Formulaire d'erreur"
+Const lg_term_get_name = "getName"
+Const lg_term_get_oldpassword = "getOldPassword"
+Const lg_term_guest = "Invité"
+Const lg_term_home = "Commencer"
+Const lg_term_immediately = "immédiatement"
+Const lg_term_ip = "IP"
+Const lg_term_issue_verification_token = "question de la vérification par jeton"
+Const lg_term_language = "<meta name=""language"" content=""fr-FR"" />"
+Const lg_term_log_out = "Déconnectez-vous"
+Const lg_term_log_string = "logLogin"
+Const lg_term_logged_out = "Déconnecté"
+Const lg_term_login = "Login"
+Const lg_term_login_success = "Succès"
+Const lg_term_name = "Nom"
+Const lg_term_new_password = "Nouveau mot de passe"
+Const lg_term_optional = "facultatif"
+Const lg_term_or = "ou"
+Const lg_term_password = "Mot de passe"
+Const lg_term_please_login = "Identifiez-vous s'il vous plaît"
+Const lg_term_please_register = "enregistrez-vous s'il vous plaît"
+Const lg_term_project_home_link = "<a title=""Système de connexion sur Google Code"" href=""http://code.google.com/p/loginsystem-rd/"">http://code.google.com/p/loginsystem-rd/</a>"
+Const lg_term_recover_password = "Mot de passe oublié"
+Const lg_term_region = "Région"
+Const lg_term_register = "S'enregistrer"
+Const lg_term_register_confirmation = "Confirmation d'inscription"
+Const lg_term_register_delete_enter_email = "Entrez une adresse mél"
+Const lg_term_registration = "Enregistrement"
+Const lg_term_registration_thankyou = "Merci d'avoir demandé"
+Const lg_term_registration_verification = "Enregistrement de vérification"
+Const lg_term_remember = true
+Const lg_term_rememberme = "Se souvenir de moi"
+Const lg_term_remove_registration = "Supprimer l'enregistrement"
+Const lg_term_required = "nécessaire"
+Const lg_term_reset_password = "Mot de passe oublié"
+Const lg_term_set_new_password = "Entrez un nouveau mot de passe"
+Const lg_term_set_newpassword = "changePassword"
+Const lg_term_submit = "Valider"
+Const lg_term_to = "A"
+Const lg_term_useragent = "Useragent"
+Const lg_term_userid = "Identifiant"
+Const lg_term_via_email = "par mél à"
+Const lg_term_webloginproject_link = "<a title=""Projet de connexion Web"" href=""http://www.webloginproject.com/index.php"">Projet de connexion Web</a>"
+Const lg_term_website = "site internet"
+Const lg_term_website_address = "Adresse du site internet"
+Const lg_term_welcome = "Accueil"
+Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""fr"" lang=""fr"">"
 %>
