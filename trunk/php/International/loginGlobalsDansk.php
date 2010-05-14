@@ -3,14 +3,16 @@
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
 * Login Globals - PHP
-* 
+*
 * NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 *       You must set the webmaster e-mail addresses.
-*       You must set the database connection details below.
+*       You must set the database connection details in database.php.     
 *
+* Modification: 13 MAY 2010 :: Karol Piczak - translation to Polish 
 * Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
 * Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 * Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 * Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
 *                                              loginGlobals.php, and corrected paths in loginGlobals.php
 * Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
@@ -27,8 +29,11 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.2 - Danish - PHP
+* Version: alpha 0.3 - Danish/Dansk - PHP
 ******************************************************************************************************************/
+
+
+/*****************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
 define("lg_change_password_page", "change_password.php");
 /******************************************************************************************************************
@@ -49,6 +54,7 @@ define("lg_form_error", "/login-system/form_error.php");
 /******************************************************************************************************************
 * home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
+define("lg_debug", false);
 define("lg_home", "/login-system/index.php");
 define("lg_log_logins", true);
 define("lg_logged_out_page", "loggedout.php");
@@ -64,91 +70,40 @@ define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
 define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
-define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
 define("lg_webmaster_email", "Webmaster <webmaster@example.com>");
 define("lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmaster</a>');
-
 
 /*********************************************************************
 * Login system database globals
 *********************************************************************/
 
 function dbNow() {
-	return date("Y-m-d H:i:s");
+    return date("Y-m-d H:i:s");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*********************************************************************
 * Login system language globals
 *********************************************************************/
 define("lg_login_button_text","Log ind");
-define("lg_term_at", "at");
-define("lg_term_cancel", "Annuller konto");
-define("lg_term_cancel_account", "Annuller konto");
-define("lg_term_change_password", "Skift adgangskode");
-define("lg_term_change_password_button_text", "Skift adgangskode");
-define("lg_term_checkToken", "checkToken");
-define("lg_term_city", "City");
-define("lg_term_confirm", "Bekræft kodeord");
-define("lg_term_contact", "Kontakt");
-define("lg_term_contact_form", "Kontakt Form");
-define("lg_term_content_language", "<meta http-equiv=\"content-language\" content=\"da-DK\" />");
-define("lg_term_country", "Land");
-define("lg_term_current_password", "Nuværende adgangskode");
-define("lg_term_delete_account", "Slet konto");
-define("lg_term_do_registration", "doRegistration");
-define("lg_term_email", "Email");
-define("lg_term_enter_information", "Indtast Information");
-define("lg_term_error_string", "getPasshash");
-define("lg_term_example", "Eksempel");
-define("lg_term_forbidden", "Forbudte");
-define("lg_term_form_error", "Form Fejl");
-define("lg_term_from_error", "Form Error");
-define("lg_term_get_name", "getName");
-define("lg_term_get_oldpassword", "getOldPassword");
-define("lg_term_guest", "Gæst");
-define("lg_term_home", "Home");
-define("lg_term_immediately", "med det samme!");
-define("lg_term_ip", "IP");
-define("lg_term_issue_verification_token", "Udsted Verifikation Token");
-define("lg_term_language", "<meta name=\"language\" content=\"da-DK\" />");
-define("lg_term_log_string", "logLogin");
-define("lg_term_logged_out", "Logget ud");
-define("lg_term_login", "Log ind");
-define("lg_term_login_success", "Succes");
-define("lg_term_name", "Navn");
-define("lg_term_new_password", "Nyt Password");
-define("lg_term_optional", "Frivilligt");
-define("lg_term_or", "eller");
-define("lg_term_password", "Password");
-define("lg_term_please_login", "Venligst login");
-define("lg_term_please_register", "Tilmeld dig venligst");
-define("lg_term_project_home_link", "<a title=\"Login System på Google Code\" href=\"http://code.google.com/p/loginsystem-rd/\">http://code.google.com/p/loginsystem-rd/</a>");
-define("lg_term_recover_password", "Genopret Password");
-define("lg_term_region", "Region");
-define("lg_term_register", "Registrer");
-define("lg_term_register_confirmation", "Registreringsbekræftelse");
-define("lg_term_register_delete_enter_email", "Indtast e-mail");
-define("lg_term_registration", "Registrering");
-define("lg_term_registration_thankyou", "Tak for din registrering.");
-define("lg_term_registration_verification", "Registreringsverifikation");
-define("lg_term_remember", true);
-define("lg_term_rememberme", "Husk mig");
-define("lg_term_remove_registration", "Fjern registrering");
-define("lg_term_required", "nødvendigt");
-define("lg_term_reset_password", "Password Reset");
-define("lg_term_set_new_password", "Indtast en ny adgangskode");
-define("lg_term_set_newpassword", "changePassword");
-define("lg_term_submit", "Send");
-define("lg_term_to", "Til");
-define("lg_term_useragent", "UserAgent");
-define("lg_term_userid", "Bruger Identifikation");
-define("lg_term_via_email", "via email på");
-define("lg_term_webloginproject_link", "<a title=\"Web Login Project\" href=\"http://www.webloginproject.com/index.php\">Web Login Project</a>");
-define("lg_term_website_address", "Website adresse");
-define("lg_term_welcome", "Velkommen");
-define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"da\" lang=\"da\">");
 define("lg_phrase_attention_webmaster", "Webmaster bemærk venligst");
 define("lg_phrase_cancel_account_cacelled", "Denne konto er blevet annuleret.");
 define("lg_phrase_cancel_account_error", "Der var en uventet fejl da vi annullerede din konto. Kontakt venligst webmasteren ");
@@ -167,6 +122,7 @@ define("lg_phrase_delete_already_verified", "Denne konto er allerede blevet veri
 define("lg_phrase_delete_deleted", "Kontoen er blevet slettet");
 define("lg_phrase_email_empty", "Email feltet er tomt, men er påkrævet. Indtast din e-mail-adresse.");
 define("lg_phrase_email_title", "Indtast din e-mail adresse. Dette felt er påkrævet.");
+define("lg_phrase_enter_set_new_password_token", "Indtast sat nye password token");
 define("lg_phrase_enter_unlock_code", "Indtast din Unlock kode");
 define("lg_phrase_forbidden_body", "<p><h1>Du har ikke adgang til denne ressource.</h1></p><p>Kontakt webmaster på:");
 define("lg_phrase_form_error_cookie", "Cookies er nødvendige for login. Sørg venligst for din browser accepterer cookies fra dette site.");
@@ -227,7 +183,7 @@ define("lg_phrase_request_password1", "Der er blevet anmodt om at gendanne din a
 define("lg_phrase_set_new_password_error", "Der var en uventet fejl ved udfyldelsen af din anmodning.");
 define("lg_phrase_set_new_password_good_token", "Din token var gyldig. Indtast en ny adgangskode.");
 define("lg_phrase_set_new_password_success", "Dit password er blevet ændret.");
-define("lg_phrase_set_new_password_tken_expired", "Mere end 24 timer er gået, siden du har bedt om en gendannelse af adgangskode token.");
+define("lg_phrase_set_new_password_token_expired", "Mere end 24 timer er gået, siden du har bedt om en gendannelse af adgangskode token.");
 define("lg_phrase_user_registration", "Bruger registrering.");
 define("lg_phrase_userid_empty", "Bruger-ID feltet er påkrævet, men er tomt. Indtast dit bruger-ID.");
 define("lg_phrase_userid_inuse", "Bruger-ID er i brug eller ugyldigt.");
@@ -240,4 +196,71 @@ define("lg_phrase_verify_verified", "Du har bekræftet din e-mail-adresse.");
 define("lg_phrase_webmaster_may_be_contacted", "Webmasteren kan kontaktes via e-mail via dette link:");
 define("lg_phrase_website_title", "Indtast dit website adresse.");
 define("lg_register_button_text", "Registrer");
+define("lg_term_at", "at");
+define("lg_term_cancel", "Annuller konto");
+define("lg_term_cancel_account", "Annuller konto");
+define("lg_term_change_password", "Skift adgangskode");
+define("lg_term_change_password_button_text", "Skift adgangskode");
+define("lg_term_checkToken", "checkToken");
+define("lg_term_city", "City");
+define("lg_term_confirm", "Bekræft kodeord");
+define("lg_term_contact", "Kontakt");
+define("lg_term_contact_form", "Kontakt Form");
+define("lg_term_content_language", "<meta http-equiv=\"content-language\" content=\"da-DK\" />");
+define("lg_term_country", "Land");
+define("lg_term_current_password", "Nuværende adgangskode");
+define("lg_term_delete_account", "Slet konto");
+define("lg_term_do_registration", "doRegistration");
+define("lg_term_email", "Email");
+define("lg_term_enter_information", "Indtast Information");
+define("lg_term_error_string", "getPasshash");
+define("lg_term_example", "Eksempel");
+define("lg_term_forbidden", "Forbudte");
+define("lg_term_form_error", "Form Fejl");
+define("lg_term_get_name", "getName");
+define("lg_term_get_oldpassword", "getOldPassword");
+define("lg_term_guest", "Gæst");
+define("lg_term_home", "Home");
+define("lg_term_immediately", "med det samme!");
+define("lg_term_ip", "IP");
+define("lg_term_issue_verification_token", "Udsted Verifikation Token");
+define("lg_term_language", "<meta name=\"language\" content=\"da-DK\" />");
+define("lg_term_log_out", "Log ud");
+define("lg_term_log_string", "logLogin");
+define("lg_term_logged_out", "Logget ud");
+define("lg_term_login", "Log ind");
+define("lg_term_login_success", "Succes");
+define("lg_term_name", "Navn");
+define("lg_term_new_password", "Nyt Password");
+define("lg_term_optional", "Frivilligt");
+define("lg_term_or", "eller");
+define("lg_term_password", "Password");
+define("lg_term_please_login", "Venligst login");
+define("lg_term_please_register", "Tilmeld dig venligst");
+define("lg_term_project_home_link", "<a title=\"Login System på Google Code\" href=\"http://code.google.com/p/loginsystem-rd/\">http://code.google.com/p/loginsystem-rd/</a>");
+define("lg_term_recover_password", "Genopret Password");
+define("lg_term_region", "Region");
+define("lg_term_register", "Registrer");
+define("lg_term_register_confirmation", "Registreringsbekræftelse");
+define("lg_term_register_delete_enter_email", "Indtast e-mail");
+define("lg_term_registration", "Registrering");
+define("lg_term_registration_thankyou", "Tak for din registrering.");
+define("lg_term_registration_verification", "Registreringsverifikation");
+define("lg_term_remember", true);
+define("lg_term_rememberme", "Husk mig");
+define("lg_term_remove_registration", "Fjern registrering");
+define("lg_term_required", "nødvendigt");
+define("lg_term_reset_password", "Password Reset");
+define("lg_term_set_new_password", "Indtast en ny adgangskode");
+define("lg_term_set_newpassword", "changePassword");
+define("lg_term_submit", "Send");
+define("lg_term_to", "Til");
+define("lg_term_useragent", "UserAgent");
+define("lg_term_userid", "Bruger Identifikation");
+define("lg_term_via_email", "via email på");
+define("lg_term_webloginproject_link", "<a title=\"Web Login Project\" href=\"http://www.webloginproject.com/index.php\">Web Login Project</a>");
+define("lg_term_website", "Website");
+define("lg_term_website_address", "Website adresse");
+define("lg_term_welcome", "Velkommen");
+define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"da\" lang=\"da\">");
 ?>

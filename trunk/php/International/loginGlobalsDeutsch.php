@@ -1,15 +1,18 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
 * Login Globals - PHP
-* 
+*
 * NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 *       You must set the webmaster e-mail addresses.
-*       You must set the database connection details below.
+*       You must set the database connection details in database.php.     
 *
+* Modification: 13 MAY 2010 :: Karol Piczak - translation to Polish 
 * Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 * Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 * Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
 *                                              loginGlobals.php, and corrected paths in loginGlobals.php
 * Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
@@ -26,8 +29,11 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.2 - German/Deutsch - PHP
+* Version: alpha 0.3 - German/Deutsch - PHP
 ******************************************************************************************************************/
+
+
+/*****************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
 define("lg_change_password_page", "change_password.php");
 /******************************************************************************************************************
@@ -37,17 +43,18 @@ define("lg_contact_form", "/login-system/contact.php");
 define("lg_copyright", "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com");
 define("lg_domain", "www.example.com");
 define("lg_domain_secure", "www.example.com");
-/*****************************************************************************************************************
+/******************************************************************************************************************
 * forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
 define("lg_forbidden", "/login-system/forbidden.php");
-/*****************************************************************************************************************
+/******************************************************************************************************************
 * form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
 define("lg_form_error", "/login-system/form_error.php");
-/*****************************************************************************************************************
+/******************************************************************************************************************
 * home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
 ******************************************************************************************************************/
+define("lg_debug", false);
 define("lg_home", "/login-system/index.php");
 define("lg_log_logins", true);
 define("lg_logged_out_page", "loggedout.php");
@@ -55,7 +62,7 @@ define("lg_login_attempts", 5);
 define("lg_loginPage", "login.php");
 define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
-define("lg_new_token_page", "register_newtoken.php");
+define("lg_new_token_page", "issue_verification_token.php");
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
@@ -63,90 +70,40 @@ define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
 define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
-define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
 define("lg_webmaster_email", "Webmaster <webmaster@example.com>");
 define("lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmaster</a>');
-
 
 /*********************************************************************
 * Login system database globals
 *********************************************************************/
 
 function dbNow() {
-	return date("Y-m-d H:i:s");
+    return date("Y-m-d H:i:s");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*********************************************************************
 * Login system language globals
 *********************************************************************/
 define("lg_login_button_text", "Anmeldung");
-define("lg_term_at", "bei");
-define("lg_term_cancel", "Konto löschen");
-define("lg_term_cancel_account", "Konto löschen");
-define("lg_term_change_password", "Passwort ändern");
-define("lg_term_change_password_button_text", "Passwort ändern");
-define("lg_term_checkToken", "checkToken");
-define("lg_term_city", "Stadt");
-define("lg_term_confirm", "Passwort bestätigen");
-define("lg_term_contact", "Kontakt");
-define("lg_term_contact_form", "Kontaktformular");
-define("lg_term_content_language", "<meta http-equiv=\"content-language\" content=\"de-DE\" />");
-define("lg_term_country", "Land");
-define("lg_term_current_password", "Aktuelles Passwort");
-define("lg_term_delete_account", "Konto löschen");
-define("lg_term_do_registration", "doRegistration");
-define("lg_term_email", "Email");
-define("lg_term_enter_information", "Bitte Informationen eingeben");
-define("lg_term_error_string", "getPasshash");
-define("lg_term_example", "Beispiel");
-define("lg_term_forbidden", "Verboten");
-define("lg_term_form_error", "Form-Fehler");
-define("lg_term_from_error","Form-Fehler");
-define("lg_term_get_name", "getName");
-define("lg_term_get_oldpassword", "getOldPassword");
-define("lg_term_home","Heim");
-define("lg_term_immediately", "sofort!");
-define("lg_term_ip", "IP");
-define("lg_term_issue_verification_token", "Ausgabe des Verification Tokens");
-define("lg_term_language", "<meta name=\"language\" content=\"de-DE\" />");
-define("lg_term_log_out", "Log Aus");
-define("lg_term_log_string", "logLogin");
-define("lg_term_logged_out", "Abgemeldet");
-define("lg_term_login", "Anmeldung");
-define("lg_term_login_success", "Erfolg");
-define("lg_term_name", "Name");
-define("lg_term_new_password", "Neues Passwort");
-define("lg_term_optional", "Optional");
-define("lg_term_or", "oder");
-define("lg_term_password", "Passwort");
-define("lg_term_please_login", "Bitte anmelden");
-define("lg_term_please_register", "Bitte registrieren");
-define("lg_term_project_home_link", "<a title=\"Login-System auf Google Code\" href=\"http://code.google.com/p/loginsystem-rd/\">http://code.google.com/p/loginsystem-rd/</a>");
-define("lg_term_recover_password", "Passwort wiederherstellen");
-define("lg_term_region", "Region");
-define("lg_term_register", "Registrieren");
-define("lg_term_register_confirmation", "Bestätigung der Registrierung");
-define("lg_term_register_delete_enter_email", "E-Mail eingeben");
-define("lg_term_registration", "Anmeldung");
-define("lg_term_registration_thankyou", "Vielen Dank für Ihre Anmeldung.");
-define("lg_term_registration_verification", "Überprüfung der Registrierung");
-define("lg_term_remember", true);
-define("lg_term_rememberme", "Angemeldet bleiben");
-define("lg_term_remove_registration", "Registrierung löschen");
-define("lg_term_required", "erforderlich");
-define("lg_term_reset_password", "Passwort zurücksetzen");
-define("lg_term_set_new_password", "ein neues Passwort eingeben");
-define("lg_term_set_newpassword", "Passwort ändern");
-define("lg_term_submit", "Übermitteln");
-define("lg_term_to", "Zu");
-define("lg_term_useragent", "Useragent");
-define("lg_term_userid", "UserID");
-define("lg_term_via_email", "per E-Mail an");
-define("lg_term_webloginproject_link", "<a title=\"Web Project Login\" href=\"http://www.webloginproject.com/index.php\">Web Project Login</a>");
-define("lg_term_website", "Website");
-define("lg_term_website_address", "Website-Adresse");
-define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de\" lang=\"de\">");
 define("lg_phrase_attention_webmaster", "Webmaster benachrichtigen");
 define("lg_phrase_cancel_account_canceled", "Das Konto wurde gelöscht.");
 define("lg_phrase_cancel_account_error", "Ein unerwarteter Fehler trat beim Löschen des Kontos auf. Bitte kontaktieren Sie den Webmaster");
@@ -171,6 +128,7 @@ define("lg_phrase_forbidden_body", "<p><h1>Sie haben keinen Zugriff auf diese Re
 define("lg_phrase_form_error_cookie", "Cookies sind für die Anmeldung erforderlich. Bitte stellen Sie sicher Ihr Browser Cookies akzeptiert from this site.");
 define("lg_phrase_form_error_time", "Die Form, die vor Vollendung gestoppt. Bitte füllen Sie das Formular in weniger als 5 Minuten.");
 define("lg_phrase_form_error_token", "Es war ein Formfehler. Dies kann mit Hilfe Ihres Browsers Schaltfläche Zurück, um einen zuvor ausgefüllte Formular und neu vorzulegen es wieder hervorgerufen werden.");
+define("lg_phrase_is_logged_in"," angemeldet ist.");
 define("lg_phrase_issue_new_token", "Geben Sie Ihren Benutzernamen und E-Mail-Adresse ein, um ein neues Bestätigungs-Token zu erhalten.");
 define("lg_phrase_issue_new_token_error", "Ein unerwarteter Fehler ist beim Erstellen Ihres Bestätigungs-Tokens aufgetreten. Bitte kontaktieren Sie den Webmaster.");
 define("lg_phrase_issue_new_token_success", "Ihr neuer Überprüfungscode wird an Ihre E-Mail-Adresse verschickt.");
@@ -225,7 +183,7 @@ define("lg_phrase_request_password1", "Eine Anfrage auf Passwortwiederherstellun
 define("lg_phrase_set_new_password_error", "Es war ein unerwarteter Fehler beim Ausfüllen Ihrer Anfrage aufgetreten.");
 define("lg_phrase_set_new_password_good_token", "Ihr Token war gültig. Geben Sie ein neues Passwort ein.");
 define("lg_phrase_set_new_password_success", "Ihr Passwort wurde erfolgreich geändert.");
-define("lg_phrase_set_new_password_tken_expired", "Mehr als 24 Stunde sind vergangen, seit Sie ein Passwort-Wiederherstellungs-Token angefordert haben.");
+define("lg_phrase_set_new_password_token_expired", "Mehr als 24 Stunde sind vergangen, seit Sie ein Passwort-Wiederherstellungs-Token angefordert haben.");
 define("lg_phrase_user_registration", "Benutzer-Registrierung");
 define("lg_phrase_userid_empty", "Die Benutzer-ID ist erforderlich, aber leer. Bitte geben Sie Ihre User-ID an.");
 define("lg_phrase_userid_inuse", "Die Benutzer-ID ist ungültig oder wird bereits verwendet.");
@@ -238,4 +196,71 @@ define("lg_phrase_verify_verified", "Sie haben Ihre E-Mail-Adresse bestätigt.")
 define("lg_phrase_webmaster_may_be_contacted", "Sie können den Webmaster per E-Mail über diesen Link kontaktieren:");
 define("lg_phrase_website_title", "Bitte geben Sie Ihre Website-Adresse an.");
 define("lg_register_button_text", "Registrieren");
+define("lg_term_at", "bei");
+define("lg_term_cancel", "Konto löschen");
+define("lg_term_cancel_account", "Konto löschen");
+define("lg_term_change_password", "Passwort ändern");
+define("lg_term_change_password_button_text", "Passwort ändern");
+define("lg_term_checkToken", "checkToken");
+define("lg_term_city", "Stadt");
+define("lg_term_confirm", "Passwort bestätigen");
+define("lg_term_contact", "Kontakt");
+define("lg_term_contact_form", "Kontaktformular");
+define("lg_term_content_language", "<meta http-equiv=\"content-language\" content=\"de-DE\" />");
+define("lg_term_country", "Land");
+define("lg_term_current_password", "Aktuelles Passwort");
+define("lg_term_delete_account", "Konto löschen");
+define("lg_term_do_registration", "doRegistration");
+define("lg_term_email", "Email");
+define("lg_term_enter_information", "Bitte Informationen eingeben");
+define("lg_term_error_string", "getPasshash");
+define("lg_term_example", "Beispiel");
+define("lg_term_forbidden", "Verboten");
+define("lg_term_form_error", "Form-Fehler");
+define("lg_term_get_name", "getName");
+define("lg_term_get_oldpassword", "getOldPassword");
+define("lg_term_guest","Gast.");
+define("lg_term_home","Heim");
+define("lg_term_immediately", "sofort!");
+define("lg_term_ip", "IP");
+define("lg_term_issue_verification_token", "Ausgabe des Verification Tokens");
+define("lg_term_language", "<meta name=\"language\" content=\"de-DE\" />");
+define("lg_term_log_out", "Log Aus");
+define("lg_term_log_string", "logLogin");
+define("lg_term_logged_out", "Abgemeldet");
+define("lg_term_login", "Anmeldung");
+define("lg_term_login_success", "Erfolg");
+define("lg_term_name", "Name");
+define("lg_term_new_password", "Neues Passwort");
+define("lg_term_optional", "Optional");
+define("lg_term_or", "oder");
+define("lg_term_password", "Passwort");
+define("lg_term_please_login", "Bitte anmelden");
+define("lg_term_please_register", "Bitte registrieren");
+define("lg_term_project_home_link", "<a title=\"Login-System auf Google Code\" href=\"http://code.google.com/p/loginsystem-rd/\">http://code.google.com/p/loginsystem-rd/</a>");
+define("lg_term_recover_password", "Passwort wiederherstellen");
+define("lg_term_region", "Region");
+define("lg_term_register", "Registrieren");
+define("lg_term_register_confirmation", "Bestätigung der Registrierung");
+define("lg_term_register_delete_enter_email", "E-Mail eingeben");
+define("lg_term_registration", "Anmeldung");
+define("lg_term_registration_thankyou", "Vielen Dank für Ihre Anmeldung.");
+define("lg_term_registration_verification", "Überprüfung der Registrierung");
+define("lg_term_remember", true);
+define("lg_term_rememberme", "Angemeldet bleiben");
+define("lg_term_remove_registration", "Registrierung löschen");
+define("lg_term_required", "erforderlich");
+define("lg_term_reset_password", "Passwort zurücksetzen");
+define("lg_term_set_new_password", "ein neues Passwort eingeben");
+define("lg_term_set_newpassword", "Passwort ändern");
+define("lg_term_submit", "Übermitteln");
+define("lg_term_to", "Zu");
+define("lg_term_useragent", "Useragent");
+define("lg_term_userid", "UserID");
+define("lg_term_via_email", "per E-Mail an");
+define("lg_term_webloginproject_link", "<a title=\"Web Project Login\" href=\"http://www.webloginproject.com/index.php\">Web Project Login</a>");
+define("lg_term_website", "Website");
+define("lg_term_website_address", "Website-Adresse");
+define("lg_term_welcome", "Willkommen");
+define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de\" lang=\"de\">");
 ?>

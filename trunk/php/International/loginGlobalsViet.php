@@ -1,15 +1,18 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
 * Login Globals - PHP
-* 
+*
 * NOTE: You must set lg_domain, lg_domain_secure, lg_loginPath and must set the full path to certain pages.
 *       You must set the webmaster e-mail addresses.
-*       You must set the database connection details below.
+*       You must set the database connection details in database.php.     
 *
+* Modification: 13 MAY 2010 :: Karol Piczak - translation to Polish 
 * Modification: ?? ??? 2010 :: Saurabh - translation to Hindi
+* Modification: 27 APR 2010 :: Michel Plungjan - translation to Danish
 * Modification: 26 APR 2010 :: Rod Divilbiss - corrected some file paths.
+* Modification: 25 APR 2010 :: Rod Divilbiss - added lg_term_log_out, corrected paths.
 * Modification: 24 APR 2010 :: Rod Divilbiss - Corrected debug output statements, added lg_term_log_out to
 *                                              loginGlobals.php, and corrected paths in loginGlobals.php
 * Modification: 23 APR 2010 :: Bob Stone - Beta Testing, Code / path correction and commenting
@@ -26,28 +29,32 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.2 - Vietnamese - PHP
+* Version: alpha 0.3 - Vietnamese/Tiếng Việt - PHP
 ******************************************************************************************************************/
+
+
+/*****************************************************************************************************************/
 define("lg_cancel_account_page", "cancel_account.php");
 define("lg_change_password_page", "change_password.php");
-/*****************************************************************************************************************
+/******************************************************************************************************************
 * contact is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-*****************************************************************************************************************/
+******************************************************************************************************************/
 define("lg_contact_form", "/login-system/contact.php");
 define("lg_copyright", "&copy; 2010 EE Collaborative Login System http://www.webloginproject.com");
 define("lg_domain", "www.example.com");
 define("lg_domain_secure", "www.example.com");
-/*****************************************************************************************************************
+/******************************************************************************************************************
 * forbidden is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-*****************************************************************************************************************/
+******************************************************************************************************************/
 define("lg_forbidden", "/login-system/forbidden.php");
-/*****************************************************************************************************************
+/******************************************************************************************************************
 * form error is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-*****************************************************************************************************************/
+******************************************************************************************************************/
 define("lg_form_error", "/login-system/form_error.php");
-/*****************************************************************************************************************
+/******************************************************************************************************************
 * home page is not part of the login-system. Must specify the entire path possibly outside of the login-system.
-*****************************************************************************************************************/
+******************************************************************************************************************/
+define("lg_debug", false);
 define("lg_home", "/login-system/index.php");
 define("lg_log_logins", true);
 define("lg_logged_out_page", "loggedout.php");
@@ -63,10 +70,9 @@ define("lg_set_new_password_page", "set_new_password.php");
 define("lg_success_page", "login_success.php");
 define("lg_useCAPTCHA", true);
 define("lg_useSSL", false);
-define("lg_debug", false);
 define("lg_verify_page", "register_verify.php");
-define("lg_webmaster_email", "webmaster@example.com");
-define("lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Web người chủ</a>');
+define("lg_webmaster_email", "Webmaster <webmaster@example.com>");
+define("lg_webmaster_email_link", '<a href="mailto:webmaster@example.com">Webmaster</a>');
 
 /*********************************************************************
 * Login system database globals
@@ -76,80 +82,28 @@ function dbNow() {
     return date("Y-m-d H:i:s");
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*********************************************************************
 * Login system language globals
 *********************************************************************/
 define("lg_login_button_text","Đăng nhập");
-define("lg_register_button_text","Đăng ký");
-define("lg_term_at","tại");
-define("lg_term_cancel","Hủy bỏ tài khoản");
-define("lg_term_cancel_account","Hủy bỏ tài khoản");
-define("lg_term_change_password","Thay đổi mật khẩu");
-define("lg_term_change_password_button_text","Thay đổi mật khẩu");
-define("lg_term_checkToken","checkToken");
-define("lg_term_city","Thành phố");
-define("lg_term_confirm","Đánh lại mật khẩu");
-define("lg_term_contact", "Liên hệ");
-define("lg_term_contact_form","Mẫu liên hệ");
-define("lg_term_content_language", "<meta http-equiv=\"content-language\" content=\"vi-VN\" />");
-define("lg_term_country","Quốc gia");
-define("lg_term_current_password","Mật khẩu hiện tại");
-define("lg_term_delete_account","Tài khoản xóa");
-define("lg_term_do_registration","doRegistration");
-define("lg_term_email","Thư điện tử");
-define("lg_term_enter_information","Nhập thông tin");
-define("lg_term_error_string","getPasshash");
-define("lg_term_example","Ví dụ");
-define("lg_term_forbidden", "Tử Cấm");
-define("lg_term_form_error", "Mẫu Lỗi");
-define("lg_term_from_error", "cách tao nhã lỗi");
-define("lg_term_get_name","getName");
-define("lg_term_get_oldpassword","getOldPassword");
-define("lg_term_guest","tôn vinh khách.");
-define("lg_term_home", "Trang Chủ");
-define("lg_term_immediately","ngay lập tức!");
-define("lg_term_ip","IP");
-define("lg_term_issue_verification_token","Lấy mã xác minh");
-define("lg_term_language", "<meta name=\"language\" content=\"vi-VN\" />");
-define("lg_term_log_out"," Đăng xuất");
-define("lg_term_log_string","logLogin");
-define("lg_term_logged_out","Thoát khỏi tài khoản");
-define("lg_term_login","Đăng nhập");
-define("lg_term_login_success","Thành công");
-define("lg_term_name","Tên");
-define("lg_term_new_password","Mật khẩu mới");
-define("lg_term_optional","tùy chọn");
-define("lg_term_or","hoặc");
-define("lg_term_password","Mật khẩu");
-define("lg_term_please_login","Vui lòng đăng nhập");
-define("lg_term_please_register","Hãy đăng ký");
-define("lg_term_project_home_link", "<a title=\"Đăng nhập hệ thống trên Google Code\" href=\"http://code.google.com/p/loginsystem-rd/\">http://code.google.com/p/loginsystem-rd/</a>");
-define("lg_term_recover_password","Khôi phục mật khẩu");
-define("lg_term_region","Vùng");
-define("lg_term_register","Đăng ký");
-define("lg_term_register_confirmation","Xác nhận đăng ký");
-define("lg_term_register_delete_enter_email","Nhập thư điện tử");
-define("lg_term_registration","Đăng ký");
-define("lg_term_registration_thankyou","Cảm ơn bạn đã đăng ký.");
-define("lg_term_registration_verification","Đăng ký xác nhận");
-define("lg_term_remember", true);
-define("lg_term_rememberme","Nhớ đăng nhập của tôi");
-define("lg_term_remove_registration","Hủy bỏ đăng ký");
-define("lg_term_required","Được yêu cầu");
-define("lg_term_reset_password", "Thiết lập lại mật khẩu");
-define("lg_term_reset_password"," Mật khẩu sự chứa");
-define("lg_term_set_new_password"," Tạo mật khẩu mới ");
-define("lg_term_set_newpassword", "changePassword");
-define("lg_term_submit","Gửi");
-define("lg_term_to","Đến");
-define("lg_term_useragent","Useragent");
-define("lg_term_userid","Tên truy nhập");
-define("lg_term_via_email","bằng thư điện tử");
-define("lg_term_webloginproject_link", "<a title=\"Đăng nhập Web dự án\" href=\"http://www.webloginproject.com/index.php\">Đăng nhập Web dự án</a>");
-define("lg_term_website","Trang web");
-define("lg_term_website_address","Địa chỉ website");
-define("lg_term_welcome","Chào mừng");
-define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"vi\" lang=\"vi\">");
 define("lg_phrase_attention_webmaster","Chú ý cho web người chủ");
 define("lg_phrase_cancel_account_canceled","Tài khoản đã được hủy bỏ.");
 define("lg_phrase_cancel_account_error","Có một lỗi bất ngờ không thể hủy bỏ tài khoản của bạn. Xin vui lòng liên lạc với web người chủ.");
@@ -241,4 +195,72 @@ define("lg_phrase_verify_newtoken","Nhấp vào đây để tạo mới mở kh�
 define("lg_phrase_verify_verified","Bạn đã xác minh địa chỉ thư điện tử của bạn.");
 define("lg_phrase_webmaster_may_be_contacted","Bộ quản trị web có thể liên lạc bằng thư điện tử bằng cách sử dụng liên kết này:");
 define("lg_phrase_website_title","Hãy nhập địa chỉ trang web của bạn.");
+define("lg_register_button_text","Đăng ký");
+define("lg_term_at","tại");
+define("lg_term_cancel","Hủy bỏ tài khoản");
+define("lg_term_cancel_account","Hủy bỏ tài khoản");
+define("lg_term_change_password","Thay đổi mật khẩu");
+define("lg_term_change_password_button_text","Thay đổi mật khẩu");
+define("lg_term_checkToken","checkToken");
+define("lg_term_city","Thành phố");
+define("lg_term_confirm","Đánh lại mật khẩu");
+define("lg_term_contact", "Liên hệ");
+define("lg_term_contact_form","Mẫu liên hệ");
+define("lg_term_content_language", "<meta http-equiv=\"content-language\" content=\"vi-VN\" />");
+define("lg_term_country","Quốc gia");
+define("lg_term_current_password","Mật khẩu hiện tại");
+define("lg_term_delete_account","Tài khoản xóa");
+define("lg_term_do_registration","doRegistration");
+define("lg_term_email","Thư điện tử");
+define("lg_term_enter_information","Nhập thông tin");
+define("lg_term_error_string","getPasshash");
+define("lg_term_example","Ví dụ");
+define("lg_term_forbidden", "Tử Cấm");
+define("lg_term_form_error", "cách tao nhã lỗi");
+define("lg_term_get_name","getName");
+define("lg_term_get_oldpassword","getOldPassword");
+define("lg_term_guest","tôn vinh khách.");
+define("lg_term_home", "Trang Chủ");
+define("lg_term_immediately","ngay lập tức!");
+define("lg_term_ip","IP");
+define("lg_term_issue_verification_token","Lấy mã xác minh");
+define("lg_term_language", "<meta name=\"language\" content=\"vi-VN\" />");
+define("lg_term_log_out"," Đăng xuất");
+define("lg_term_log_string","logLogin");
+define("lg_term_logged_out","Thoát khỏi tài khoản");
+define("lg_term_login","Đăng nhập");
+define("lg_term_login_success","Thành công");
+define("lg_term_name","Tên");
+define("lg_term_new_password","Mật khẩu mới");
+define("lg_term_optional","tùy chọn");
+define("lg_term_or","hoặc");
+define("lg_term_password","Mật khẩu");
+define("lg_term_please_login","Vui lòng đăng nhập");
+define("lg_term_please_register","Hãy đăng ký");
+define("lg_term_project_home_link", "<a title=\"Đăng nhập hệ thống trên Google Code\" href=\"http://code.google.com/p/loginsystem-rd/\">http://code.google.com/p/loginsystem-rd/</a>");
+define("lg_term_recover_password","Khôi phục mật khẩu");
+define("lg_term_region","Vùng");
+define("lg_term_register","Đăng ký");
+define("lg_term_register_confirmation","Xác nhận đăng ký");
+define("lg_term_register_delete_enter_email","Nhập thư điện tử");
+define("lg_term_registration","Đăng ký");
+define("lg_term_registration_thankyou", "Cảm ơn bạn đã đăng ký.");
+define("lg_term_registration_verification","Đăng ký xác nhận");
+define("lg_term_remember", true);
+define("lg_term_rememberme","Nhớ đăng nhập của tôi");
+define("lg_term_remove_registration","Hủy bỏ đăng ký");
+define("lg_term_required","Được yêu cầu");
+define("lg_term_reset_password"," Mật khẩu sự chứa");
+define("lg_term_set_new_password"," Tạo mật khẩu mới ");
+define("lg_term_set_newpassword", "changePassword");
+define("lg_term_submit","Gửi");
+define("lg_term_to","Đến");
+define("lg_term_useragent","Useragent");
+define("lg_term_userid","Tên truy nhập");
+define("lg_term_via_email","bằng thư điện tử");
+define("lg_term_webloginproject_link", "<a title=\"Đăng nhập Web dự án\" href=\"http://www.webloginproject.com/index.php\">Đăng nhập Web dự án</a>");
+define("lg_term_website","Trang web");
+define("lg_term_website_address","Địa chỉ website");
+define("lg_term_welcome","Chào mừng");
+define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"vi\" lang=\"vi\">");
 ?>
