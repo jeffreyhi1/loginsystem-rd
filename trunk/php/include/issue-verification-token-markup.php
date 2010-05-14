@@ -2,7 +2,7 @@
 // $Id$
 ?>
 			<!-- XHTML 1.1 Strict -->
-			<!-- alpha 0.2 debug -->
+			<!-- alpha 0.3 debug -->
 			<div id="login-system">
 				<h1><?PHP echo lg_term_issue_verification_token; ?></h1>
 				<?PHP if ($message==lg_phrase_issue_new_token) { ?>
