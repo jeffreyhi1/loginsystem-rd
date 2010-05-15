@@ -1,5 +1,12 @@
 CHANGE LOG
 alpha 0.2 to alpha 0.3
-two language constants were not spelled correctly.
+1. ASP /login-system/include/login.asp had an error on lines: 101 and 103 where a period (PHP concatenation character) was used instead of an ampersand.
+2. ASP /login-system/include/form_error.asp had
+	Option Explicit
+	Session.CodePage=65001
+	Response.Charset="UTF-8"
+which were already defined (properly) in /login-system/form_error.asp
+	
+Two language constants were not spelled correctly. (This did not cause an error, but was incorrect)
 langage files and code were corrected to the proper spellings.
 Added the Polish language translation.
