@@ -8,9 +8,6 @@
 '* Output:   message - reason for error and link to page
 '* On Exit:  None
 '******************************************************************************************************************
-Option Explicit
-Session.CodePage=65001
-Response.Charset="UTF-8"
 
 ' no browser caching of this page !! to be used on all pages
 Response.Expires=-1
