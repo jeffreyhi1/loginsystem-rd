@@ -98,9 +98,9 @@ If UCase(Request.ServerVariables("HTTP_METHOD"))="GET" Then
 		'*******************************************************************************************************************
 		If Request.Cookies("user")=Session("antiFixation") Then 
 			If (lg_useSSL) Then
-				Response.Redirect("https://". lg_domain_secure & lg_loginPath & destination)
+				Response.Redirect("https://" & lg_domain_secure & lg_loginPath & destination)
 			Else
-				Response.Redirect("http://". lg_domain_secure & lg_loginPath & destination)
+				Response.Redirect("http://" & lg_domain & lg_loginPath & destination)
 			End If	
 		Else
 			Session("userid") = ""
