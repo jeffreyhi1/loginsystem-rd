@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version alpha 0.3 - French/Français - PHP
+* Version alpha 0.4 - French/Français - PHP
 ******************************************************************************************************************/
 
 
@@ -63,6 +63,9 @@ define("lg_loginPage", "login.php");
 define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
+define("lg_password_max_age", 6);
+define("lg_password_min_bits", 72);
+define("lg_password_min_length", 10)
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
@@ -155,6 +158,10 @@ define("lg_phrase_password_empty", "Le champ Mot de passe est vide, mais est né
 define("lg_phrase_password_new_title", "S'il vous plaît entrez votre mot de passe souhaité. Ce champ est requis.");
 define("lg_phrase_password_nomatch_confirm", "Le mot de passe ne correspondent pas du mot de passe Confirmation. S'il vous plaît resaisissez.");
 define("lg_phrase_password_title", "S'il vous plaît entrer votre mot de passe. Ce champ est requis.");
+define("lg_phrase_password_too_soon", "Le mot de passe est le même que le mot de passe utilisé récemment. S'il vous plaît choisir un mot de passe différent.");
+define("lg_phrase_password_too_short_pre", "Le mot de passe entré est faite de charaters trop peu. La longueur minimale du mot de passe:");
+define("lg_phrase_password_too_short_post", "lettres, des chiffres et des symboles");
+define("lg_phrase_password_too_simple", "Le mot de passe est trop simple. S'il vous plaît entrer un mot de passe qui a beaucoup de caractères aléatoires comprenant un mélange de lettres majuscules et minuscules, chiffres, et de symboles.");
 define("lg_phrase_recaptcha_error", "Le reCAPTCHA n'a pas été entré correctement.");
 define("lg_phrase_recover_password", "Récupérer le mot de passe");
 define("lg_phrase_recover_password_error", "Il y a eu une erreur inattendue du traitement de votre demande. S'il vous plaît contactez le ouaibemestre.");

@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.3 - Vietnamese/Tiếng Việt - PHP
+* Version: alpha 0.4 - Vietnamese/Tiếng Việt - PHP
 ******************************************************************************************************************/
 
 
@@ -63,6 +63,9 @@ define("lg_loginPage", "login.php");
 define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
+define("lg_password_max_age", 6);
+define("lg_password_min_bits", 72);
+define("lg_password_min_length", 10)
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
@@ -155,7 +158,11 @@ define("lg_phrase_password_empty"," Lĩnh vực mật khẩu được yêu cầu
 define("lg_phrase_password_new_title","Hãy nhập mật khẩu của bạn mong muốn. Lĩnh vực này là bắt buộc.");
 define("lg_phrase_password_nomatch_confirm","The Mật khẩu không khớp với mật khẩu xác nhận. Vui lòng nhập lại.");
 define("lg_phrase_password_title","Hãy nhập mật khẩu của bạn. Lĩnh vực này là bắt buộc.");
-define("lg_phrase_recaptcha_error", "reCAPTCHA đã không được nhập chính xác.");
+define("lg_phrase_password_too_soon", "Các mật khẩu Các trận đấu của bạn gần đây được sử dụng mật khẩu của bạn. Xin vui lòng chọn một mật khẩu khác nhau.");
+define("lg_phrase_password_too_short", "Các mật khẩu có quá ngắn. Các chiều dài mật khẩu tối thiểu là:");
+define("lg_phrase_password_too_short", "chữ cái, biểu tượng hoặc chữ số.");
+define("lg_phrase_password_too_simple", "Các mật khẩu nhập vào là quá đơn giản. Xin vui lòng nhập một mật khẩu mà gồm ký tự ngẫu nhiên bao gồm một kết hợp chữ cái, biểu tượng hoặc chữ số.");
+define("lg_phrase_recaptcha_error", "The reCAPTCHA wasn't entered correctly.");
 define("lg_phrase_recover_password","Khôi phục mật khẩu");
 define("lg_phrase_recover_password_error","Có một lỗi không mong muốn xử lý yêu cầu của bạn Xin vui lòng liên lạc với web người chủ.");
 define("lg_phrase_recover_password_success","Yêu cầu khôi phục mật khẩu của bạn đã được xử lý thành công.<p>Hãy làm theo hướng dẫn trong thư điện tử gửi đến để thiết lập mật khẩu mới.</p>");
