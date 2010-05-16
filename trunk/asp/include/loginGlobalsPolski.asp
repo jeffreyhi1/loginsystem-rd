@@ -1,4 +1,4 @@
-<%
+﻿<%
 * $Id: loginGlobalsPolski.asp 297 2010-05-05 22:40:09Z rdivilbiss $
 '*******************************************************************************************************************
 '* Login Globals - ASP
@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '* 
-'* Version: alpha 0.3 - Polish/polski - ASP
+* Version: alpha 0.4 - Polish/polski - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -63,6 +63,9 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_password_max_age = 6
+Const lg_password_min_bits = 72
+Const lg_password_min_length = 10
 Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
@@ -155,6 +158,10 @@ Const lg_phrase_password_empty = "Wymagane pole &quot;Hasło&quot; jest puste. P
 Const lg_phrase_password_new_title = "Proszę wprowadź swoje nowe hasło. To pole jest wymagane."
 Const lg_phrase_password_nomatch_confirm = "Wprowadzone hasło nie zgadza się z potwierdzeniem. Proszę, wprowadź hasła ponownie."
 Const lg_phrase_password_title = "Proszę, wprowadź swoje hasło. To pole jest wymagane."
+Const lg_phrase_password_too_soon = "Hasło jest takie samo jak jeden z ostatnio używanych haseł. Proszę wybrać inne hasło."
+Const lg_phrase_password_too_short_pre = "Hasło jest za krótkie. Minimalna długość hasła to:"
+Const lg_phrase_password_too_short_post = "liter, symboli i cyfr."
+Const lg_phrase_password_too_simple = "Wprowadzone hasło jest zbyt proste. Wpisz hasło, które ma wiele przypadkowych znaków, w tym symbole, małe i wielkie litery oraz cyfry."
 Const lg_phrase_recaptcha_error = "Wprowadzony kod reCAPTCHA jest niepoprawny."
 Const lg_phrase_recover_password = "Odzyskaj hasło"
 Const lg_phrase_recover_password_error = "Wystąpił nieoczekiwany błąd w przetwarzaniu Twojego żądania. Proszę, skontaktuj się z webmasterem."
@@ -216,7 +223,7 @@ Const lg_term_enter_information = "Wprowadź dane"
 Const lg_term_error_string = "getPasshash"
 Const lg_term_example = "Przykład"
 Const lg_term_forbidden = "Dostęp zabroniony"
-Const lg_term_form_error = "Błąd formularza"
+Const lg_term_from_error = "Błąd formularza"
 Const lg_term_get_name = "getName"
 Const lg_term_get_oldpassword = "getOldPassword"
 Const lg_term_guest = "Gościu!"

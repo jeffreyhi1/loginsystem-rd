@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.3 - Hindi - ASP
+* Version: alpha 0.4 - Hindi - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -63,6 +63,9 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_password_max_age = 6
+Const lg_password_min_bits = 72
+Const lg_password_min_length = 10
 Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
@@ -155,6 +158,10 @@ Const lg_phrase_password_empty = "पासवर्ड क्षेत्र �
 Const lg_phrase_password_new_title = "कृपया अपना इच्छित पासवर्ड दर्ज करें. इस फ़ील्ड की आवश्यकता है."
 Const lg_phrase_password_nomatch_confirm = "पासवर्ड की पुष्टि पासवर्ड मेल नहीं खाता. कृपया फिर से दर्ज करें."
 Const lg_phrase_password_title = "कृपया अपना पासवर्ड दर्ज करें. इस फ़ील्ड की आवश्यकता है."
+Const lg_phrase_password_too_soon = "यह पासवर्ड फिर से उपयोग नहीं किया जा सकता है. कृपया एक अलग पासवर्ड का चयन करें."
+Const lg_phrase_password_too_short_pre = "यह पासवर्ड बहुत छोटा है. है न्यूनतम पासवर्ड लंबाई:"
+Const lg_phrase_password_too_short_post = "पत्र, प्रतीक, या संख्या."
+Const lg_phrase_password_too_simple = "पासवर्ड बहुत आसान है. एक नया पासवर्ड दर्ज करें कि मुश्किल है. उपयोग यादृच्छिक पत्र, प्रतीक और संख्या."
 Const lg_phrase_recaptcha_error = "ReCAPTCHA सही ढंग से दर्ज नहीं किया था."
 Const lg_phrase_recover_password = "पुनर्प्राप्त पासवर्ड"
 Const lg_phrase_recover_password_error = " वहाँ एक अप्रत्याशित आपके अनुरोध प्रसंस्करण त्रुटि थी. कृपया वेबमास्टर से संपर्क करें."
