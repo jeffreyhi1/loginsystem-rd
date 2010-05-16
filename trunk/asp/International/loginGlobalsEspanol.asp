@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-* Version alpha 0.3 - Spanish/Español - ASP
+* Version alpha 0.4 - Spanish/Español - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -63,6 +63,9 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_password_max_age = 6
+Const lg_password_min_bits = 72
+Const lg_password_min_length = 10
 Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
@@ -155,6 +158,10 @@ Const lg_phrase_password_empty = "El campo de la contraseña está vacía, pero 
 Const lg_phrase_password_new_title = "Por favor, introduzca su contraseña deseada . Este campo es obligatorio." 
 Const lg_phrase_password_nomatch_confirm = "La contraseña no coincide con la Contraseña de Confirmación. Por favor, vuelva a entrar." 
 Const lg_phrase_password_title = "Por favor, introduzca su contraseña. Este campo es obligatorio." 
+Const lg_phrase_password_too_soon = "La contraseña es la misma que una de las contraseñas usadas recientemente. Por favor, elija una contraseña diferente."
+Const lg_phrase_password_too_short_pre = "La contraseña introducida tiene muy pocos personajes. La longitud mínima de la contraseña es:"
+Const lg_phrase_password_too_short_post = "letras, números y símbolos."
+Const lg_phrase_password_too_simple = "La contraseña es demasiado simple. Por favor, introduzca una contraseña que tiene muchos caracteres aleatorios que incluyen una combinación de cartas superiores y minúsculas, números, y simbolos."
 Const lg_phrase_recaptcha_error = "El reCAPTCHA no se ha escrito correctamente."
 Const lg_phrase_recover_password = "Recuperar Contraseña" 
 Const lg_phrase_recover_password_error = "Se produjo un error inesperado al procesar tu solicitud. Por favor, póngase en contacto con el webmaster." 

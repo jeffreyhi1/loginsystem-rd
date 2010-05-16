@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-* Version: alpha 0.3 - Vietnamese/Tiếng Việt - ASP
+* Version: alpha 0.4 - Vietnamese/Tiếng Việt - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -63,6 +63,9 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_password_max_age = 6
+Const lg_password_min_bits = 72
+Const lg_password_min_length = 10
 Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
@@ -155,6 +158,10 @@ Const lg_phrase_password_empty = " Lĩnh vực mật khẩu được yêu cầu 
 Const lg_phrase_password_new_title = "Hãy nhập mật khẩu của bạn mong muốn. Lĩnh vực này là bắt buộc."
 Const lg_phrase_password_nomatch_confirm = "The Mật khẩu không khớp với mật khẩu xác nhận. Vui lòng nhập lại."
 Const lg_phrase_password_title = "Hãy nhập mật khẩu của bạn. Lĩnh vực này là bắt buộc."
+Const lg_phrase_password_too_soon = "Các mật khẩu Các trận đấu của bạn gần đây được sử dụng mật khẩu của bạn. Xin vui lòng chọn một mật khẩu khác nhau."
+Const lg_phrase_password_too_short_pre = "Các mật khẩu có quá ngắn. Các chiều dài mật khẩu tối thiểu là:"
+Const lg_phrase_password_too_short_post = "chữ cái, biểu tượng hoặc chữ số."
+Const lg_phrase_password_too_simple = "Các mật khẩu nhập vào là quá đơn giản. Xin vui lòng nhập một mật khẩu mà gồm ký tự ngẫu nhiên bao gồm một kết hợp chữ cái, biểu tượng hoặc chữ số."
 Const lg_phrase_recaptcha_error = "reCAPTCHA đã không được nhập chính xác."
 Const lg_phrase_recover_password = "Khôi phục mật khẩu"
 Const lg_phrase_recover_password_error = "Có một lỗi không mong muốn xử lý yêu cầu của bạn Xin vui lòng liên lạc với web người chủ."
