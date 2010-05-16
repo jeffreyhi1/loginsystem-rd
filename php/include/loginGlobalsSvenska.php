@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.3 - Swedish/Svenska - PHP
+* Version: alpha 0.4 - Swedish/Svenska - PHP
 ******************************************************************************************************************/
 
 
@@ -63,6 +63,9 @@ define("lg_loginPage", "login.php");
 define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
+define("lg_password_max_age", 6);
+define("lg_password_min_bits", 72);
+define("lg_password_min_length", 10)
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
@@ -155,6 +158,10 @@ define("lg_phrase_password_empty", "Lösenordet är tomt men obligatoriskt. Vän
 define("lg_phrase_password_new_title", "Ange ditt önskade lösenord. Detta fält är obligatoriskt.");
 define("lg_phrase_password_nomatch_confirm", "Lösenordet inte matchar Bekräftelse lösenord. Skriv in igen.");
 define("lg_phrase_password_title", "Ange ditt lösenord. Detta fält är obligatoriskt.");
+define("lg_phrase_password_too_soon", "Lösenordet är detsamma som ett av de senast använda lösenorden. Välj ett annat lösenord.");
+define("lg_phrase_password_too_short_pre", "Lösenordet som anges är för kort. Den minsta lösenord längd är:");
+define("lg_phrase_password_too_short_post", "bokstäver, siffror och symboler.");
+define("lg_phrase_password_too_simple", "Den trädde lösenord är för enkelt. Ange ett lösenord som har många slumpmässiga tecken inklusive en blandning av gemener och bokstäver, symboler och siffror.");
 define("lg_phrase_recaptcha_error", "Den reCAPTCHA var inte korrekt.");
 define("lg_phrase_recover_password", "Återställ lösenord");
 define("lg_phrase_recover_password_error", "Det var ett oväntat fel när din begäran. Kontakta webmaster.");

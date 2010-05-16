@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.3 - Polish/polski - PHP
+* Version: alpha 0.4 - Polish/polski - PHP
 ******************************************************************************************************************/
 
 
@@ -63,6 +63,9 @@ define("lg_loginPage", "login.php");
 define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
+define("lg_password_max_age", 6);
+define("lg_password_min_bits", 72);
+define("lg_password_min_length", 10)
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
@@ -155,6 +158,10 @@ define("lg_phrase_password_empty", "Wymagane pole &quot;Hasło&quot; jest puste.
 define("lg_phrase_password_new_title", "Proszę wprowadź swoje nowe hasło. To pole jest wymagane.");
 define("lg_phrase_password_nomatch_confirm", "Wprowadzone hasło nie zgadza się z potwierdzeniem. Proszę, wprowadź hasła ponownie.");
 define("lg_phrase_password_title", "Proszę, wprowadź swoje hasło. To pole jest wymagane.");
+define("lg_phrase_password_too_soon", "Hasło jest takie samo jak jeden z ostatnio używanych haseł. Proszę wybrać inne hasło.");
+define("lg_phrase_password_too_short_pre", "Hasło jest za krótkie. Minimalna długość hasła to:");
+define("lg_phrase_password_too_short_post", "liter, symboli i cyfr.");
+define("lg_phrase_password_too_simple", "Wprowadzone hasło jest zbyt proste. Wpisz hasło, które ma wiele przypadkowych znaków, w tym symbole, małe i wielkie litery oraz cyfry.");
 define("lg_phrase_recaptcha_error", "Wprowadzony kod reCAPTCHA jest niepoprawny.");
 define("lg_phrase_recover_password", "Odzyskaj hasło");
 define("lg_phrase_recover_password_error", "Wystąpił nieoczekiwany błąd w przetwarzaniu Twojego żądania. Proszę, skontaktuj się z webmasterem.");

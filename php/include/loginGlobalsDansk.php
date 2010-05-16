@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.3 - Danish/Dansk - PHP
+* Version: alpha 0.4 - Danish/Dansk - PHP
 ******************************************************************************************************************/
 
 
@@ -63,6 +63,9 @@ define("lg_loginPage", "login.php");
 define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
+define("lg_password_max_age", 6);
+define("lg_password_min_bits", 72);
+define("lg_password_min_length", 10)
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
@@ -155,6 +158,10 @@ define("lg_phrase_password_empty", "Password feltet er tomt, men er påkrævet. In
 define("lg_phrase_password_new_title", "Indtast dit ønskede password. Dette felt er påkrævet.");
 define("lg_phrase_password_nomatch_confirm", "Password matcher ikke Bekræftelsesadgangskoden. Indtast igen.");
 define("lg_phrase_password_title", "Indtast din adgangskode. Dette felt er påkrævet. ");
+define("lg_phrase_password_too_soon", "Adgangskoden er den samme som en nyligt brugt password. Vælg en anden adgangskode.");
+define("lg_phrase_password_too_short_pre", "Adgangskoden er for få charaters. Den mindste password længde er:");
+define("lg_phrase_password_too_short_post", "bogstaver, tal og symboler.");
+define("lg_phrase_password_too_simple", "De indtastede adgangskode er for simpelt. Angiv en adgangskode, som har mange tilfældige tegn, herunder en blanding af store og små bogstaver, symboler og tal.");
 define("lg_phrase_recaptcha_error", "Den reCAPTCHA var ikke indtastet korrekt.");
 define("lg_phrase_recover_password", "Gendan Password");
 define("lg_phrase_recover_password_error", "Der opstod en uventet fejl under behandling af din anmodning. Kontakt venligst webmaster.");

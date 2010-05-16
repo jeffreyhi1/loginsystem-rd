@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.3 - German/Deutsch - PHP
+* Version: alpha 0.4 - German/Deutsch - PHP
 ******************************************************************************************************************/
 
 
@@ -63,6 +63,9 @@ define("lg_loginPage", "login.php");
 define("lg_loginPath", "/login-system/");
 define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
+define("lg_password_max_age", 6);
+define("lg_password_min_bits", 72);
+define("lg_password_min_length", 10)
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
@@ -155,6 +158,10 @@ define("lg_phrase_password_empty", "Das 'Passwort'-Feld ist leer, wird aber ben�
 define("lg_phrase_password_new_title", "Bitte geben Sie Ihre gewünschtes Passwort ein. Dieses Feld ist obligatorisch.");
 define("lg_phrase_password_nomatch_confirm", "Das Passwort stimmt nicht mit der Bestätigungs-Passwort überein. Bitte wiederholen.");
 define("lg_phrase_password_title", "Bitte geben Sie Ihr Kennwort ein. Dieses Feld ist obligatorisch.");
+define("lg_phrase_password_too_soon", "Das Passwort ist das gleiche wie Ihr kürzlich verwendete Passwörter. Bitte wählen Sie ein anderes Kennwort.");
+define("lg_phrase_password_too_short_pre", "Das Kennwort ist mit zu wenigen charaters eingetragen. Die Mindestlänge eines Passwortes ist:");
+define("lg_phrase_password_too_short_post", "Buchstaben, Zahlen und Symbolen.");
+define("lg_phrase_password_too_simple", "Das eingegebene Passwort ist zu einfach. Bitte geben Sie ein Kennwort, dass viele zufällige Zeichen einschließlich einer Mischung von Groß-und Kleinbuchstaben, Symbole und Zahlen hat.");
 define("lg_phrase_recaptcha_error", "Die reCAPTCHA wurde nicht richtig eingegeben.");
 define("lg_phrase_recover_password", "Passwort wiederherstellen.");
 define("lg_phrase_recover_password_error", "Es gab einen unerwarteten Fehler bei der Bearbeitung Ihrer Anfrage. Bitte kontaktieren Sie den Webmaster.");
