@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.3 - English - ASP
+* Version: alpha 0.4 - English - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -63,6 +63,9 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_password_max_age = 6
+Const lg_password_min_bits = 72
+Const lg_password_min_length = 10
 Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
@@ -155,6 +158,10 @@ Const lg_phrase_password_empty = "The Password field is empty but is required. P
 Const lg_phrase_password_new_title = "Please enter your desired password. This field is required."
 Const lg_phrase_password_nomatch_confirm = "The Password does not match the Confirmation Password. Please re-enter."
 Const lg_phrase_password_title = "Please enter your password. This field is required."
+Const lg_phrase_password_too_soon = "The password is the same as a recently used password. Please choose a different password."
+Const lg_phrase_password_too_short_pre = "The password entered has too few charaters. The minimum password length is:"
+Const lg_phrase_password_too_short_post = "letters, symbols, and numbers."
+Const lg_phrase_password_too_simple = "The entered password is too simple. Please enter a password which has many random characters including a mix of upper and lower case letters, symbols, and digits."
 Const lg_phrase_recaptcha_error = "The reCAPTCHA wasn't entered correctly."
 Const lg_phrase_recover_password = "Recover Password"
 Const lg_phrase_recover_password_error = "There was an unexpected error processing your request. Please contact the webmaster."

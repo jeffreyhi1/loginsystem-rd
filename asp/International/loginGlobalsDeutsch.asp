@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.3 - German - ASP
+* Version: alpha 0.4 - German - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -63,6 +63,9 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_password_max_age = 6
+Const lg_password_min_bits = 72
+Const lg_password_min_length = 10
 Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
@@ -155,6 +158,10 @@ Const lg_phrase_password_empty = "Das 'Passwort'-Feld ist leer, wird aber benöt
 Const lg_phrase_password_new_title = "Bitte geben Sie Ihre gewünschtes Passwort ein. Dieses Feld ist obligatorisch."
 Const lg_phrase_password_nomatch_confirm = "Das Passwort stimmt nicht mit der Bestätigungs-Passwort überein. Bitte wiederholen."
 Const lg_phrase_password_title = "Bitte geben Sie Ihr Kennwort ein. Dieses Feld ist obligatorisch."
+Const lg_phrase_password_too_soon = "Das Passwort ist das gleiche wie Ihr kürzlich verwendete Passwörter. Bitte wählen Sie ein anderes Kennwort."
+Const lg_phrase_password_too_short_pre = "Das Kennwort ist mit zu wenigen charaters eingetragen. Die Mindestlänge eines Passwortes ist:"
+Const lg_phrase_password_too_short_post = "Buchstaben, Zahlen und Symbolen."
+Const lg_phrase_password_too_simple = "Das eingegebene Passwort ist zu einfach. Bitte geben Sie ein Kennwort, dass viele zufällige Zeichen einschließlich einer Mischung von Groß-und Kleinbuchstaben, Symbole und Zahlen hat."
 Const lg_phrase_recaptcha_error = "Die reCAPTCHA wurde nicht richtig eingegeben."
 Const lg_phrase_recover_password = "Passwort wiederherstellen."
 Const lg_phrase_recover_password_error = "Es gab einen unerwarteten Fehler bei der Bearbeitung Ihrer Anfrage. Bitte kontaktieren Sie den Webmaster."

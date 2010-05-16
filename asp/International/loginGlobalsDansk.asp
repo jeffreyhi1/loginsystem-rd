@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.3 - Danish - ASP
+* Version: alpha 0.4 - Danish - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -63,6 +63,9 @@ Const lg_loginPage = "login.asp"
 Const lg_loginPath = "/login-system/"
 Const lg_logout_page = "logout.asp"
 Const lg_new_token_page = "issue_verification_token.asp"
+Const lg_password_max_age = 6
+Const lg_password_min_bits = 72
+Const lg_password_min_length = 10
 Const lg_recover_passsword_page = "recover_password.asp"
 Const lg_register_delete_page = "register_delete.asp"
 Const lg_register_page = "register.asp"
@@ -155,6 +158,10 @@ Const lg_phrase_password_empty = "Password feltet er tomt, men er påkrævet. Indt
 Const lg_phrase_password_new_title = "Indtast dit ønskede password. Dette felt er påkrævet."
 Const lg_phrase_password_nomatch_confirm = "Password matcher ikke Bekræftelsesadgangskoden. Indtast igen."
 Const lg_phrase_password_title = "Indtast din adgangskode. Dette felt er påkrævet. "
+Const lg_phrase_password_too_soon = "Adgangskoden er den samme som en nyligt brugt password. Vælg en anden adgangskode."
+Const lg_phrase_password_too_short_pre = "Adgangskoden er for få charaters. Den mindste password længde er:"
+Const lg_phrase_password_too_short_post = "bogstaver, tal og symboler."
+Const lg_phrase_password_too_simple = "De indtastede adgangskode er for simpelt. Angiv en adgangskode, som har mange tilfældige tegn, herunder en blanding af store og små bogstaver, symboler og tal."
 Const lg_phrase_recaptcha_error = "Den reCAPTCHA var ikke indtastet korrekt."
 Const lg_phrase_recover_password = "Gendan Password"
 Const lg_phrase_recover_password_error = "Der opstod en uventet fejl under behandling af din anmodning. Kontakt venligst webmaster."
