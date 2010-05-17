@@ -1,4 +1,4 @@
-<%
+﻿<%
 '* alpha 0.3
 '* $Id$
 '*******************************************************************************************************************
@@ -126,7 +126,7 @@ Function generateToken
 	If lg_debug Then dbMsg = dbMsg & "IN generateToken :: Session(ft_ip) = "& Session("ft_ip") &"<br />" & vbLF End If
 	If lg_debug Then dbMsg = dbMsg & "IN generateToken :: Session(ft_time) = "& Session("ft_time") &"<br />" & vbLF End If
 	If lg_debug Then dbMsg = dbMsg & "IN generateToken :: ft_tokenStr = "& ft_tokenStr &"<br />" & vbLF End If
-	If lg_debug Then dbMsg = dbMsg & "IN generateToken :: Session("ft_token") = "& Session("ft_token") &"<br />" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "IN generateToken :: Session(ft_token) = "& Session("ft_token") &"<br />" & vbLF End If
 	If lg_debug Then dbMsg = dbMsg & "IN generateToken :: Response.Cookies(token) = "& Session("ft_token") &"<br />" & vbLF End If
 End Function
 	
