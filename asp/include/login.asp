@@ -1,5 +1,5 @@
-<%
-'* alpha 0.3 debug
+﻿<%
+'* alpha 0.4 debug
 '* $Id$
 '*******************************************************************************************************************
 '* Page Name: Login
@@ -22,6 +22,7 @@ Response.CacheControl="no-store"
 '*******************************************************************************************************************
 Dim redirected, destination, password, passhash, userid, useridValue, name, remember, cmdTxt, message
 Dim ip, date, useragent, locked, laID, laUserID, laNumber, laIP, laDate, laLocked, laDeleted, tmpStr, dbMsg
+Dim entropy, lowLetters, upLetters, symbols, digits, totalChars, lowLettersChars, upLettersChars, symbolChars, digitChars, otherChars
 
 destination=""
 password=""
@@ -37,9 +38,68 @@ If lg_debug Then
 Else
 	dbMsg = ""
 End If
+entropy = 0
+lowLetters = "abcdefghijklmnopqrstuvwxyz"
+upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+symbols = "~`!@#$%^&*()-_+="
+digits = "1234567890"
 
-	
-If UCase(Request.ServerVariables("HTTP_METHOD"))="GET" Then
+totalChars = 95
+lowLettersChars = Len(lowLetters)
+upLettersChars = Len(upLetters)
+symbolChars = Len(symbols)
+digitChars = Len(digits)
+otherChars = totalChars - (lowLettersChars + upLettersChars + symbolChars + digitChars)
+
+Function getEntropyBits(pPass)
+	Dim hasLower, hasUpper, hasSymbol, hasDigit
+	Dim hasOther, domain, idx, char, bits
+
+    If (Len(pPass) < 0) Then
+        getEntropyBits = 0
+    Else
+    	hasLower = False
+    	hasUpper = False
+    	hasSymbol = False
+    	hasDigit = False
+    	hasOther = False
+    	domain = 0
+
+    	For idx = 1 to Len(pPass)
+        	char = Mid(pPass,idx,1)
+
+        	If InStr(lowLetters,char) > 0 Then
+            	hasLower = True
+            ElseIf InStr(upLetters,char) > 0 Then
+            	hasUpper = Tru
+            ElseIf InStr(digits,char) > 0 Then
+            	hasDigit = True
+            ElseIf InStr(symbols,char) > 0 Then
+            	hasSymbol = True
+            Else
+            	hasOther = True
+            End If	
+		Next
+		   
+	    If (hasLower) Then
+        	domain = domain + lowLettersChars
+    	ElseIf (hasUpper) Then
+        	domain = domain + upLettersChars
+    	ElseIf (hasDigit) Then
+        	domain = domain + digitChars
+    	ElseIf (hasSymbol) Then
+        	domain = domain + symbolChars
+    	ElseIf (hasOther) Then
+        	domain = domain + otherChars
+        End If
+
+        bits = Log(domain) * (Len(pPass) / Log(2))
+    	getEntropyBits = Int(bits)
+    End If
+End Function
+
+
+If Request.ServerVariables("HTTP_METHOD")="GET" Then
 	If lg_debug Then dbMsg = dbMsg & "METHOD=GET<br />" & vbLF End If
 	'*******************************************************************************************************************
 	'* On entry determine if we have a destination page
@@ -353,11 +413,16 @@ Else
 	checkToken
 	If lg_debug Then dbMsg = dbMsg & "checkToken Okay<br />" & vbLF End If
 	message = ""
-	password = Trim(Left(getField("password,rXsafepq"),255))
+	'*******************************************************************************************************************
+	'* WARNING: password is not filtered.
+	'*******************************************************************************************************************
+	password = Left(Request.Form("password"),255)
+	entropy = getEntropyBits(password)
 	userid = Trim(Left(getField("userid,rXsafepq"),50))
 	remember = Trim(Left(getField("remember,rXalpha"),3)) ' Yes or empty
 	destination = getField("destination,rXurlpath")       ' saved final destination
-	If lg_debug Then dbMsg = dbMsg & "POSTED password = "& password &"<br />" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "POSTED password = "& Server.HTMLEncode(password) &"<br />" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "ENTROPY = "& entropy &"<br />" & vbLF End If
 	If lg_debug Then dbMsg = dbMsg & "POSTED userid = "& userid &"<br />" & vbLF End If
 	If lg_debug Then dbMsg = dbMsg & "POSTED remember = "& remember &"<br />" & vbLF End If
 	If lg_debug Then dbMsg = dbMsg & "POSTED destination = "& destination &"<br />" & vbLF End If
@@ -372,6 +437,14 @@ Else
 		message = message & lg_phrase_password_empty & "<br>" & vbLF
 		If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 	End If
+	If (lg_password_min_bits > 0) AND (entropy < lg_password_min_bits) Then
+		message = message & lg_phrase_password_too_simple & "<br>" & vbLF
+		If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
+	ElseIf (lg_password_min_length > 0) AND (Len(password) < lg_password_min_length) Then
+		message = message & lg_phrase_password_too_short_pre & " " & lg_password_min_length & " " & lg_phrase_password_too_short_post & "<br>" & vbLF
+		If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
+	End If
+	
 	If message="" Then
 		'*******************************************************************************************************************
 		'* Userid could be deleted or locked.
