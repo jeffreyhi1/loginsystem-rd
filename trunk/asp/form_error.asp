@@ -2,7 +2,7 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
-'* alpha 0.3
+'* alpha 0.5 debug
 '* $Id$
 %>
 <!--#include file="include/generalPurpose.asp"-->
@@ -26,5 +26,6 @@ Response.Charset="UTF-8"
 </head>
 <body>
 <!--#include file="include/form-error-markup.asp"-->
+<% If lg_debug Then Response.Write dbMsg End If %>
 </body>
 </html>

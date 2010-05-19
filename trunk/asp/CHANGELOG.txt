@@ -1,5 +1,5 @@
 CHANGE LOG
-alpha 0.2 to alpha 0.3
+alpha 0.3/0.3a/0.4 to alpha 0.5
 1. ASP /login-system/include/login.asp had an error on lines: 101 and 103 where a period (PHP concatenation character) was used instead of an ampersand.
 2. ASP /login-system/include/form_error.asp had
 	Option Explicit
@@ -10,3 +10,20 @@ which were already defined (properly) in /login-system/form_error.asp
 Two language constants were not spelled correctly. (This did not cause an error, but was incorrect)
 langage files and code were corrected to the proper spellings.
 Added the Polish language translation.
+
+Issues 31, 34, 45
+
+1. Minimum password length available
+2. Minimum password bit entropy (randomness) available
+3. The remember me checkbox can be turned of on login.asp (Set: lg_term_remember to false)
+
+Added a number of constants to loginGlobals.asp to support strong passwords and the password strength meter used on #2 above.
+
+All bugs recently have been string errors, usually in debug messages. Often a
+missing " or &.
+
+**********************************************************************************
+* THIS IS A DEBUG VERSION TO ASSIST IN BUG FIXES. THAT MEANS YOU WILL NEED TO 
+* REMOVE (AT A MINIMUM) <% If lg_debug Then Response.Write dbMsg End If %> FROM
+* YOUR PAGES.
+**********************************************************************************
