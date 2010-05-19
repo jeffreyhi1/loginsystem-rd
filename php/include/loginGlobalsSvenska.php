@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.4 - Swedish/Svenska - PHP
+* Version: alpha 0.5 - Swedish/Svenska - PHP
 ******************************************************************************************************************/
 
 
@@ -222,6 +222,7 @@ define("lg_term_email", "E-post");
 define("lg_term_enter_information", "Ange information");
 define("lg_term_error_string", "getPasshash");
 define("lg_term_example", "Exempel");
+define("lg_term_fair", "DÅLIG");
 define("lg_term_forbidden", "Förbjudna");
 define("lg_term_form_error", "Form Fel");
 define("lg_term_get_name", "getName");
@@ -237,8 +238,11 @@ define("lg_term_log_string", "logLogin");
 define("lg_term_logged_out", "Utloggad");
 define("lg_term_login", "Logga in");
 define("lg_term_login_success", "Framgång");
+define("lg_term_medium", "INTE BRA");
 define("lg_term_name", "Namn");
+define("lg_term_new", "Nytt");
 define("lg_term_new_password", "Nytt lösenord");
+define("lg_term_poor", "SVAG");
 define("lg_term_optional", "Valfritt");
 define("lg_term_or", "eller");
 define("lg_term_password", "lösenord");
@@ -260,6 +264,7 @@ define("lg_term_required", "obligatoriskt");
 define("lg_term_reset_password", "Återställ lösenord");
 define("lg_term_set_new_password", "ange ett nytt lösenord");
 define("lg_term_set_newpassword", "changePassword");
+define("lg_term_strong", "Mycket stark");
 define("lg_term_submit", "Skicka");
 define("lg_term_to", "till");
 define("lg_term_useragent", "useragent");
@@ -271,3 +276,5 @@ define("lg_term_website_address", "Webbsida adress");
 define("lg_term_welcome", "Välkommen");
 define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"sv\" lang=\"sv\">");
 ?>
+
+
