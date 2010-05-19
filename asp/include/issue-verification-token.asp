@@ -1,5 +1,5 @@
 <%
-'* alpha 0.3 debug
+'* alpha 0.5 debug
 '* $Id$
 '*******************************************************************************************************************
 '* Page Name: Issue Verification Token
@@ -137,7 +137,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
 			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_phrase_registration_mail0 &"<br /><br />"
-			mailBody = mailBody & lg_term_to & name & "<br /><br />"
+			mailBody = mailBody & lg_term_to &" "& name & "<br /><br />"
 			mailBody = mailBody & lg_phrase_registration_mail1 &" "& lg_domain &". " & lg_phrase_registration_mail2 & "<br />"
 			mailBody = mailBody & lg_phrase_registration_mail3 & ".<br /><br />"
 			mailBody = mailBody & "<a href=""http://" & lg_domain & lg_loginPath & lg_verify_page & "?token=" & token & "&id=1"">"& lg_phrase_registration_mail4 &"</a><br /><br />"
@@ -151,10 +151,10 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			mailBody = mailBody & "</FONT></DIV></BODY></HTML>"
 			if lg_debug Then dbMsg = "mailBody = "& mailBody &"<br />" & vbLF End If
 			
-			sendmail lg_webmaster_email, email, lg_term_registration_newtoken, mailBody
-			sendmail lg_webmaster_email, lg_webmaster_email, lg_phrase_attention_webmaster &" "&lg_term_registration_newtoken, mailBody
+			sendmail lg_webmaster_email, email, lg_term_new & " " & lg_term_register_confirmation, mailBody
+			sendmail lg_webmaster_email, lg_webmaster_email, lg_phrase_attention_webmaster &" "&lg_term_new & " " & lg_term_register_confirmation, mailBody
 			
-			if lg_debug Then dbMsg = "Email notifications sent.<br />" & vbLF End If
+			if lg_debug Then dbMsg = dbMsg & "Email notifications sent.<br />" & vbLF End If
 		Else
 			'*****************************************************************************
 			'* There was an error updating the record and no new token was issued.

@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '* 
-'* Version: alpha 0.4 - Polish/polski - ASP
+'* Version: alpha 0.5 - Polish/polski - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -222,6 +222,7 @@ Const lg_term_email = "E-mail"
 Const lg_term_enter_information = "Wprowadź dane"
 Const lg_term_error_string = "getPasshash"
 Const lg_term_example = "Przykład"
+Const lg_term_fair = "Zły"
 Const lg_term_forbidden = "Dostęp zabroniony"
 Const lg_term_from_error = "Błąd formularza"
 Const lg_term_get_name = "getName"
@@ -237,8 +238,11 @@ Const lg_term_log_string = "logLogin"
 Const lg_term_logged_out = "Wylogowany"
 Const lg_term_login = "Zaloguj się"
 Const lg_term_login_success = "Logowanie pomyślnie ukończone"
+Const lg_term_medium = "DOBRY"
 Const lg_term_name = "Imię i nazwisko"
+Const lg_term_new = "Nowe"
 Const lg_term_new_password = "Nowe hasło"
+Const lg_term_poor = "Bardzo słaba"
 Const lg_term_optional = "opcjonalne"
 Const lg_term_or = "lub"
 Const lg_term_password = "Hasło"
@@ -260,6 +264,7 @@ Const lg_term_required = "wymagane"
 Const lg_term_reset_password = "Odzyskiwanie hasła"
 Const lg_term_set_new_password = "Wprowadź nowe hasło"
 Const lg_term_set_newpassword = "changePassword"
+Const lg_term_strong = "BARDZO MOCNY"
 Const lg_term_submit = "Wyślij"
 Const lg_term_to = "Do"
 Const lg_term_useragent = "Useragent"
@@ -271,3 +276,5 @@ Const lg_term_website_address = "Adres strony"
 Const lg_term_welcome = "Witaj"
 Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""pl"" lang=""pl"">"
 %>
+
+

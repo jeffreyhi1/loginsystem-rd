@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.4 - Hindi - ASP
+'* Version: alpha 0.5 - Hindi - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -222,6 +222,7 @@ Const lg_term_email = "ईमेल"
 Const lg_term_enter_information = "जानकारी दर्ज करें"
 Const lg_term_error_string = "getPasshash"
 Const lg_term_example = "उदाहरण"
+Const lg_term_fair = "अच्छा नहीं"
 Const lg_term_forbidden = "निषिद्ध"
 Const lg_term_form_error = "फार्म में त्रुटि"
 Const lg_term_get_name = "getName"
@@ -237,8 +238,11 @@ Const lg_term_log_string = "logLogin"
 Const lg_term_logged_out = "लॉग आउट"
 Const lg_term_login = "लॉग इन"
 Const lg_term_login_success = "सफलता"
+Const lg_term_medium = "अच्छा"
 Const lg_term_name = "नाम"
+Const lg_term_new = "नया"
 Const lg_term_new_password = "नया पासवर्ड"
+Const lg_term_poor = "खराब"
 Const lg_term_optional = "ऐच्छिक"
 Const lg_term_or = "या"
 Const lg_term_password = "पासवर्ड"
@@ -260,6 +264,7 @@ Const lg_term_required = "अपेक्षित"
 Const lg_term_reset_password = "पासवर्ड रीसेट"
 Const lg_term_set_new_password = "नया पासवर्ड सेट करें"
 Const lg_term_set_newpassword = "changePassword"
+Const lg_term_strong = "बहुत अच्छा"
 Const lg_term_submit = "प्रस्तुत करना"
 Const lg_term_to = "से"
 Const lg_term_useragent = "Useragent"
@@ -271,3 +276,5 @@ Const lg_term_website_address = "वेबसाइट का पता"
 Const lg_term_welcome = "आपका स्वागत है"
 Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""hi"" lang=""hi"">"
 %>
+
+

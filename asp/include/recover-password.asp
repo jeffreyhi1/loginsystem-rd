@@ -1,5 +1,5 @@
 <%
-'* alpha 0.3 debug
+'* alpha 0.5 debug
 '* $Id$
 '*******************************************************************************************************************
 '* Page Name: Recover Password
@@ -128,7 +128,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
 			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_phrase_recover_password &"<br><br>"
-			mailBody = mailBody & lg_term_to & name & "<br><br>"
+			mailBody = mailBody & lg_term_to &" "& name & "<br><br>"
 			mailBody = mailBody & lg_phrase_request_password1 &" "& lg_domain &". <br>"
 			mailBody = mailBody & lg_phrase_recover_password2 & "<br><br>"
 			mailBody = mailBody & "<a href=""http://" & lg_domain & lg_loginPath & lg_set_new_password_page & "?resettoken=" & token & "&id=1"">"& lg_phrase_recover_password3 &"</a><br><br>"
