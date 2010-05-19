@@ -1,5 +1,5 @@
 <%
-'* alpha 0.3 debug
+'* alpha 0.5 debug
 ' $Id$
 '*******************************************************************************************************************
 '* Page Name: Register
@@ -23,6 +23,7 @@ Response.CacheControl="no-store"
 Dim redirected, destination, password, confirm, passhash, userid, name, email, website, news, mailBody, dbMsg
 Dim ip, useragent, region, city, country, dateRegistered, locked, dateLocked, token, cmdTxt, message, objXMLHTTP, xmldoc
 Dim reChallengeField, reResponseField, publickey, privkey
+Dim entropy, lowLetters, upLetters, symbols, digits, totalChars, lowLettersChars, upLettersChars, symbolChars, digitChars, otherChars
 
 redirected=""
 destination=""
@@ -63,6 +64,79 @@ privkey = "6Lce3bkSAAAAADh2-3h0SS30KP5E8gHXBN0yV13j"
 If lg_debug Then
 	dbMsg = "DEBUG BEGIN<br />" & vbLF
 End If
+entropy = 0
+lowLetters = "abcdefghijklmnopqrstuvwxyz"
+upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+symbols = "~`!@#$%^&*()-_+="
+digits = "1234567890"
+
+totalChars = 95
+lowLettersChars = Len(lowLetters)
+upLettersChars = Len(upLetters)
+symbolChars = Len(symbols)
+digitChars = Len(digits)
+otherChars = totalChars - (lowLettersChars + upLettersChars + symbolChars + digitChars)
+
+Function getEntropy(pPass)
+	Dim hasLower, hasUpper, hasSymbol, hasDigit
+	Dim hasOther, idx, char, bits, match, domain
+
+    If (Len(pPass) < 0) Then
+        getEntropy = 0
+    Else
+    	hasLower = False
+    	hasUpper = False
+    	hasSymbol = False
+    	hasDigit = False
+    	hasOther = False
+    	domain = 0
+		
+    	For idx = 1 to Len(pPass)
+        	char = Mid(pPass,idx,1)
+			match = ""
+			
+        	If InStr(lowLetters,char) > 0 Then
+            	hasLower = True
+            	match = True
+            End If	
+            If InStr(upLetters,char) > 0 Then
+            	hasUpper = True
+            	match = True
+            End If
+            If InStr(digits,char) > 0 Then
+            	hasDigit = True
+            	match = True
+            End If
+            If InStr(symbols,char) > 0 Then
+            	hasSymbol = True
+            	match = True
+            End If
+            If match="" Then
+            	hasOther = True
+            End If            
+		Next
+		   
+	    If (hasLower) Then
+        	domain = domain + lowLettersChars
+        End If
+    	If (hasUpper) Then
+        	domain = domain + upLettersChars
+    	End If
+    	If (hasDigit) Then
+        	domain = domain + digitChars
+    	End If
+    	If (hasSymbol) Then
+        	domain = domain + symbolChars
+    	End If
+    	If (hasOther) Then
+        	domain = domain + otherChars
+        End If
+        
+        bits = Log(domain) * (Len(pPass) / Log(2))	
+    	getEntropy = Int(bits)
+    End If
+End Function
+
 
 '*******************************************************************************************************************
 '* Function to check is userid is available
@@ -139,7 +213,7 @@ Function recaptcha_confirm(rechallenge,reresponse)
 
 	Dim ResponseString
 	ResponseString = split(objXmlHttp.responseText, vblf)
-	If lg_debug Then "ResponseString = "& ResponseString &"<br>" & vbLF End If
+	'If lg_debug Then dbMsg = dbMsg & "ResponseString = " & ResponseString & "<br>" & vbLF End If
 	Set objXmlHttp = Nothing
 
 	If ResponseString(0) = "true" Then
@@ -150,7 +224,7 @@ Function recaptcha_confirm(rechallenge,reresponse)
 		recaptcha_confirm = ResponseString(1)
 	End If
 	
-	If lg_debug Then "Exiting recaptcha_confirm<br>" & vbLF End If
+	If lg_debug Then dbMsg = dbMsg & "Exiting recaptcha_confirm<br>" & vbLF End If
 End Function
 
 
@@ -179,9 +253,9 @@ Else
 	message = ""
 	userid = Trim(Left(getField("userid,rXsafepq"),50))
 	If lg_debug Then dbMsg = dbMsg & "userid = " & Server.HTMLEncode(userid) & "<br>" & vbLF End If
-	password = Trim(Left(getField("password,rXsafepq"),255))
+	password = Left(Request.Form("password"),255)
 	If lg_debug Then dbMsg = dbMsg & "password = " & Server.HTMLEncode(password) & "<br>" & vbLF End If
-	confirm = Trim(Left(getField("confirm,rXsafepq"),255))
+	confirm = Left(Request.Form("confirm"),255)
 	If lg_debug Then dbMsg = dbMsg & "confirm = " & Server.HTMLEncode(confirm) & "<br>" & vbLF End If
 	email = Trim(Left(getField("email,rXemail"),100))
 	If lg_debug Then dbMsg = dbMsg & "email = " & Server.HTMLEncode(email) & "<br>" & vbLF End If
@@ -198,11 +272,14 @@ Else
 	End if
 	destination = getField("destination,rXurlpath")
 	If lg_debug Then dbMsg = dbMsg & "destination = " & Server.HTMLEncode(destination) & "<br>" & vbLF End If
-	reChallengeField = getField("recaptcha_challenge_field,rXsafe")
+	reChallengeField = Request.Form("recaptcha_challenge_field")
 	reResponseField = getField("recaptcha_response_field,rXsafe")
 	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Challenge = " & Server.HTMLEncode(reChallengeField) & "<br>" & vbLF End If
 	If lg_debug Then dbMsg = dbMsg & "reCAPTCHA Response = " & Server.HTMLEncode(reResponseField) & "<br>" & vbLF End If
 	message = recaptcha_confirm(reChallengeField, reResponseField)
+	If message = "incorrect-captcha-sol" Then
+		message = lg_phrase_recaptcha_error & "<br>" & vbLF
+	End If	
 	If lg_debug Then dbMsg = dbMsg & "message = " & Server.HTMLEncode(message) & "<br>" & vbLF End If
 	If userid & ""="" Then
 		message = message & lg_phrase_userid_empty & "<br>" & vbLF
@@ -211,6 +288,17 @@ Else
 		message = message & lg_phrase_userid_inuse & "<br>" & vbLF
 		userid=""
 	End If
+	If password<>"" Then
+		entropy = getEntropy(password)
+		If lg_debug Then dbMsg = dbMsg & "ENTROPY = "& entropy &"<br />" & vbLF End If
+		If (lg_password_min_bits > 0) AND (entropy < lg_password_min_bits) Then
+			message = message & lg_phrase_password_too_simple & "<br>" & vbLF
+			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
+		ElseIf (lg_password_min_length > 0) AND (Len(password) < lg_password_min_length) AND (lg_password_min_bits < 1) Then
+			message = message & lg_phrase_password_too_short_pre & " " & lg_password_min_length & " " & lg_phrase_password_too_short_post & "<br>" & vbLF
+			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
+		End If
+	End If		
 	If password & ""="" Then
 		message = message & lg_phrase_password_empty & "<br>" & vbLF
 	End If
@@ -329,7 +417,7 @@ Else
 			mailBody = mailBody & "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 			mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=us-ascii"">"
 			mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>"& lg_term_register_confirmation &"<br><br>"
-			mailBody = mailBody & lg_term_to & name & "<br><br>"
+			mailBody = mailBody & lg_term_to & " " & name & "<br><br>"
 			mailBody = mailBody & lg_phrase_registration_mail1 &" "& lg_domain &". " & lg_phrase_registration_mail2 & "<br>"
 			mailBody = mailBody & lg_phrase_registration_mail3 & "<br><br>"
 			mailBody = mailBody & "<a href=""http://" & lg_domain & lg_loginPath & lg_verify_page & "?token=" & token & "&p="&destination&""">"& lg_phrase_registration_mail4 &"</a><br><br>"

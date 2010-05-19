@@ -1,11 +1,11 @@
 <%
-'* alpha 0.3 debug
+'* alpha 0.5 debug
 '* $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
 			<div id="login-system">
 				<h1><%=lg_term_issue_verification_token%></h1>
-				<% If (message = lg_phrase_issue_new_token) Then %>
+				<% If (message <> lg_phrase_issue_new_token_success) Then %>
 				<div id="message"><%=message%></div>	
 				<div id="formDiv">
 					<form id="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">

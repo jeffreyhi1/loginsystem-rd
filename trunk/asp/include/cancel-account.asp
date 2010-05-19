@@ -1,5 +1,5 @@
 <%
-'* alpha 0.3 debug
+'* alpha 0.5 debug
 '* $Id$
 '*******************************************************************************************************************
 '* Cancel Account
@@ -53,7 +53,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 	If lg_debug Then dbMsg = dbMsg & "checkToken Okay.<br />" & vbLF
 	message=""
 	userid = Left(getField("userid,rXsafepq"),50)
-	password = Left(getField("password,rXsafepq"),255)
+	password = Left(Request.Form("password"),255)
 	If userid & ""="" Then
 		message = message & lg_phrase_userid_empty
 	End If
@@ -105,7 +105,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 				addParam "@userid",adVarChar,adParamInput,CLng(Len(userid)),userid,lg_term_cancel_account&" 5"
 				addParam "@passhash",adVarChar,adParamInput,CLng(Len(passhash)),passhash,lg_term_cancel_account&" 6"
 				execCmd cmdTxt
-				If lg_debug Then dbMsg = dbMsg & "numAffected = "& nubAffected &"<br />" & vbLF
+				If lg_debug Then dbMsg = dbMsg & "numAffected = "& numAffected &"<br />" & vbLF
 				If numAffected = 1 Then
 					If lg_debug Then dbMsg = dbMsg & "Kill session and cookies<br />" & vbLF
 					Response.Cookies("user") = ""

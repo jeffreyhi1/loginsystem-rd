@@ -1,10 +1,10 @@
 <%
-'* alpha 0.3
+'* alpha 0.5 debug
 '* $Id$
 '*******************************************************************************************************************
 '* Change Password
 '* On Entry: Verify need for SSL
-'* Input:    oldpassword, newpassword, confirm
+'* Input:    oldpassword, password, confirm
 '* Output:   message - string variable with results
 '* On Exit:  Password Changed
 '*           Email sent to account owner
@@ -21,15 +21,15 @@ Response.CacheControl="no-store"
 '*******************************************************************************************************************
 '* Diminsion all page variables and initialize default values
 '*******************************************************************************************************************
-Dim cmdTxt, name, email, oldpassword, password, newpassword, confirm, oldpasshash, oldpasshashconfirm
+Dim cmdTxt, name, email, oldpassword, password, confirm, oldpasshash, oldpasshashconfirm
 Dim passhash, message, mailBody, dbMsg
+Dim entropy, lowLetters, upLetters, symbols, digits, totalChars, lowLettersChars, upLettersChars, symbolChars, digitChars, otherChars
 
 cmdTxt=""
 name=""
 email=""
 oldpassword=""
 password=""
-newpassword=""
 confirm=""
 oldpasshash=""
 oldpasshashconfirm=""
@@ -38,6 +38,80 @@ message=lg_phrase_change_password
 mailBody=""
 If lg_debug Then dbMsg = dbMsg & "DEBUG BEGIN<br>" End If
 If lg_debug Then dbMsg = dbMsg & "message: "&message&"<br>" End If
+entropy =0
+lowLetters = "abcdefghijklmnopqrstuvwxyz"
+upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+symbols = "~`!@#$%^&*()-_+="
+digits = "1234567890"
+
+totalChars = 95
+lowLettersChars = Len(lowLetters)
+upLettersChars = Len(upLetters)
+symbolChars = Len(symbols)
+digitChars = Len(digits)
+otherChars = totalChars - (lowLettersChars + upLettersChars + symbolChars + digitChars)
+
+Function getEntropy(pPass)
+	Dim hasLower, hasUpper, hasSymbol, hasDigit
+	Dim hasOther, idx, char, bits, match, domain
+
+    If (Len(pPass) <= 0) Then
+        getEntropy = 0
+    Else
+    	hasLower = False
+    	hasUpper = False
+    	hasSymbol = False
+    	hasDigit = False
+    	hasOther = False
+    	domain = 0
+		
+    	For idx = 1 to Len(pPass)
+        	char = Mid(pPass,idx,1)
+			match = ""
+			
+        	If InStr(lowLetters,char) > 0 Then
+            	hasLower = True
+            	match = True
+            End If	
+            If InStr(upLetters,char) > 0 Then
+            	hasUpper = True
+            	match = True
+            End If
+            If InStr(digits,char) > 0 Then
+            	hasDigit = True
+            	match = True
+            End If
+            If InStr(symbols,char) > 0 Then
+            	hasSymbol = True
+            	match = True
+            End If
+            If match="" Then
+            	hasOther = True
+            End If            
+		Next
+		   
+	    If (hasLower) Then
+        	domain = domain + lowLettersChars
+        End If
+    	If (hasUpper) Then
+        	domain = domain + upLettersChars
+    	End If
+    	If (hasDigit) Then
+        	domain = domain + digitChars
+    	End If
+    	If (hasSymbol) Then
+        	domain = domain + symbolChars
+    	End If
+    	If (hasOther) Then
+        	domain = domain + otherChars
+        End If
+        
+        bits = Log(domain) * (Len(pPass) / Log(2))	
+    	getEntropy = Int(bits)
+    End If
+End Function
+
+
 
 '*******************************************************************************************************************
 '* Must be logged in to change password. If not logged in redirect to login.asp
@@ -72,20 +146,31 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 	If lg_debug Then dbMsg = dbMsg & "checkToken okay<br>" End If
 	message=""
 	If lg_debug Then dbMsg = dbMsg & "message: "&message&"<br>" End If
-	oldpassword = getField("oldpassword,rXsafepq")
-	If lg_debug Then dbMsg = dbMsg & "oldpassword: "&oldpassword&"<br>" End If
-	newpassword = getField("password,rXsafepq")
-	If lg_debug Then dbMsg = dbMsg & "newpassword: "&newpassword&"<br>" End If
-	confirm = getField("confirm,rXsafepq")
-	If lg_debug Then dbMsg = dbMsg & "confirm password: "&confirm&"<br>" End If
+	oldpassword = Left(Request.Form("oldpassword"),255)
+	If lg_debug Then dbMsg = dbMsg & "oldpassword: "& Server.HTMLEncode(oldpassword) &"<br>" End If
+	password = Left(Request.Form("password"),255)
+	If lg_debug Then dbMsg = dbMsg & "new password: "& Server.HTMLEncode(password) &"<br>" End If
+	confirm = Left(Request.Form("confirm"),255)
+	If lg_debug Then dbMsg = dbMsg & "confirm password: "& Server.HTMLEncode(confirm) &"<br>" End If
 	If oldpassword & ""="" Then
 		If lg_debug Then dbMsg = dbMsg & "oldpassword empty<br>" End If
 		message = message & lg_phrase_oldpassword_empty & "<br>"
 	End If
-	If newpassword & ""="" Then
-		If lg_debug Then dbMsg = dbMsg & "newpassword empty<br>" End If
+	If password & ""="" Then
+		If lg_debug Then dbMsg = dbMsg & "new password empty<br>" End If
 		message = message & lg_phrase_newpassword_empty & "<br>"
 	End If
+	If password<>"" Then
+		entropy = getEntropy(password)
+		If lg_debug Then dbMsg = dbMsg & "ENTROPY = "& entropy &"<br />" & vbLF End If
+		If (lg_password_min_bits > 0) AND (entropy < lg_password_min_bits) Then
+			message = message & lg_phrase_password_too_simple & "<br>" & vbLF
+			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
+		ElseIf (lg_password_min_length > 0) AND (Len(password) < lg_password_min_length) AND (lg_password_min_bits < 1) Then
+			message = message & lg_phrase_password_too_short_pre & " " & lg_password_min_length & " " & lg_phrase_password_too_short_post & "<br>" & vbLF
+			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
+		End If
+	End If	
 	If confirm & ""="" Then
 		If lg_debug Then dbMsg = dbMsg & "confirm password empty<br>" End If
 		message = message & lg_phrase_confirm_empty & "<br>"
@@ -118,13 +203,13 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 		End If
 		closeCommand
 		closeRS
-		If newpassword=confirm Then
-			If lg_debug Then dbMsg = dbMsg & "newpassword matches confirm password<br>" End If
+		If password=confirm Then
+			If lg_debug Then dbMsg = dbMsg & "new password matches confirm password<br>" End If
 			oldpasshashconfirm = HashEncode(oldpassword & Session("userid"))
 			If lg_debug Then dbMsg = dbMsg & "verification hash computed as: "&oldpasshashconfirm&"<br>" End If
 			if oldpasshashconfirm=oldpasshash Then
 				If lg_debug Then dbMsg = dbMsg & "oldpassword hash matches stored password hash<br>" End If
-				passhash = HashEncode(newpassword & Session("userid"))
+				passhash = HashEncode(password & Session("userid"))
 				openCommand lg_term_command_string,lg_term_change_password&" 2"
 				If lg_database="access" Then
 					cmdTxt = "UPDATE users SET [password]=? WHERE ([userid]=?);"
@@ -145,7 +230,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD"))="post" Then
 					'*******************************************************************************************************************
 					mailBody = "<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">"
 					mailBody = mailBody & "<HTML><HEAD><META http-equiv=Content-Type content=""text/html; charset=UTF-8"">"
-					mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>" & lg_term_to & name & "<br><br>"
+					mailBody = mailBody & "</HEAD><BODY><DIV><FONT face=Arial size=2>" & lg_term_to &" "& name & "<br><br>"
 					mailBody = mailBody & lg_phrase_password_changed_pre & " " & lg_domain & " " & lg_phrase_password_changed_post &" "& Now &"<br><br>"
 					mailBody = mailBody & lg_phrase_password_change_authorized & " "
 					mailBody = mailBody & lg_term_via_email & " " & lg_webmaster_email_link & " " & lg_term_immediately & "<br>"

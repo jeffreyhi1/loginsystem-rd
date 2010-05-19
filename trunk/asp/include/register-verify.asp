@@ -1,5 +1,5 @@
 <%
-'* alpha 0.3 debug
+'* alpha 0.5 debug
 '* $Id$
 '*******************************************************************************************************************
 '* Page Name: Register Verify
@@ -147,7 +147,9 @@ If token<>"" then
 			message = message & LCase(lg_term_country) & ": " & Server.HTMLEncode(country) & "<br>"
 			message = message & LCase(lg_term_useragent) & ": " & Server.HTMLEncode(useragent) & "<br></div>"
 			If destination&""<>"" Then
-				message = message & "<p><a href="""& lg_loginPage &"?p="& destination &""" title="""& lg_phrase_logout_continue &""">"& lg_phrase_logout_continue &"</a></p>"
+				message = message & "<p><a href="""& lg_loginPage &"?p="& destination &" "" title="""& lg_phrase_logout_continue &""">"& lg_phrase_logout_continue &"</a></p>"
+			Else
+				message = message & "<p><a href="""& lg_loginPage &" "" title="""& lg_phrase_logout_continue &""">"& lg_phrase_logout_continue &"</a></p>"
 			End If
 			If lg_debug Then dbMsg = dbMsg & "message = "& message &"<br />" & vbLF End If
 		Else

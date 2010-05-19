@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.4 - English - ASP
+'* Version: alpha 0.5 - English - ASP
 '*******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -222,6 +222,7 @@ Const lg_term_email = "Email"
 Const lg_term_enter_information = "Enter Information"
 Const lg_term_error_string = "getPasshash"
 Const lg_term_example = "Example"
+Const lg_term_fair = "FAIR"
 Const lg_term_forbidden = "Forbidden"
 Const lg_term_form_error = "Form Error"
 Const lg_term_get_name = "getName"
@@ -237,8 +238,11 @@ Const lg_term_log_string = "logLogin"
 Const lg_term_logged_out = "Logged Out"
 Const lg_term_login = "Login"
 Const lg_term_login_success = "Success"
+Const lg_term_medium = "MEDIUM"
 Const lg_term_name = "Name"
+Const lg_term_new = "New"
 Const lg_term_new_password = "New Password"
+Const lg_term_poor = "POOR"
 Const lg_term_optional = "Optional"
 Const lg_term_or = "or"
 Const lg_term_password = "Password"
@@ -260,6 +264,7 @@ Const lg_term_required = "required"
 Const lg_term_reset_password = "Password Reset"
 Const lg_term_set_new_password = "Enter A New Password"
 Const lg_term_set_newpassword = "changePassword"
+Const lg_term_strong = "STRONG"
 Const lg_term_submit = "Submit"
 Const lg_term_to = "To"
 Const lg_term_useragent = "Useragent"
@@ -271,3 +276,5 @@ Const lg_term_website_address = "Website Address"
 Const lg_term_welcome = "Welcome"
 Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""en"" lang=""en"">"
 %>
+
+
