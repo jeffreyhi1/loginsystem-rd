@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.4 - Vietnamese/Tiếng Việt - ASP
+'* Version: alpha 0.5 - Vietnamese/Tiếng Việt - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))
@@ -222,6 +222,7 @@ Const lg_term_email = "Thư điện tử"
 Const lg_term_enter_information = "Nhập thông tin"
 Const lg_term_error_string = "getPasshash"
 Const lg_term_example = "Ví dụ"
+Const lg_term_fair = "KHÔNG TỐT"
 Const lg_term_forbidden = "Tử Cấm"
 Const lg_term_form_error = "cách tao nhã lỗi"
 Const lg_term_get_name = "getName"
@@ -237,8 +238,11 @@ Const lg_term_log_string = "logLogin"
 Const lg_term_logged_out = "Thoát khỏi tài khoản"
 Const lg_term_login = "Đăng nhập"
 Const lg_term_login_success = "Thành công"
+Const lg_term_medium = "KHÁ TỐT"
 Const lg_term_name = "Tên"
+Const lg_term_new = "Mới"
 Const lg_term_new_password = "Mật khẩu mới"
+Const lg_term_poor = "Thiêu Thôn"
 Const lg_term_optional = "tùy chọn"
 Const lg_term_or = "hoặc"
 Const lg_term_password = "Mật khẩu"
@@ -260,6 +264,7 @@ Const lg_term_required = "Được yêu cầu"
 Const lg_term_reset_password = " Mật khẩu sự chứa"
 Const lg_term_set_new_password = " Tạo mật khẩu mới "
 Const lg_term_set_newpassword = "changePassword"
+Const lg_term_strong = "RẤT TỐT"
 Const lg_term_submit = "Gửi"
 Const lg_term_to = "Đến"
 Const lg_term_useragent = "Useragent"
@@ -271,3 +276,5 @@ Const lg_term_website_address = "Địa chỉ website"
 Const lg_term_welcome = "Chào mừng"
 Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""vi"" lang=""vi"">"
 %>
+
+
