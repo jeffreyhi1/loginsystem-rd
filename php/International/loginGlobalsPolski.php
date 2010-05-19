@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.4 - Polish/polski - PHP
+* Version: alpha 0.5 - Polish/polski - PHP
 ******************************************************************************************************************/
 
 
@@ -222,6 +222,7 @@ define("lg_term_email", "E-mail");
 define("lg_term_enter_information", "Wprowadź dane");
 define("lg_term_error_string", "getPasshash");
 define("lg_term_example", "Przykład");
+define("lg_term_fair", "Zły");
 define("lg_term_forbidden", "Dostęp zabroniony");
 define("lg_term_form_error", "Błąd formularza");
 define("lg_term_get_name", "getName");
@@ -237,8 +238,11 @@ define("lg_term_log_string", "logLogin");
 define("lg_term_logged_out", "Wylogowany");
 define("lg_term_login", "Zaloguj się");
 define("lg_term_login_success", "Logowanie pomyślnie ukończone");
+define("lg_term_medium", "DOBRY");
 define("lg_term_name", "Imię i nazwisko");
+define("lg_term_new", "Nowe");
 define("lg_term_new_password", "Nowe hasło");
+define("lg_term_poor", "Bardzo słaba");
 define("lg_term_optional", "opcjonalne");
 define("lg_term_or", "lub");
 define("lg_term_password", "Hasło");
@@ -260,6 +264,7 @@ define("lg_term_required", "wymagane");
 define("lg_term_reset_password", "Odzyskiwanie hasła");
 define("lg_term_set_new_password", "Wprowadź nowe hasło");
 define("lg_term_set_newpassword", "changePassword");
+define("lg_term_strong", "BARDZO MOCNY");
 define("lg_term_submit", "Wyślij");
 define("lg_term_to", "Do ");
 define("lg_term_useragent", "Useragent");
@@ -271,3 +276,5 @@ define("lg_term_website_address", "Adres strony");
 define("lg_term_welcome","Witaj");
 define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"pl\" lang=\"pl\">");
 ?>
+
+
