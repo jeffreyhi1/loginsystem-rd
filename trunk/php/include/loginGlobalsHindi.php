@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.4 - Hindi - PHP
+* Version: alpha 0.5 - Hindi - PHP
 ******************************************************************************************************************/
 
 
@@ -222,6 +222,7 @@ define("lg_term_email", "ईमेल");
 define("lg_term_enter_information", "जानकारी दर्ज करें");
 define("lg_term_error_string", "getPasshash");
 define("lg_term_example", "उदाहरण");
+define("lg_term_fair", "अच्छा नहीं");
 define("lg_term_forbidden", "निषिद्ध");
 define("lg_term_form_error", "फार्म में त्रुटि");
 define("lg_term_get_name", "getName");
@@ -237,8 +238,11 @@ define("lg_term_log_string", "logLogin");
 define("lg_term_logged_out", "लॉग आउट");
 define("lg_term_login", "लॉग इन");
 define("lg_term_login_success", "सफलता");
+define("lg_term_medium", "अच्छा");
 define("lg_term_name", "नाम");
+define("lg_term_new", ""नया");
 define("lg_term_new_password","नया पासवर्ड");
+define("lg_term_poor", "खराब");
 define("lg_term_optional", "ऐच्छिक");
 define("lg_term_or", "या");
 define("lg_term_password", "पासवर्ड");
@@ -260,6 +264,7 @@ define("lg_term_required", "अपेक्षित");
 define("lg_term_reset_password", "पासवर्ड रीसेट");
 define("lg_term_set_new_password","नया पासवर्ड सेट करें");
 define("lg_term_set_newpassword", "changePassword");
+define("lg_term_strong", "बहुत अच्छा");
 define("lg_term_submit", "प्रस्तुत करना");
 define("lg_term_to", "से");
 define("lg_term_useragent", "Useragent");
@@ -271,3 +276,4 @@ define("lg_term_website_address", "वेबसाइट का पता");
 define("lg_term_welcome","आपका स्वागत है");
 define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"hi\" lang=\"hi\">");
 ?>
+

@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.4 - Spanish-Mexican/Español - PHP
+* Version: alpha 0.5 - Spanish-Mexican/Español - PHP
 ******************************************************************************************************************/
 
 
@@ -222,6 +222,7 @@ define("lg_term_email", "Correo Electrónico");
 define("lg_term_enter_information", "Entre la Información");
 define("lg_term_error_string", "getPasshash");
 define("lg_term_example", "Ejemplo");
+define("lg_term_fair", "BUENO NO");
 define("lg_term_forbidden", "Prohibido");
 define("lg_term_form_error", "Formulario de error");
 define("lg_term_get_name", "getName");
@@ -237,8 +238,11 @@ define("lg_term_log_string", "logLogin");
 define("lg_term_logged_out", "Ha salido");
 define("lg_term_login", "Login");
 define("lg_term_login_success", "Éxito");
+define("lg_term_medium", "BUENO");
 define("lg_term_name", "Nombre");
+define("lg_term_new", "Nueva");
 define("lg_term_new_password", "Nueva Contraseña");
+define("lg_term_poor", "MUY DÉBIL");
 define("lg_term_optional", "Opcional");
 define("lg_term_or", "o");
 define("lg_term_password", "contraseña");
@@ -260,6 +264,7 @@ define("lg_term_required ", "obligatorio");
 define("lg_term_reset_password", "Contraseña Reajustar");
 define("lg_term_set_new_password", "introducir una nueva contraseña");
 define("lg_term_set_newpassword", "changePassword");
+define("lg_term_strong", "EXCELENTE");
 define("lg_term_submit", "Enviar");
 define("lg_term_to", "A");
 define("lg_term_useragent", "Useragent");
@@ -271,3 +276,5 @@ define("lg_term_website_address", "Dirección del sitio web");
 define("lg_term_welcome", "Bienvenido");
 define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"es\" lang=\"es\">");
 ?>
+
+
