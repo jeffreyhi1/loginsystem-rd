@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version alpha 0.4 - French/Français - PHP
+* Version alpha 0.5 - French/Français - PHP
 ******************************************************************************************************************/
 
 
@@ -222,6 +222,7 @@ define("lg_term_email", "Mél");
 define("lg_term_enter_information", "Entrez l'information");
 define("lg_term_error_string", "getPasshash");
 define("lg_term_example", "Exemple");
+define("lg_term_fair", "MAUVAIS");
 define("lg_term_forbidden", "Interdit");
 define("lg_term_form_error", "Formulaire d'erreur");
 define("lg_term_get_name", "getName");
@@ -237,8 +238,11 @@ define("lg_term_log_string", "logLogin");
 define("lg_term_logged_out", "Déconnecté");
 define("lg_term_login", "Login");
 define("lg_term_login_success", "Succès");
+define("lg_term_medium", "BON PAS");
 define("lg_term_name", "Nom");
+define("lg_term_new", "Nouveau");
 define("lg_term_new_password", "Nouveau mot de passe");
+define("lg_term_poor", "TRES MAUVAIS");
 define("lg_term_optional", "facultatif");
 define("lg_term_or", "ou");
 define("lg_term_password", "Mot de passe");
@@ -260,6 +264,7 @@ define("lg_term_required", "nécessaire");
 define("lg_term_reset_password", "Mot de passe oublié");
 define("lg_term_set_new_password", "Entrez un nouveau mot de passe");
 define("lg_term_set_newpassword", "changePassword");
+define("lg_term_strong", "EXCELLENT");
 define("lg_term_submit", "Valider");
 define("lg_term_to", "A");
 define("lg_term_useragent", "Useragent");
@@ -271,3 +276,5 @@ define("lg_term_website_address", "Adresse du site internet");
 define("lg_term_welcome", "Accueil");
 define("lg_term_xhtml_xmlns", "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"fr\" lang=\"fr\">"); 
 ?>
+
+
