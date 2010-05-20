@@ -1,10 +1,13 @@
 <?php
-// alpha 0.3 debug
+// alpha 0.5 debug
 // $Id$
+
 setlocale(LC_ALL, 'English_United States.65001');
 if (!isset($_SESSION)) {
 	session_start();
 }
+include "include/loginGlobals.php";
+
 setcookie ("user", "", time() - 3600);
 
 if (isset($_SESSION["user"])) {

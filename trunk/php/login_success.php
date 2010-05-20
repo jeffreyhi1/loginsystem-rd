@@ -1,15 +1,12 @@
 <?php
-// alpha 0.3 debug
+// alpha 0.5 debug
 // $Id$
 setlocale(LC_ALL, 'English_United States.65001');
 if (!isset($_SESSION)) {
 	session_start();
 }
 
-include "include/generalPurpose.php";
-include "include/form_token.php";
 include "include/loginGlobals.php";
-include "include/database.php";
 include "include/login-success.php";
 
 /* You should add

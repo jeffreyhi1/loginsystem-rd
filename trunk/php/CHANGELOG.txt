@@ -3,3 +3,14 @@ alpha 0.2 to alpha 0.3
 two language constants were not spelled correctly.
 langage files and code were corrected to the proper spellings.
 Added the Polish language translation.
+
+alpha 0.3 to alpha 0.5 (there was no alpha 0.4 in PHP code)
+All loginGlobals.php files had constants added to support
+password length, or password bit entropy (randomness).
+
+Change_password.php, register.php, set_new_password.php & 
+related markup files were modified for strong passwords 
+including a password strength meter when bit entropy is used.
+
+Login-markup.php was modified to disable the "Remember Me"
+cookie function if lg_term_remember = false in loginGlobals.php.
