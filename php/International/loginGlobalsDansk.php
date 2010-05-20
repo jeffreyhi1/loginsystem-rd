@@ -65,7 +65,7 @@ define("lg_logout_page", "logout.php");
 define("lg_new_token_page", "issue_verification_token.php");
 define("lg_password_max_age", 6);
 define("lg_password_min_bits", 72);
-define("lg_password_min_length", 10)
+define("lg_password_min_length", 10);
 define("lg_recover_passsword_page", "recover_password.php");
 define("lg_register_delete_page", "register_delete.php");
 define("lg_register_page", "register.php");
