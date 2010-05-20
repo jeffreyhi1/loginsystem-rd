@@ -1,4 +1,5 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
 * Page Name: Register
@@ -35,6 +36,108 @@ $locked="";
 $dateLocked="";
 $token="";
 $message= "<strong>".lg_term_please_register."</strong>";
+$entropy="";
+$lowLetters="";
+$upLetters="";
+$symbols="";
+$digits="";
+$totalChars="";
+$lowLettersChars="";
+$upLettersChars="";
+$symbolChars="";
+$digitChars="";
+$otherChars="";
+
+
+$lowLetters = "abcdefghijklmnopqrstuvwxyz";
+$upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+$symbols = "~`!@#$%^&*()-_+=";
+$digits = "1234567890";
+
+$totalChars = 95;
+$lowLettersChars = strlen($lowLetters);
+$upLettersChars = strlen($upLetters);
+$symbolChars = strlen($symbols);
+$digitChars = strlen($digits);
+$otherChars = $totalChars - ($lowLettersChars + $upLettersChars + $symbolChars + $digitChars);
+
+function getEntropy($pPass) {
+	global $lowLetters;
+	global $upLetters;
+	global $symbols;
+	global $digits;
+	global $totalChars;
+	global $lowLettersChars;
+	global $upLettersChars;
+	global $symbolChars;
+	global $digitChars;
+	global $otherChars;
+	$hasLower="";
+	$hasUpper="";
+	$hasSymbol="";
+	$hasDigit="";
+	$hasOther="";
+	$idx="";
+	$char="";
+	$bits="";
+	$match="";
+	$domain="";
+
+    if (strlen($pPass) < 0) {
+        return 0;
+    }else{
+    	$hasLower = false;
+    	$hasUpper = false;
+    	$hasSymbol = false;
+    	$hasDigit = false;
+    	$hasOther = false;
+    	$domain = 0;
+		
+    	for ($idx=0; $idx < strlen($pPass); $idx++) {
+        	$char = substr($pPass,$idx,1);
+			$match = "";
+
+        	if (strpos($lowLetters,$char)!==false) {
+            	$hasLower = true;
+            	$match = true;
+            }	
+            if (strpos($upLetters,$char)!==false) {
+            	$hasUpper = true;
+            	$match = true;
+            }
+            if (strpos($digits,$char)!==false) {
+            	$hasDigit = true;
+            	$match = true;
+            }
+            if (strpos($symbols,$char)!==false) {
+            	$hasSymbol = true;
+            	$match = true;
+            }
+            if ($match=="") {
+            	$hasOther = true;
+            }            
+		}
+		   
+	    if ($hasLower) {
+        	$domain += $lowLettersChars;
+        }
+    	if ($hasUpper) {
+        	$domain += $upLettersChars;
+    	}
+    	if ($hasDigit) {
+        	$domain += $digitChars;
+    	}
+    	if ($hasSymbol) {
+        	$domain += $symbolChars;
+    	}
+    	if ($hasOther) {
+        	$domain += $otherChars;
+        }
+        
+        $bits = floor(log($domain) * (strlen($pPass))/log(2));	
+    	return $bits;
+    }
+}
 
 /******************************************************************************************************************
 * Obtain your own public and private reCAPTCHA keys for free at http://recaptcha.net/ and enter below.
@@ -71,9 +174,13 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	$message = "";
 	$userid = getField("userid,safepq");
 	if (lg_debug) { $dbMsg .= "userid = " . htmlentities($userid) . "<br />\n"; }
-	$password = getField("password,safepq");
+	if (isset($_POST["password"])) {
+		$password = substr($_POST["password"],0,255);
+	}
 	if (lg_debug) { $dbMsg .= "password = " . htmlentities($password) . "<br />\n"; }
-	$confirm = getField("confirm,safepq");
+	if (isset($_POST["confirm"])) {
+		$confirm = substr($_POST["confirm"],0,255);
+	}	
 	if (lg_debug) { $dbMsg .= "confirm = " . htmlentities($confirm) . "<br />\n"; }
 	$email = getField("email,email");
 	if (lg_debug) { $dbMsg .= "email = " . htmlentities($email) . "<br />\n"; }
@@ -90,7 +197,9 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	}
 	$destination = getField("destination,urlpath");
 	if (lg_debug) { $dbMsg .= "destination  ". htmlentities($destination) ."<br />\n"; }
-	$recaptcha_challenge_field = $_POST["recaptcha_challenge_field"];
+	if (isset($_POST["recaptcha_challenge_field"])) {
+		$recaptcha_challenge_field = $_POST["recaptcha_challenge_field"];
+	}
 	if (lg_debug) { $dbMsg .= "recaptcha_challenge_field  ". htmlentities($recaptcha_challenge_field) ."<br />\n"; }
 	$recaptcha_response_field = getField("recaptcha_response_field,safe");
 	if (lg_debug) { $dbMsg .= "recaptcha_response_field  ". htmlentities($recaptcha_response_field) ."<br />\n"; }
@@ -109,6 +218,17 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	}
 	if ($confirm=="") {
 		$message .=  lg_phrase_confirm_empty . "<br />\n";
+	}
+	if ($password!="") {
+		$entropy = getEntropy($password);
+		if (lg_debug) { $dbMsg .= "ENTROPY = ". $entropy ."<br />\n"; }
+		if ((lg_password_min_bits > 0) AND ($entropy < lg_password_min_bits)) {
+			$message .= lg_phrase_password_too_simple . "<br>\n";
+			if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
+		}elseif ((lg_password_min_length > 0) AND (strlen($password) < lg_password_min_length) AND (lg_password_min_bits < 1)) {
+			$message .= lg_phrase_password_too_short_pre . " " . lg_password_min_length . " " . lg_phrase_password_too_short_post . "<br>\n";
+			if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
+		}
 	}
 	if ($email=="") {
 		$message .=  lg_phrase_email_empty . "<br />\n";

@@ -1,9 +1,9 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
 * Page Name: Set New Password
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.3 debug Debug
 * On Entry: Expecting reset token, account is locked
 * Input   : current password, new password, confirm new password
 * Output  : message
@@ -23,7 +23,7 @@ $message = "Enter you password reset token in the field provided and press the S
 $locked="";
 $dateLocked="";
 $mailBody="";
-$newpassword = "";
+$password = "";
 $confirm = "";
 $passhash = "";
 $name="";
@@ -32,7 +32,109 @@ $destination="";
 $changePassword="";
 
 if (lg_debug) {
-	$dbMsg .= "Debugging Enabled<br />\n";
+	$dbMsg = "Debugging Enabled<br />\n";
+}
+$entropy="";
+$lowLetters="";
+$upLetters="";
+$symbols="";
+$digits="";
+$totalChars="";
+$lowLettersChars="";
+$upLettersChars="";
+$symbolChars="";
+$digitChars="";
+$otherChars="";
+
+
+$lowLetters = "abcdefghijklmnopqrstuvwxyz";
+$upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+$symbols = "~`!@#$%^&*()-_+=";
+$digits = "1234567890";
+
+$totalChars = 95;
+$lowLettersChars = strlen($lowLetters);
+$upLettersChars = strlen($upLetters);
+$symbolChars = strlen($symbols);
+$digitChars = strlen($digits);
+$otherChars = $totalChars - ($lowLettersChars + $upLettersChars + $symbolChars + $digitChars);
+
+function getEntropy($pPass) {
+	global $lowLetters;
+	global $upLetters;
+	global $symbols;
+	global $digits;
+	global $totalChars;
+	global $lowLettersChars;
+	global $upLettersChars;
+	global $symbolChars;
+	global $digitChars;
+	global $otherChars;
+	$hasLower="";
+	$hasUpper="";
+	$hasSymbol="";
+	$hasDigit="";
+	$hasOther="";
+	$idx="";
+	$char="";
+	$bits="";
+	$match="";
+	$domain="";
+
+    if (strlen($pPass) < 0) {
+        return 0;
+    }else{
+    	$hasLower = false;
+    	$hasUpper = false;
+    	$hasSymbol = false;
+    	$hasDigit = false;
+    	$hasOther = false;
+    	$domain = 0;
+		
+    	for ($idx=0; $idx < strlen($pPass); $idx++) {
+        	$char = substr($pPass,$idx,1);
+			$match = "";
+
+        	if (strpos($lowLetters,$char)!==false) {
+            	$hasLower = true;
+            	$match = true;
+            }	
+            if (strpos($upLetters,$char)!==false) {
+            	$hasUpper = true;
+            	$match = true;
+            }
+            if (strpos($digits,$char)!==false) {
+            	$hasDigit = true;
+            	$match = true;
+            }
+            if (strpos($symbols,$char)!==false) {
+            	$hasSymbol = true;
+            	$match = true;
+            }
+            if ($match=="") {
+            	$hasOther = true;
+            }            
+		}
+		   
+	    if ($hasLower) {
+        	$domain += $lowLettersChars;
+        }
+    	if ($hasUpper) {
+        	$domain += $upLettersChars;
+    	}
+    	if ($hasDigit) {
+        	$domain += $digitChars;
+    	}
+    	if ($hasSymbol) {
+        	$domain += $symbolChars;
+    	}
+    	if ($hasOther) {
+        	$domain += $otherChars;
+        }
+        
+        $bits = floor(log($domain) * (strlen($pPass))/log(2));	
+    	return $bits;
+    }
 }
 
 /*******************************************************************************************************************
@@ -43,23 +145,27 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 	checkToken();
 	if (lg_debug) { $dbMsg .= "Form token checked OKAY<br />\n"; }
 	$resettoken = getField("resettoken,safepq");
-	if (lg_debug) { $dbMsg .= "Reset token = " . $resettoken . "<br />\n"; }
-	if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Reset token = " . htmlentities($resettoken) . "<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Session action = " . htmlentities($_SESSION["action"]) . "<br />\n"; }
 	if ($_SESSION["action"]=="password") {
-		if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
-		$newpassword = getField("newpassword,safepq");
-		$confirm = getField("confirm,safepq");
+		if (lg_debug) { $dbMsg .= "Session action = " . htmlentities($_SESSION["action"]) . "<br />\n"; }
+		if (isset($_POST["password"])) {
+			$password = substr($_POST["password"],0,255);
+		}
+		if (isset($_POST["confirm"])) {
+			$confirm = substr($_POST["confirm"],0,255);
+		}	
 		$changePassword = getField("changePassword,rXint");
-		if (lg_debug) { $dbMsg .= "New password = " . $newpassword . "<br />\n"; }
-		if (lg_debug) { $dbMsg .= "Confirm password = " . $confirm . "<br />\n"; }
-		if (lg_debug) { $dbMsg .= "Change password = " . $changePassword . "<br />\n"; }
+		if (lg_debug) { $dbMsg .= "New password = " . htmlentities($password) . "<br />\n"; }
+		if (lg_debug) { $dbMsg .= "Confirm password = " . htmlentities($confirm) . "<br />\n"; }
+		if (lg_debug) { $dbMsg .= "Change password = " . htmlentities($changePassword) . "<br />\n"; }
 	}else{
 		if ($resettoken=="") {
 			$_SESSION["action"] = "token";
 		}else{	
 			$_SESSION["action"] = "resettoken";
 		}	
-		if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
+		if (lg_debug) { $dbMsg .= "Session action = " . htmlentities($_SESSION["action"]) . "<br />\n"; }
 	}
 }
 /*******************************************************************************************************************
@@ -70,9 +176,9 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	$resettoken = getField("resettoken,safepg,get");
 	$destination = getField("p,urlpath,get");
 	$_SESSION["action"] = "resettoken";
-	if (lg_debug) { $dbMsg .= "Reset token = " . $resettoken . "<br />\n"; }
-	if (lg_debug) { $dbMsg .= "Destination = " . $destination . "<br />\n"; }
-	if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Reset token = " . htmlentities($resettoken) . "<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Destination = " . htmlentities($destination) . "<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Session action = " . htmlentities($_SESSION["action"]) . "<br />\n"; }
 	if (($resettoken=="") OR (!isset($_GET["resettoken"]))) {
 		$_SESSION["action"] = "token";
 	}else{
@@ -93,7 +199,7 @@ if (($resettoken!="") && ($_SESSION["action"]=="resettoken")) {
 		if (lg_debug) { $dbMsg .= "Returned record(s)<br />\n"; }
 		$id = $dbResults["id"];
 		$dateLocked = $dbResults["dateLocked"];
-		if (lg_debug) { $dbMsg .= "dateLocked = ". $dateLocked ."<br />\n"; }
+		if (lg_debug) { $dbMsg .= "dateLocked = ". htmlentities($dateLocked) ."<br />\n"; }
 		$timePassed = intval((strtotime($now)-strtotime($dateLocked))/3600); //hours
 		if (lg_debug) { $dbMsg .= "timePassed: ".$timePassed."<br />\n"; }
 
@@ -127,7 +233,7 @@ if (($resettoken!="") && ($_SESSION["action"]=="resettoken")) {
 	if ($changePassword=="1") {
 		if (lg_debug) { $dbMsg .= "Change Password = 1<br />\n"; }
 		$message = "";
-		if ($newpassword=="") {
+		if ($password=="") {
 			$message .= lg_phrase_newpassword_empty . "<br />\n";
 			if (lg_debug) { $dbMsg .= "message = " . $message . "<br />\n"; }
 		}
@@ -135,9 +241,20 @@ if (($resettoken!="") && ($_SESSION["action"]=="resettoken")) {
 			$message .= lg_phrase_confirm_empty . "<br />\n";
 			if (lg_debug) { $dbMsg .= "message = " . $message . "<br />\n"; }
 		}
-		if ($newpassword!=$confirm) {
+		if ($password!=$confirm) {
 			$message .= lg_phrase_password_nomatch_confirm;
 			if (lg_debug) { $dbMsg .= "message = " . $message . "<br />\n"; }
+		}
+		if ($password!="") {
+			$entropy = getEntropy($password);
+			if (lg_debug) { $dbMsg .= "ENTROPY = ". $entropy ."<br />\n"; }
+			if ((lg_password_min_bits > 0) AND ($entropy < lg_password_min_bits}) {
+				$message .= lg_phrase_password_too_simple . "<br>\n";
+				if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
+			}elseif{ ((lg_password_min_length > 0) AND (strlen($password) < lg_password_min_length) AND (lg_password_min_bits < 1)) {
+				$message .= lg_phrase_password_too_short_pre . " " . lg_password_min_length . " " . lg_phrase_password_too_short_post . "<br>\n";
+				if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
+			}
 		}		
 		if ($resettoken=="") {
 			 $message .= lg_phrase_set_new_password_error . "Error 1. " . lg_phrase_contact_webmaster1 ."<br />";
@@ -154,7 +271,7 @@ if (($resettoken!="") && ($_SESSION["action"]=="resettoken")) {
 			if (($dbResults["id"]!="") && ($dbResults["id"]!=NULL)) {
 				if (lg_debug) { $dbMsg .= "Returned record(s)<br />\n"; }
 				$dateLocked = $dbResults["dateLocked"];
-				if (lg_debug) { $dbMsg .= "dateLocked = ". $dateLocked ."<br />\n"; }
+				if (lg_debug) { $dbMsg .= "dateLocked = ". htmlentities($dateLocked) ."<br />\n"; }
 				$timePassed = intval((strtotime($now)-strtotime($dateLocked))/3600); //hours
 				if (lg_debug) { $dbMsg .= "timePassed = ".$timePassed."<br />\n"; }
 
@@ -168,20 +285,20 @@ if (($resettoken!="") && ($_SESSION["action"]=="resettoken")) {
 					$email = $dbResults["email"];
 					$name = $dbResults["name"];
 					$locked = $dbResults["locked"];
-					if (lg_debug) { $dbMsg = "id = ". $id ."<br />\n"; }
-					if (lg_debug) { $dbMsg = "userid = ". $userid ."<br />\n"; }
-					if (lg_debug) { $dbMsg = "email = ". $email ."<br />\n"; }
-					if (lg_debug) { $dbMsg = "name = ". $name ."<br />\n"; }
-					if (lg_debug) { $dbMsg = "locked = ". $locked ."<br />\n"; }
+					if (lg_debug) { $dbMsg = "id = ". htmlentities($id) ."<br />\n"; }
+					if (lg_debug) { $dbMsg = "userid = ". htmlentities($userid) ."<br />\n"; }
+					if (lg_debug) { $dbMsg = "email = ". htmlentities($email) ."<br />\n"; }
+					if (lg_debug) { $dbMsg = "name = ". htmlentities($name) ."<br />\n"; }
+					if (lg_debug) { $dbMsg = "locked = ". htmlentities($locked) ."<br />\n"; }
 
-					$passhash = sha1($newpassword . $userid);
+					$passhash = sha1($password . $userid);
 					if (lg_debug) { $dbMsg = "Passhash = ". $passhash ."<br />\n"; }
 					$resettoken = NULL;
 					$locked = "0";
 					$dateLocked = NULL;
 					
 					snp_setNewPassword($passhash, $resettoken, $locked, $dateLocked, $id);
-					if (lg_debug) { $dbMsg = "numAffected = ". $numAffected ."<br />\n"; }
+					if (lg_debug) { $dbMsg = "numAffected = ". htmlentities($numAffected) ."<br />\n"; }
 					
 					if ($numAffected==1) {
 						$message = lg_phrase_set_new_password_success;

@@ -1,9 +1,9 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
 * Page Name: Issue Verification Token
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.3 debug Debug
 * On Entry: Check SSL State
 * Input   : userid, email
 * Output  : message

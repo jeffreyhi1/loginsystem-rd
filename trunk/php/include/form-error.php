@@ -1,4 +1,5 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /**
 * Login System Form Error include

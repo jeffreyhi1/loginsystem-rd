@@ -1,9 +1,9 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
 * Register Verify
 * Last Modification: 27 APR 2010
-* Version:  alpha 0.3 debug Debug
 * On Entry: 1. verification token could be passed as a URL parameter
 * Input:    2. verification token could be entered as form field value
 * Output:   message - string variable with results
