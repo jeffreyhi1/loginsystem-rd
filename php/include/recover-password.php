@@ -1,9 +1,9 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
 * Page Name: Recover Password
 * Last Modification: 27 APR 2010 rdivilbiss
-* Version:  alpha 0.3 debug Debug
 * On Entry: check SSL state
 * Input   : userid, email
 * Output  : message

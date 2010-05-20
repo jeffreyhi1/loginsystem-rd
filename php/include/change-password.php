@@ -1,4 +1,5 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
 * Change Password
@@ -45,13 +46,116 @@ $name="";
 $email="";
 $oldpassword="";
 $password="";
-$newpassword="";
+$password="";
 $confirm="";
 $oldpasshash="";
 $oldpasshashconfirm="";
 $passhash="";
 $mailBody="";
 $message = lg_phrase_change_password;
+$entropy="";
+$lowLetters="";
+$upLetters="";
+$symbols="";
+$digits="";
+$totalChars="";
+$lowLettersChars="";
+$upLettersChars="";
+$symbolChars="";
+$digitChars="";
+$otherChars="";
+
+
+$lowLetters = "abcdefghijklmnopqrstuvwxyz";
+$upLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+$symbols = "~`!@#$%^&*()-_+=";
+$digits = "1234567890";
+
+$totalChars = 95;
+$lowLettersChars = strlen($lowLetters);
+$upLettersChars = strlen($upLetters);
+$symbolChars = strlen($symbols);
+$digitChars = strlen($digits);
+$otherChars = $totalChars - ($lowLettersChars + $upLettersChars + $symbolChars + $digitChars);
+
+function getEntropy($pPass) {
+	global $lowLetters;
+	global $upLetters;
+	global $symbols;
+	global $digits;
+	global $totalChars;
+	global $lowLettersChars;
+	global $upLettersChars;
+	global $symbolChars;
+	global $digitChars;
+	global $otherChars;
+	$hasLower="";
+	$hasUpper="";
+	$hasSymbol="";
+	$hasDigit="";
+	$hasOther="";
+	$idx="";
+	$char="";
+	$bits="";
+	$match="";
+	$domain="";
+
+    if (strlen($pPass) < 0) {
+        return 0;
+    }else{
+    	$hasLower = false;
+    	$hasUpper = false;
+    	$hasSymbol = false;
+    	$hasDigit = false;
+    	$hasOther = false;
+    	$domain = 0;
+		
+    	for ($idx=0; $idx < strlen($pPass); $idx++) {
+        	$char = substr($pPass,$idx,1);
+			$match = "";
+
+        	if (strpos($lowLetters,$char)!==false) {
+            	$hasLower = true;
+            	$match = true;
+            }	
+            if (strpos($upLetters,$char)!==false) {
+            	$hasUpper = true;
+            	$match = true;
+            }
+            if (strpos($digits,$char)!==false) {
+            	$hasDigit = true;
+            	$match = true;
+            }
+            if (strpos($symbols,$char)!==false) {
+            	$hasSymbol = true;
+            	$match = true;
+            }
+            if ($match=="") {
+            	$hasOther = true;
+            }            
+		}
+		   
+	    if ($hasLower) {
+        	$domain += $lowLettersChars;
+        }
+    	if ($hasUpper) {
+        	$domain += $upLettersChars;
+    	}
+    	if ($hasDigit) {
+        	$domain += $digitChars;
+    	}
+    	if ($hasSymbol) {
+        	$domain += $symbolChars;
+    	}
+    	if ($hasOther) {
+        	$domain += $otherChars;
+        }
+        
+        $bits = floor(log($domain) * (strlen($pPass))/log(2));	
+    	return $bits;
+    }
+}
+
 if (lg_debug) { $dbMsg .= "message: ". $message ."<br />\n"; }
 /*******************************************************************************************************************
 * If the form was posted, process the form
@@ -62,18 +166,35 @@ If ($_SERVER["REQUEST_METHOD"]=="POST") {
 	if (lg_debug) { $dbMsg .= "checkToken OKAY<br />\n"; }
 	$message="";
 	if (lg_debug) { $dbMsg .= "message: ".$message."<br />\n"; }
-	$oldpassword = getField("oldpassword,safepq");
-	$newpassword = getField("password,safepq");
-	$confirm = getField("confirm,safepq");
-	if (lg_debug) { $dbMsg .= "Old Password: ".$oldpassword."<br />\n"; }
-	if (lg_debug) { $dbMsg .= "New Password: ".$newpassword."<br />\n"; }
-	if (lg_debug) { $dbMsg .= "Confirm Password: ".$confirm."<br />\n"; }
+	if (isset($_GET["oldpassword"])) {
+		$oldpassword = substr($_GET["oldpassword"],0,255);
+	}
+	if (isset($_POST["password"])) {
+		$password = substr($_POST["password"],0,255);
+	}
+	if (isset($_POST["confirm"])) {
+		$confirm = substr($_POST["confirm"],0,255);
+	}	
+	if (lg_debug) { $dbMsg .= "Old Password: ".htmlentities($oldpassword)."<br />\n"; }
+	if (lg_debug) { $dbMsg .= "New Password: ".htmlentities($password)."<br />\n"; }
+	if (lg_debug) { $dbMsg .= "Confirm Password: ".htmlentities($confirm)."<br />\n"; }
 	
 	if ($oldpassword=="") {
 		$message .= lg_phrase_oldpassword_empty . "<br />\n";
 	}
-	if ($newpassword=="") {
+	if ($password=="") {
 		$message .= lg_phrase_newpassword_empty . "<br />\n";
+	}
+	if ($password!="") {
+		$entropy = getEntropy($password);
+		if (lg_debug) { $dbMsg .= "ENTROPY = ". $entropy ."<br />\n"; }
+		if ((lg_password_min_bits > 0) AND ($entropy < lg_password_min_bits}) {
+			$message .= lg_phrase_password_too_simple . "<br>\n";
+			if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
+		}elseif{ ((lg_password_min_length > 0) AND (strlen($password) < lg_password_min_length) AND (lg_password_min_bits < 1)) {
+			$message .= lg_phrase_password_too_short_pre . " " . lg_password_min_length . " " . lg_phrase_password_too_short_post . "<br>\n";
+			if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
+		}
 	}
 	if ($confirm=="") {
 		$message .= lg_phrase_confirm_empty & "<br />\n";
@@ -91,17 +212,17 @@ If ($_SERVER["REQUEST_METHOD"]=="POST") {
 			$oldpasshash = $dbResults["password"];
 			$name = $dbResults["name"];
 			$email = $dbResults["email"];
-			if (lg_debug) { $dbMsg .= "old password = ".$oldpassword."<br />\n"; }
+			if (lg_debug) { $dbMsg .= "old password = ".htmlentities($oldpassword)."<br />\n"; }
 			if (lg_debug) { $dbMsg .= "name = ".$name."<br />\n"; }
 			if (lg_debug) { $dbMsg .= "email = ".$email."<br />\n"; }
 		}
-		if ($newpassword==$confirm) {
+		if ($password==$confirm) {
 			if (lg_debug) { $dbMsg .= "newpassword matches confirm password<br />\n"; }
 			$oldpasshashconfirm = sha1($oldpassword . $_SESSION["userid"]);
 			if (lg_debug) { $dbMsg .= "verification hash computed as: ".oldpasshashconfirm."<br />\n"; }
 			if ($oldpasshashconfirm==$oldpasshash) {
 				if (lg_debug) { $dbMsg .= "oldpassword hash matches stored password hash<br />\n"; }
-				$passhash = sha1($newpassword . $_SESSION["userid"]);
+				$passhash = sha1($password . $_SESSION["userid"]);
 				
 				cp_changePassword($passhash, $_SESSION["userid"]);
 				if (lg_debug) { $dbMsg .= "Executed change password command: numAffected = ".$numAffected."<br />"; }

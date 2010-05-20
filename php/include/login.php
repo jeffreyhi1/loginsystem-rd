@@ -1,9 +1,9 @@
 <?PHP
+// alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
 * Page Name: Login
-* Last Modification: 01 MAY 2010 rdivilbiss
-* Version:  alpha 0.3 debug Debug Version
+* Last Modification: 01 MAY 2010 rdivilbiss Version
 * On Entry: check for destination, $_SESSION["login"], and for SSL state
 * Input   : userid, password
 * Output  : message, possible logging of login
