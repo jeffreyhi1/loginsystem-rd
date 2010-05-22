@@ -19,7 +19,7 @@ include "include/loginGlobals.php";
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php echo lg_term_content_language ?>
 <?php echo lg_term_language ?>
-<title><?PHP echo lg_term_logged_out; ?></title>
+<title><?php echo lg_term_logged_out; ?></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="© 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
@@ -30,6 +30,6 @@ include "include/loginGlobals.php";
 </head>
 
 <body>
-<?PHP include "include/loggedout-markup.php"; ?>
+<?php include "include/loggedout-markup.php"; ?>
 </body>
 </html>
