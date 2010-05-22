@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
@@ -248,10 +248,10 @@ if (($resettoken!="") && ($_SESSION["action"]=="resettoken")) {
 		if ($password!="") {
 			$entropy = getEntropy($password);
 			if (lg_debug) { $dbMsg .= "ENTROPY = ". $entropy ."<br />\n"; }
-			if ((lg_password_min_bits > 0) AND ($entropy < lg_password_min_bits}) {
+			if ((lg_password_min_bits > 0) AND ($entropy < lg_password_min_bits)) {
 				$message .= lg_phrase_password_too_simple . "<br>\n";
 				if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
-			}elseif{ ((lg_password_min_length > 0) AND (strlen($password) < lg_password_min_length) AND (lg_password_min_bits < 1)) {
+			}elseif ((lg_password_min_length > 0) AND (strlen($password) < lg_password_min_length) AND (lg_password_min_bits < 1)) {
 				$message .= lg_phrase_password_too_short_pre . " " . lg_password_min_length . " " . lg_phrase_password_too_short_post . "<br>\n";
 				if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
 			}
@@ -347,13 +347,7 @@ if (($resettoken!="") && ($_SESSION["action"]=="resettoken")) {
 				if (lg_debug) { $dbMsg .= "message = " . $message . "<br />\n"; }
 			 	if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
 			}
-		}else{
-			$message = lg_phrase_set_new_password_error . "Error 4. " . lg_phrase_contact_webmaster1 ."<br />";
-			$message .= lg_phrase_webmaster_may_be_contacted . lg_webmaster_email_link;
-			$_SESSION["action"]="Error";
-			if (lg_debug) { $dbMsg .= "message = " . $message . "<br />\n"; }
-			if (lg_debug) { $dbMsg .= "Session action = " . $_SESSION["action"] . "<br />\n"; }
-		}
+		}//we have error messages to display.
 	}else{
 		$_SESSION["action"]="token";
 	}

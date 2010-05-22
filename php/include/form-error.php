@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /**
@@ -10,7 +10,8 @@ $page="";
 $reason="";
 $message="";
 
-$page = getField("p,safe,get");
+$page = getField("p,urlpath,get");
+//$page = $_GET["p"];
 $reason = getField("t,alpha,get");
 
 switch ($reason) {

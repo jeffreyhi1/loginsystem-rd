@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /**
@@ -9,10 +9,10 @@
 
 //error_reporting(0);
 
-define("dbServer", "server");
-define("dbUser", "user");
+define("dbServer", "localhost");
+define("dbUser", "webuser");
 define("dbPassword", "password");
-define("dbCatalog", "loginproject");
+define("dbCatalog", "login-system");
 
 /* Globals */
 $numAffected=0;

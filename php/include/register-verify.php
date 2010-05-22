@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
@@ -109,6 +109,8 @@ if ($token!="") {
 			if ($destination!="") {
 				if (lg_debug) { $dbMsg .= "destination not empty: ".$destination."<br>\n"; }
 				$message .=  '<p><a href="'. $destination .'" title="'. lg_phrase_logout_continue .'">'. lg_phrase_logout_continue ."</a></p>";
+			}else{
+				$message .=  '<p><a href="'. lg_loginPage .'" title="'. lg_phrase_logout_continue .'">'. lg_phrase_logout_continue ."</a></p>";
 			}
 		}else{
 			/*******************************************************************************************************************
