@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
@@ -33,7 +33,7 @@ $mailBody="";
 $message = lg_phrase_recover_password;
 
 if (lg_debug) {
-	$dbMsg .= "Debugging Enabled<br />\n";
+	$dbMsg = "Debugging Enabled<br />\n";
 }
 
 /*******************************************************************************************************************
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 	if (lg_debug) { $dbMsg .= "message = " .$message. "<br />\n"; }
 	if ($message=="") {
 		/*******************************************************************************************************************
-		* If all required fields exist, verify there is a valid account and it is locked
+		* If all required fields exist, verify there is a valid account and it is not locked
 		*******************************************************************************************************************/
 		if (lg_debug) { $dbMsg .= "message = ".$message.". All fields exist, verify account.<br />\n"; }
 		rp_selectUserDetails($userid, $email, $dbResults);
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 			if (lg_debug) { $dbMsg .= "locked = " .$locked. "<br />\n"; }
 			if (lg_debug) { $dbMsg .= "name = " .$name. "<br />\n"; }
 			if ($locked=="1") { // This account is locked; the user must contact the webmaster.
-				$message = lg_phrase_recover_password_error & " 1";
+				$message = lg_phrase_recover_password_error . " 1";
 				if (lg_debug) { $dbMsg .= "message = " .$message. "<br />\n"; }
 			}
 		}else{
@@ -77,9 +77,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 	}
 	if ($message=="") {
 		/*******************************************************************************************************************
-		* We have a valid, locked account, issue a new token and update the user table
+		* We have a valid, unlocked account, issue a new token and update the user table, locking it.
 		*******************************************************************************************************************/
-		$locked="1";
+		$locked="1"; // getting ready to lock
 		$dateLocked = dbNow();
 		$resettoken = sha1(getGUID());
 		if (lg_debug) { $dbMsg .= "locked = " .$locked. "<br />\n"; }

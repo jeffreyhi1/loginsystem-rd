@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /**
@@ -38,7 +38,7 @@ function checkToken() {
 	$oldToken="";
 	$testToken="";
 	$tokenStr="";
-	$page=$_SERVER["SCRIPT_NAME"];
+	$page=basename($_SERVER['PHP_SELF']);
 	$oldToken=$_POST["token"];
 	$tokenStr = "IP:" . $_SESSION["ip"] . ",SESSIONID:" . session_id() . ",GUID:" . $_SESSION["guid"];
 	$testToken=sha1(($tokenStr.$_SESSION["salt"]).$_SESSION["salt"]);

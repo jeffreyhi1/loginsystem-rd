@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
@@ -22,11 +22,11 @@ if (lg_debug) {
  
 if ((!$_SESSION["login"]) && (lg_useSSL) && ($_SERVER["SERVER_PORT_SECURE"]=="0")) {
 	if (lg_debug) { $dbMsg .= "Not loggedin, useSSL=true, not secure port: redirecting to login<br />"; }
-	header("Location: https://" . lg_domain_secure . lg_loginPath . lg_loginPage ."?p=" . $_SERVER["SCRIPT_NAME"]);
+	header("Location: https://" . lg_domain_secure . lg_loginPath . lg_loginPage ."?p=" . $lg_filename);
 }else{
 	if (!$_SESSION["login"]) {
 		if (lg_debug) { $dbMsg .= "Not logged in, not using SSL, redirecting to login<br />"; }
-		header("Location: http://" . lg_domain . lg_loginPath . lg_loginPage ."?p=" . $_SERVER["SCRIPT_NAME"]);
+		header("Location: http://" . lg_domain . lg_loginPath . lg_loginPage ."?p=" . $lg_filename);
 	}
 }
 
@@ -166,8 +166,8 @@ If ($_SERVER["REQUEST_METHOD"]=="POST") {
 	if (lg_debug) { $dbMsg .= "checkToken OKAY<br />\n"; }
 	$message="";
 	if (lg_debug) { $dbMsg .= "message: ".$message."<br />\n"; }
-	if (isset($_GET["oldpassword"])) {
-		$oldpassword = substr($_GET["oldpassword"],0,255);
+	if (isset($_POST["oldpassword"])) {
+		$oldpassword = substr($_POST["oldpassword"],0,255);
 	}
 	if (isset($_POST["password"])) {
 		$password = substr($_POST["password"],0,255);
@@ -188,10 +188,10 @@ If ($_SERVER["REQUEST_METHOD"]=="POST") {
 	if ($password!="") {
 		$entropy = getEntropy($password);
 		if (lg_debug) { $dbMsg .= "ENTROPY = ". $entropy ."<br />\n"; }
-		if ((lg_password_min_bits > 0) AND ($entropy < lg_password_min_bits}) {
+		if ((lg_password_min_bits > 0) AND ($entropy < lg_password_min_bits)) {
 			$message .= lg_phrase_password_too_simple . "<br>\n";
 			if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
-		}elseif{ ((lg_password_min_length > 0) AND (strlen($password) < lg_password_min_length) AND (lg_password_min_bits < 1)) {
+		}elseif ((lg_password_min_length > 0) AND (strlen($password) < lg_password_min_length) AND (lg_password_min_bits < 1)) {
 			$message .= lg_phrase_password_too_short_pre . " " . lg_password_min_length . " " . lg_phrase_password_too_short_post . "<br>\n";
 			if (lg_debug) { $dbMsg .= "message = ". $message ."<br />\n"; }
 		}
@@ -219,7 +219,7 @@ If ($_SERVER["REQUEST_METHOD"]=="POST") {
 		if ($password==$confirm) {
 			if (lg_debug) { $dbMsg .= "newpassword matches confirm password<br />\n"; }
 			$oldpasshashconfirm = sha1($oldpassword . $_SESSION["userid"]);
-			if (lg_debug) { $dbMsg .= "verification hash computed as: ".oldpasshashconfirm."<br />\n"; }
+			if (lg_debug) { $dbMsg .= "verification hash computed as: ".$oldpasshashconfirm."<br />\n"; }
 			if ($oldpasshashconfirm==$oldpasshash) {
 				if (lg_debug) { $dbMsg .= "oldpassword hash matches stored password hash<br />\n"; }
 				$passhash = sha1($password . $_SESSION["userid"]);

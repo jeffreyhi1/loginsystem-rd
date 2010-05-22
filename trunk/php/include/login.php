@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // alpha 0.5 debug
 // $Id$
 /*******************************************************************************************************************
@@ -219,9 +219,15 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 		/*******************************************************************************************************************
 		* Logged in, redirect
 		*******************************************************************************************************************/
-		if (lg_debug) { $dbMsg .= "Logged in redirecting to https://". lg_domain . lg_loginPath . $destination." <br />\n"; }
-		header("Location: https://" . lg_domain . lg_loginPath . $destination);
-		exit();
+		if (lg_useSSL) {
+			if (lg_debug) { $dbMsg .= "Logged in redirecting to https://". lg_domain . lg_loginPath . $destination." <br />\n"; }
+			header("Location: https://" . lg_domain . lg_loginPath . $destination);
+			exit();
+		}else{
+			if (lg_debug) { $dbMsg .= "Logged in redirecting to https://". lg_domain . lg_loginPath . $destination." <br />\n"; }
+			header("Location: http://" . lg_domain . lg_loginPath . $destination);
+			exit();
+		}	
 	}
 }else{
 	/*******************************************************************************************************************
