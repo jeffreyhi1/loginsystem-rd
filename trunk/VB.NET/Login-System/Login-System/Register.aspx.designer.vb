@@ -97,6 +97,15 @@ Partial Public Class Register
     Protected WithEvents ReqValidPassword As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
+    '''PasswordEntropyValidation control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents PasswordEntropyValidation As Global.System.Web.UI.WebControls.CustomValidator
+
+    '''<summary>
     '''Label5 control.
     '''</summary>
     '''<remarks>
@@ -131,6 +140,15 @@ Partial Public Class Register
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ReqValidConfirm As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''CompareValidator1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CompareValidator1 As Global.System.Web.UI.WebControls.CompareValidator
 
     '''<summary>
     '''Label7 control.

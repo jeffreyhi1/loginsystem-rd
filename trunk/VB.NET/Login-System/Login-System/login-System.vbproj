@@ -87,6 +87,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess.vb" />
+    <Compile Include="Email.vb" />
+    <Compile Include="Entropy.vb" />
     <Compile Include="hashSHA1.vb" />
     <Compile Include="LoginResources.vb" />
     <Compile Include="Register.aspx.designer.vb">

@@ -57,7 +57,7 @@ Partial Public Class Register
                 Dim Params As New List(Of DbParameter)
                 Params.Add(Da.ParmWithValue("@dateRegistered", DateRegistered))
                 Params.Add(Da.ParmWithValue("@userid", mUserid))
-                Params.Add(Da.ParmWithValue("@password", password.Text))
+                Params.Add(Da.ParmWithValue("@password", HashEncode(password.Text & mUserid)))
                 Params.Add(Da.ParmWithValue("@name", mName))
                 Params.Add(Da.ParmWithValue("@email", mEmail))
                 Params.Add(Da.ParmWithValue("@ip", mIp))
@@ -69,8 +69,12 @@ Partial Public Class Register
                 Params.Add(Da.ParmWithValue("@news", mNews))
                 Params.Add(Da.ParmWithValue("@locked", 1))
                 Params.Add(Da.ParmWithValue("@dateLocked", Now))
+                Dim token As String = GetToken()
                 Params.Add(Da.ParmWithValue("@token", GetToken()))
-                NumAffected = Da.ExecuteScalar(InsertUserSQL, Params.ToArray)
+                NumAffected = Da.ExecuteNonQuery(InsertUserSQL, Params.ToArray)
+                If NumAffected = 1 Then
+                    Login_System.Email.SendUnlockTokenEmail(token, mEmail, mName, Destination)
+                End If
 
             End Using
         Catch ex As Exception
@@ -84,6 +88,8 @@ Partial Public Class Register
 
 
     End Sub
+    
+
     Private Function GetToken() As String
         Dim Guid As Guid = Guid.NewGuid
         Return HashEncode(Guid.ToString).Substring(0, 40)
@@ -95,6 +101,15 @@ Partial Public Class Register
         mCity = xDoc.<Response>.<City>.Value
 
 
+
+    End Sub
+
+    Private Sub PasswordEntropyValidation_ServerValidate(ByVal source As Object, ByVal args As System.Web.UI.WebControls.ServerValidateEventArgs) Handles PasswordEntropyValidation.ServerValidate
+        Dim lg_password_min_bits As Integer = CInt(ConfigurationManager.AppSettings("lg_password_min_bits"))
+
+        If lg_password_min_bits > 0 And Entropy.getEntropy(args.Value) < lg_password_min_bits Then
+            args.IsValid = False
+        End If
 
     End Sub
 End Class

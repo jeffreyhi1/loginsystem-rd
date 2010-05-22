@@ -53,16 +53,20 @@
             <asp:RequiredFieldValidator ID="ReqValidUserID" runat="server" ErrorMessage="*" ControlToValidate="userid"></asp:RequiredFieldValidator><br />
             <asp:Label ID="Label3" runat="server" Text="<%$ Resources:loginGlobals,lg_term_password %>"
                 AssociatedControlID="password"></asp:Label><br />
-            <asp:TextBox ID="password" runat="server"></asp:TextBox>
+            <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
             <asp:Label ID="Label4" runat="server" Text="<%$ Resources:loginGlobals,lg_term_required %>"></asp:Label>
             <asp:RequiredFieldValidator ID="ReqValidPassword" runat="server" ErrorMessage="*"
-                ControlToValidate="password"></asp:RequiredFieldValidator><br />
+                ControlToValidate="password"></asp:RequiredFieldValidator><asp:CustomValidator ID="PasswordEntropyValidation"
+                    runat="server" ErrorMessage="Password is too simple" ControlToValidate="password"></asp:CustomValidator><br />
             <asp:Label ID="Label5" runat="server" Text="<%$ Resources:loginGlobals,lg_term_confirm %>"
                 AssociatedControlID="confirm"></asp:Label><br />
-            <asp:TextBox ID="confirm" runat="server"></asp:TextBox>
+            <asp:TextBox ID="confirm" runat="server" TextMode="Password"></asp:TextBox>
             <asp:Label ID="Label6" runat="server" Text="<%$ Resources:loginGlobals,lg_term_required %>"></asp:Label>
             <asp:RequiredFieldValidator ID="ReqValidConfirm" runat="server" ErrorMessage="*"
-                ControlToValidate="confirm"></asp:RequiredFieldValidator><br />
+                ControlToValidate="confirm"></asp:RequiredFieldValidator>
+            <asp:CompareValidator ID="CompareValidator1" runat="server" 
+                ControlToCompare="password" ControlToValidate="confirm" ErrorMessage="<%$ Resources:loginGlobals,lg_phrase_password_nomatch_confirm%>"></asp:CompareValidator>
+            <br />
             <asp:Label ID="Label7" runat="server" Text="<%$ Resources:loginGlobals,lg_term_email %>"
                 AssociatedControlID="email"></asp:Label><br />
             <asp:TextBox ID="email" runat="server"></asp:TextBox>

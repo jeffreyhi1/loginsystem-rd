@@ -34,33 +34,37 @@ Public Class DataAccess
     ''' </summary>
     ''' <param name="Sql"></param>
     ''' <remarks></remarks>
-    Public Sub ExecuteNonQuery(ByVal Sql As String)
+    Public Function ExecuteNonQuery(ByVal Sql As String) As Integer
         mConn.Open()
+        Dim NumAffected As Integer = 0
         Using cmd As DbCommand = mConn.CreateCommand()
             cmd.CommandText = Sql
             cmd.CommandType = CommandType.Text
-            cmd.ExecuteNonQuery()
+            NumAffected = cmd.ExecuteNonQuery()
         End Using
         mConn.Close()
-    End Sub
+        Return NumAffected
+    End Function
     ''' <summary>
     ''' Execute a sql statement with parameters that does not return a resultset
     ''' </summary>
     ''' <param name="Sql"></param>
     ''' <param name="Parms"></param>
     ''' <remarks></remarks>
-    Public Sub ExecuteNonQuery(ByVal Sql As String, ByVal Parms() As DbParameter)
+    Public Function ExecuteNonQuery(ByVal Sql As String, ByVal Parms() As DbParameter) As Integer
         mConn.Open()
+        Dim NumAffected As Integer = 0
         Using cmd As DbCommand = mConn.CreateCommand()
             cmd.CommandText = Sql
             cmd.CommandType = CommandType.Text
             For Each p As DbParameter In Parms
                 cmd.Parameters.Add(p)
             Next
-            cmd.ExecuteNonQuery()
+            NumAffected = cmd.ExecuteNonQuery()
         End Using
         mConn.Close()
-    End Sub
+        Return NumAffected
+    End Function
     ''' <summary>
     ''' Execute a sql statement and return a single integer.  Eg. Identity
     ''' </summary>
