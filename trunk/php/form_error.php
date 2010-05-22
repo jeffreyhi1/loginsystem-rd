@@ -21,7 +21,7 @@ include "include/form-error.php";
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php echo lg_term_content_language ?>
 <?php echo lg_term_language ?>
-<title><?PHP echo lg_term_form_error; ?></title>
+<title><?php echo lg_term_form_error; ?></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="© 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
@@ -32,6 +32,6 @@ include "include/form-error.php";
 </head>
 
 <body>
-<?PHP include "include/form-error-markup.php"; ?>
+<?php include "include/form-error-markup.php"; ?>
 </body>
 </html>

@@ -24,7 +24,7 @@ include "include/register-delete.php";
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php echo lg_term_content_language ?>
 <?php echo lg_term_language ?>
-<title><?PHP echo lg_term_delete_account; ?></title>
+<title><?php echo lg_term_delete_account; ?></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="© 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
@@ -37,7 +37,7 @@ include "include/register-delete.php";
 </head>
 
 <body>
-<?PHP include "include/register-delete-markup.php"; ?>
-<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
+<?php include "include/register-delete-markup.php"; ?>
+<?php if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
 </body>
 </html>

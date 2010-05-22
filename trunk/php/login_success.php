@@ -21,7 +21,7 @@ include "include/login-success.php";
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php echo lg_term_content_language ?>
 <?php echo lg_term_language ?>
-<title><?PHP echo lg_term_login_success; ?></title>
+<title><?php echo lg_term_login_success; ?></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="© 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
@@ -32,6 +32,6 @@ include "include/login-success.php";
 </head>
 
 <body>
-<?PHP include "include/login-success-markup.php"; ?>
+<?php include "include/login-success-markup.php"; ?>
 </body>
 </html>

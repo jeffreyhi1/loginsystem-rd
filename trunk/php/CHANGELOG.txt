@@ -14,3 +14,7 @@ including a password strength meter when bit entropy is used.
 
 Login-markup.php was modified to disable the "Remember Me"
 cookie function if lg_term_remember = false in loginGlobals.php.
+
+Assorted bugs squashed where found
+
+<?PHP changed to <?php for RQuadling.

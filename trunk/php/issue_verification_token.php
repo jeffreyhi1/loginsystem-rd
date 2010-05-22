@@ -24,7 +24,7 @@ include "include/issue-verification-token.php";
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php echo lg_term_content_language ?>
 <?php echo lg_term_language ?>
-<title><?PHP echo lg_term_issue_verification_token; ?></title>
+<title><?php echo lg_term_issue_verification_token; ?></title>
 <meta name="author" content="Roderick Divilbiss" />
 <meta name="copyright" content="&copy; 2010 EE Collaborative Login Project http://www.webloginproject.com" />
 <style type="text/css">
@@ -35,7 +35,7 @@ include "include/issue-verification-token.php";
 </head>
 
 <body>
-<?PHP include "include/issue-verification-token-markup.php"; ?>
-<?PHP if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
+<?php include "include/issue-verification-token-markup.php"; ?>
+<?php if (lg_debug) { echo "<p>". $dbMsg . "</p>"; } ?>
 </body>
 </html>
