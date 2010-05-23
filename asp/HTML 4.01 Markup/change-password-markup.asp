@@ -17,19 +17,19 @@
 				<form id="frm" name="frm" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
 				<fieldset>
 				  <legend><%=lg_term_change_password%></legend>
-				  <label for="oldpassword"><%=lg_term_current_password%>&nbsp;</label><br><input id="oldpassword" name="oldpassword" type="password" size="25" maxlength="255" autocomplete="off" title="<%=lg_phrase_oldpassword_title%>"><span class="field_normal"><%=lg_term_required%></span><br>
-				  <label for="newpassword"><%=lg_term_password%>&nbsp;</label><br><input id="password" name="password" type="password" size="25" maxlength="255" <% If lg_password_min_bits>0 Then Response.Write("onkeyup=""y(this.value);"" ") End If %>autocomplete="off" title="<%=lg_phrase_password_title%>"><span class="field_normal"><%=lg_term_required%></span><br>
+				  <label for="oldpassword"><%=lg_term_current_password%>&nbsp;</label><br><input id="oldpassword" name="oldpassword" type="password" size="25" maxlength="255" tabindex="1" autocomplete="off" title="<%=lg_phrase_oldpassword_title%>"><span class="field_normal"><%=lg_term_required%></span><br>
+				  <label for="newpassword"><%=lg_term_password%>&nbsp;</label><br><input id="password" name="password" type="password" size="25" maxlength="255" tabindex="2" <% If lg_password_min_bits>0 Then Response.Write("onkeyup=""y(this.value);"" ") End If %>autocomplete="off" title="<%=lg_phrase_password_title%>"><span class="field_normal"><%=lg_term_required%></span><br>
                 	<% If lg_password_min_bits>0 Then %>
 						<style type="text/css">#meter{font-size:x-small; font-weight:bold; font-family:"Arial Unicode MS", monospace; text-align:center; border:1px solid #000000; height:10px;}</style>
-						<input type="text" id="meter" name="meter" size="25"><br>
+						<input type="text" id="meter" name="meter" size="25" readonly tabindex="88"><br>
 					<% End If %>				  
-				  <label for="confirm"><%=lg_term_confirm%>&nbsp;</label><br><input id="confirm" name="confirm" type="password" size="25" maxlength="255" autocomplete="off" title="<%=lg_phrase_confirm_title%>"><span class="field_normal"><%=lg_term_required%></span><br>
-				  <% writeTokenH %><input id="bSubmit" name="bSubmit" type="submit" value="<%=lg_term_change_password_button_text%>">
+				  <label for="confirm"><%=lg_term_confirm%>&nbsp;</label><br><input id="confirm" name="confirm" type="password" size="25" maxlength="255" tabindex="3" autocomplete="off" title="<%=lg_phrase_confirm_title%>"><span class="field_normal"><%=lg_term_required%></span><br>
+				  <% writeTokenH %><input id="bSubmit" name="bSubmit" type="submit" tabindex="4" value="<%=lg_term_change_password_button_text%>">
 				</fieldset>
 				</form>
 			<% Else %>
 				<div id="message"><%=message%><br>
-					<a href="<%=lg_home%>"><%=lg_phrase_logout_continue%></a>
+				<a href="<%=lg_home%>"><%=lg_phrase_logout_continue%></a>
 				</div>
 			<% End If %>
 		</div>
