@@ -18,3 +18,25 @@ cookie function if lg_term_remember = false in loginGlobals.php.
 Assorted bugs squashed where found
 
 <?PHP changed to <?php for RQuadling.
+
+alpha 0.5 to alpha 0.5a (Bug fixes)
+
+Issue 54:Password strength meter is a field. It could get focus and accept user input. Changed 
+	to readonly and added tabindex to the page form fields to bypass meter.
+Issue 55:issue-verification-token needed a "Click here to continue" link to the home page. Done.
+Issue 56:New Registration EMail (ASP) failed to properly display hyperlink to contact the webmaster.
+Issue 57:issue-verification-token.php Addressing the verification e-mail to  which does not exist, 
+	needs to be changed to lg_term_register_confirmation.
+Issue 58:login.php was not modified to accept $_POST["password"] therefore would not work with
+	strong passwords.
+Issue 59:cancel-account.php was not set to accept $_POST["password"] therefore could not handle 
+	strong passwords.
+Issue 60:cancel-account.asp had no "Click to continue link."
+Issue 61:cancel-account.php, change-password.php, register.php, set-new-password.php All were set 
+to substr($_POST["password"],0,255); and should have been substr($_POST["password"],0,254);
+
+**********************************************************************************
+* THIS IS A DEBUG VERSION TO ASSIST IN BUG FIXES. THAT MEANS YOU WILL NEED TO 
+* REMOVE SET lg_debug = false IN LOGINGLOBALS.ASP
+**********************************************************************************
+
