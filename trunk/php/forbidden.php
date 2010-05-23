@@ -1,5 +1,5 @@
 <?php
-// alpha 0.5 debug
+// alpha 0.5a debug
 // $Id$
 
 setlocale(LC_ALL, 'English_United States.65001');

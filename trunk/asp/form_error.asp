@@ -2,7 +2,7 @@
 Option Explicit
 Session.CodePage=65001
 Response.Charset="UTF-8"
-'* alpha 0.5 debug
+'* alpha 0.5a debug
 '* $Id$
 %>
 <!--#include file="include/generalPurpose.asp"-->
