@@ -29,7 +29,7 @@ $lg_filename = basename($_SERVER['PHP_SELF']);
 * Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 * Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 *
-* Version: alpha 0.5 - English - PHP
+* Version: alpha 0.5a - English - PHP
 ******************************************************************************************************************/
 
 

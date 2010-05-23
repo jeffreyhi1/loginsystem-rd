@@ -29,7 +29,7 @@
 '* Modification: 20 FEB 2010 :: Rod Divilbiss - added missing lg_phrase_registration_mail0
 '* Modification: 13 FEB 2010 :: Rod Divilbiss - set new password Constants added.
 '*
-'* Version: alpha 0.5 - Swedish/Svenska - ASP
+'* Version: alpha 0.5a - Swedish/Svenska - ASP
 '******************************************************************************************************************
 Dim lg_filename
 lg_filename = Trim(Mid(Request.ServerVariables("SCRIPT_NAME"),InStrRev(Request.ServerVariables("SCRIPT_NAME"),"/")+1,99))

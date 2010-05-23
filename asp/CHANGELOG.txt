@@ -23,7 +23,7 @@ All bugs recently have been string errors, usually in debug messages. Often a
 missing " or &.
 
 
-alpha 0.5 to alpha 0.5a (Bug fixes)
+alpha 0.5a to alpha 0.5a (Bug fixes)
 
 Issue 54:Password strength meter is a field. It could get focus and accept user input. Changed 
 	to readonly and added tabindex to the page form fields to bypass meter.

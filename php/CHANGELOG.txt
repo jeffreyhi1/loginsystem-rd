@@ -4,7 +4,7 @@ two language constants were not spelled correctly.
 langage files and code were corrected to the proper spellings.
 Added the Polish language translation.
 
-alpha 0.3 to alpha 0.5 (there was no alpha 0.4 in PHP code)
+alpha 0.3 to alpha 0.5a (there was no alpha 0.4 in PHP code)
 All loginGlobals.php files had constants added to support
 password length, or password bit entropy (randomness).
 
@@ -19,7 +19,7 @@ Assorted bugs squashed where found
 
 <?PHP changed to <?php for RQuadling.
 
-alpha 0.5 to alpha 0.5a (Bug fixes)
+alpha 0.5a to alpha 0.5a (Bug fixes)
 
 Issue 54:Password strength meter is a field. It could get focus and accept user input. Changed 
 	to readonly and added tabindex to the page form fields to bypass meter.

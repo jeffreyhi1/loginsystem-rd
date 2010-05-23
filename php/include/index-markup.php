@@ -1,5 +1,5 @@
 <?php
-// alpha 0.5 debug
+// alpha 0.5a debug
 // $Id: index-markup.php 322 2010-05-14 06:57:53Z rdivilbiss $
 
 if ((isset($_SESSION["name"])) && (isset($_SESSION["login"])) && ($_SESSION["login"]==true)) {

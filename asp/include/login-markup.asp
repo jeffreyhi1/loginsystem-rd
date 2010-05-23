@@ -1,5 +1,5 @@
 <%
-'* alpha 0.5 debug
+'* alpha 0.5a debug
 '* $Id$
 %>
 			<!-- XHTML 1.1 Strict -->
