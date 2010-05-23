@@ -146,7 +146,7 @@ If LCase(Request.ServerVariables("HTTP_METHOD")) = "post" Then
 			mailBody = mailBody & token & "<br /><br />"
 			mailBody = mailBody & lg_phrase_registration_mail7 & "<br />"
 			mailBody = mailBody & "this link: <a href=""http://" & lg_domain & lg_loginPath & lg_register_delete_page & "?email="& email &""">"& lg_term_remove_registration &"</a><br /><br />"
-			mailBody = mailBody & lg_phrase_registration_mail9 & lg_domain & lg_contact_form & ">"& lg_phrase_contact_webmaster &"</a><br /><br />"
+			mailBody = mailBody & lg_phrase_registration_mail9 & lg_domain & lg_contact_form & """>"& lg_phrase_contact_webmaster &"</a><br /><br />"
 			mailBody = mailBody & lg_copyright &"<br />"
 			mailBody = mailBody & "</FONT></DIV></BODY></HTML>"
 			if lg_debug Then dbMsg = "mailBody = "& mailBody &"<br />" & vbLF End If

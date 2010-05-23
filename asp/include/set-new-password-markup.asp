@@ -31,13 +31,13 @@
 			<form name="frm2" method="post" action="<%=lg_filename%>" onsubmit="return validate(this);">
 			<fieldset>
 			  <legend><%=lg_term_set_new_password%></legend>
-			  <p><lable for="newpassword"><%=lg_term_new_password%></lable><br /><input id="password" name="password" type="password" size="50" maxsize="255" <% If lg_password_min_bits>0 Then Response.Write("onkeyup=""y(this.value);"" ") End If %>autocomplete="off" /><br />
+			  <p><lable for="newpassword"><%=lg_term_new_password%></lable><br /><input id="password" name="password" type="password" size="50" maxsize="255" tabindex="1" <% If lg_password_min_bits>0 Then Response.Write("onkeyup=""y(this.value);"" ") End If %>autocomplete="off" /><br />
                 <% If lg_password_min_bits>0 Then %>
 					<style type="text/css">#meter{font-size:x-small; font-weight:bold; font-family:"Arial Unicode MS", monospace; text-align:center; border:1px solid #000000; height:10px;}</style>
-					<input type="text" id="meter" name="meter" size="50"></p>
+					<input type="text" id="meter" name="meter" size="50" readonly /></p>
 				<% End If %>			  
-			  <lable for="confirm"><%=lg_term_confirm%></lable><br /><input id="confirm" name="confirm" type="password" size="50" maxsize="255" autocomplete="off" /><br />
-			  <input type="submit" value="<%=lg_term_submit%>" /><input name="changePassword" type="hidden" value="1" /><input type="hidden" name="resettoken" value="<%=resettoken%>" /></p>
+			  <lable for="confirm"><%=lg_term_confirm%></lable><br /><input id="confirm" name="confirm" type="password" size="50" maxsize="255" tabindex="2" autocomplete="off" /><br />
+			  <input type="submit" tabindex="3" value="<%=lg_term_submit%>" /><input name="changePassword" type="hidden" value="1" /><input type="hidden" name="resettoken" value="<%=resettoken%>" /></p>
 			</fieldset>
 			</form>
 			</div>
