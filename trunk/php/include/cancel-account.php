@@ -44,7 +44,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 	if (lg_debug) { $dbMsg = "check form token = OKAY<br />\n"; }
 	$message="";
 	$userid = getField("userid,safepq");
-	$password = getField("password,safepq");
+	if (isset($_POST["password"])) {
+		$password = substr($_POST["password"],0,254);
+	}
 	if (lg_debug) { $dbMsg = "userid = ".$userid."<br />\n"; }
 	if (lg_debug) { $dbMsg = "password = ".$password."<br />\n"; }
 	if ($userid=="") {

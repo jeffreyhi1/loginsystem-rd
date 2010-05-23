@@ -20,6 +20,6 @@
 			<?php }else{ ?>
 			<div id="message"><?php echo $message; ?></div>
 			<?php
-				echo '<p><a href="'. lg_loginPage .'" title="'. lg_phrase_logout_continue .'">'. lg_phrase_logout_continue .'</a></p>'; 
+				echo '<p><a href="'. lg_home .'" title="'. lg_phrase_logout_continue .'">'. lg_phrase_logout_continue .'</a></p>'; 
 				} ?>
 			</div>

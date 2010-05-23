@@ -142,8 +142,8 @@ function getEntropy($pPass) {
 /******************************************************************************************************************
 * Obtain your own public and private reCAPTCHA keys for free at http://recaptcha.net/ and enter below.
 ******************************************************************************************************************/
-$publickey = "6Lce3bkSAAAAAHHyw_BOFsIgrHh9TcPrQMQ1oLYU";
-$privatekey = "6Lce3bkSAAAAADh2-3h0SS30KP5E8gHXBN0yV13j";
+$publickey = "";
+$privatekey = "";
 /*****************************************************************************************************************/
 
 if (lg_debug) {
@@ -175,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	$userid = getField("userid,safepq");
 	if (lg_debug) { $dbMsg .= "userid = " . htmlentities($userid) . "<br />\n"; }
 	if (isset($_POST["password"])) {
-		$password = substr($_POST["password"],0,255);
+		$password = substr($_POST["password"],0,254);
 	}
 	if (lg_debug) { $dbMsg .= "password = " . htmlentities($password) . "<br />\n"; }
 	if (isset($_POST["confirm"])) {

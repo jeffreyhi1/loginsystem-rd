@@ -150,10 +150,10 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 	if ($_SESSION["action"]=="password") {
 		if (lg_debug) { $dbMsg .= "Session action = " . htmlentities($_SESSION["action"]) . "<br />\n"; }
 		if (isset($_POST["password"])) {
-			$password = substr($_POST["password"],0,255);
+			$password = substr($_POST["password"],0,254);
 		}
 		if (isset($_POST["confirm"])) {
-			$confirm = substr($_POST["confirm"],0,255);
+			$confirm = substr($_POST["confirm"],0,254);
 		}	
 		$changePassword = getField("changePassword,rXint");
 		if (lg_debug) { $dbMsg .= "New password = " . htmlentities($password) . "<br />\n"; }
