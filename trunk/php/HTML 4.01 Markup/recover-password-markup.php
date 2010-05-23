@@ -19,5 +19,6 @@
 			</div>
 			<?php }else{ ?>
 			<div id="message"><?php echo $message; ?></div>
+			<p><a href="<?php echo lg_set_new_password_page?>" title="<?php echo lg_phrase_logout_continue?>"><?php echo lg_phrase_logout_continue?></a></p>
 			<?php } ?>
 			</div>

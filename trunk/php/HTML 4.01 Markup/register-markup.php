@@ -16,32 +16,32 @@
     		  <fieldset>
     		    <legend><?php echo lg_term_registration; ?></legend>
     		    <label for="userid"><?php echo lg_term_userid; ?></label><br>
-    		    <input id="userid" name="userid" title="<?php echo lg_phrase_userid_new_title; ?>" type="text" size="20" maxlength="50" value="<?php echo htmlentities($userid); ?>">
+    		    <input id="userid" name="userid" title="<?php echo lg_phrase_userid_new_title; ?>" type="text" size="20" maxlength="50" tabindex="1" value="<?php echo htmlentities($userid); ?>">
     		    <span class="field_normal"><?php echo lg_term_required; ?></span><br>
     		    <label for="password"><?php echo lg_term_password; ?></label><br>
-    		    <input id="password" name="password" title="<?php echo lg_phrase_password_new_title; ?>" type="password" size="20" maxlength="255" <?php if (lg_password_min_bits > 0) { echo 'onkeyup="y(this.value);" '; } ?>autocomplete="off">
+    		    <input id="password" name="password" title="<?php echo lg_phrase_password_new_title; ?>" type="password" size="20" maxlength="255" tabindex="2" <?php if (lg_password_min_bits > 0) { echo 'onkeyup="y(this.value);" '; } ?>autocomplete="off">
     		    <span class="field_normal"><?php echo lg_term_required; ?></span><br>
     		    <?php if (lg_password_min_bits > 0) { ?>
 					<style type="text/css">#meter{font-size:x-small; font-weight:bold; font-family:"Arial Unicode MS", monospace; text-align:center; border:1px solid #000000; height:10px;}</style>
-					<input type="text" id="meter" name="meter" size="20"><br><br>
+					<input type="text" id="meter" name="meter" size="20" readonly tabindex="88"><br><br>
 				<?php } ?> 
     		    <label for="confirm"><?php echo lg_term_confirm; ?></label><br>
-    		    <input id="confirm" name="confirm" title="<?php echo lg_phrase_confirm_title; ?>" type="password" size="20" maxlength="255">
+    		    <input id="confirm" name="confirm" title="<?php echo lg_phrase_confirm_title; ?>" type="password" size="20" maxlength="255" tabindex="3">
     		    <span class="field_normal"><?php echo lg_term_required; ?></span><br>
     		    <label for="email"><?php echo lg_term_email; ?></label><br>
-    		    <input id="email" name="email" title="<?php echo lg_phrase_email_title; ?>" type="text" size="20" maxlength="100" value="<?php echo htmlentities($email); ?>">
+    		    <input id="email" name="email" title="<?php echo lg_phrase_email_title; ?>" type="text" size="20" maxlength="100" tabindex="4" value="<?php echo htmlentities($email); ?>">
     		    <span class="field_normal"><?php echo lg_term_required; ?></span><br>
     		    <label for="name"><?php echo lg_term_name; ?></label><br>
-    		    <input id="name" name="name" title="<?php echo lg_phrase_name_title; ?>" type="text" size="20" maxlength="100" value="<?php echo htmlentities($name); ?>">
+    		    <input id="name" name="name" title="<?php echo lg_phrase_name_title; ?>" type="text" size="20" maxlength="100" tabindex="5" value="<?php echo htmlentities($name); ?>">
     		    <span class="field_normal"><?php echo lg_term_required; ?></span><br>
     		    <label for="website"><?php echo lg_term_website_address; ?></label><br>
-    		    <input id="website" title="<?php echo lg_phrase_website_title; ?>" name="website" type="text" size="20" maxlength="100" value="<?php echo htmlentities($website); ?>">
+    		    <input id="website" title="<?php echo lg_phrase_website_title; ?>" name="website" type="text" size="20" maxlength="100" tabindex="6" value="<?php echo htmlentities($website); ?>">
     		    <span class="field_normal"><?php echo lg_term_optional; ?></span><br>
     		    <label for="news"><?php echo lg_phrase_news; ?></label>
-    		    <input id="news" name="news" type="checkbox" value="Yes"<?php if ($news=="Yes") { echo " checked"; } ?>>
+    		    <input id="news" name="news" type="checkbox" tabindex="7" value="Yes"<?php if ($news=="Yes") { echo " checked"; } ?>>
     		    <?php If (lg_useCAPTCHA) { echo "<br>" . recaptcha_get_html($publickey); } ?>
     		    <input type="hidden" id="destination" name="destination" value="<?php echo $destination; ?>"><br>
-    		    <?php writeTokenH(); ?><input type="submit" value="<?php echo lg_register_button_text; ?>">
+    		    <?php writeTokenH(); ?><input type="submit" tabindex="9" value="<?php echo lg_register_button_text; ?>">
     		  </fieldset>
     		</form>
     		<?php }else{ ?>
