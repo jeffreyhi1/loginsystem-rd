@@ -31,13 +31,13 @@
 			<form id="frm2" method="post" action="<?php echo $lg_filename; ?>" onsubmit="return validate(this);">
 			<fieldset>
 			  <legend><?php echo lg_term_set_new_password; ?></legend>
-			  <p><label for="password"><?php echo lg_term_new_password; ?></label><br /><input id="password" name="password" type="password" size="50" maxlength="255" <?php if (lg_password_min_bits > 0) { echo 'onkeyup="y(this.value);" '; } ?>autocomplete="off" /><br />
+			  <p><label for="password"><?php echo lg_term_new_password; ?></label><br /><input id="password" name="password" type="password" size="50" maxlength="255" tabindex="1" <?php if (lg_password_min_bits > 0) { echo 'onkeyup="y(this.value);" '; } ?>autocomplete="off" /><br />
 			  <?php if (lg_password_min_bits > 0) { ?>
 				<style type="text/css">#meter{font-size:x-small; font-weight:bold; font-family:"Arial Unicode MS", monospace; text-align:center; border:1px solid #000000; height:10px;}</style>
-				<input type="text" id="meter" name="meter" size="20"><br /><br />
+				<input type="text" id="meter" name="meter" size="20" readonly tabindex="88" /><br /><br />
 			  <?php } ?> 
-			  <label for="confirm"><?php echo lg_term_confirm; ?></label><br /><input id="confirm" name="confirm" type="password" size="50" maxlength="255" autocomplete="off" /><br />
-			  <input type="submit" value="<?php echo lg_term_submit; ?>" /><?php writeToken(); ?><input name="changePassword" type="hidden" value="1" /><input type="hidden" name="resettoken" value="<?php echo $resettoken; ?>" /></p>
+			  <label for="confirm"><?php echo lg_term_confirm; ?></label><br /><input id="confirm" name="confirm" type="password" size="50" maxlength="255" tabindex="2" autocomplete="off" /><br />
+			  <input type="submit" value="<?php echo lg_term_submit; ?>" tabindex="4" /><?php writeToken(); ?><input name="changePassword" type="hidden" value="1" /><input type="hidden" name="resettoken" value="<?php echo $resettoken; ?>" /></p>
 			</fieldset>
 			</form>
 			</div>

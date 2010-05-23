@@ -17,19 +17,18 @@
 				<form id="frm" method="post" action="<?php echo $lg_filename; ?>" onsubmit="return validate(this);">
 				<fieldset>
 				  <legend><?php echo lg_term_change_password; ?></legend>
-				  <label for="oldpassword"><?php echo lg_term_current_password; ?>&nbsp;</label><br /><input id="oldpassword" name="oldpassword" type="password" size="25" maxlength="255" autocomplete="off" title="<?php echo lg_phrase_oldpassword_title; ?>" />&nbsp;<span class="field_normal"><?php echo lg_term_required; ?></span><br />
-				  <label for="password"><?php echo lg_term_new_password; ?>&nbsp;</label><br /><input id="password" name="password" type="password" size="25" maxlength="255" <?php if (lg_password_min_bits > 0) { echo 'onkeyup="y(this.value);" '; } ?>autocomplete="off" title="<?php echo lg_phrase_password_title; ?>" />&nbsp;<span class="field_normal"><?php echo lg_term_required; ?></span><br />
+				  <label for="oldpassword"><?php echo lg_term_current_password; ?>&nbsp;</label><br /><input id="oldpassword" name="oldpassword" type="password" size="25" maxlength="255" tabindex="1" autocomplete="off" title="<?php echo lg_phrase_oldpassword_title; ?>" />&nbsp;<span class="field_normal"><?php echo lg_term_required; ?></span><br />
+				  <label for="password"><?php echo lg_term_new_password; ?>&nbsp;</label><br /><input id="password" name="password" type="password" size="25" maxlength="255" tabindex="2" <?php if (lg_password_min_bits > 0) { echo 'onkeyup="y(this.value);" '; } ?>autocomplete="off" title="<?php echo lg_phrase_password_title; ?>" />&nbsp;<span class="field_normal"><?php echo lg_term_required; ?></span><br />
 				  <?php if (lg_password_min_bits > 0) { ?>
 					<style type="text/css">#meter{font-size:x-small; font-weight:bold; font-family:"Arial Unicode MS", monospace; text-align:center; border:1px solid #000000; height:10px;}</style>
-					<input type="text" id="meter" name="meter" size="20"><br /><br />
+					<input type="text" id="meter" name="meter" size="20" readonly tabindex="88" /><br /><br />
 				  <?php } ?> 
-				  <label for="confirm"><?php echo lg_term_confirm; ?>&nbsp;</label><br /><input id="confirm" name="confirm" type="password" size="25" maxlength="255" autocomplete="off" title="<?php echo lg_phrase_confirm_title; ?>" />&nbsp;<span class="field_normal"><?php echo lg_term_required; ?></span><br />
-				  <?php writeToken(); ?><input id="submit" name="submit" type="submit" value="<?php echo lg_term_change_password_button_text; ?>" />
+				  <label for="confirm"><?php echo lg_term_confirm; ?>&nbsp;</label><br /><input id="confirm" name="confirm" type="password" size="25" maxlength="255" tabindex="3" autocomplete="off" title="<?php echo lg_phrase_confirm_title; ?>" />&nbsp;<span class="field_normal"><?php echo lg_term_required; ?></span><br />
+				  <?php writeToken(); ?><input id="submit" name="submit" type="submit" tabindex="4" value="<?php echo lg_term_change_password_button_text; ?>" />
 				</fieldset>
 				</form>
 			<?php }else{ ?>
-				<div id="message"><?php echo $message; ?><br />
-					<a href="<?php echo lg_home; ?>"><?php echo lg_phrase_logout_continue; ?></a>
-				</div>
+				<div id="message"><?php echo $message; ?></div>
+				<p><a href="<?php echo lg_home; ?>"><?php echo lg_phrase_logout_continue; ?></a></p>
 			<?php } ?>
 			</div>

@@ -236,7 +236,9 @@ if ($_SERVER["REQUEST_METHOD"]=="GET") {
 	if (lg_debug) { $dbMsg .= "POST - Process fields <br />\n"; }
 	checkToken();
 	$message = "";
-	$password = getField("password,safe");
+	if (isset($_POST["password"])) {
+		$password = $_POST["password"];
+	}	
 	$userid = getField("userid,safepq");
 	$remember = getField("remember,alpha"); // Yes or empty
 	$destination = getField("destination,urlpath");       // saved final destination

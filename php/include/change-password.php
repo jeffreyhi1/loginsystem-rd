@@ -167,13 +167,13 @@ If ($_SERVER["REQUEST_METHOD"]=="POST") {
 	$message="";
 	if (lg_debug) { $dbMsg .= "message: ".$message."<br />\n"; }
 	if (isset($_POST["oldpassword"])) {
-		$oldpassword = substr($_POST["oldpassword"],0,255);
+		$oldpassword = substr($_POST["oldpassword"],0,254);
 	}
 	if (isset($_POST["password"])) {
-		$password = substr($_POST["password"],0,255);
+		$password = substr($_POST["password"],0,254);
 	}
 	if (isset($_POST["confirm"])) {
-		$confirm = substr($_POST["confirm"],0,255);
+		$confirm = substr($_POST["confirm"],0,254);
 	}	
 	if (lg_debug) { $dbMsg .= "Old Password: ".htmlentities($oldpassword)."<br />\n"; }
 	if (lg_debug) { $dbMsg .= "New Password: ".htmlentities($password)."<br />\n"; }

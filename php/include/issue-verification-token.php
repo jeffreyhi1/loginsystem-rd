@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 			$mailBody .= lg_copyright .'<br>';
 			$mailBody .= '</FONT></DIV></BODY></HTML>';
 			if (lg_debug) { $dbMsg .= "MailBody = ".$mailBody."<br />\n"; }
-			$subject = "=?UTF-8?B?" . base64_encode(lg_term_registration_newtoken) . "?=";
+			$subject = "=?UTF-8?B?" . base64_encode(lg_term_register_confirmation) . "?=";
 
 			$headers  = "MIME-Version: 1.0\r\n";
 			$headers .= "Content-type: text/html; charset=UTF-8\r\n";
