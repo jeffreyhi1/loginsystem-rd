@@ -19,5 +19,6 @@
 				</div>
 				<% Else %>
 				<div id="message"><%=message%></div>
+				<p><a href="<%=lg_verify_page%>" title="<%=lg_phrase_logout_continue%>"><%=lg_phrase_logout_continue%></a></p>
 				<% End If %>
 			</div>

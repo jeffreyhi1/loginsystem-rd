@@ -16,32 +16,32 @@
     		  <fieldset>
     		    <legend><%=lg_term_registration%></legend>
     		    <label for="userid"><%=lg_term_userid %></label><br />
-    		    <input id="userid" name="userid" title="<%=lg_phrase_userid_new_title%>" type="text" size="20" maxlength="50" value="<%=Server.HTMLEncode(userid)%>" />
+    		    <input id="userid" name="userid" title="<%=lg_phrase_userid_new_title%>" type="text" size="20" maxlength="50" tabindex="1" value="<%=Server.HTMLEncode(userid)%>" />
     		    <span class="field_normal"><%=lg_term_required%></span><br />
     		    <label for="password"><%=lg_term_password %></label><br />
-    		    <input id="password" name="password" title="<%=lg_phrase_password_new_title%>" type="password" size="20" maxlength="255" <% If lg_password_min_bits>0 Then Response.Write("onkeyup=""y(this.value);"" ") End If %>autocomplete="off" />
+    		    <input id="password" name="password" title="<%=lg_phrase_password_new_title%>" type="password" size="20" tabindex="2" maxlength="255" <% If lg_password_min_bits>0 Then Response.Write("onkeyup=""y(this.value);"" ") End If %>autocomplete="off" />
     		    <span class="field_normal"><%=lg_term_required%></span><br />
                 <% If lg_password_min_bits>0 Then %>
 					<style type="text/css">#meter{font-size:x-small; font-weight:bold; font-family:"Arial Unicode MS", monospace; text-align:center; border:1px solid #000000; height:10px;}</style>
-					<input type="text" id="meter" name="meter" size="20"><br /><br />
+					<input type="text" id="meter" name="meter" size="20" tabindex="88" readonly /><br /><br />
 				<% End If %>    		    
     		    <label for="confirm"><%=lg_term_confirm %></label><br />
-    		    <input id="confirm" name="confirm" title="<%=lg_phrase_confirm_title%>" type="password" size="20" maxlength="255" autocomplete="off" />
+    		    <input id="confirm" name="confirm" title="<%=lg_phrase_confirm_title%>" type="password" size="20" maxlength="255" tabindex="3" autocomplete="off" />
     		    <span class="field_normal"><%=lg_term_required%></span><br />
     		    <label for="email"><%=lg_term_email %></label><br />
-    		    <input id="email" name="email" title="<%=lg_phrase_email_title%>" type="text" size="20" maxlength="100" value="<%=Server.HTMLEncode(email)%>" />
+    		    <input id="email" name="email" title="<%=lg_phrase_email_title%>" type="text" size="20" maxlength="100" tabindex="4" value="<%=Server.HTMLEncode(email)%>" />
     		    <span class="field_normal"><%=lg_term_required%></span><br />
     		    <label for="name"><%=lg_term_name %></label><br />
-    		    <input id="name" name="name" title="<%=lg_phrase_name_title%>" type="text" size="20" maxlength="100" value="<%=Server.HTMLEncode(name)%>" />
+    		    <input id="name" name="name" title="<%=lg_phrase_name_title%>" type="text" size="20" maxlength="100" tabindex="5" value="<%=Server.HTMLEncode(name)%>" />
     		    <span class="field_normal"><%=lg_term_required%></span><br />
     		    <label for="website"><%=lg_term_website_address %></label><br />
-    		    <input id="website" title="<%=lg_phrase_website_title%>" name="website" type="text" size="20" maxlength="100" value="<%=Server.HTMLEncode(website)%>" />
+    		    <input id="website" title="<%=lg_phrase_website_title%>" name="website" type="text" size="20" maxlength="100"tabindex="6" value="<%=Server.HTMLEncode(website)%>" />
     		    <span class="field_normal"><%=lg_term_optional%></span><br />
     		    <label for="news"><%=lg_phrase_news %></label>
-    		    <input id="news" name="news" type="checkbox" value="Yes"<% If news="Yes" Then Response.Write(" checked") End If %> />
+    		    <input id="news" name="news" type="checkbox" tabindex="7" value="Yes"<% If news="Yes" Then Response.Write(" checked") End If %> />
     		    <% If lg_useCAPTCHA Then Response.Write "<br />" & recaptcha_challenge_writer() End If %>
     		    <input type="hidden" id="destination" name="destination" value="<%=destination%>" /><br />
-    		    <% writeToken %><input type="submit" value="<%=lg_register_button_text %>" />
+    		    <% writeToken %><input type="submit" tabindex="9" value="<%=lg_register_button_text %>" />
     		  </fieldset>
     		</form>
     		<% Else %>
