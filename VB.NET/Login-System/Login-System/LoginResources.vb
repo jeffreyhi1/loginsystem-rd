@@ -1,4 +1,4 @@
-﻿' $Id$
+' $Id$
 Public Module LoginResources
     ''' <summary>
     ''' Short wrapper function to get resource strings from the loginglobals class

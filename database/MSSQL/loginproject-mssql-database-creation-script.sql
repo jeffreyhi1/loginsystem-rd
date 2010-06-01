@@ -1,4 +1,4 @@
-﻿/* $Id$ */
+/* $Id$ */
 CREATE DATABASE [loginproject]
 GO
 USE [loginproject]

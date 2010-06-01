@@ -1,4 +1,4 @@
-﻿' $Id$
+' $Id$
 
 Imports System.Net.Mail
 

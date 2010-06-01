@@ -1,4 +1,4 @@
-﻿' $Id$
+' $Id$
 
 Public Class Entropy
     Public Shared Function getEntropy(ByVal pPass As String) As Double
