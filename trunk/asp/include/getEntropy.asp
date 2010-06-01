@@ -1,4 +1,6 @@
 <%
+' $Id$
+
 Dim entropy, lowLetters, upLetters, symbols, digits, totalChars, lowLettersChars, upLettersChars, symbolChars, digitChars, otherChars
 
 

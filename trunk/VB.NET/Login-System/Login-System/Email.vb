@@ -1,4 +1,6 @@
-﻿Imports System.Net.Mail
+﻿' $Id$
+
+Imports System.Net.Mail
 
 Public Class Email
 
