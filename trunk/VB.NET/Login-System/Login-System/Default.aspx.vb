@@ -1,4 +1,4 @@
-﻿' $Id$
+' $Id$
 Partial Public Class _Default
     Inherits System.Web.UI.Page
 

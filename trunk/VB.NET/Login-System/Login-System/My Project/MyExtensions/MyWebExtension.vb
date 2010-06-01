@@ -1,4 +1,4 @@
-﻿' $Id$
+' $Id$
 #If _MyType <> "Empty" Then
 
 Namespace My
