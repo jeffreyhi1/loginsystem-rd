@@ -23,8 +23,8 @@ IF "%1"=="" (
 	SVN update .
 )
 
-ECHO Collecting ASP, PHP, SQL, BAT and VB filenames.
-FOR /R . %%X in (*.ASP *.PHP *.SQL *.BAT *.VB) DO (
+ECHO Collecting ASP, ASPX, BAT, MYAPP, PHP, RESX, SETTINGS, SQL, VB and VBPROJ filenames.
+FOR /R . %%X in (*.ASP *.ASPX *.BAT *.MYAPP *.PHP *.RESX *.SETTINGS *.SQL *.VB *.VBPROJ) DO (
 	SET LSRD_Filename=%%~nX
 	IF NOT "!LSRD_Filename:~0,9!"=="entities." (
 		ECHO %%~X >> "%TEMP%\svnxml_%YY%_%MM%_%DD%_%HH%_%II%_%SS%.LST"

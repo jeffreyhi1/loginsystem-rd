@@ -1,5 +1,5 @@
 <?php
-// $Id: loginGlobalsPolski.php 297 2010-05-05 22:40:09Z rdivilbiss $
+// $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
 * Login Globals - PHP

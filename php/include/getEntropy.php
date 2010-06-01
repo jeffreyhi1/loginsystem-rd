@@ -1,4 +1,6 @@
 <?php
+// $Id$
+
 $entropy="";
 $lowLetters="";
 $upLetters="";
