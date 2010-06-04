@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id$
 $lg_filename = basename($_SERVER['PHP_SELF']);
 /*******************************************************************************************************************
@@ -114,7 +114,7 @@ define("lg_phrase_cancel_account_warning","Cảnh báo! Tài khoản của bạn
 define("lg_phrase_change_password","Nhập mật khẩu hiện tại của bạn, sau đó nhập mật khẩu mới của bạn.");
 define("lg_phrase_confirm_empty","Các lĩnh vực xác nhận mật khẩu là trống rỗng, nhưng là bắt buộc. Xin hãy xác nhận lại mật khẩu.");
 define("lg_phrase_confirm_title","Hãy xác nhận mật khẩu mong muốn của bạn. Lĩnh vực này là bắt buộc.");
-define("lg_phrase_contact_body", "<p>Đây là trang của bạn liên hệ. Thông thường nó sẽ là một hình thức. Ở mức tối thiểu bạn nên cung cấp địa chỉ email của Webmaster.</p>")'
+define("lg_phrase_contact_body", "<p>Đây là trang của bạn liên hệ. Thông thường nó sẽ là một hình thức. Ở mức tối thiểu bạn nên cung cấp địa chỉ email của Webmaster.</p>");
 define("lg_phrase_contact_webmaster","Liên lạc với web người chủ.");
 define("lg_phrase_contact_webmaster1","Xin vui lòng liên lạc với web người chủ để được hỗ trợ.");
 define("lg_phrase_default_body1", "Trang web này được tạo ra để chứng minh tích hợp các hệ thống Đăng nhập vào trong thiết kế trang web của bạn.</p><p>Mỗi trang web có thể được dùng như một bản mẫu. phần thường của một trang web mẫu có thể bao gồm một biểu ngữ, chuyển hướng, nội dung một khu vực chính, và có thể footer một với các liên kết đến Điều khoản sử dụng, chi tiết Bản quyền, và Chính sách Bảo mật.</p><p>Khu vực nơi bạn đang đọc trong &quot;Nội dung chính Diện tích&quot; của trang này. Đây là khu vực nơi bạn sẽ chèn HTML hoặc XHTML đánh dấu các mẫu cho phép các hệ thống đăng nhập.</p><p>Khám phá nhà dự án trên Google Code tại:");
@@ -162,7 +162,7 @@ define("lg_phrase_password_too_soon", "Các mật khẩu Các trận đấu củ
 define("lg_phrase_password_too_short", "Các mật khẩu có quá ngắn. Các chiều dài mật khẩu tối thiểu là:");
 define("lg_phrase_password_too_short", "chữ cái, biểu tượng hoặc chữ số.");
 define("lg_phrase_password_too_simple", "Các mật khẩu nhập vào là quá đơn giản. Xin vui lòng nhập một mật khẩu mà gồm ký tự ngẫu nhiên bao gồm một kết hợp chữ cái, biểu tượng hoặc chữ số.");
-define("lg_phrase_recaptcha_error", "The reCAPTCHA wasn't entered correctly.");
+define("lg_phrase_recaptcha_error", "reCAPTCHA đã không được nhập chính xác.");
 define("lg_phrase_recover_password","Khôi phục mật khẩu");
 define("lg_phrase_recover_password_error","Có một lỗi không mong muốn xử lý yêu cầu của bạn Xin vui lòng liên lạc với web người chủ.");
 define("lg_phrase_recover_password_success","Yêu cầu khôi phục mật khẩu của bạn đã được xử lý thành công.<p>Hãy làm theo hướng dẫn trong thư điện tử gửi đến để thiết lập mật khẩu mới.</p>");
