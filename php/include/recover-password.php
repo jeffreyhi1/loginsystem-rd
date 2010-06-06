@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // alpha 0.5a debug
 // $Id$
 /*******************************************************************************************************************
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 			$mailBody .= '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">';
 			$mailBody .= '<HTML><HEAD><META http-equiv=Content-Type content="text/html; charset=UTF-8">';
 			$mailBody .= '</HEAD><BODY><DIV><FONT face=Arial size=2>'. lg_phrase_recover_password .'<br><br>';
-			$mailBody .= lg_term_to . $name . '<br><br>';
+			$mailBody .= lg_term_to . ' ' . $name . '<br><br>';
 			$mailBody .= lg_phrase_request_password1 .' '. lg_domain .'. <br>';
 			$mailBody .= lg_phrase_recover_password2 . '<br><br>';
 			$mailBody .= '<a href="http://'. lg_domain . lg_loginPath . lg_set_new_password_page .'?resettoken='. $resettoken .'&id=1">'. lg_phrase_recover_password3 .'</a><br><br>';
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 			$mailBody .= lg_phrase_registration_mail6 . '<br><br>';
 			$mailBody .= $resettoken . '<br><br>';
 			$mailBody .= lg_phrase_recover_password4 .'<br>';
-			$mailBody .= lg_phrase_recover_password5 . lg_webmaster_email_link .'<br><br>';
+			$mailBody .= lg_phrase_recover_password5 . ' ' . lg_webmaster_email_link .'<br><br>';
 			$mailBody .= lg_copyright .'<br>';
 			$mailBody .= '</FONT></DIV></BODY></HTML>';
 			$subject = "=?UTF-8?B?" . base64_encode(lg_phrase_recover_password) . "?=";
