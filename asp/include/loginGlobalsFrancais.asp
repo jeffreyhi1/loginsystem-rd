@@ -1,4 +1,4 @@
-<%
+﻿<%
 '* $Id$
 '********************************************************************************************************************
 '* Login Globals - ASP
@@ -117,8 +117,8 @@ Const lg_phrase_confirm_title = "S'il vous plaît confirmez votre mot de passe s
 Const lg_phrase_contact_body = "<p>Ceci est votre page de contact. Habituellement, il serait une forme. Au minimum, vous devez fournir l'adresse email du webmaster.</p>"
 Const lg_phrase_contact_webmaster = "contact avec le ouaibemestre"
 Const lg_phrase_contact_webmaster1 = "S'il vous plaît contactez le ouaibemestre pour l'assistance."
-Const lg_phrase_default_body1 = "Ce site a été créé pour démontrer l'intégration du système de connexion dans votre conception de site Web.</p><p>Chaque site web peut être conceptualisée comme un modèle. parties communes d'un modèle de page Web peuvent inclure une bannière, la navigation, une zone de contenu principal, et peut-être un pied de page avec des liens vers des Conditions d'utilisation, les détails du droit d'auteur et la politique de confidentialité.</p><p>La zone où vous êtes en train de lire dans la zone "Contenu principal" de cette page. Ceci est l'endroit où vous insérez le code HTML ou le balisage XHTML templates qui permettent au système de connexion.</p><p>Visitez le site du projet sur Google Code à l'adresse:"
-Const lg_phrase_default_body2 = ".</p><p>Ou visiter les fiches de démo différentes dans un certain nombre de langues du monde à la"
+Const lg_phrase_default_body1 = "Ce site a été créé pour démontrer l'intégration du système de connexion dans votre conception de site Web.</p><p>Chaque site web peut être conceptualisée comme un modèle. Les parties communes d'un modèle de page Web peuvent inclure une bannière, la navigation, une zone de contenu principal, et peut-être un pied de page avec des liens vers des Conditions d'utilisation, les détails du droit d'auteur et la politique de confidentialité.</p><p>La zone où vous êtes en train de lire dans la zone "Contenu principal" de cette page. Ceci est l'endroit où vous insérez le code HTML ou le balisage XHTML templates qui permettent au système de connexion.</p><p>Visitez le site du projet sur Google Code à l'adresse:"
+Const lg_phrase_default_body2 = ".</p><p>où visitez les fiches de démo dans un certain nombre de langues du monde à la"
 Const lg_phrase_default_body3 = "démonstration et de site d'essai.</p>"
 Const lg_phrase_delete_account = "Supprimer le compte"
 Const lg_phrase_delete_already_verified = "Le compte a déjà été vérifiée et ne pouvait pas être supprimé"
@@ -128,8 +128,8 @@ Const lg_phrase_email_title = "S'il vous plaît, entrez votre adresse mél. Ce c
 Const lg_phrase_enter_set_new_password_token = "entrer nouveau mot de passe jeton"
 Const lg_phrase_enter_unlock_code = "Entrer le code de déblocage"
 Const lg_phrase_forbidden_body = "<p><h1>Vous n'avez pas accès à cette ressource.</h1></p><p>Contactez le webmaster à l'adresse:"
-Const lg_phrase_form_error_cookie = "Les cookies sont requis pour la connexion. S'il vous plaît vous assurer que votre navigateur accepte les cookies de ce site."
-Const lg_phrase_form_error_time = "Le formulaire a expiré avant la fin. S'il vous plaît remplir le formulaire en moins de 5 minutes."
+Const lg_phrase_form_error_cookie = "Les cookies sont requis pour la connexion. Veuillez vous assurer que votre navigateur accepte les cookies pour ce site."
+Const lg_phrase_form_error_time = "Le formulaire a expiré avant la fin. Veuillez remplir le formulaire en moins de 5 minutes."
 Const lg_phrase_form_error_token = "Il y avait une erreur de forme. Cela peut être causé par l'utilisation de votre navigateur bouton précédent pour revenir à une forme déjà rempli et re-soumettre."
 Const lg_phrase_is_logged_in = "est enregistré dans"
 Const lg_phrase_issue_new_token = "Entrez vos nom d'utilisateur et mél pour recevoir un nouveau jeton de contrôle."
@@ -185,7 +185,7 @@ Const lg_phrase_registration_mail7 = "Si vous ne vous enregistrez pas, cliquez s
 Const lg_phrase_registration_mail8 = "ce lien: <a href =""http://"
 Const lg_phrase_registration_mail9 = "si vous avez des questions, puis <a href =""http://"
 Const lg_phrase_registration_success = "Enregistrement réussi"
-Const lg_phrase_remember_me_warning = "Ne pas utiliser ""se souvenir de moi"" s'il s'agit d'un ordinateur partagé."
+Const lg_phrase_remember_me_warning = "Veuillez ne pas utiliser ""se souvenir de moi"" s'il s'agit d'un ordinateur partagé, pour votre propre sécurité"
 Const lg_phrase_request_password1 = "Une demande a été faite pour récupérer votre mot de passe à"
 Const lg_phrase_set_new_password_error = "Il y a eu une erreur inattendue lors de votre demande."
 Const lg_phrase_set_new_password_good_token = "Votre jeton était valide. Entrez un nouveau mot de passe."
@@ -276,5 +276,3 @@ Const lg_term_website_address = "Adresse du site internet"
 Const lg_term_welcome = "Accueil"
 Const lg_term_xhtml_xmlns = "<html xmlns=""http://www.w3.org/1999/xhtml"" xml:lang=""fr"" lang=""fr"">"
 %>
-
-
