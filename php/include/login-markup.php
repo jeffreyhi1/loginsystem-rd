@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // alpha 0.5a debug
 // $Id$
 ?>
@@ -13,10 +13,10 @@
                 <fieldset>
                 <legend><?php echo lg_term_login; ?></legend>
                 <label for="userid"><?php echo lg_term_userid; ?></label><br />
-                <input id="userid" name="userid" title="<?php echo lg_phrase_userid_title; ?>" type="text" size="20" maxlength="50" value="<?php echo $useridValue; ?>" />
+                <input id="userid" name="userid" title="<?php echo lg_phrase_userid_title; ?>" type="text" size="20" maxlength="50" autocomplete="off" value="<?php echo $useridValue; ?>" />
                 <span class="field_normal"><?php echo lg_term_required; ?></span><br />
                 <label for="password"><?php echo lg_term_password; ?></label><br />
-                <input id="password" name="password" title="<?php echo lg_phrase_password_title; ?>" type="password" size="20" maxlength="255" />
+                <input id="password" name="password" title="<?php echo lg_phrase_password_title; ?>" type="password" size="20" maxlength="255" autocomplete="off" />
                 <span class="field_normal"><?php echo lg_term_required; ?></span><br />
 				<?php 
 				if (lg_term_remember) {
