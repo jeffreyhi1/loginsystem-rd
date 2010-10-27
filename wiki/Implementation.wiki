@@ -11,8 +11,7 @@ The Login System has been released as alpha code in ASP and PHP. Cold Fusion and
  
 The Login System is meant to be integrated into your site so it has your site's "look and feel." If you will create one template page which contains all the normal content of a page on your site, then implementation is simply a matter of including the server-side code for a given page, along with the necessary library files at the top of the page. The HTML or XHTML markup for a given page is included in the "main content area" of the page.  From one template page, you create as many of the Login System pages as needed for your site.
 
-For more detailed Implementation instructions please refer to the articles beginning with: [http://www.experts-exchange.com/articles/Web_Development/Miscellaneous/A-Better-Website-Login-System-the-EE-Collaborative-Login-System.html EE Collaborative Login System]
-
+Please send an e-mail to webmaster@webloginproject.com with the URL of the website where you will implement the login system and with contact details so you may be notified of any enhancements or security problems discovered.
  
 == Prerequisites ==
 
